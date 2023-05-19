@@ -44,7 +44,7 @@
     "webpack-stream": "^7.0.0"
   },
   "scripts": {
-    "theme:dev": "shopify theme dev --store=tailpine-demo.myshopify.com",
+    "theme:dev": "shopify theme dev --store=90z-back.myshopify.com",
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack:development": "webpack --mode=development --watch --config=webpack.development.config.js",
     "webpack:production": "webpack --mode=production --config=webpack.config.js",

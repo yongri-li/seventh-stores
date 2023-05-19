@@ -278,7 +278,8 @@
     "header": {
       "search": {
         "title": "Search over 1000 products!"
-      }
+      },
+      "menu": "Menu"
     },
     "cart": {
       "title": "Bag",

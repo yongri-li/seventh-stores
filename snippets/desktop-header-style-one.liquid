@@ -1,32 +1,50 @@
-<header class="relative z-50 hidden lg:block border-t border-b border-solid">
-  <nav aria-label="Top" class="{% if section.settings.contain %}container{% endif %} mx-auto px-4 sm:px-6 lg:px-8">
+<header class="relative hidden lg:block border-t border-b border-solid">
+  <nav
+    class="relative z-50"
+    aria-label="Top"
+    class="{% if section.settings.contain %}container{% endif %} mx-auto px-4 sm:px-6 lg:px-8"
+  >
     <div class="">
       <div class="flex items-center">
         <!-- Logo -->
-        <div class="flex flex-1 justify-center lg:justify-start py-2">
+        <div class="flex justify-center lg:justify-start py-2">
           {%- if section.settings.logo != blank -%}
-            <a href="/" itemprop="url" class="[ block ]" style="max-width: {{ section.settings.logo_max_width_desktop }}px;">
+            <a
+              href="/"
+              itemprop="url"
+              class="[ block ]"
+              style="max-width: {{ section.settings.logo_max_width_desktop }}px;"
+            >
               {% capture image_size %}{{ section.settings.logo_max_width_desktop }}{% endcapture %}
-              <img class="header-logo" 
-                  loading="lazy"
-                  src="{{ section.settings.logo | image_url: width: image_size }}"
-                  width="{{ section.settings.logo.width }}" height="{{ section.settings.logo.height }}"
-                  srcset="{{ section.settings.logo | image_url: width: image_size }} 1x, {{ section.settings.logo | image_url: width: image_size, scale: 2 }} 2x"
-                  alt="{{ section.settings.logo.alt | default: shop.name }}"
-                  itemprop="logo">
+              <img
+                class="header-logo"
+                loading="lazy"
+                src="{{ section.settings.logo | image_url: width: image_size }}"
+                width="{{ section.settings.logo.width }}"
+                height="{{ section.settings.logo.height }}"
+                srcset="{{ section.settings.logo | image_url: width: image_size }} 1x, {{ section.settings.logo | image_url: width: image_size, scale: 2 }} 2x"
+                alt="{{ section.settings.logo.alt | default: shop.name }}"
+                itemprop="logo"
+              >
+            </a>
           {% else %}
             <a href="/" itemprop="url" class="heading text-lg lg:text-2xl header-font-color [ block ] ">
               {{ shop.name }}
-            {% endif %}
-          </a>
+            </a>
+          {% endif %}
         </div>
 
         <!-- Flyout menus -->
         <div class="hidden lg:self-stretch lg:flex lg:flex-1">
-          <div class="flex items-stretch mx-auto" >
+          <div class="flex items-stretch mx-auto">
             {%- for link in linklists[section.settings.main_linklist].links -%}
               <div class="group flex items-center">
-                <a class="border-transparent z-10 transition-colors ease-out duration-200 border-b-2 whitespace-nowrap px-4 navigation-link header-font-color" href="{{ link.url }}">{{ link.title | escape }}</a>
+                <a
+                  class="border-transparent z-10 transition-colors ease-out duration-200 border-b-2 whitespace-nowrap px-4 navigation-link header-font-color"
+                  href="{{ link.url }}"
+                >
+                  {{- link.title | escape -}}
+                </a>
                 {%- assign level_one = link -%}
                 {%- assign has_links = false -%}
                 {%- if level_one.links.size > 0 -%}
@@ -37,26 +55,38 @@
                     <div class="container flex flex-row mx-auto pt-8 px-8">
                       <!-- Level Two -->
                       <ul class="flex flex-wrap flex-row w-full">
-                      {%- for link in level_one.links -%}
-                        {%- assign level_two = link -%}
-                        {%- assign level_two_has_links = false -%}
-                        {%- if level_two.links.size > 0 -%}
-                          {%- assign level_two_has_links = true -%}
-                        {%- endif -%}
-                        <li class="flex-grow pr-4">
-                          <a class="block heading pb-2" title="{{ level_two.title | escape }}" href="{{ level_two.url }}">{{ level_two.title | escape }}</a>
-                          {%- if level_two_has_links -%}
-                            <ul>
-                              {%- for link in level_two.links -%}
-                                {%- assign level_three = link -%}
-                                <li>
-                                  <a class="block pb-2" title="{{ level_three.title | escape }}" href="{{ level_three.url }}">{{ level_three.title | escape }}</a>
-                                </li>
-                              {%- endfor -%}
-                            </ul>
+                        {%- for link in level_one.links -%}
+                          {%- assign level_two = link -%}
+                          {%- assign level_two_has_links = false -%}
+                          {%- if level_two.links.size > 0 -%}
+                            {%- assign level_two_has_links = true -%}
                           {%- endif -%}
-                        </li>
-                      {%- endfor -%}
+                          <li class="flex-grow pr-4">
+                            <a
+                              class="block heading pb-2"
+                              title="{{ level_two.title | escape }}"
+                              href="{{ level_two.url }}"
+                            >
+                              {{- level_two.title | escape -}}
+                            </a>
+                            {%- if level_two_has_links -%}
+                              <ul>
+                                {%- for link in level_two.links -%}
+                                  {%- assign level_three = link -%}
+                                  <li>
+                                    <a
+                                      class="block pb-2"
+                                      title="{{ level_three.title | escape }}"
+                                      href="{{ level_three.url }}"
+                                    >
+                                      {{- level_three.title | escape -}}
+                                    </a>
+                                  </li>
+                                {%- endfor -%}
+                              </ul>
+                            {%- endif -%}
+                          </li>
+                        {%- endfor -%}
                       </ul>
                     </div>
                   </div>
@@ -68,30 +98,36 @@
 
         <div class="ml-auto self-stretch flex flex-1 justify-end items-center">
           <div class="flex self-stretch">
-            
             <!-- currency selector -->
             {%- if section.settings.show_currency_selector -%}
-            <div class="hidden lg:ml-8 lg:flex">
-              {% form 'currency', id: "headerCurrencyForm" %}
-                <fieldset class="w-full">
-                  <label for="footerCurrencySelect" class="sr-only">{{ 'layout.footer.currency' | t }}</label>
-                  <div class="relative">
-                    <select id="footerCurrencySelect" name="currency" class="appearance-none w-full bg-none border border-transparent block py-2 pl-2 text-base focus:outline-none focus:ring-white focus:border-white sm:text-sm pr-6 header-font-color">
-                      {%- for currency in shop.enabled_currencies -%}
-                        {%- if currency == cart.currency -%}
-                          <option selected="true">{{ currency.iso_code }} {{ currency.symbol }}</option>
-                        {%- else -%}
-                          <option>{{ currency.iso_code }}</option>
-                        {%- endif -%}
-                      {%- endfor -%}
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center header-font-color">
-                      {%- render 'icon-chevron-down', classes: "h-4 w-4" -%}
+              <div class="hidden lg:ml-8 lg:flex">
+                {% form 'currency', id: 'headerCurrencyForm' %}
+                  <fieldset class="w-full">
+                    <label for="footerCurrencySelect" class="sr-only">{{ 'layout.footer.currency' | t }}</label>
+                    <div class="relative">
+                      <select
+                        id="footerCurrencySelect"
+                        name="currency"
+                        class="appearance-none w-full bg-none border border-transparent block py-2 pl-2 text-base focus:outline-none focus:ring-white focus:border-white sm:text-sm pr-6 header-font-color"
+                      >
+                        {%- for currency in shop.enabled_currencies -%}
+                          {%- if currency == cart.currency -%}
+                            <option selected="true">
+                              {{ currency.iso_code }}
+                              {{ currency.symbol }}
+                            </option>
+                          {%- else -%}
+                            <option>{{ currency.iso_code }}</option>
+                          {%- endif -%}
+                        {%- endfor -%}
+                      </select>
+                      <div class="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center header-font-color">
+                        {%- render 'icon-chevron-down', classes: 'h-4 w-4' -%}
+                      </div>
                     </div>
-                  </div>
-                </fieldset>
-              {% endform %}
-            </div>
+                  </fieldset>
+                {% endform %}
+              </div>
             {%- endif -%}
 
             <!-- Search -->
@@ -102,7 +138,7 @@
                 data-open-class="flex"
                 data-close-class="hidden"
               >
-              {% comment %} <search-trigger class="cursor-pointer self-stretch flex items-center justify-center px-3"> {% endcomment %}
+                {% comment %} <search-trigger class="cursor-pointer self-stretch flex items-center justify-center px-3"> {% endcomment %}
                 <span class="block">
                   <span class="sr-only">Search</span>
                   <span data-open-icon class="header-font-color">
@@ -112,35 +148,70 @@
                     {% render 'icon-close', height: 20 %}
                   </span>
                 </span>
-              {% comment %} </search-trigger> {% endcomment %}
+                {% comment %} </search-trigger> {% endcomment %}
               </drawer-trigger>
             </div>
 
             <!-- customer links -->
             <div class="hidden self-stretch lg:flex items-center justify-center px-3">
-              {%- if section.settings.account_type == "links" -%}
-              <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="text-xs header-font-color heading">
-                {% if customer %}{{ 'layout.customer.account' | t }}{% else %}{{ 'layout.customer.log_in' | t }}{% endif %}</a>
-              {%- unless customer -%}
-              <span class="h-2 inline-block w-px mx-2 bg-gray-200" aria-hidden="true"></span>
-              <a href="{{ routes.account_register_url }}" class="text-xs p-2 header-font-color heading">{{ 'layout.customer.create_account' | t }}</a>
-              {%- endunless -%}
+              {%- if section.settings.account_type == 'links' -%}
+                <a
+                  href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}"
+                  class="text-xs header-font-color heading"
+                >
+                  {% if customer -%}
+                    {{- 'layout.customer.account' | t -}}
+                  {%- else -%}
+                    {{- 'layout.customer.log_in' | t -}}
+                  {%- endif -%}
+                </a>
+                {%- unless customer -%}
+                  <span class="h-2 inline-block w-px mx-2 bg-gray-200" aria-hidden="true"></span>
+                  <a href="{{ routes.account_register_url }}" class="text-xs p-2 header-font-color heading">
+                    {{- 'layout.customer.create_account' | t -}}
+                  </a>
+                {%- endunless -%}
               {%- else -%}
-              <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="text-xs header-font-color heading">{%- render 'icon-account', height: 20 -%}</a>
+                <a
+                  href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}"
+                  class="text-xs header-font-color heading"
+                >
+                  {%- render 'icon-account', height: 20 -%}
+                </a>
               {%- endif -%}
             </div>
 
             <!-- Cart -->
             <div class="self-stretch flex items-center justify-center px-3">
-              <drawer-trigger class="relative" data-target="[data-mini-cart]" data-open-class="flex" data-close-class="hidden">
+              <drawer-trigger
+                class="relative"
+                data-target="[data-mini-cart]"
+                data-open-class="flex"
+                data-close-class="hidden"
+              >
                 <a href="/cart" class="group pr-2 pb-2 -mb-2 block relative items-center">
                   <span class="flex header-font-color">
                     <!-- Heroicon name: outline/shopping-bag -->
-                    {%- render "icon-bag", height: 20 -%}
-                    <span data-cart-count class="bg-black rounded-full h-5 w-5 text-center leading-5 text-white text-xs absolute right-0 bottom-0">{{ cart.item_count }}</span>
+                    {%- render 'icon-bag', height: 20 -%}
+                    <span
+                      data-cart-count
+                      class="bg-black rounded-full h-5 w-5 text-center leading-5 text-white text-xs absolute right-0 bottom-0"
+                    >
+                      {{- cart.item_count -}}
+                    </span>
                     <span class="sr-only">items in cart, view bag</span>
                   </span>
                 </a>
+              </drawer-trigger>
+            </div>
+
+            <div class="self-stretch flex items-center justify-center px-3">
+              <drawer-trigger data-target="[data-menu-drawer]" data-open-class="flex" data-close-class="hidden">
+                <button type="button" class="px-1 py-2 rounded-md flex justify-center items-center">
+                  <span class="sr-only">Open menu</span>
+                  <span class="mr-2">{{ 'layout.header.menu' | t }}</span>
+                  {%- render 'icon-hamburger', classes: 'h-6 w-6 header-font-color' -%}
+                </button>
               </drawer-trigger>
             </div>
           </div>
@@ -148,4 +219,5 @@
       </div>
     </div>
   </nav>
+  <div class="absolute z-40 inset-0 [ header__bg ]"></div>
 </header>

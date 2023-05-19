@@ -208,7 +208,7 @@ class DrawerTrigger extends HTMLElement {
     const self = this;
 
     this.target = document.querySelector(this.dataset.target);
-    this.blackout = this.target.querySelector('[data-blackout]');
+    this.blackout = this.target.querySelector('[data-blackout]') || false;
     this.openClass = this.dataset.openClass;
     this.closeClass = this.dataset.closeClass;
 
@@ -222,7 +222,7 @@ class DrawerTrigger extends HTMLElement {
       }
     });
 
-    if (this.blackout !== undefined && this.blackout !== null) {
+    if (this.blackout) {
       this.blackout.addEventListener('click', this.close.bind(this));
       this.triggerStatus();
     }
@@ -234,8 +234,8 @@ class DrawerTrigger extends HTMLElement {
 
     document.querySelector('body').classList.add('overflow-hidden');
 
+    if (this.blackout) this.blackout.classList.add(this.openClass);
     this.target.classList.add(this.openClass);
-    this.blackout.classList.add(this.openClass);
     this.target.classList.remove(this.closeClass);
     this.blackout.classList.remove(this.closeClass);
   }
@@ -246,8 +246,8 @@ class DrawerTrigger extends HTMLElement {
 
     document.querySelector('body').classList.remove('overflow-hidden');
 
+    if (this.blackout) this.blackout.classList.remove(this.openClass);
     this.target.classList.remove(this.openClass);
-    this.blackout.classList.remove(this.openClass);
     this.target.classList.add(this.closeClass);
     this.blackout.classList.add(this.closeClass);
   }

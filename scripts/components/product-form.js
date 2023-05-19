@@ -224,6 +224,9 @@ class ProductForm extends HTMLElement {
     updateMainImage() {
 
         const gallery = document.querySelector(`[data-product-gallery="${this.dataset.productId}"]`) || false;
+
+        if (!gallery) return;
+
         const featuredMedia = document.querySelector(`[data-media-id="${this.dataset.section}-${this.currentVariant.featured_media.id}"]`);
 
         if (!gallery || !featuredMedia) return;

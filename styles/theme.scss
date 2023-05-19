@@ -7,9 +7,7 @@ body {
   font-family: var(--body-font-family), var(--body-font-family-fallback);
   font-weight: var(--body-font-weight);
   font-style: var(--body-font-style);
-  font-size: var(--body-font-size);
   color: var(--body-text-color);
-  text-transform: uppercase;
 }
 
 .btn,
@@ -68,6 +66,14 @@ h5,
 h6,
 .h6 {
   font-size: var(--heading_six_fs);
+}
+
+p,
+span,
+li,
+a,
+.p {
+  font-size: var(--body-font-size);
 }
 
 drawer-trigger,

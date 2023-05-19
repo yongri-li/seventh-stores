@@ -9,6 +9,7 @@
 {%- endif -%}
 {% style %}
   :root{
+    --header-height: 0px;
     --header-background-color: {{ section.settings.background_color }};
     --header-border-bottom: {{ section.settings.border_color_bottom }};
     --header-menu-link-color: {{ section.settings.menu_link_color }};
@@ -19,7 +20,7 @@
     border-bottom-color: var(--header-border-bottom);
   }
 
-  header,
+  header .header__bg,
   .mega-menu {
     background-color: var(--header-background-color);
   }
@@ -75,117 +76,6 @@
   -%}
 </div>
 
-<div data-search-box class="hidden search-results relative">
-  <div class="{% if section.settings.contain %}container{% endif %} mx-auto" x-data="productSearch()">
-    <form
-      action="{{ routes.search_url }}"
-      class="border border-color border-solid bg-gray-50 overflow-hidden relative z-50"
-    >
-      <div class="relative flex items-center sm:px-6 lg:px-8">
-        <input
-          type="search"
-          name="q"
-          id="Search"
-          placeholder="{{ 'general.search.placeholder' | t }}"
-          data-predictive-search-input
-          @keyup="getResults"
-          class="[ block flex-grow border-none appearance-none rounded-none relative py-2 px-4 md:py-4 leading-tight focus:outline-none focus:shadow-outline-blue focus:z-10 bg-gray-50 ]"
-        >
-        <button class="btn py-2 px-4 md:py-4 text-center leading-tight bg-gray-50" type="submit">
-          {% render 'icon-search', classes: 'w-5 h-5 md:w-6 md:h-6' %}
-        </button>
-        <p data-clear class="cursor-pointer pr-4" @click="clearResults">clear</p>
-      </div>
-    </form>
-    <template x-if="hasResults">
-      <div class="search-results px-4 pb-4 lg:px-8 absolute left-0 top-0 right-0 z-10">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-            <template x-for="product in products">
-              <div class="mb-2 flex items-center">
-                <div class="w-24">
-                  <a :href="product.url">
-                    <img
-                      class="w-full"
-                      loading="lazy"
-                      :src="product.featured_image.url"
-                      :width="product.featured_image.width"
-                      :height="product.featured_image.height"
-                      :alt="product.featured_image.alt"
-                    >
-                  </a>
-                </div>
-                <div class="pl-4">
-                  <a class="block" :href="product.url">
-                    <p class="heading text-sm" x-text="product.title"></p>
-                    <p class="text-xs" x-text="currencySymbol+product.price"></p>
-                  </a>
-                </div>
-              </div>
-            </template>
-          </div>
-        </div>
-      </div>
-    </template>
-    <template x-if="!hasResults">
-      <template x-if="searchQuery != false">
-        <div class="search-results px-4 pb-4 lg:px-8 absolute left-0 top-0 right-0 z-10">
-          <div class="container mx-auto mt-4">
-            <p>Sorry, there are no search results for "<span x-text="searchQuery"></span>".</p>
-          </div>
-        </div>
-      </template>
-    </template>
-  </div>
-  <div class="fixed inset-0 z10 bg-black opacity-50"></div>
-</div>
-<script type="text/javascript">
-  function productSearch(e) {
-    return {
-      hasResults: false,
-      products: null,
-      currencySymbol: '{{ cart.currency.symbol }}',
-      searchQuery: false,
-      getResults(e) {
-        const query = e.path[0].value;
-        if (query.length === 0) {
-          this.clearResults();
-          return;
-        }
-        if (query.length < 4) return;
-        this.searchQuery = query;
-        fetch(`/search/suggest.json?q=${query}&resources[type]=product&resources[limit]=4`)
-          .then((response) => response.json())
-          .then((suggestions) => {
-            const productSuggestions = suggestions.resources.results.products;
-            console.log('productSuggestions: ', productSuggestions);
-            if (productSuggestions.length > 0) {
-              this.products = productSuggestions;
-              this.hasResults = true;
-            }
-          });
-      },
-      clearResults() {
-        this.products = null;
-        this.hasResults = false;
-        this.searchQuery = false;
-        document.querySelectorAll('[data-predictive-search-input]')[0].value = '';
-      },
-    };
-  }
-</script>
-
-{%- unless settings.app_bar_enabled -%}
-  <div class="lg:hidden fixed rounded-full bottom-4 right-4 bg-white z-40 border border-color border-solid">
-    <drawer-trigger data-target="[data-menu-drawer]" data-open-class="flex" data-close-class="hidden">
-      <button type="button" class="p-2">
-        <span class="sr-only">Open menu</span>
-        {% render 'icon-hamburger', height: 20 %}
-      </button>
-    </drawer-trigger>
-  </div>
-{%- endunless -%}
-
 {% javascript %}
   const localizationFormSubmit = function (event) {
     event.target.form.submit();
@@ -194,6 +84,18 @@
   document.querySelectorAll('.shopify-localization-form select').forEach(function (element) {
     element.addEventListener('change', localizationFormSubmit);
   });
+
+  const root = document.querySelector(':root');
+  const header = document.getElementById('shopify-section-header');
+  const promoBar = document.getElementById('shopify-section-promo-bar') || false;
+
+  let headerHeight = header.offsetHeight;
+
+  if (promoBar) {
+    headerHeight += promoBar.offsetHeight;
+  }
+
+  root.style.setProperty('--header-height', `${headerHeight}px`);
 {% endjavascript %}
 
 {%- if section.settings.show_lightning_nav -%}

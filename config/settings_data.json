@@ -61,7 +61,6 @@
             "settings": {
               "menu_link": "shopify:\/\/collections\/all",
               "column_width": 25,
-              "image": "shopify:\/\/shop_images\/woman-in-sports-clothes-stands-on-a-beach-in-the-morning-light.jpg",
               "image_height": "250",
               "image_link": "",
               "image_heading": ""
@@ -79,13 +78,14 @@
           "menu_link_color_hover": "#2b6cb0",
           "font_size": 12,
           "contain": false,
-          "desktop_header_style": "logo-center",
-          "mobile_header_style": "logo-center",
+          "desktop_header_style": "logo-left",
+          "mobile_header_style": "logo-left",
+          "logo": "shopify:\/\/shop_images\/logo.png",
           "logo_max_width_mobile": 160,
           "logo_max_width_desktop": 230,
           "main_linklist": "main-menu",
           "show_secondary_nav": true,
-          "secondary_nav": "all",
+          "secondary_nav": "",
           "account_type": "icon",
           "show_currency_selector": false
         }
@@ -98,7 +98,6 @@
             "settings": {
               "tab_one": true,
               "tab_two": false,
-              "bg_image": "shopify:\/\/shop_images\/mens-fashion-close-up-shirt-tucked-in-leaning.jpg",
               "block_link": "",
               "bg_image_focus": "bg-center",
               "subtitle": "SHOP NOW",
@@ -115,7 +114,6 @@
             "settings": {
               "tab_one": false,
               "tab_two": true,
-              "bg_image": "shopify:\/\/shop_images\/model-in-neutral-colors-by-window.jpg",
               "block_link": "shopify:\/\/collections\/all",
               "bg_image_focus": "bg-center bg-left",
               "subtitle": "SHOP NOW",
@@ -132,7 +130,6 @@
             "settings": {
               "tab_one": false,
               "tab_two": true,
-              "bg_image": "shopify:\/\/shop_images\/a-model-in-summer-fashion-with-grey-backdrop.jpg",
               "block_link": "",
               "bg_image_focus": "bg-right",
               "subtitle": "SHOW NOW",
@@ -149,7 +146,6 @@
             "settings": {
               "tab_one": true,
               "tab_two": false,
-              "bg_image": "shopify:\/\/shop_images\/the-man-in-the-hat.jpg",
               "block_link": "",
               "bg_image_focus": "bg-left-bottom",
               "subtitle": "SHOP NOW",
@@ -192,21 +188,10 @@
               "background_color": "#eeeeee",
               "font_color": "#000000"
             }
-          },
-          "d9234714-8ed2-4037-a715-ff7dd906e255": {
-            "type": "benefit",
-            "settings": {
-              "benefit": "FREE WORLDWIDE SHIPPING",
-              "link": "",
-              "trigger_newsletter": false,
-              "background_color": "#eeeeee",
-              "font_color": "#000000"
-            }
           }
         },
         "block_order": [
-          "0adfb7d8-91e7-4c12-b6b4-9a530d95a3f2",
-          "d9234714-8ed2-4037-a715-ff7dd906e255"
+          "0adfb7d8-91e7-4c12-b6b4-9a530d95a3f2"
         ],
         "settings": {
           "show_benefit": true,
@@ -225,7 +210,7 @@
       "benefits-bar": {
         "type": "benefits-bar",
         "settings": {
-          "show_benefits_bar": true,
+          "show_benefits_bar": false,
           "cols_mobile": "1",
           "cols_tablet": "2",
           "cols_desktop": "3",

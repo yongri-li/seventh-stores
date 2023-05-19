@@ -84,7 +84,7 @@
           "logo_max_width_mobile": 160,
           "logo_max_width_desktop": 230,
           "main_linklist": "main-menu",
-          "show_secondary_nav": true,
+          "show_secondary_nav": false,
           "secondary_nav": "",
           "account_type": "icon",
           "show_currency_selector": false
@@ -165,10 +165,10 @@
           "cb85fc1f-0ce4-40d0-b8ed-d6c0c847f7e2"
         ],
         "settings": {
-          "tab_one": "Mens",
+          "tab_one": "",
           "tab_one_menu": "main-menu",
-          "tab_two": "Womens",
-          "tab_two_menu": "main-menu",
+          "tab_two": "",
+          "tab_two_menu": "",
           "show_footer_menu": true,
           "show_account_link": true,
           "show_search_link": false,

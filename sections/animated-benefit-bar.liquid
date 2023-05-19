@@ -1,0 +1,278 @@
+{%- if section.settings.show_benefit -%}
+
+{%- liquid
+assign animation_delay = section.settings.animation_delay
+assign animation_total = section.blocks.size | times: animation_delay
+assign animation_percenatge = 100 | divided_by: section.blocks.size
+assign animation_percenatge_plus_one = animation_percenatge | plus: 1
+assign font_size_mobile = section.settings.font_size_mobile
+assign bar_height_mobile = section.settings.bar_height_mobile
+assign font_size_desktop = section.settings.font_size_desktop
+assign bar_height_desktop = section.settings.bar_height_desktop -%}
+    
+{% style %}
+
+    :root{
+    --abb-background-color: {{ section.settings.background_color }};
+    --abb-border-bottom: {{ section.settings.border_color_bottom }};
+    }
+
+    {%- if section.settings.make_sticky -%}
+    #shopify-section-benefit-bar{
+        position: sticky;
+        top: 0;
+        z-index: 999;
+    }
+
+    #shopify-section-benefit-bar + #shopify-section-header{
+        top: {{ bar_height_mobile }}px;
+    }
+    {%- endif -%}
+
+    .benefit-bar{
+        position: relative;
+        height: {{ bar_height_mobile }}px;
+        overflow: hidden;
+        background-color: var(--abb-background-color);
+        border-bottom-color: var(--abb-border-bottom);
+    }
+
+    .benefit-bar a{
+        text-decoration: none;
+    }
+
+    .benefit-bar a,
+    .benefit-bar p{
+        display: block;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        line-height: {{ bar_height_mobile }}px;
+        color: {{ font_color }};
+        font-size: {{ font_size_mobile }}px;
+        font-family: var(--header-font-family);
+        font-weight: var(--header-font-weight);
+        font-style: var(--header-font-style);
+        text-transform: var(--header-transform);
+        letter-spacing: var(--header-letter-spacing);
+    }
+
+    .benefit-bar > div {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: {{ bar_height_mobile }}px;
+        opacity: 1;
+        {%- if section.blocks.size > 0 -%}
+        -webkit-animation: {{ animation_total }}s benefitRotate infinite ease-in-out;
+        -moz-animation: {{ animation_total }}s benefitRotate infinite ease-in-out;
+        -o-animation: {{ animation_total }}s benefitRotate infinite ease-in-out;
+        animation: {{ animation_total }}s benefitRotate infinite ease-in-out;
+        {%- endif -%}
+    }
+
+    .benefit-bar > div:hover { cursor: pointer; }
+
+    @media only screen and (min-width: 1024px){
+
+        {%- if section.settings.make_sticky -%}
+        #shopify-section-benefit-bar + #shopify-section-header{
+            top: {{ bar_height_desktop }}px;
+        }
+        {%- endif -%}
+
+        .benefit-bar{
+            height: {{ bar_height_desktop }}px;
+        }
+
+        .benefit-bar a,
+        .benefit-bar p{
+            line-height: {{ bar_height_desktop }}px;
+            font-size: {{ font_size_desktop }}px;
+        }
+
+        .benefit-bar > div {
+            height: {{ bar_height_desktop }}px;
+        }
+    }
+
+    {%- if section.blocks.size > 0 -%}
+        @keyframes benefitRotate {
+            0% {top: 100%}
+            4% {top: 0%}
+            {{ animation_percenatge }}% {top: 0%}
+            {{ animation_percenatge_plus_one }}% {top: -100%;}
+            100% {top: -100%;}
+        }
+
+        {%- assign count = 1 -%}
+        {%- assign delay = 0 -%}
+
+        {%- for block in section.blocks -%}
+        .benefit-bar > *:nth-child({{ count }}) {
+            animation-delay: {{delay}}s;
+        }
+        {%- assign delay = delay | plus: animation_delay -%}
+        {%- assign count = count | plus: 1 -%}
+        {%- endfor -%}
+    {%- endif -%}
+{%- endstyle -%}
+
+{%- if section.settings.home_page_only == false or template.name == 'index' -%}
+{%- if section.settings.make_sticky -%}
+<div class="benefit-bar-sticky">
+{%- endif -%}
+
+    <div class="benefit-bar border-b border-solid">
+    {%- for block in section.blocks -%}
+        {%- assign background_color = block.settings.background_color -%}
+        {%- assign font_color = block.settings.font_color -%}
+        <div class="benefit-bar__benefit" style="background-color: {{ background_color }};">
+        {%- unless block.settings.link == blank -%}
+            <a href="{{ block.settings.link }}" style="color: {{ font_color }};">
+        {%- endunless -%}
+            <p style="color: {{ font_color }};">{{ block.settings.benefit | escape }}</p>
+        {%- unless block.settings.link == blank -%}
+            </a>
+        {%- endunless -%}
+        </div>
+    {%- endfor -%}
+    </div>
+
+{%- if section.settings.make_sticky -%}
+</div>
+{%- endif -%}
+{%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Animated Benefit Bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_benefit",
+      "label": "Show Benefit bar",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "make_sticky",
+      "label": "Make Sticky?",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "home_page_only",
+      "label": "Home page only",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Bar"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Bar Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "border_color_bottom",
+      "label": "Border Bottom Color",
+      "default": "#C6C6C6"
+    },
+    {
+      "type": "text",
+      "id": "animation_delay",
+      "label": "Delay",
+      "default": "4",
+      "info": "The delay between benefits"
+    },
+    {
+      "type": "range",
+      "id": "bar_height_mobile",
+      "label": "Bar Size - Mobile",
+      "min": 10,
+      "max": 70,
+      "step": 1,
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "bar_height_desktop",
+      "label": "Bar Size - Desktop",
+      "min": 10,
+      "max": 70,
+      "step": 1,
+      "default": 25
+    },
+    {
+      "type": "header",
+      "content": "Fonts"
+    },
+    {
+      "type": "color",
+      "id": "font_color",
+      "label": "Font Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "label": "Font Size - Mobile",
+      "min": 6,
+      "max": 20,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "font_size_desktop",
+      "label": "Font Size - Desktop",
+      "min": 6,
+      "max": 20,
+      "step": 1,
+      "default": 10
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "benefit",
+          "label": "Benefit"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "benefit link"
+        },
+        {
+          "type": "checkbox",
+          "id": "trigger_newsletter",
+          "label": "Trigger Newsletter Modal",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "font_color",
+          "label": "Font Color",
+          "default": "#FFFFFF"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

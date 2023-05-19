@@ -1,0 +1,217 @@
+{%- liquid
+assign show_section = section.settings.show_section
+assign section_background = section.settings.section_background
+assign section_spacing = section.settings.section_spacing 
+assign pre_heading = section.settings.pre_heading
+assign heading = section.settings.heading
+assign content = section.settings.content 
+assign pre_heading_color = section.settings.pre_heading_color
+assign heading_color = section.settings.heading_color
+assign content_color = section.settings.content_color 
+assign reviews_link = section.settings.reviews_link
+assign reviews_logo = section.settings.reviews_logo
+assign reviews_logo_width = section.settings.reviews_logo_width
+assign rating = section.settings.rating | plus: 0
+assign rating_color= section.settings.rating_color -%}
+
+{%- style -%}
+#shopify-section-{{ section.id }} .reviews .reviews__logo{
+    width: {{ reviews_logo_width }}px;
+}
+
+#shopify-section-{{ section.id }} .reviews .review__star svg{
+    color: {{ rating_color }};
+}
+
+#shopify-section-{{ section.id }} .reviews .reviews__pre-heading{ color: {{ pre_heading_color }}; }
+#shopify-section-{{ section.id }} .reviews .reviews__heading{ color: {{ heading_color }}; }
+#shopify-section-{{ section.id }} .reviews .reviews__content{ color: {{ content_color }}; }
+
+{%- endstyle -%}
+
+{%- capture reviews_dimension -%}{{ reviews_logo_width }}{%- endcapture -%}
+
+{%- if show_section -%}
+<div class="[ flex align-center items-center {{ section_spacing }} ] reviews" style="background-color: {{ section_background }};">
+
+    <div class="container lg:max-w-4xl mx-auto px-4">
+        <div class="[ flex max-w-4xl flex-col md:flex-row items-center overflow-hidden -mx-4 ]">
+            <div class="[ px-4 overflow-hidden ]">
+                <div class="flex flex-col text-right mb-4">
+                    <div class="text-center mx-auto">
+                        {%- unless reviews_link == blank -%}
+                        <a class="block" href="{{ reviews_link }}">
+                        {%- endunless -%}
+                        <img loading="lazy"
+                            width="{{ reviews_logo.width }}"
+                            height="{{ reviews_logo.height }}" class="[ pb-4 ] reviews__logo" src="{{ reviews_logo | image_url: width: reviews_dimension }}" alt="{{ reviews_logo.alt }}">
+                        {%- unless reviews_link == blank -%}
+                        </a>
+                        {%- endunless -%}
+                        <div class="mb-4">
+                        {%- for i in (1..rating) -%}
+                            <span class="inline-block review__star w-5 h-5">
+                                {% render 'icon-star' %}
+                            </span>
+                        {%- endfor -%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="[ px-4 overflow-hidden ]">
+                {%- unless pre_heading == blank -%}
+                <div class="mb-4 text-center md:text-left">
+                    <p class="[ text-base font-semibold tracking-wide uppercase ] heading reviews__pre-heading">{{ pre_heading }}</p>
+                </div>
+                {%- endunless -%}
+                <div class="text-center md:text-left">
+                    {%- unless heading == blank -%}
+                    <p class="[ mt-2 text-3xl leading-8 tracking-tight sm:text-4xl ] heading reviews__heading">{{ heading }}</p>
+                    {%- endunless -%}
+                    {%- unless content == blank -%}
+                    <div class="[ mt-4 text-lg leading-relaxed lg:mx-auto ] reviews__content">{{ content }}</div>
+                    {%- endunless -%}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Reviews",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_section",
+      "label": "Show section?",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Section Styling"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "select",
+      "id": "section_spacing",
+      "label": "Section Spacing",
+      "options": [
+        {
+          "value": "py-0",
+          "label": "None"
+        },
+        {
+          "value": "py-8",
+          "label": "Small"
+        },
+        {
+          "value": "py-16",
+          "label": "Medium"
+        },
+        {
+          "value": "py-32",
+          "label": "Large"
+        },
+        {
+          "value": "py-64",
+          "label": "x-Large"
+        }
+      ],
+      "default": "py-8"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "pre_heading",
+      "label": "Pre Heading",
+      "default": "Reviews"
+    },
+    {
+      "type": "color",
+      "id": "pre_heading_color",
+      "label": "Pre Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "5 Star rated"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in accusamus quisquam.</p>"
+    },
+    {
+      "type": "color",
+      "id": "content_color",
+      "label": "Content Color",
+      "default": "#000000"
+    },
+    {
+      "type": "url",
+      "id": "reviews_link",
+      "label": "Reviews Link",
+      "info": "Link to your business profile on your reviews platform."
+    },
+    {
+      "type": "image_picker",
+      "id": "reviews_logo",
+      "label": "Reviews Logo",
+      "info": "Enter the logo of the reviews platform."
+    },
+    {
+      "type": "range",
+      "id": "reviews_logo_width",
+      "label": "Logo Width",
+      "min": 50,
+      "max": 400,
+      "step": 10,
+      "default": 350
+    },
+    {
+      "type": "header",
+      "content": "Rating"
+    },
+    {
+      "type": "color",
+      "id": "rating_color",
+      "label": "Star Color",
+      "default": "#ffbe00"
+    },
+    {
+      "type": "range",
+      "id": "rating",
+      "label": "Rating",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reviews",
+      "category": "Content"
+    }
+  ]
+}
+{% endschema %}

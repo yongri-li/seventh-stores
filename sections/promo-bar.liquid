@@ -1,0 +1,105 @@
+{%- liquid
+assign show_promo_bar = section.settings.show_promo_bar
+assign show_on_mobile = section.settings.show_on_mobile
+assign show_on_desktop = section.settings.show_on_desktop
+assign promo_link = section.settings.promo_link
+assign promo_content = section.settings.promo_content
+assign content_alignment = section.settings.content_alignment
+assign font_size = section.settings.font_size
+assign background_color = section.settings.background_color
+assign font_color = section.settings.font_color -%}
+
+{%- if show_promo_bar -%}
+<section class="promo-bar {{ show_on_mobile }} {{ show_on_desktop }}" style="background-color: {{ background_color }}; text-align: {{ content_alignment }};">
+    {%- if promo_link != blank -%}
+    <a class="" style="color: {{ font_color }}; font-size: {{ font_size }}px;" href="{{ promo_link }}">
+    {%- endif -%}
+        <p class="py-2 heading" style="color: {{ font_color }}; font-size: {{ font_size }}px;">{{ promo_content }}</p>
+    {%- if promo_link != blank -%}
+    </a>
+    {%- endif -%}
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": {
+    "en": "Promo Bar"
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_promo_bar",
+      "label": "Show Promo Bar?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_on_mobile",
+      "label": "Show on Mobile?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_on_desktop",
+      "label": "Show on Desktop?",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "promo_link",
+      "label": "Promo Link"
+    },
+    {
+      "type": "text",
+      "id": "promo_content",
+      "label": "Content"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "Content Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font Size",
+      "min": 8,
+      "max": 22,
+      "step": 1,
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "font_color",
+      "label": "Font Color",
+      "default": "#FFFFFF"
+    }
+  ]
+}
+{% endschema %}

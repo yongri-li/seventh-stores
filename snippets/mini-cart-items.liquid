@@ -1,0 +1,78 @@
+<cart-items aria-busy="false" class="block relative" id="cart-items" data-view="mini">
+  <div class="spinner-overlay loading [ absolute items-center justify-center bg-opacity-80 bg-white z-10 top-0 left-0 right-0 bottom-0 ]">
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      class="spinner w-10 h-10"
+      viewBox="0 0 66 66"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+    </svg>
+  </div>
+  <div id="cart-items-container">
+    <form action="{{ routes.cart_url }}" method="post" novalidate>
+      <section aria-labelledby="cart-heading" class="lg:col-span-7">
+        <h2 id="cart-heading" class="sr-only">Items in your shopping cart</h2>
+
+        {%- if cart.items.size == 0 -%}
+          <p colspan="5">{{ 'cart.general.empty' | t }}</p>
+        {%- else -%}
+          <ul class="p-4 bg-white space-y-4 ">
+            {%- for item in cart.items -%}
+              <li class="flex">
+                <div class="flex-shrink-0 w-24 lg:w-32 overflow-hidden">
+                  <a href="{{ item.url }}">
+                    <img
+                      src="{{ item.image | image_url: width: 75 }}"
+                      width="{{ item.image.width }}"
+                      height="{{ item.image.height }}"
+                      loading="lazy"
+                      class="block w-16 lg:w-24 h-auto object-center object-cover"
+                    >
+                  </a>
+                </div>
+
+                <div class="ml-4 flex-1 flex flex-col">
+                  <div>
+                    <p class="heading mb-2 text-sm flex-shrink-0">{{ item.price | money_with_currency }}</p>
+                    {%- unless item.selling_plan_allocation.selling_plan.name == blank -%}
+                      <p class="font-bold mb-2">{{ item.selling_plan_allocation.selling_plan.name }}</p>
+                    {%- endunless -%}
+                    {%- if item.original_price > item.price -%}
+                      <span class="text-xs strike-through">{{ item.original_price | money_with_currency }}</span>
+                    {%- endif -%}
+                    <p class="text-xs mb-2">
+                      <a href="{{ item.url }}" class="text-xs">{{ item.title | escape }}</a>
+                    </p>
+                    {%- for selling_plan in item.selling_plan_allocation -%}
+                      {{ selling_plan.name }}
+                    {%- endfor -%}
+                    {%- unless item.properties.size == 0 -%}
+                      <div class="mt-1 flex">
+                        {% for property in line_item.properties %}
+                          <p class="text-xs">{{ property.first }}: {{ property.last }}</p>
+                        {% endfor %}
+                      </div>
+                    {%- endunless -%}
+                    <div class="flex flex-row">
+                      <p class="text-xs pr-4">QTY x {{ item.quantity }}</p>
+                      <cart-remove-button
+                        data-item-key="{{ item.key }}"
+                        type="button"
+                        class="appearance-none cursor-pointer -m-2 ml-auto p-2 inline-flex"
+                      >
+                        <span class="text-xs underline">Remove</span>
+                      </cart-remove-button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </section>
+    </form>
+  </div>
+</cart-items>

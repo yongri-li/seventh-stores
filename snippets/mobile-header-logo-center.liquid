@@ -1,0 +1,111 @@
+<header class="lg:hidden relative z-50">
+  <nav aria-label="Top" class="mx-auto px-2 sm:px-6">
+    <div class="border-b border-color">
+      <div class="flex items-center">
+        <!-- Mobile menu toggle, controls the 'mobileMenuOpen' state. -->
+        <div class="flex flex-1 justify-start items-center">
+          <drawer-trigger data-target="[data-menu-drawer]" data-open-class="flex" data-close-class="hidden">
+            <button type="button" class="px-1 py-2 rounded-md">
+              <span class="sr-only">Open menu</span>
+              {%- render 'icon-hamburger' with classes: 'h-6 w-6 header-font-color' -%}
+            </button>
+          </drawer-trigger>
+
+          {%- if shop.customer_accounts_enabled -%}
+            <!-- customer links -->
+            <div class="ml-1">
+              <a
+                href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}"
+                class="[ block px-1 py-2 text-xs ] header-font-color heading"
+              >
+                {%- render 'icon-account' -%}
+              </a>
+            </div>
+          {%- endif -%}
+        </div>
+
+        <!-- Logo -->
+        <div class="flex flex-shrink">
+          {%- if section.settings.logo != blank -%}
+            <a
+              href="/"
+              itemprop="url"
+              class="[ block ]"
+              style="max-width: {{ section.settings.logo_max_width_desktop }}px;"
+            >
+              {% capture image_size %}{{ section.settings.logo_max_width_desktop }}{% endcapture %}
+              <img
+                class="header-logo"
+                loading="lazy"
+                src="{{ section.settings.logo | image_url: width: image_size }}"
+                width="{{ section.settings.logo.width }}"
+                height="{{ section.settings.logo.height }}"
+                srcset="{{ section.settings.logo | image_url: width: image_size }} 1x, {{ section.settings.logo | image_url: width: image_size, scale: 2 }} 2x"
+                alt="{{ section.settings.logo.alt | default: shop.name }}"
+                itemprop="logo"
+              >
+            </a>
+          {%- else -%}
+            <a href="/" itemprop="url" class="heading text-lg header-font-color [ block ] ">
+              {{ shop.name }}
+            </a>
+          {%- endif -%}
+        </div>
+
+        <div class="flex flex-1 items-center justify-end">
+          <!-- lightning menu -->
+          {%- if section.settings.show_lightning_nav -%}
+            <lightning-toggle class="lightning-toggle px-1 py-2">
+              <span x-cloak class="lightning-toggle__active">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  width="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </span>
+              <span x-cloak class="lightning-toggle__disabled">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+                </svg>
+              </span>
+            </lightning-toggle>
+          {%- endif -%}
+
+          <!-- Search -->
+          <div class="flex ml-1">
+            <search-trigger>
+              <span class="px-1 py-2 block cursor-pointer">
+                <span class="sr-only">Search</span>
+                <span data-open-icon class="header-font-color">
+                  {% render 'icon-search' %}
+                </span>
+                <span data-close-icon class="hidden header-font-color">
+                  {% render 'icon-close' %}
+                </span>
+              </span>
+            </search-trigger>
+          </div>
+
+          <!-- Cart -->
+          <div class="flex ml-1">
+            <drawer-trigger data-target="[data-mini-cart]" data-open-class="flex" data-close-class="hidden">
+              <a href="/cart" class="group px-1 py-2 block items-center">
+                <span class="flex header-font-color">
+                  <!-- Heroicon name: outline/shopping-bag -->
+                  {%- render 'icon-bag' -%}
+                  <span data-cart-count class="text-xs">{{ cart.item_count }}</span>
+                  <span class="sr-only">items in cart, view bag</span>
+                </span>
+              </a>
+            </drawer-trigger>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,156 @@
+{% comment %}
+  The data-label attributes on <td> elements are mobile-friendly
+  helpers used for responsive-table labels
+{% endcomment %}
+
+<div class="[ container mx-auto px-4 sm:px-6 lg:px-8 py-10 ] cls-fix">
+  <header role="banner">
+    <div class="bg-gray-100">
+      <div class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+        <div class="flex flex-col">
+          <h1 class="text-3xl leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
+            {{ 'customer.account.title' | t }}
+          </h1>
+          <div class="mt-4">
+            <a class="font-medium transition duration-150 ease-in-out" href="/account">{{ 'customer.account.return' | t }}</a>
+          </div>
+        </div>
+        <!-- Begin ReCharge code -->
+        <div class="mt-8 flex lg:flex-shrink-0 lg:mt-0">
+          <div class="inline-flex">
+            <a class="[ group relative w-full focus:shadow-outline focus:outline-none font-bold py-3 px-4 border leading-tight ] btn primary-button" href="/tools/recurring/login/">Manage Subscriptions</a>
+          </div>
+        </div>
+        <!-- End ReCharge code -->
+      </div>
+    </div>
+  </header>
+
+  <div class="flex flex-col mt-4 lg:mt-8">
+    <div class="-mx-4 overflow-x-auto">
+      <div class="px-5 align-middle inline-block min-w-full">
+          <p class="font-bold leading-relaxed">{{ 'customer.order.date' | t: date: order.created_at | date: "%B %d, %Y %I:%M%p" }}</p>
+          {% if order.cancelled %}
+            {%- assign cancelled_at = order.cancelled_at | date: "%B %d, %Y %I:%M%p" -%}
+            <p class="font-bold leading-relaxed">{{ 'customer.order.cancelled' | t: date: cancelled_at }}</p>
+            <p class="leading-relaxed">{{ 'customer.order.cancelled_reason' | t: reason: order.cancel_reason }}</p>
+          {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col mt-4">
+    <div class="-mx-4 overflow-x-auto">
+      <div class="px-4 align-middle inline-block min-w-full">
+        <div class="overflow-hidden border border-solid border-gray-300">
+          <table class="responsive-table w-full">
+            <thead>
+              <tr>
+                <th class="p-4 lg:text-left">
+                  <h6>{{ 'customer.order.product' | t }}</h6>
+                </th>
+                <th class="p-4 lg:text-left">
+                  <h6>{{ 'customer.order.sku' | t }}</h6>
+                </th>
+                <th class="p-4 lg:text-left">
+                  <h6>{{ 'customer.order.price' | t }}</h6>
+                </th>
+                <th class="p-4">
+                  <h6>{{ 'customer.order.quantity' | t }}</h6>
+                </th>
+                <th class="p-4 lg:text-right">
+                  <h6>{{ 'customer.order.total' | t }}</h6>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {%- for line_item in order.line_items -%}
+              <tr id="{{ line_item.key }}" class="responsive-table-row">
+                <td class="p-4" data-label="{{ 'customer.order.product' | t }}">
+                  {{ line_item.title | link_to: line_item.product.url }}
+                  {% if line_item.fulfillment %}
+                    <dl>
+                      <dt class="leading-relaxed">{{ 'customer.order.fulfilled_at' | t }}</dt>
+                      <dd class="leading-relaxed">{{ line_item.fulfillment.created_at | date: format: 'month_day_year' }}</dd>
+
+                      {% if line_item.fulfillment.tracking_url %}
+                        <dt class="leading-relaxed">{{ 'customer.order.tracking_url' | t }}</dt>
+                        <dd class="leading-relaxed">
+                          <a class="leading-relaxed" href="{{ line_item.fulfillment.tracking_url }}">
+                            {{ 'customer.order.track_shipment' | t }}
+                          </a>
+                        </dd>
+                      {% endif %}
+
+                      <dt class="leading-relaxed">{{ 'customer.order.tracking_company' | t }}</dt>
+                      <dd class="leading-relaxed">{{ line_item.fulfillment.tracking_company }}</dd>
+
+                      {% if line_item.fulfillment.tracking_number %}
+                        <dt class="leading-relaxed">{{ 'customer.order.tracking_number' | t }}</dt>
+                        <dd class="leading-relaxed">{{ line_item.fulfillment.tracking_number }}</dd>
+                      {% endif %}
+                    </dl>
+                  {% endif %}
+                </td>
+                <td class="p-4" data-label="{{ 'customer.order.sku' | t }}">{{ line_item.sku }}</td>
+                <td class="p-4" data-label="{{ 'customer.order.price' | t }}">{{ line_item.price | money }}</td>
+                <td class="p-4 lg:text-center" data-label="{{ 'customer.order.quantity' | t }}">{{ line_item.quantity }}</td>
+                <td class="p-4 lg:text-right" data-label="{{ 'customer.order.total' | t }}">{{ line_item.quantity | times: line_item.price | money }}</td>
+              </tr>
+              {%- endfor -%}
+            </tbody>
+            <tfoot>
+              <tr class="responsive-table-row">
+                <td class="p-4 hide-mobile" colspan="4">{{ 'customer.order.subtotal' | t }}</td>
+                <td class="p-4 lg:text-right" data-label="{{ 'customer.order.subtotal' | t }}">{{ order.subtotal_price | money }}</td>
+              </tr>
+
+              {% for discount in order.discounts %}
+                <tr>
+                  <td class="p-4 hide-mobile" colspan="4">{{ discount.code }} {{ 'customer.order.discount' | t }}</td>
+                  <td class="p-4 lg:text-right" data-label="{{ 'customer.order.discount' | t }}">{{ discount.savings | money }}</td>
+                </tr>
+              {% endfor %}
+
+              {% for shipping_method in order.shipping_methods %}
+                <tr>
+                  <td class="p-4 hide-mobile" colspan="4">{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})</td>
+                  <td class="p-4 lg:text-right" data-label="{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})">{{ shipping_method.price | money }}</td>
+                </tr>
+              {% endfor %}
+
+              {% for tax_line in order.tax_lines %}
+                <tr>
+                  <td class="p-4 hide-mobile" colspan="4">{{ 'customer.order.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)</td>
+                  <td class="p-4 lg:text-right" data-label="{{ 'customer.order.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)">{{ tax_line.price | money }}</td>
+                </tr>
+              {% endfor %}
+
+              <tr>
+                <td class="p-4 hide-mobile" colspan="4">{{ 'customer.order.total' | t }}</td>
+                <td class="p-4 lg:text-right" data-label="{{ 'customer.order.total' | t }}">{{ order.total_price | money }} {{ order.currency }}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-row flex-wrap my-4 -mx-4 overflow-auto">
+    <div class="px-4 w-full md:w-1/2">
+      <div class="rte">
+        <h3>{{ 'customer.order.billing_address' | t }}</h3>
+        <p>{{ 'customer.order.payment_status' | t }}: {{ order.financial_status_label }}</p>
+        {{ order.billing_address | format_address }}
+      </div>
+    </div>
+    <div class="px-4 w-full md:w-1/2">
+      <div class="rte">
+        <h3>{{ 'customer.order.shipping_address' | t }}</h3>
+        <p>{{ 'customer.order.fulfillment_status' | t }}: {{ order.fulfillment_status_label }}</p>
+        {{ order.shipping_address | format_address }}
+      </div>
+    </div>
+  </div>
+</div>

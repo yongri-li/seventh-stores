@@ -1,0 +1,72 @@
+<div class="bg-white {{ section.settings.section_spacing_top }} {{ section.settings.section_spacing_bottom }}" style="background-color: {{ section.settings.background_color }};">
+    <section aria-labelledby="product-reviews" class="container mx-auto py-4 md:py-8 px-4 lg:px-8">
+        <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
+    </section>
+</div>
+
+{% schema %}
+{
+  "name": "Product Reviews",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading"
+    },
+    {
+      "type": "select",
+      "id": "section_spacing_top",
+      "label": "Section Top Spacing",
+      "options": [
+        {
+          "value": "mt-0",
+          "label": "None"
+        },
+        {
+          "value": "mt-4",
+          "label": "Small"
+        },
+        {
+          "value": "mt-8",
+          "label": "Medium"
+        },
+        {
+          "value": "mt-16",
+          "label": "Large"
+        }
+      ],
+      "default": "mt-4"
+    },
+    {
+      "type": "select",
+      "id": "section_spacing_bottom",
+      "label": "Section Bottom Spacing",
+      "options": [
+        {
+          "value": "mb-0",
+          "label": "None"
+        },
+        {
+          "value": "mb-4",
+          "label": "Small"
+        },
+        {
+          "value": "mb-8",
+          "label": "Medium"
+        },
+        {
+          "value": "mb-16",
+          "label": "Large"
+        }
+      ],
+      "default": "mb-4"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FEFEFE"
+    }
+  ]
+}
+{% endschema %}

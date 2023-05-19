@@ -1,0 +1,31 @@
+{% render 'drawer-search' with recommended_products: section.settings.recommended_products %}
+
+{% schema %}
+{
+  "name": "Predictive Search",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_recommended_searches",
+      "label": "Show recommended searches?"
+    },
+    {
+      "type": "link_list",
+      "label": "Recommended Searches",
+      "id": "recommended_searches",
+      "info": "Create a link list of popular collections and reference the link list here to display the collections to your customers."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_recommended_products",
+      "label": "Show Recommended Products?"
+    },
+    {
+      "type": "collection",
+      "id": "recommended_products",
+      "label": "Recommended Products",
+      "info": "Create a new collection containing all products and sort by Best Selling."
+    }
+  ]
+}
+{% endschema %}

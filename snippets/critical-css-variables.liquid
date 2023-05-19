@@ -1,0 +1,366 @@
+{%- assign navigation_font = settings.navigation_font -%}
+{%- assign header_font = settings.heading_font -%}
+{%- assign body_font = settings.body_font -%}
+{% style %}
+  :root{
+      --navigation-font-family: {{ navigation_font.family }};
+      --navigation-font-family-fallback: {{ navigation_font.family }};
+      --navigation-font-weight: {{ navigation_font.weight }};
+      --navigation-font-style: {{ navigation_font.style }};
+      --navigation-transform: {{ settings.navigation_transform }};
+      --navigation-letter-spacing: {{ settings.navigation_letter_spacing }}px;
+      --body-font-family: {{ body_font.family }}, {{ body_font.fallback_families }};
+      --body-font-family-fallback: {{ body_font.fallback_families }};
+      --body-font-weight: {{ body_font.weight }};
+      --body-font-style: {{ body_font.style }};
+      --body-font-size: {{ settings.body_fs }}px;
+      --header-font-family: {{ header_font.family }};
+      --header-font-family-fallback: {{ header_font.family }};
+      --header-font-weight: {{ header_font.weight }};
+      --header-font-style: {{ header_font.style }};
+      --header-transform: {{ settings.heading_transform }};
+      --header-letter-spacing: {{ settings.heading_letter_spacing }}px;
+
+      --primary-color: {{ settings.color_primary }};
+      --primary-color-light: {{ settings.color_primary | color_lighten: 90 }};
+      --primary-link-color:{{ settings.primary_link_color }};
+      --primary-link-color-hover: {{ settings.primary_link_color_hover }};
+      --secondary-link-color: {{ settings.secondary_link_color }};
+      --secondary-link-color-hover: {{ settings.secondary_link_color_hover }};
+
+      --body-text-color: {{ settings.color_body_text }};
+
+      --form-border-color: #EEEEEE;
+      --color-blankstate: {{ settings.color_body_text | color_modify: "alpha", 0.35 }};
+      --color-blankstate-border: {{ settings.color_body_text | color_modify: "alpha", 0.2 }};
+      --color-blankstate-background: {{ settings.color_body_text | color_modify: "alpha", 0.1 }};
+
+      --font-size-base: {{ settings.body_fs }}px;
+      --body-weight: {{ settings.body_font.weight }};
+      --heading_one_fs: {{ settings.heading_1_fs }}px;
+      --heading_two_fs: {{ settings.heading_2_fs }}px;
+      --heading_three_fs: {{ settings.heading_3_fs }}px;
+      --heading_four_fs: {{ settings.heading_4_fs }}px;
+      --heading_five_fs: {{ settings.heading_5_fs }}px;
+      --heading_six_fs: {{ settings.heading_6_fs }}px;
+
+      --svg-select-icon: url("{{ 'ico-select.svg' | asset_url }}");
+      --svg-icon-color: #bfbfbf;
+
+      --primary-btn-bg: {{ settings.btn_primary_bg }};
+      --primary-btn-text: {{ settings.btn_primary_text }};
+      --primary-btn-bg-hover: {{ settings.btn_primary_bg_hover }};
+      --primary-btn-text-hover: {{ settings.btn_primary_text_hover }};
+
+      --secondary-btn-bg: {{ settings.btn_secondary_bg }};
+      --secondary-btn-text: {{ settings.btn_secondary_text }};
+      --secondary-btn-bg-hover: {{ settings.btn_secondary_bg_hover }};
+      --secondary-btn-text-hover: {{ settings.btn_secondary_text_hover }};
+
+      --tertiary-btn-bg: {{ settings.btn_tertiary_bg }};
+      --tertiary-btn-text: {{ settings.btn_tertiary_text }};
+      --tertiary-btn-bg-hover: {{ settings.btn_tertiary_bg_hover }};
+      --tertiary-btn-text-hover: {{ settings.btn_tertiary_text_hover }};
+
+      --atc-btn-bg: {{ settings.btn_atc_bg }};
+      --atc-btn-text: {{ settings.btn_atc_text }};
+      --atc-btn-bg-hover: {{ settings.btn_atc_bg_hover }};
+      --atc-btn-text-hover: {{ settings.btn_atc_text_hover }};
+
+      --title-bg-image: url("{{ settings.title_default_bg_image | image_url: width: 1240 }}");
+      --title-bg-color:  {{ settings.title_default_bg_color }};
+      --title-font-color: {{ settings.title_default_text_color }};
+
+      --header-link-color: {{ settings.header_link_color }};
+      --scrollbar-color: {{ settings.color_scrollbar }};
+      --border-color: {{ settings.color_border }};
+      --search-results-background: #FFFFFF;
+
+      --nav-tier-one-font-size: 14px;
+      --nav-tier-two-font-size: 14px;
+      --nav-tier-three-font-size: 14px;
+      --nav-tier-one-font-colour: {{ settings.header_link_color }};
+      --nav-tier-two-font-colour: {{ settings.header_link_color }};
+      --nav-tier-three-font-colour: {{ settings.header_link_color }};
+
+      --subscription-product-block-background-color: {{ settings.subscription_product_block_background_color }};
+      --subscription-product-block-text-color: {{ settings.subscription_product_block_text_color }};
+      --subscription-product-active-block-background-color: {{ settings.subscription_product_active_block_background_color }};
+      --subscription-product-active-block-text-color: {{ settings.subscription_product_active_block_text_color }};
+
+      --mega-menu-background: #FFFFFF;
+  }
+
+  html, body, div, span, applet, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  a, abbr, acronym, address, big, cite, code,
+  del, dfn, em, img, ins, kbd, q, s, samp,
+  small, strike, strong, sub, sup, tt, var,
+  b, u, i, center,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td,
+  article, aside, canvas, details, embed,
+  figure, figcaption, footer, header, hgroup,
+  menu, nav, output, ruby, section, summary,
+  time, mark, audio, video {
+  	margin: 0;
+  	padding: 0;
+  	font-size: 100%;
+  	font: inherit;
+  	vertical-align: baseline;
+  }
+  /* HTML5 display-role reset for older browsers */
+  article, aside, details, figcaption, figure,
+  footer, header, hgroup, menu, nav, section {
+  	display: block;
+  }
+  body {
+  	line-height: 1;
+  }
+  ol, ul {
+  	list-style: none;
+  }
+  blockquote, q {
+  	quotes: none;
+  }
+  blockquote:before, blockquote:after,
+  q:before, q:after {
+  	content: '';
+  	content: none;
+  }
+  table {
+  	border-collapse: collapse;
+  	border-spacing: 0;
+  }
+
+  [aria-hidden="true"],
+  .is--hidden{ display: none; }
+
+  [aria-hidden="false"]{
+    display: block;
+  }
+
+  .visually-hidden {
+    position: absolute !important;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+  }
+
+  body{
+    font-family: var(--body-font-family), var(--body-font-family-fallback);
+    font-weight: var(--body-font-weight);
+    font-style: var(--body-font-style);
+    font-size: var(--body-font-size);
+    color: var(--body-text-color);
+  }
+
+  quick-add product-form{
+    -webkit-transform: translate3d(0,0,0);
+  }
+
+  .btn, button,
+  .heading,
+  h1, h2, h3, h4, h5, h6,
+  h1.h1, h2.h2, h3.h3, h4.h4, h5.h5, h6.h6,
+  .h1, .h2, .h3, .h4, .h5, .h6{
+    font-style: var(--header-font-style);
+    font-family: var(--header-font-family);
+    font-weight: var(--header-font-weight);
+    letter-spacing: var(--header-letter-spacing);
+    text-transform: var(--header-transform);
+  }
+
+  h1, .h1{ font-size: var(--heading_one_fs); }
+  h2, .h2{ font-size: var(--heading_two_fs); }
+  h3, .h3{ font-size: var(--heading_three_fs); }
+  h4, .h4{ font-size: var(--heading_four_fs); }
+  h5, .h5{ font-size: var(--heading_five_fs); }
+  h6, .h6{ font-size: var(--heading_six_fs); }
+
+  .navigation-link{
+    font-style: var(--navigation-font-style);
+    font-family: var(--navigation-font-family);
+    font-weight: var(--navigation-font-weight);
+    letter-spacing: var(--navigation-letter-spacing);
+    text-transform: var(--navigation-transform);
+  }
+
+  .primary-link{ color: var(--primary-link-color); }
+  .primary-button, .secondary-button{
+    border-width: 2px;
+    border-style: solid;
+  }
+
+  {%- if settings.primary_button_alternative -%}
+  .primary-button{
+    background-color: transparent;
+    border-color: var(--primary-btn-bg);
+    color: var(--primary-btn-text);
+  }
+
+  .primary-button:hover{
+    background-color: var(--primary-btn-bg-hover);
+    border-color: var(--primary-btn-bg-hover);
+    color: var(--primary-btn-text-hover);
+  }
+  {%- else -%}
+  .primary-button{
+    background-color: var(--primary-btn-bg);
+    border-color: var(--primary-btn-bg);
+    color: var(--primary-btn-text);
+  }
+
+  .primary-button:hover{
+    background-color: var(--primary-btn-bg-hover);
+    border-color: var(--primary-btn-bg-hover);
+    color: var(--primary-btn-text-hover);
+  }
+  {%- endif -%}
+
+  {%- if settings.secondary_button_alternative -%}
+  .secondary-button{
+    background-color: transparent;
+    border-color: var(--secondary-btn-bg);
+    color: var(--secondary-btn-text);
+  }
+
+  .secondary-button:hover{
+    background-color: var(--secondary-btn-bg-hover);
+    border-color: var(--secondary-btn-bg-hover);
+    color: var(--secondary-btn-text-hover);
+  }
+  {%- else -%}
+  .secondary-button{
+    background-color: var(--secondary-btn-bg);
+    border-color: var(--secondary-btn-bg);
+    color: var(--secondary-btn-text);
+  }
+
+  .secondary-button:hover{
+    background-color: var(--secondary-btn-bg-hover);
+    border-color: var(--secondary-btn-bg-hover);
+    color: var(--secondary-btn-text-hover);
+  }
+  {%- endif -%}
+
+  {%- if settings.tertiary_button_alternative -%}
+  .tertiary-button{
+    border-width: 2px;
+    border-style: solid;
+    background-color: transparent;
+    border-color: var(--tertiary-btn-bg);
+    color: var(--tertiary-btn-text);
+  }
+
+  .tertiary-button:hover{
+    background-color: var(--tertiary-btn-bg-hover);
+    border-color: var(--tertiary-btn-bg-hover);
+    color: var(--tertiary-btn-text-hover);
+  }
+  {%- else -%}
+  .tertiary-button{
+    background-color: var(--tertiary-btn-bg);
+    color: var(--tertiary-btn-text);
+  }
+
+  .tertiary-button:hover{
+    background-color: var(--tertiary-btn-bg-hover);
+    color: var(--tertiary-btn-text-hover);
+  }
+  {%- endif -%}
+
+  {%- if settings.add-to_cart_button_alternative -%}
+  .add-to-cart-button,
+  *.add-to-cart-button,
+  a.add-to-cart-button,
+  button.add-to-cart-button,
+  [type="submit"].add-to-cart-button,
+  button[type="submit"].add-to-cart-button{
+    border-width: 2px;
+    border-style: solid;
+    background-color: transparent;
+    border-color: var(--atc-btn-bg);
+    color: var(--atc-btn-text);
+  }
+
+  .add-to-cart-button:hover,
+  *.add-to-cart-button:hover,
+  a.add-to-cart-button:hover,
+  button.add-to-cart-button:hover,
+  [type="submit"].add-to-cart-button:hover,
+  button[type="submit"].add-to-cart-button:hover{
+    background-color: var(--atc-btn-bg-hover);
+    border-color: var(--atc-btn-bg-hover);
+    color: var(--atc-btn-text-hover);
+  }
+  {%- else -%}
+  .add-to-cart-button,
+  *.add-to-cart-button,
+  a.add-to-cart-button,
+  button.add-to-cart-button,
+  [type="submit"].add-to-cart-button,
+  button[type="submit"].add-to-cart-button{
+    background-color: var(--atc-btn-bg);
+    color: var(--atc-btn-text);
+  }
+
+  .add-to-cart-button svg,
+  .add-to-cart-button svg *,
+  *.add-to-cart-button svg,
+  *.add-to-cart-button svg *,
+  a.add-to-cart-button svg,
+  a.add-to-cart-button svg *,
+  button.add-to-cart-button svg,
+  button.add-to-cart-button svg *,
+  [type="submit"].add-to-cart-button svg,
+  [type="submit"].add-to-cart-button svg *,
+  button[type="submit"].add-to-cart-button svg,
+  button[type="submit"].add-to-cart-button svg *{
+    stroke: var(--atc-btn-text);
+  }
+
+  .add-to-cart-button:hover,
+  *.add-to-cart-button:hover,
+  a.add-to-cart-button:hover,
+  button.add-to-cart-button:hover,
+  [type="submit"].add-to-cart-button:hover,
+  button[type="submit"].add-to-cart-button:hover{
+    background-color: var(--atc-btn-bg-hover);
+    color: var(--atc-btn-text-hover);
+  }
+  {%- endif -%}
+
+  [x-cloak] { display: none; }
+
+  .is--hidden{ display: none; }
+
+  [data-clear]{ display: none; }
+
+  [name="q"]:focus ~ [data-clear]{ display: block; }
+
+  .loading{ display: none; }
+
+  [aria-busy="true"] .loading{ display: flex; }
+
+  [aria-busy="true"] .loading ~ * { display: none; }
+{% endstyle %}
+
+<script>
+  // IE11 does not have support for CSS variables, so we have to polyfill them
+  if (!(((window || {}).CSS || {}).supports && window.CSS.supports('(--a: 0)'))) {
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2';
+    script.onload = function () {
+      cssVars({});
+    };
+
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+</script>

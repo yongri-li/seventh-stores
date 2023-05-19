@@ -1,0 +1,330 @@
+<div data-drawer data-menu-drawer class="fixed z-50 inset-0 overflow-hidden hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+    <div class="absolute inset-0 overflow-hidden">
+        <div data-blackout class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+        <div class="fixed inset-y-0 right-0 max-w-full flex">
+            <div class="w-screen lg:max-w-md bg-white">
+                <div class="flex flex-col min-h-full max-h-100v">
+                    <div class="flex items-center justify-between py-4 px-4 sm:px-6 border-b border-solid border-color bg-white">
+                        <h2 class="text-sm heading">
+                        {{ 'general.mobile_menu.heading' | t }}
+                        </h2>
+                        <div class="ml-3 h-7 flex items-center">
+                            <drawer-trigger class="h-6 w-6" data-target="[data-menu-drawer]" data-open-class="flex" data-close-class="hidden">
+                                <button type="button" class="-m-2 p-2 rounded-md inline-flex items-center justify-center">
+                                    <span class="sr-only">Close menu</span>
+                                    {%- render 'icon-close' -%}
+                                </button>
+                            </drawer-trigger>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col flex-grow overflow-y-auto">
+
+                        {%- for block in section.blocks -%}
+                        {%- unless block.settings.tab_one or block.settings.tab_two -%}
+                        <div class="px-4 py-2">
+                            {%- liquid
+                            assign bg_image = block.settings.bg_image
+                            assign bg_image_focus = block.settings.bg_image_focus
+                            assign content_focus = block.settings.content_focus
+                            assign subtitle = block.settings.subtitle
+                            assign title = block.settings.title
+                            assign subtitle_font_size = block.settings.subtitle_font_size
+                            assign title_font_size = block.settings.title_font_size
+                            assign overlay_color = block.settings.overlay_color
+                            assign text_color = block.settings.text_color
+                            assign block_link = block.settings.block_link -%}
+                            <a href="{{ block_link }}">
+                                <div class="[ {{ bg_image_focus }} bg-no-repeat bg-cover ]" style="background-color: {{ block.settings.background_color }}; background-image: url('{{ bg_image | image_url: width: 450 }}');">
+                                    <div class="[ p-4  {{ content_focus }} ]" style="background-color: {{ overlay_color | color_modify: 'alpha', block.settings.overlay_opacity.overlay_opacity }};">
+                                        {%- if subtitle != blank -%}
+                                        <p class="heading pb-2" style="font-size: {{ subtitle_font_size }}px; color: {{ text_color }};">{{ subtitle }}</p>
+                                        {%- endif -%}
+                                        {%- if title != blank -%}
+                                        <p class="heading" style="font-size: {{ title_font_size }}px; color: {{ text_color }};">{{ title }}</p>
+                                        {%- endif -%}
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {%- endunless -%}
+                        {%- endfor -%}
+
+                        {%- if menu_one != blank and  menu_two != blank -%}
+                        <div x-data="Tab()">
+                            <div class="px-2 py-3 flex">
+                                <span @click="setTabCookie(1); tab = 1;" :class=" tab == 1 ? 'border-bottom' : 'border-transparent' " class="heading py-4 px-2 border-b-2 border-solid cursor-pointer text-center text-xs w-1/2">{{ section.settings.tab_one }}</span>
+                                <span @click="setTabCookie(2); tab = 2;" :class=" tab == 2 ? 'border-bottom' : 'border-transparent' " class="heading py-4 px-2 border-b-2 border-solid cursor-pointer text-center text-xs w-1/2">{{ section.settings.tab_two }}</span>
+                            </div>
+
+                            <script type="text/javascript">
+                                function Tab () {
+                                    return {
+                                        tab: ( window.hasCookie('tab') ? window.getCookie('tab') : 1 ),
+                                        setTabCookie: (number) => {
+                                            window.setCookie('tab', number, (7*24*60*60));
+                                        }
+                                    }
+                                };
+                            </script>
+
+                            <div x-show="tab == 1">
+                                {%- for block in section.blocks -%}
+                                    {%- if block.settings.tab_one -%}
+                                    <div class="px-4 py-2">
+                                        {%- liquid
+                                        assign bg_image = block.settings.bg_image
+                                        assign bg_image_focus = block.settings.bg_image_focus
+                                        assign content_focus = block.settings.content_focus
+                                        assign subtitle = block.settings.subtitle
+                                        assign title = block.settings.title
+                                        assign subtitle_font_size = block.settings.subtitle_font_size
+                                        assign title_font_size = block.settings.title_font_size
+                                        assign overlay_color = block.settings.overlay_color
+                                        assign text_color = block.settings.text_color
+                                        assign block_link = block.settings.block_link -%}
+                                        <a href="{{ block_link }}">
+                                            <div class="[ {{ bg_image_focus }} bg-no-repeat bg-cover ]" style="background-color: {{ block.settings.background_color }}; background-color: {{ block.settings.background_color }}; background-image: url('{{ bg_image | image_url: width: 450 }}');">
+                                                <div class="[ p-4  {{ content_focus }} ]" style="background-color: {{ overlay_color | color_modify: 'alpha', block.settings.overlay_opacity }};">
+                                                    {%- if subtitle != blank -%}
+                                                    <p class="heading pb-2" style="font-size: {{ subtitle_font_size }}px; color: {{ text_color }};">{{ subtitle }}</p>
+                                                    {%- endif -%}
+                                                    {%- if title != blank -%}
+                                                    <p class="heading" style="font-size: {{ title_font_size }}px; color: {{ text_color }};">{{ title }}</p>
+                                                    {%- endif -%}
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    {%- endif -%}
+                                {%- endfor -%}
+
+                                <nav class="mobile-navigation [ px-4 ]">
+                                    {%- if menu_one != blank -%}
+                                    <ul class="mobile-menu">
+                                        {%- for link in linklists[menu_one].links -%}
+                                        {%- if link.links != blank -%}
+                                            <li class="border-b border-solid border-color " x-data="{ childOpen: false, grandchildOpen: false }">
+                                                <div class="flex flex-row items-center">
+                                                    <a class="py-3 block heading text-sm" href="{{ link.url }}">{{ link.title | escape }}</a>
+                                                    <button class="ml-auto" @click="( childOpen == false ? childOpen = {{ forloop.index }} : childOpen = false )">
+                                                        <span x-show="childOpen != {{ forloop.index }}" class="">{% render 'icon-plus' with height: 15, width: 15 %}</span>
+                                                        <span x-show="childOpen == {{ forloop.index }}" class="">{% render 'icon-minus' with height: 15, width: 15 %}</span>
+                                                    </button>
+                                                </div>
+
+                                                <ul class="mobile-menu__dropdown" x-show="childOpen == {{ forloop.index }}">
+                                                {%- for childlink in link.links -%}
+                                                {%- if childlink.links != blank -%}
+                                                    <li {% unless forloop.last %}class="border-b border-solid border-color"{% endunless %}>
+                                                        <div class="flex flex-row items-center">
+                                                            <a class="py-3 block text-sm" href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                                                            <button @click="( grandchildOpen == false ? grandchildOpen = {{ forloop.index }} : grandchildOpen = false )" class="ml-auto">
+                                                                <span x-show="grandchildOpen != {{ forloop.index }}" class="">{% render 'icon-plus' with height: 15, width: 15 %}</span>
+                                                                <span x-show="grandchildOpen == {{ forloop.index }}" class="">{% render 'icon-minus' with height: 15, width: 15 %}</span>
+                                                            </button>
+                                                        </div>
+
+                                                        <ul class="mobile-menu__dropdown" x-show="grandchildOpen == {{ forloop.index }}">
+                                                            {%- for grandchildlink in childlink.links -%}
+                                                            <li {% unless forloop.last %}class="border-b border-solid border-color"{% endunless %}>
+                                                                <a class="py-3 block text-sm" href="{{ grandchildlink.url }}">{{ grandchildlink.title | escape }}</a>
+                                                            </li>
+                                                            {%- endfor -%}
+                                                        </ul>
+                                                    </li>
+                                                {%- else -%}
+                                                    <li class="border-b border-solid border-color">
+                                                        <a class="py-3 block text-sm" href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                                                    </li>
+                                                {%- endif -%}
+                                                {%- endfor -%}
+                                                </ul>
+                                            </li>
+                                        {%- else -%}
+                                            <li class="border-b border-solid border-color">
+                                                <a class="py-3 block heading text-sm" href="{{ link.url }}">{{ link.title | escape }}</a>
+                                            </li>
+                                        {%- endif -%}
+                                        {%- endfor -%}
+                                    </ul>
+                                {%- endif -%}
+                                </nav>
+                            </div>
+
+                            <div x-show="tab == 2">
+                                {%- for block in section.blocks -%}
+                                    {%- if block.settings.tab_two -%}
+                                    <div class="px-4 py-2">
+                                        {%- liquid
+                                        assign bg_image = block.settings.bg_image
+                                        assign bg_image_focus = block.settings.bg_image_focus
+                                        assign content_focus = block.settings.content_focus
+                                        assign subtitle = block.settings.subtitle
+                                        assign title = block.settings.title
+                                        assign subtitle_font_size = block.settings.subtitle_font_size
+                                        assign title_font_size = block.settings.title_font_size
+                                        assign overlay_color = block.settings.overlay_color
+                                        assign text_color = block.settings.text_color
+                                        assign block_link = block.settings.block_link -%}
+                                        <a href="{{ block_link }}">
+                                            <div class="[ {{ bg_image_focus }} ]" style="background-color: {{ block.settings.background_color }}; background-image: url('{{ bg_image | image_url: width: 450 }}');">
+                                                <div class="[ p-4  {{ content_focus }} ]" style="background-color: {{ overlay_color | color_modify: 'alpha', block.settings.overlay_opacity }};">
+                                                    {%- if subtitle != blank -%}
+                                                    <p class="heading pb-2" style="font-size: {{ subtitle_font_size }}px; color: {{ text_color }};">{{ subtitle }}</p>
+                                                    {%- endif -%}
+                                                    {%- if title != blank -%}
+                                                    <p class="heading" style="font-size: {{ title_font_size }}px; color: {{ text_color }};">{{ title }}</p>
+                                                    {%- endif -%}
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    {%- endif -%}
+                                {%- endfor -%}
+
+                                <nav class="mobile-navigation [ px-4 ]">
+                                    {%- if menu_two != blank -%}
+                                    <ul class="mobile-menu">
+                                        {%- for link in linklists[menu_two].links -%}
+                                        {%- if link.links != blank -%}
+                                            <li class="border-b border-solid border-color " x-data="{ childOpen: false, grandchildOpen: false }">
+                                                <div class="flex flex-row items-center">
+                                                    <a class="py-3 block heading text-sm" href="{{ link.url }}">{{ link.title | escape }}</a>
+                                                    <button class="ml-auto" @click="( childOpen == false ? childOpen = {{ forloop.index }} : childOpen = false )">
+                                                        <span x-show="childOpen != {{ forloop.index }}" class="">{% render 'icon-plus' with height: 15, width: 15 %}</span>
+                                                        <span x-show="childOpen == {{ forloop.index }}" class="">{% render 'icon-minus' with height: 15, width: 15 %}</span>
+                                                    </button>
+                                                </div>
+
+                                                <ul class="mobile-menu__dropdown" x-show="childOpen == {{ forloop.index }}">
+                                                {%- for childlink in link.links -%}
+                                                {%- if childlink.links != blank -%}
+                                                    <li {% unless forloop.last %}class="border-b border-solid border-color"{% endunless %}>
+                                                        <div class="flex flex-row items-center">
+                                                            <a class="py-3 block text-sm" href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                                                            <button @click="( grandchildOpen == false ? grandchildOpen = {{ forloop.index }} : grandchildOpen = false )" class="ml-auto">
+                                                                <span x-show="grandchildOpen != {{ forloop.index }}" class="">{% render 'icon-plus' with height: 15, width: 15 %}</span>
+                                                                <span x-show="grandchildOpen == {{ forloop.index }}" class="">{% render 'icon-minus' with height: 15, width: 15 %}</span>
+                                                            </button>
+                                                        </div>
+
+                                                        <ul class="mobile-menu__dropdown" x-show="grandchildOpen == {{ forloop.index }}">
+                                                            {%- for grandchildlink in childlink.links -%}
+                                                            <li {% unless forloop.last %}class="border-b border-solid border-color"{% endunless %}>
+                                                                <a class="py-3 block text-sm" href="{{ grandchildlink.url }}">{{ grandchildlink.title | escape }}</a>
+                                                            </li>
+                                                            {%- endfor -%}
+                                                        </ul>
+                                                    </li>
+                                                {%- else -%}
+                                                    <li class="border-b border-solid border-color">
+                                                        <a class="py-3 block text-sm" href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                                                    </li>
+                                                {%- endif -%}
+                                                {%- endfor -%}
+                                                </ul>
+                                            </li>
+                                        {%- else -%}
+                                            <li class="border-b border-solid border-color">
+                                                <a class="py-3 block heading text-sm" href="{{ link.url }}">{{ link.title | escape }}</a>
+                                            </li>
+                                        {%- endif -%}
+                                        {%- endfor -%}
+                                    </ul>
+                                {%- endif -%}
+                                </nav>
+                            </div>
+                        </div>
+                        {%- else -%}
+                            <nav class="mobile-navigation [ px-4 ]">
+                                {%- if menu_one != blank -%}
+                                <ul class="mobile-menu">
+                                    {%- for link in linklists[menu_one].links -%}
+                                    {%- if link.links != blank -%}
+                                        <li class="border-b border-solid border-color " x-data="{ childOpen: false, grandchildOpen: false }">
+                                            <div class="flex flex-row items-center">
+                                                <a class="py-3 block heading text-sm" href="{{ link.url }}">{{ link.title | escape }}</a>
+                                                <button class="ml-auto" @click="( childOpen == false ? childOpen = {{ forloop.index }} : childOpen = false )">
+                                                    <span x-show="childOpen != {{ forloop.index }}" class="">{% render 'icon-plus' with height: 15, width: 15 %}</span>
+                                                    <span x-show="childOpen == {{ forloop.index }}" class="">{% render 'icon-minus' with height: 15, width: 15 %}</span>
+                                                </button>
+                                            </div>
+
+                                            <ul class="mobile-menu__dropdown" x-show="childOpen == {{ forloop.index }}">
+                                            {%- for childlink in link.links -%}
+                                            {%- if childlink.links != blank -%}
+                                                <li {% unless forloop.last %}class="border-b border-solid border-color"{% endunless %}>
+                                                    <div class="flex flex-row items-center">
+                                                        <a class="py-3 block text-sm" href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                                                        <button @click="( grandchildOpen == false ? grandchildOpen = {{ forloop.index }} : grandchildOpen = false )" class="ml-auto">
+                                                            <span x-show="grandchildOpen != {{ forloop.index }}" class="">{% render 'icon-plus' with height: 15, width: 15 %}</span>
+                                                            <span x-show="grandchildOpen == {{ forloop.index }}" class="">{% render 'icon-minus' with height: 15, width: 15 %}</span>
+                                                        </button>
+                                                    </div>
+
+                                                    <ul class="mobile-menu__dropdown" x-show="grandchildOpen == {{ forloop.index }}">
+                                                        {%- for grandchildlink in childlink.links -%}
+                                                        <li {% unless forloop.last %}class="border-b border-solid border-color"{% endunless %}>
+                                                            <a class="py-3 block text-sm" href="{{ grandchildlink.url }}">{{ grandchildlink.title | escape }}</a>
+                                                        </li>
+                                                        {%- endfor -%}
+                                                    </ul>
+                                                </li>
+                                            {%- else -%}
+                                                <li class="border-b border-solid border-color">
+                                                    <a class="py-3 block text-sm" href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                                                </li>
+                                            {%- endif -%}
+                                            {%- endfor -%}
+                                            </ul>
+                                        </li>
+                                    {%- else -%}
+                                        <li class="border-b border-solid border-color">
+                                            <a class="py-3 block heading text-sm" href="{{ link.url }}">{{ link.title | escape }}</a>
+                                        </li>
+                                    {%- endif -%}
+                                    {%- endfor -%}
+                                </ul>
+                            {%- endif -%}
+                            </nav>
+                            {%- endif -%}
+
+                            {%- if section.settings.show_footer_menu -%}
+                            <div class="mt-8 pb-4">
+                                <ul class="mobile-menu">
+                                    {%- if section.settings.show_account_link -%}
+                                    <li class="px-4">
+                                    {%- if shop.customer_accounts_enabled -%}
+                                        <a class="pb-4 flex items-center heading text-xs" href="/account">{{ 'layout.customer.account' | t }}</a>
+                                    {%- endif -%}
+                                    </li>
+                                    {%- endif -%}
+
+                                    {%- if section.settings.show_search_link -%}
+                                    <li class="px-4">
+                                        <a class="pb-4 flex items-center heading text-xs" href="/search">{{ 'general.search.placeholder' | t }}</a>
+                                    </li>
+                                    {%- endif -%}
+
+                                    {%- if section.settings.show_phone_number -%}
+                                    <li class="px-4">
+                                        <a class="pb-4 flex items-center heading text-xs" href="tel:{{ shop.phone }}">{{ shop.phone }}</a>
+                                    </li>
+                                    {%- endif -%}
+
+                                    {%- if section.settings.show_email -%}
+                                    <li class="px-4">
+                                        <a class="pb-4 flex items-center heading text-xs" href="mailto:{{ shop.email }}">{{ shop.email }}</a>
+                                    </li>
+                                    {%- endif -%}
+                                </ul>
+                            </div>
+                            {%- endif -%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+{%- assign promo_url = block.settings.promo_url -%}
+{%- assign background_transparency = block.settings.background_transparency -%}
+{%- assign background_color = block.settings.background_color -%}
+{%- assign font_color = block.settings.font_color -%}
+
+
+{%- assign show_description = block.settings.show_description -%}
+{%- assign heading = block.settings.heading -%}
+{%- assign sub_heading = block.settings.sub_heading -%}
+{%- assign description = block.settings.content -%}
+{%- assign promo_image = block.settings.promo_image -%}
+{%- assign cta_style = block.settings.cta_style -%}
+{%- assign cta_text = block.settings.cta_text -%}
+{%- assign show_cta = block.settings.show_cta -%}
+
+<div class="relative">
+{% comment %} <a href="{% if collection == empty %}#{% else %}{{ collection.url }}{% endif %}"> {% endcomment %}
+    <a href="{{ promo_url }}" class="d-block">
+        <div class="d-block">
+            {%- if promo_image -%}
+                {% render 'responsive-image' with image: promo_image, image_class: 'd-block w-full' %}
+            {%- else -%}
+                {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+            {%- endif -%}
+        </div>
+    </a>
+
+    <div class="[ py-2 ]" style="background-color: {{ background_color | color_modify: 'alpha', background_transparency }};">
+        <div class="[ w-full ]">
+            {%- unless heading == blank -%}
+            <h4 class="[ mb-1 text-sm lg:text-base leading-relaxed ]" style="color: {{ font_color }};">{{ heading }}</h4>
+            {%- endunless -%}
+            {%- unless sub_heading == blank -%}
+            <h6 class="[ text-xs mb-1 leading-relaxed ]" style="color: {{ font_color }};">{{ sub_heading }}</h6>
+            {%- endunless -%}
+            {%- unless description == blank or show_description == false -%}
+            <p class="[ text-white text-xs lg:text-base leading-6 ]" style="color: {{ font_color }};">{{ description }}</p>
+            {%- endunless -%}
+            {%- if show_cta -%}
+            <a href="{{ promo_url }}" class="[ inline-block focus:shadow-outline focus:outline-none font-bold py-3 px-4 leading-tight ] {{ cta_style }}">{{ cta_text }}</a>
+            {%- endif -%}
+        </div>
+    </div>
+</div>

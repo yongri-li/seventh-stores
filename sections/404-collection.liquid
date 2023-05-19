@@ -1,0 +1,202 @@
+{%- liquid
+  assign show_section = section.settings.show_section
+  assign section_spacing = section.settings.section_spacing
+  assign section_background = section.settings.section_background
+  assign products_desktop = section.settings.products_desktop
+  assign products_tablet = section.settings.products_tablet
+  assign products_mobile = section.settings.products_mobile
+  assign total_products = section.settings.total_products
+-%}
+
+{%- if show_section -%}
+  {%- assign collection = collections[section.settings.collection] -%}
+  <section class="{{ section_spacing }}" style="background-color: {{ section_background }};">
+    {%- if section.settings.title != blank -%}
+      <div class="container mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+        <div class="px-4 flex items-center justify-between sm:px-6 lg:px-0">
+          <h2>
+            <a href="{{ collection.url }}">{{ section.settings.title | escape }}</a>
+          </h2>
+        </div>
+      </div>
+    {%- endif -%}
+
+    <div class="container mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+      <div class="relative w-full overflow-x-auto">
+        <div class="flex flex-nowrap flex-row -mx-4">
+          {%- for product in collection.products limit: total_products -%}
+            <div
+              {{ block.shopify_attributes }}
+              class="[ {{ products_mobile }} {{ products_tablet }} {{ products_desktop }} px-4 flex-shrink-0 ]"
+            >
+              {% render 'product-grid-item' with product: product %}
+            </div>
+          {%- else -%}
+            {%- for i in (1..6) -%}
+              <a href="#">
+                {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+                <p>
+                  {{ 'homepage.onboarding.product_title' | t }}
+                </p>
+              </a>
+              <p>{{ 1999 | money }}</p>
+            {%- endfor -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Scrolling collection",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_section",
+      "label": "Show Section?",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Section Styling"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "select",
+      "id": "section_spacing",
+      "label": "Section Spacing",
+      "options": [
+        {
+          "value": "py-0",
+          "label": "None"
+        },
+        {
+          "value": "py-8",
+          "label": "Small"
+        },
+        {
+          "value": "py-16",
+          "label": "Medium"
+        },
+        {
+          "value": "py-32",
+          "label": "Large"
+        },
+        {
+          "value": "py-64",
+          "label": "x-Large"
+        }
+      ],
+      "default": "py-8"
+    },
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Featured collection"
+    },
+    {
+      "id": "collection",
+      "type": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "total_products",
+      "label": "Total number of products",
+      "min": 4,
+      "max": 28,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Desktop"
+    },
+    {
+      "type": "select",
+      "id": "products_desktop",
+      "label": "Products per row",
+      "options": [
+        {
+          "value": "lg:w-1/4",
+          "label": "4"
+        },
+        {
+          "value": "lg:w-1/3",
+          "label": "3"
+        },
+        {
+          "value": "lg:w-1/2",
+          "label": "2"
+        },
+        {
+          "value": "lg:w-full",
+          "label": "1"
+        }
+      ],
+      "default": "lg:w-1/4"
+    },
+    {
+      "type": "header",
+      "content": "Tablet"
+    },
+    {
+      "type": "select",
+      "id": "products_tablet",
+      "label": "Products per row",
+      "options": [
+        {
+          "value": "md:w-1/4",
+          "label": "4"
+        },
+        {
+          "value": "md:w-1/3",
+          "label": "3"
+        },
+        {
+          "value": "md:w-1/2",
+          "label": "2"
+        },
+        {
+          "value": "md:w-full",
+          "label": "1"
+        }
+      ],
+      "default": "md:w-1/3"
+    },
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "type": "select",
+      "id": "products_mobile",
+      "label": "Products per row",
+      "options": [
+        {
+          "value": "w-1/2",
+          "label": "2"
+        },
+        {
+          "value": "w-full",
+          "label": "1"
+        }
+      ],
+      "default": "w-1/2"
+    }
+  ]
+}
+{% endschema %}

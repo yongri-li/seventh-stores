@@ -1,0 +1,17 @@
+{%- render 'mini-cart-items' -%}
+
+<p id="cart-prices" class="text-base font-medium text-gray-900">
+    {%- if cart.original_total_price > cart.total_price -%}
+        <small>{{ cart.original_total_price | money_with_currency }}</small>
+    {%- endif -%}
+    {{ cart.total_price | money_with_currency }}
+</p>
+
+{% schema %}
+{
+  "name": "Mini Cart",
+  "settings": [
+
+  ]
+}
+{% endschema %}

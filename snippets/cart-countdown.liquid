@@ -1,0 +1,44 @@
+{% style %}
+  .cart-countdown__bar,
+  .bar__range {
+    height: 10px;
+  }
+
+  .cart-countdown__bar {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+  }
+
+  .bar__range {
+    background-color: rgb(0 0 0);
+  }
+{% endstyle %}
+
+{%- liquid
+  assign countdown_limit = section.settings.countdown_limit | remove: '.' | plus: 0
+  assign limit_reached = false
+  assign percentage = false
+  assign difference_currency = false
+  if cart.total_price < countdown_limit
+    assign percentage = cart.total_price | times: 100 | divided_by: countdown_limit
+    assign difference_currency = countdown_limit | minus: cart.total_price | money_with_currency
+  endif
+
+  if cart.total_price >= countdown_limit
+    assign limit_reached = true
+  endif
+-%}
+
+<div id="cart-countdown" class="cart-countdown border-solid border-color p-4 border-b bg-white">
+  <p class="text-center mb-2">
+    {%- if limit_reached -%}
+      {{ 'cart_countdown.success' | t }}
+    {%- else -%}
+      {{ 'cart_countdown.pre_limit' | t: difference: difference_currency }}
+    {%- endif -%}
+  </p>
+  <div class="cart-countdown__bar border-color overflow-hidden">
+    <div style="width: {{ percentage }}%;" class="bar__range"></div>
+  </div>
+</div>

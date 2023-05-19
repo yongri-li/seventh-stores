@@ -1,0 +1,402 @@
+{%- style -%}
+#shopify-section-{{ section.id }} .footer{
+  background-color: {{ section.settings.background_color }};
+  color: {{ section.settings.font_color }};
+}
+
+#shopify-section-{{ section.id }} .footer a{
+  color: {{ section.settings.link_color }};
+}
+
+#shopify-section-{{ section.id }} .footer a:hover{
+  color: {{ section.settings.link_color_hover }};
+}
+
+#shopify-section-{{ section.id }} .footer hr{
+  background-color: {{ section.settings.separator_color }};
+}
+{%- endstyle -%}
+
+{%- liquid
+assign show_shop_description = section.settings.show_shop_description
+assign show_social_icons = section.settings.show_social_icons
+assign show_copyright = section.settings.show_copyright
+assign show_currency_selector = section.settings.show_currency_selector
+assign footer_logo = section.settings.footer_logo
+assign column_width_desktop = section.settings.column_width_desktop
+assign column_width_tablet = section.settings.column_width_tablet
+assign column_width_mobile = section.settings.column_width_mobile -%}
+
+{%- capture cw_d -%}
+{%- if column_width_desktop == 1 -%}lg:w-full{%- else -%}lg:w-1/{{column_width_desktop}}{%- endif -%}
+{%- endcapture -%}
+{%- capture cw_t -%}
+{%- if column_width_tablet == 1 -%}md:w-full{%- else -%}md:w-1/{{column_width_tablet}}{%- endif -%}
+{%- endcapture -%}
+{%- capture cw_m -%}
+{%- if column_width_mobile == 1 -%}w-full{%- else -%}w-1/{{column_width_mobile}}{%- endif -%}
+{%- endcapture -%}
+
+<footer class="footer border-t border-solid border-color" aria-labelledby="footerHeading">
+  <h2 id="footerHeading" class="sr-only">Footer</h2>
+  <div class="{% if section.settings.contain %}container{% endif %} mx-auto py-6 px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap flex-row -mx-4 pt-4">
+      <div class="{{ cw_m }} {{ cw_t }} {{ cw_d }} lg:flex-1 px-4 mb-5">
+        <div class="space-y-8 xl:col-span-1">
+          {%- if footer_logo != blank -%}
+          <img loading="lazy" width="{{ footer_logo.width }}" height="{{ footer_logo.height }}" class="h-20 w-auto" src="{{ footer_logo | image_url: width: 350 }}" alt="{{ shop.name }}">
+          {%- else -%}
+          <h2>{{ shop.name }}</h2>
+          {%- endif -%}
+          {%- if show_shop_description -%}
+          <p class="text-gray-500 text-base">{{ shop.description }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+      {%- for block in section.blocks -%}
+      <div class="{{ cw_m }} {{ cw_t }} {{ cw_d }} mb-5 lg:flex-1 px-4">
+      {%- if block.type == 'footer_linklist' -%}
+        {% render 'footer-block-linklist' with block: block %}
+      {%- elsif block.type == 'footer_image' -%}
+        {% render 'footer-block-image' with block: block %}
+      {%- elsif block.type == 'footer_usps' -%}
+        {% render 'footer-block-usp' with block: block %}
+      {%- endif -%}
+      </div>
+      {%- endfor -%}
+      {%- if show_currency_selector -%}
+      <div class="{{ cw_m }} {{ cw_t }} {{ cw_d }} lg:flex-1 px-4">
+        <h3 class="text-sm">{{ 'layout.footer.currency' | t }}</h3>
+        {% form 'currency', id: "footerCurrencyForm", class: "mt-4 sm:max-w-xs" %}
+          <fieldset class="mt-4 w-full">
+            <label for="footerCurrencySelect" class="sr-only">{{ 'layout.footer.currency' | t }}</label>
+            <div class="mt-1.5 relative">
+              <select id="footerCurrencySelect" name="currency" class="appearance-none w-full bg-none border block py-2 pl-3 text-base focus:outline-none focus:ring-white focus:border-white sm:text-sm">
+                {% for currency in shop.enabled_currencies %}
+                  {% if currency == cart.currency %}
+                    <option selected="true">{{ currency.iso_code }} {{ currency.symbol }}</option>
+                  {% else %}
+                    <option>{{ currency.iso_code }}</option>
+                  {% endif %}
+                {% endfor %}
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center">
+                <!-- Heroicon name: solid/chevron-down -->
+                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </div>
+            </div>
+          </fieldset>
+        {% endform %}
+        <script>
+          document.getElementById("footerCurrencyForm").addEventListener('change', function(e){
+            e.currentTarget.submit();
+          });
+        </script>
+      </div>
+      {%- endif -%}
+    </div>
+    {%- if section.settings.show_newsletter -%}
+    <hr class="mt-8">
+    <div class="pt-8 lg:flex lg:items-center lg:flex-row lg:justify-between xl:mt-0">
+      <div class="lg:flex-1">
+        <h3 class="text-sm font-semibold pb-2 leading-relaxed">{{ 'layout.footer.newsletter.heading' | t }}</h3>
+        <p class="mt-2 text-base leading-relaxed">{{ 'layout.footer.newsletter.subheading' | t }}</p>
+      </div>
+      <div class="lg:flex-1 max-w-md">
+        {% render 'form-newsletter' %}
+      </div>
+    </div>
+    {%- endif -%}
+    {%- if show_social_icons or show_copyright -%}
+    <hr class="mt-8">
+    <div class="pt-8 md:flex md:items-center md:justify-between">
+      {%- assign social_accounts = 'Facebook,Twitter,Pinterest,Instagram,Snapchat,Tumblr,YouTube,Vimeo' | split: ',' -%}
+      {%- if section.settings.show_social_icons and social_accounts.size > 0 -%}
+      <div class="flex space-x-6 md:order-2">
+        {%- for social in social_accounts -%}
+          {%- assign social_handle = social | handleize -%}
+          {% capture social_link %}social_{{ social_handle }}_link{% endcapture %}
+          {% capture social_icon %}icon-{{ social_handle }}{% endcapture %}
+          {%- if settings[social_link] != blank -%}
+          <a href="{{ settings[social_link] }}" class="leading-relaxed">
+            {% render social_icon %}
+              <span class="icon-fallback-text">{{ social }}</span>
+          </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      {%- endif -%}
+      {%- if show_copyright -%}
+      <p class="mt-8 block text-xs text-center md:mt-0 md:order-1">
+        {{ 'layout.footer.copyright' | t }}
+      </p>
+      {%- endif -%}
+    </div>
+    {%- endif -%}
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "contain",
+      "label": "Contain the Footer within a wrapper?",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_newsletter",
+      "label": "Show Newsletter Section?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social_icons",
+      "label": "Show Social Icons?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shop_description",
+      "label": "Show Shop Description?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_copyright",
+      "label": "Show Copyright?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_currency_selector",
+      "label": "Show Currency Selector?",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "font_color",
+      "label": "Font Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "link_color_hover",
+      "label": "Link Color - Hover",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "separator_color",
+      "label": "Separator Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "column_width_desktop",
+      "label": "Column Width Desktop",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "column_width_tablet",
+      "label": "Column Width Tablet",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "column_width_mobile",
+      "label": "Column Width Mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 1
+    }
+  ],
+  "blocks": [
+    {
+      "type": "footer_usps",
+      "name": "USPs",
+      "settings": [
+        {
+          "type": "text",
+          "id": "column_header",
+          "label": "Column Header"
+        },
+        {
+          "type": "header",
+          "content": "USP One"
+        },
+        {
+          "type": "text",
+          "id": "icon_one",
+          "label": "Icon",
+          "info": "Use fontawesome and input the HTML for your icon here."
+        },
+        {
+          "type": "range",
+          "id": "icon_one_size",
+          "label": "Icon Size",
+          "min": 10,
+          "max": 38,
+          "step": 1,
+          "default": 24
+        },
+        {
+          "type": "text",
+          "id": "heading_one",
+          "label": "Heading",
+          "default": "FREE DELIVERY"
+        },
+        {
+          "type": "text",
+          "id": "content_one",
+          "label": "Content",
+          "default": "Free Delivery on orders over $50!"
+        },
+        {
+          "type": "header",
+          "content": "USP Two"
+        },
+        {
+          "type": "text",
+          "id": "icon_two",
+          "label": "Icon",
+          "info": "Use fontawesome and input the HTML for your icon here."
+        },
+        {
+          "type": "range",
+          "id": "icon_two_size",
+          "label": "Icon Size",
+          "min": 10,
+          "max": 38,
+          "step": 1,
+          "default": 24
+        },
+        {
+          "type": "text",
+          "id": "heading_two",
+          "label": "Heading",
+          "default": "FREE DELIVERY"
+        },
+        {
+          "type": "text",
+          "id": "content_two",
+          "label": "Content",
+          "default": "Free Delivery on orders over $50!"
+        },
+        {
+          "type": "header",
+          "content": "USP Three"
+        },
+        {
+          "type": "text",
+          "id": "icon_three",
+          "label": "Icon",
+          "info": "Use fontawesome and input the HTML for your icon here."
+        },
+        {
+          "type": "range",
+          "id": "icon_three_size",
+          "label": "Icon Size",
+          "min": 10,
+          "max": 38,
+          "step": 1,
+          "default": 24
+        },
+        {
+          "type": "text",
+          "id": "heading_three",
+          "label": "Heading",
+          "default": "FREE DELIVERY"
+        },
+        {
+          "type": "text",
+          "id": "content_three",
+          "label": "Content",
+          "default": "Free Delivery on orders over $50!"
+        }
+      ]
+    },
+    {
+      "type": "footer_linklist",
+      "name": "Linklist",
+      "settings": [
+        {
+          "type": "text",
+          "id": "column_header",
+          "label": "Column Header"
+        },
+        {
+          "type": "link_list",
+          "id": "footer_linklist",
+          "label": "Linklist"
+        }
+      ]
+    },
+    {
+      "type": "footer_image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "text",
+          "id": "column_header",
+          "label": "Column Header"
+        },
+        {
+          "type": "image_picker",
+          "id": "column_image",
+          "label": "Image"
+        },
+        {
+          "type": "textarea",
+          "id": "column_content",
+          "label": "Column Content"
+        },
+        {
+          "type": "url",
+          "id": "image_url",
+          "label": "Image URL",
+          "info": "Link an image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

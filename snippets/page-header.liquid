@@ -1,0 +1,119 @@
+{%- liquid
+  assign the_title = ''
+  assign the_description = ''
+
+  assign title_default_bg_image = settings.title_default_bg_image | image_url: width: 1280, height: 640
+  assign title_default_bg_color = settings.title_default_bg_color
+  assign title_default_bg_opacity = settings.title_default_bg_opacity
+  if template == 'collection'
+    assign the_title = collection.title
+    if collection.handle == 'all'
+      assign the_description = shop.description
+    else
+      assign the_description = collection.description
+    endif
+  elsif template == 'list-collections'
+    assign the_title = 'layout.list_collection.title' | t
+  elsif template == 'page'
+    assign the_title = page.title
+    assign the_description = ''
+  elsif template == 'article'
+    assign the_title = article.title
+    assign the_description = article.excerpt_or_content | truncate: 50, '...'
+  elsif template == 'search'
+    assign the_title = 'general.search.title' | t
+    if search.results.size > 0
+      assign the_description = 'general.search.results_for_html' | t: terms: search.terms
+    else
+      assign the_description = 'general.search.no_results_html' | t: terms: search.terms
+    endif
+  elsif template == 'blog'
+    assign the_title = blog.title
+    assign the_description = ''
+  elsif template == '404'
+    assign the_title = 'general.404.title' | t
+    assign the_description = 'general.404.subtext_html' | t
+  elsif template == 'cart'
+    assign the_title = 'cart.general.title' | t
+    assign the_description = ''
+  else
+    assign the_title = page.title
+    assign the_description = ''
+  endif
+-%}
+
+<header
+  class="header header--title bg-cover bg-center"
+  role="banner"
+  {% unless settings.title_default_bg_image == blank %}
+    style="background-image: url('{{ title_default_bg_image }}');"
+  {% endunless %}
+>
+  <div
+    class="header__inner"
+    style="background-color: {{ title_default_bg_color | color_modify: 'alpha', title_default_bg_opacity }}"
+  >
+    <div class="text-center py-6 px-4 sm:px-6 lg:px-8 lg:py-8">
+      {%- unless the_title == blank or the_title == '' -%}
+        <h1 class="[ text-lg lg:text-2xl ] header__heading" style="color: {{ settings.title_default_text_color }};">
+          {{ the_title }}
+        </h1>
+      {%- endunless -%}
+      {%- unless the_description == blank or the_description == '' -%}
+        <div
+          class="[ mt-4 max-w-xl mx-auto text-sm leading-relaxed ] rte header__rte"
+          style="color: {{ settings.title_default_text_color }};"
+        >
+          {{ the_description }}
+        </div>
+      {%- endunless -%}
+      {%- if settings.show_nav_menu -%}
+        {%- if template contains 'collection' -%}
+          {%- if collection_nav != blank -%}
+            <div class="mt-4">
+              {%- for link in collection_nav.links -%}
+                <span class="inline-flex items-center px-2.5 py-0.5">
+                  <a
+                    style="color: {{ settings.title_default_text_color }};"
+                    class="[ text-xs rounded-sm block p-2 border border-solid border-color ]"
+                    href="{{ link.url }}"
+                  >
+                    {{- link.title -}}
+                  </a>
+                </span>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+        {%- if template contains 'blog' -%}
+          {%- if blog.all_tags.size > 0 -%}
+            <div class="mt-8">
+              {%- for tag in blog.all_tags -%}
+                {%- if current_tags contains tag -%}
+                  <span
+                    style="color: {{ settings.title_default_text_color }};"
+                    class="rounded-sm text-xs border border-solid border-color inline-flex items-center mx-2 px-2.5 py-0.5"
+                  >
+                    {%- capture the_tag | strip -%}
+                            <svg xmlns="http://www.w3.org/2000/svg" class="inline h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg> {{ tag }}
+                            {%- endcapture -%}
+                    {{ the_tag | strip | link_to_remove_tag: tag }}
+                  </span>
+                {%- else -%}
+                  <span
+                    style="color: {{ settings.title_default_text_color }};"
+                    class="rounded-sm text-xs border border-solid border-color inline-flex items-center mx-2 px-2.5 py-0.5"
+                  >
+                    {{- tag | link_to_tag: tag -}}
+                  </span>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+  </div>
+</header>

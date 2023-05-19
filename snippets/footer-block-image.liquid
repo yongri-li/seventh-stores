@@ -1,0 +1,26 @@
+{%- liquid
+assign column_header = block.settings.column_header
+assign column_image = block.settings.column_image
+assign column_content = block.settings.column_content
+assign image_url = block.settings.image_url -%}
+
+<div>
+    {%- unless column_header == blank -%}
+    <h3 class="text-sm">{{ column_header }}</h3>
+    {%- endunless -%}
+    
+    {%- unless column_image == blank -%}
+    <a href="{{ image_url }}" target="_blank">
+        <img loading="lazy"
+            width="{{ column_image.width }}"
+            height="{{ column_image.height }}"
+            class="py-4"
+            src="{{ column_image | image_url: width: 350 }}"
+            alt="{{ column_header }}">
+    </a>
+    {%- endunless -%}
+
+    {%- unless column_content == blank -%}
+    <p>{{ column_content | newline_to_br }}</p>
+    {%- endunless -%}
+</div>

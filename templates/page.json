@@ -1,0 +1,75 @@
+{
+  "wrapper": "div#div_id.div_class[attribute-one=value]",
+  "sections": {
+    "hero": {
+      "type": "featured-hero",
+      "disabled": true,
+      "settings": {
+        "max_height_mobile": 50,
+        "max_height_desktop": 65,
+        "mobile_image_focus": "top left",
+        "desktop_image_focus": "top left",
+        "mobile_content_focus": "justify-start items-start",
+        "mobile_content_alignment": "text-left",
+        "desktop_content_focus": "lg:justify-start lg:items-start",
+        "desktop_content_alignment": "lg:text-left",
+        "heading": "",
+        "content": "",
+        "show_cta_one": false,
+        "cta_text": "",
+        "cta_link": "shopify://collections/menswear",
+        "cta_style": "primary-button",
+        "show_cta_two": false,
+        "cta_text_two": "",
+        "cta_link_two": "",
+        "cta_style_two": "primary-button",
+        "heading_size_mobile": 28,
+        "content_size_mobile": 16,
+        "content_color_mobile": "#ffffff",
+        "heading_size_desktop": 34,
+        "content_size_desktop": 16,
+        "content_color_desktop": "#ffffff"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "711ee7d1-225a-4582-b7e0-269360dd87de": {
+          "type": "header",
+          "settings": {
+          }
+        },
+        "4c9e6e40-0a78-48d4-8c78-06f627872584": {
+          "type": "breadcrumbs",
+          "settings": {
+          }
+        },
+        "57d04156-22d9-49f6-9acd-e0119f2a8656": {
+          "type": "content",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "711ee7d1-225a-4582-b7e0-269360dd87de",
+        "4c9e6e40-0a78-48d4-8c78-06f627872584",
+        "57d04156-22d9-49f6-9acd-e0119f2a8656"
+      ],
+      "settings": {
+      }
+    },
+    "1632254004fa9ebd35": {
+      "type": "google-map",
+      "settings": {
+        "show_section": true,
+        "full_bleed": true,
+        "embed_code": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9168.693511215644!2d-1.618908!3d54.9349764!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x2f1871ed79429c00!2sBlock%20Digital!5e0!3m2!1sen!2suk!4v1632254047605!5m2!1sen!2suk\" width=\"100%\" height=\"350\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\"></iframe>"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "main",
+    "1632254004fa9ebd35"
+  ]
+}

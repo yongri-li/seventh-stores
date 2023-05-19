@@ -1,0 +1,55 @@
+{%- liquid
+assign collection = collections[section.settings.section_collection]
+assign section_title = section.settings.section_title
+assign section_subtitle = section.settings.section_subtitle
+assign content_focus_y = section.settings.content_focus_y
+assign content_focus_x = section.settings.content_focus_x
+assign background_color = section.settings.content_background_color
+assign font_color = section.settings.content_text_color
+assign show_cta = section.settings.show_cta
+assign cta_text = section.settings.cta_text
+assign cta_link = section.settings.cta_link
+assign cta_style = section.settings.cta_style
+assign collection_image = section.settings.collection_image -%}
+
+<div class="[ flex flex-wrap overflow-hidden -mx-4 ]">
+    <div class="[ w-full md:w-1/2 px-4 overflow-hidden ]">
+        <div class="[ flex flex-wrap overflow-hidden -mx-4 ]">
+        {%- for product in collection.products limit: 4 -%}
+            {%- if forloop.index <= 2 -%}
+            <div {{ block.shopify_attributes }} class="[ overflow-hidden w-1/2 px-4 mb-2 lg:mb-5 ]">
+                {%- render 'product-grid-item' with product: product -%}
+            </div>
+            {%- else -%}
+            <div {{ block.shopify_attributes }} class="[ overflow-hidden w-1/2 px-4 ]">
+                {%- render 'product-grid-item' with product: product -%}
+            </div>
+            {%- endif -%}
+        {%- endfor -%}
+        </div>
+    </div>
+    <div class="[ w-full md:w-1/2 px-4 overflow-hidden ]">
+        <div class="[ mb-4 md:mb-0 relative w-full h-70v md:h-full ]">
+            <a class="[ block ]" href="{{ cta_link }}">
+                {%- render 'responsive-image' with image: collection_image, image_class: 'object-cover object-center w-full h-full' -%}
+            </a>
+            <div class="[ absolute inset-0 ]" style="background-color: {{ background_color | color_modify: 'alpha', 0.55 }};">
+                <div class="[ h-full w-full p-8 flex flex-col {{ content_focus_y }} {{ content_focus_x }} ]">
+                    {%- if section_title != blank -%}
+                    <h2 class="pb-4" style="color: {{ font_color }}">{{ section_title }}</h2>
+                    {%- endif -%}
+
+                    {%- if section_subtitle != blank -%}
+                    <p class="leading-6" style="color: {{ font_color }}">{{ section_subtitle }}</p>
+                    {%- endif -%}
+                    
+                    {%- if show_cta -%}
+                    <div class="mt-4">
+                        <a class="[ inline-block focus:shadow-outline focus:outline-none py-3 px-4 leading-tight ] btn {{ cta_style }}" href="{{ cta_link }}">{{ cta_text }}</a>
+                    </div>
+                    {%- endif -%}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

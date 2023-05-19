@@ -1,0 +1,90 @@
+<h4 class="pb-4">{{ 'products.product.tab_heading' | t }}</h4>
+<div class="border-solid border-gray-200 border-b border-t divide-y divide-gray-200">
+    {%- if section.settings.show_acc_one -%}
+    <div {% if section.settings.acc_one_type == 'description' %}id="#description"{% endif %} class="border-solid border-gray-200" :class="{ 'is--active': open == true }" x-data="{ open: false }">
+        <div class="group relative w-full py-6 flex justify-between items-center text-left hover:cursor-pointer" @click="open = !open">
+            <p class="text-base">{{ section.settings.acc_one_heading }}</p>
+            <button class="accordion__trigger">
+                <svg x-show="!open" class="h-6 w-6 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+                <svg style="display: none;" x-show="open" class="h-6 w-6 text-indigo-400 group-hover:text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M18 12H6" />
+                </svg>
+            </button>
+        </div>
+        <div class="accordion__content" x-show="open">
+            <div>
+                {%- case section.settings.acc_one_type -%}
+                {%- when 'description' -%}
+                    {{ product.description }}
+                {%- when 'page' -%}
+                    {{ pages[section.settings.acc_one_page].content }}
+                {%- when 'reviews' -%}
+                    <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
+                {%- else -%}
+                    {{ section.settings.acc_one_content }}
+                {%- endcase -%}
+            </div>
+        </div>
+    </div>
+    {%- endif -%}
+    {%- if section.settings.show_acc_two -%}
+    <div {% if section.settings.acc_one_type == 'description' %}id="#description"{% endif %} class="border-solid border-gray-200" :class="{ 'is--active': open == true }" x-data="{ open: false }">
+        <div class="group relative w-full py-6 flex justify-between items-center text-left hover:cursor-pointer" @click="open = !open">
+            <p class="text-base">{{ section.settings.acc_two_heading }}</p>
+            <button class="accordion__trigger">
+                <svg x-show="!open" class="h-6 w-6 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+                <svg style="display: none;" x-show="open" class="h-6 w-6 text-indigo-400 group-hover:text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M18 12H6" />
+                </svg>
+            </button>
+        </div>
+        <div class="accordion__content" x-show="open">
+            <div>
+                {%- case section.settings.acc_two_type -%}
+                {%- when 'description' -%}
+                    {{ product.description }}
+                {%- when 'page' -%}
+                    {{ pages[section.settings.acc_two_page].content }}
+                {%- when 'reviews' -%}
+                    <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
+                {%- else -%}
+                    {{ section.settings.acc_two_content }}
+                {%- endcase -%}
+            </div>
+        </div>
+    </div>
+    {%- endif -%}
+    {%- if section.settings.show_acc_three -%}
+    <div {% if section.settings.acc_one_type == 'description' %}id="#description"{% endif %} class="border-solid border-gray-200" :class="{ 'is--active': open == true }" x-data="{ open: false }">
+        <div class="group relative w-full py-6 flex justify-between items-center text-left hover:cursor-pointer" @click="open = !open">
+            <p class="text-base">{{ section.settings.acc_three_heading }}</p>
+            <button class="accordion__trigger">
+                <svg x-show="!open" class="h-6 w-6 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+                <svg style="display: none;" x-show="open" class="h-6 w-6 text-indigo-400 group-hover:text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M18 12H6" />
+                </svg>
+            </button>
+        </div>
+        <div class="accordion__content" x-show="open">
+            <div>
+                {%- case section.settings.acc_three_type -%}
+                {%- when 'description' -%}
+                    {{ product.description }}
+                {%- when 'page' -%}
+                    {{ pages[section.settings.acc_three_page].content }}
+                {%- when 'reviews' -%}
+                    <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
+                {%- else -%}
+                    {{ section.settings.acc_three_content }}
+                {%- endcase -%}
+            </div>
+        </div>
+    </div>
+    {%- endif -%}
+</div>

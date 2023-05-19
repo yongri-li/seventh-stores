@@ -1,0 +1,252 @@
+{
+  "wrapper": "div#div_id.div_class[attribute-one=value]",
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "79fd555e-8126-441c-bbb6-1af194709a47": {
+          "type": "product_title",
+          "settings": {
+          }
+        },
+        "e5a5146d-8597-4a29-be78-3396ebfb8724": {
+          "type": "product_price",
+          "settings": {
+          }
+        },
+        "5675c3f2-3a0c-479d-bcb2-b7bff6f6c00e": {
+          "type": "product_vendor",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "c049765a-2a61-4ee2-8575-fe12a1e32438": {
+          "type": "stock_notice",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "2d655e07-ec9a-4aef-91b7-511dad970ca1": {
+          "type": "product_description",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "20c06d95-7112-4b19-ba71-37a0d8cddcd2": {
+          "type": "variant_selectors",
+          "settings": {
+            "use_swatches": false
+          }
+        },
+        "36bcb969-de7f-4622-8eee-50454b12a522": {
+          "type": "buy_now_buttons",
+          "settings": {
+            "show_quantity_Selector": true
+          }
+        },
+        "0f21358e-1a23-4544-84c6-ac9d7b40f357": {
+          "type": "estimated_shipping_date",
+          "settings": {
+          }
+        },
+        "36bba8a5-518e-4593-8f74-6aa0ef3f3bbd": {
+          "type": "product_usp",
+          "settings": {
+            "background_color": "#ccfc5b",
+            "font_color": "#000000",
+            "icon": "",
+            "heading": "FREE UK STANDARD DELIVERY",
+            "heading_size": 12,
+            "description": "",
+            "description_size": 10
+          }
+        },
+        "aab585e2-1c17-449f-8788-bbe37a977394": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "DESCRIPTION",
+            "content": "<p></p>",
+            "product_description": true,
+            "page_content": "",
+            "open_by_default": false
+          }
+        },
+        "e64e89d1-ba73-47e4-a915-29089d77fd31": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Delivery information",
+            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis velit eleifend, fermentum velit sed, dictum dui. Praesent in mollis nunc. Praesent condimentum eleifend odio et euismod. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris in velit imperdiet, dapibus dui vel, pulvinar nunc. Phasellus vitae arcu nec enim molestie aliquet vel ut augue. Ut ac sem ut diam tristique accumsan ac et turpi</p>",
+            "product_description": false,
+            "page_content": "",
+            "open_by_default": false
+          }
+        },
+        "3fd18e5f-f5de-4bd2-845c-22f37fc6f9ff": {
+          "type": "separator",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "9100c264-e930-445f-9aea-579e47c407c7": {
+          "type": "product_countdown",
+          "disabled": true,
+          "settings": {
+            "show_when_expired": true,
+            "background_color": "#d9f6ef",
+            "expired_message": "FREE UK DELIVERY ON ORDERS OVER £50",
+            "count_to": "time",
+            "monday": true,
+            "tuesday": true,
+            "wednesday": true,
+            "thursday": true,
+            "friday": true,
+            "saturday": false,
+            "sunday": false,
+            "heading": "DELIVERY",
+            "content": "<p>Order within {countdown} for same day dispatch.</p>",
+            "show_days": false,
+            "month": "Jan",
+            "day": 1,
+            "year": "",
+            "show_time": true,
+            "second": 0,
+            "minute": 0,
+            "hour": 14
+          }
+        },
+        "80b98137-6193-4edc-945a-94bd2c6aad2c": {
+          "type": "data_related_products",
+          "settings": {
+            "limit": 2
+          }
+        }
+      },
+      "block_order": [
+        "79fd555e-8126-441c-bbb6-1af194709a47",
+        "e5a5146d-8597-4a29-be78-3396ebfb8724",
+        "5675c3f2-3a0c-479d-bcb2-b7bff6f6c00e",
+        "c049765a-2a61-4ee2-8575-fe12a1e32438",
+        "2d655e07-ec9a-4aef-91b7-511dad970ca1",
+        "20c06d95-7112-4b19-ba71-37a0d8cddcd2",
+        "36bcb969-de7f-4622-8eee-50454b12a522",
+        "0f21358e-1a23-4544-84c6-ac9d7b40f357",
+        "36bba8a5-518e-4593-8f74-6aa0ef3f3bbd",
+        "aab585e2-1c17-449f-8788-bbe37a977394",
+        "e64e89d1-ba73-47e4-a915-29089d77fd31",
+        "3fd18e5f-f5de-4bd2-845c-22f37fc6f9ff",
+        "9100c264-e930-445f-9aea-579e47c407c7",
+        "80b98137-6193-4edc-945a-94bd2c6aad2c"
+      ],
+      "settings": {
+        "show_breadcrumbs": false,
+        "contain": true,
+        "show_share_buttons": true,
+        "use_image_gallery": true
+      }
+    },
+    "accordions": {
+      "type": "product-accordions",
+      "disabled": true,
+      "blocks": {
+        "c5876cd5-a7f4-466d-a4c8-7f799a39c481": {
+          "type": "description",
+          "settings": {
+            "open": true,
+            "accordion_heading": "Product Description"
+          }
+        },
+        "e9e2b6a8-5d8b-4cde-a06a-95cf63f71813": {
+          "type": "custom_content",
+          "settings": {
+            "open": false,
+            "accordion_heading": "DELIVERY AND RETURNS",
+            "accordion_content": "<p>Default <em>richtext</em> <a href=\"https://example.com/\">content</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "c5876cd5-a7f4-466d-a4c8-7f799a39c481",
+        "e9e2b6a8-5d8b-4cde-a06a-95cf63f71813"
+      ],
+      "settings": {
+        "section_spacing_top": "mt-4",
+        "section_spacing_bottom": "mb-4",
+        "background_color": "#fefefe"
+      }
+    },
+    "reviews": {
+      "type": "product-reviews",
+      "disabled": true,
+      "settings": {
+        "section_heading": "",
+        "section_spacing_top": "mt-4",
+        "section_spacing_bottom": "mb-4",
+        "background_color": "#fefefe"
+      }
+    },
+    "tabbed-features": {
+      "type": "product-tabbed-features",
+      "disabled": true,
+      "settings": {
+        "section_heading": "",
+        "section_intro": ""
+      }
+    },
+    "alternating-content": {
+      "type": "product-alternating-content",
+      "disabled": true,
+      "blocks": {
+        "b56639df-043f-4a26-ba89-cc11c39bdf59": {
+          "type": "content_block",
+          "settings": {
+            "heading": "CONTENT BLOCK",
+            "content": "<p></p>"
+          }
+        },
+        "3f481a7b-18e0-42ad-b8bd-4a11d1d2a3a1": {
+          "type": "content_block",
+          "settings": {
+            "heading": "",
+            "content": "<p></p>"
+          }
+        }
+      },
+      "block_order": [
+        "b56639df-043f-4a26-ba89-cc11c39bdf59",
+        "3f481a7b-18e0-42ad-b8bd-4a11d1d2a3a1"
+      ],
+      "settings": {
+        "background_color": "#fefefe",
+        "section_spacing_top": "mt-4",
+        "section_spacing_bottom": "mb-4",
+        "section_heading": "",
+        "section_description": ""
+      }
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "contain": false,
+        "total_products": 8,
+        "products_xl": "xl:w-1/5",
+        "products_desktop": "lg:w-1/5",
+        "products_tablet": "md:w-1/3",
+        "products_mobile": "w-1/2"
+      }
+    },
+    "product-json": {
+      "type": "product-json",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "accordions",
+    "reviews",
+    "tabbed-features",
+    "alternating-content",
+    "recommendations",
+    "product-json"
+  ]
+}

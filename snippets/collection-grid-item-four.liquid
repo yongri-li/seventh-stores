@@ -1,0 +1,48 @@
+{%- liquid
+assign collection = collections[block.settings.collection]
+assign background_transparency = block.settings.background_transparency
+assign background_color = block.settings.background_color
+assign font_color = block.settings.font_color
+assign show_description = block.settings.show_description
+assign sub_heading = block.settings.sub_heading
+assign use_collection_image = block.settings.use_collection_image
+assign collection_image = block.settings.collection_image
+assign cta_style = block.settings.cta_style
+assign cta_text = block.settings.cta_text
+assign show_cta = block.settings.show_cta -%}
+
+<div class="relative">
+{% comment %} <a href="{% if collection == empty %}#{% else %}{{ collection.url }}{% endif %}"> {% endcomment %}
+    <a href="{{ collection.url }}" class="d-block">
+        <div class="d-block">
+            {% if use_collection_image %}
+                {% render 'responsive-image' with image: collection.image, image_class: 'd-block w-full' %}
+            {%- elsif collection_image != blank and use_collection_image == false -%}
+                {% render 'responsive-image' with image: collection_image, image_class: 'd-block w-full' %}
+            {% else %}
+                {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+            {% endif %}
+        </div>
+    </a>
+
+    <div class="[ py-5 ]" style="background-color: {{ background_color | color_modify: 'alpha', background_transparency }};">
+        <div class="[ w-full ]">
+            {%- unless sub_heading == blank -%}
+            <h6 class="[ text-xs mb-1 leading-6 ]" style="color: {{ font_color }};">{{ sub_heading }}</h6>
+            {%- endunless -%}
+            <h4 class="[ mb-4 text-xl leading-8 ]" style="color: {{ font_color }};">{%- if collection == empty -%}{{ 'homepage.onboarding.collection_title' | t }}{%- else -%}{{ collection.title }}{%- endif -%}</h4>
+            {%- unless collection.description == blank or show_description == false -%}
+            <hr class="[ my-5 mx-auto h-0.5 w-10 ]">
+            <p class="[ mb-4 text-white leading-6 ]" style="color: {{ font_color }};">
+                {{ collection.description }}
+            {%- endunless -%}
+            </p>
+            {%- if show_cta -%}
+            <a href="{{ collection.url }}" class="[ inline-block focus:shadow-outline focus:outline-none font-bold py-3 px-4 leading-tight ] {{ cta_style }}">
+                {{ cta_text }}
+            </a>
+            {%- endif -%}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+{
+  "wrapper": "div#div_id.div_class[attribute-one=value]",
+  "sections": {
+    "main": {
+      "type": "main-cart",
+      "blocks": {
+        "46630dc5-c2e4-4077-9405-14e8bf85d355": {
+          "type": "header",
+          "settings": {
+          }
+        },
+        "1e608a48-79cf-4626-8997-e5635e20ff40": {
+          "type": "cart",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "46630dc5-c2e4-4077-9405-14e8bf85d355",
+        "1e608a48-79cf-4626-8997-e5635e20ff40"
+      ],
+      "settings": {
+        "show_order_notes": true
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

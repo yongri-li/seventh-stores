@@ -1,0 +1,124 @@
+{%- liquid
+assign background_image = section.settings.background_image
+assign background_color = section.settings.background_color
+assign section_style = section.settings.section_style -%}
+
+<section class="[ {% if section.settings.contain_section %}container mx-auto{% endif %} bg-cover bg-no-repeat px-4 ]" style="{% if background_image != blank %}background-image: url('{{ background_image | image_url: width: 100, height: 100 }}');{% endif %}background-color: {{ background_color }};">
+    {%- if section_style == 'style-one' -%}
+        <div class="container mx-auto">
+            {%- render 'newsletter-section-style-one' -%}
+        </div>
+    {%- else -%}
+        <div class="container mx-auto">
+            {%- render 'newsletter-section-style-two' -%}
+        </div>
+    {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": {
+    "en": "Newsletter"
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "contain_section",
+      "label": "Contain section in a wrapper?",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Styling"
+    },
+    {
+      "type": "select",
+      "id": "section_style",
+      "label": "Section Style",
+      "options": [
+        {
+          "value": "style-one",
+          "label": "Style One"
+        },
+        {
+          "value": "style-two",
+          "label": "Style Two"
+        }
+      ],
+      "default": "style-one"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#EEEEEE"
+    },
+    {
+      "type": "color",
+      "id": "font_color",
+      "label": "Font Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "form_max_width",
+      "label": "Form Max Width",
+      "min": 100,
+      "max": 750,
+      "step": 25,
+      "default": 400
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "section_content",
+      "label": "Section Content"
+    },
+    {
+      "type": "richtext",
+      "id": "sub_text",
+      "label": "Sub text",
+      "default": "<p>Default <em>richtext</em> <a href=\"https://example.com/\">content</a></p>"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "Content Alignment",
+      "options": [
+        {
+          "value": "items-left",
+          "label": "Left"
+        },
+        {
+          "value": "items-center",
+          "label": "Center"
+        },
+        {
+          "value": "items-right",
+          "label": "Right"
+        }
+      ],
+      "default": "items-center"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter",
+      "category": "Content"
+    }
+  ]
+}
+{% endschema %}

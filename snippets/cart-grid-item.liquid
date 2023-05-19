@@ -1,0 +1,62 @@
+{%- assign is_free_trial = false -%}
+{%- for tag in item.product.tags -%}
+    {%- if tag == "free-trial" -%}
+        {%- assign is_free_trial = true -%}
+    {%- endif -%}
+{%- endfor -%}
+            
+<div class="cart__item" data-label="{{ 'customer.order.product' | t }}">
+
+    <div class="cart__item-img">
+        <a href="{{ item.url | within: collections.all }}">
+            <img loading="lazy" src="{{ item.image | image_url: width: 240, height: 240 }}" alt="{{ item.title }}" height="240" width="240"/>
+        </a>
+    </div>
+
+    <div class="cart__item-info">
+        <p class="cart__item-title heading"><a href="{{ item.url | within: collections.all }}">{{ item.title }}</a></p>
+
+        <p class="cart__item-qty">{{ 'cart.general.quantity' | t }} {{ item.quantity }}</p>
+
+        <div>
+            {%- unless item.product.has_only_default_variant -%}
+            <p class="cart__item-variant">{{ item.variant.title }}</p>
+            {%- endunless -%}
+            
+            {%- unless item.vendor == blank -%}
+            <p class="cart__item-vendor">{{ item.vendor }}</p>
+            {%- endunless -%}
+        </div>
+
+        <p class="cart__item-price" data-label="{{ 'cart.label.price' | t }}">
+            {% if item.original_line_price != item.line_price %}
+                <span class="visually-hidden">{{ 'cart.label.discounted_price' | t }}</span>
+                {{ item.price | money }}
+                <span class="visually-hidden">{{ 'cart.label.original_price' | t }}</span>
+                <s>{{ item.original_price | money }}</s>
+            {% else %}
+                {{ item.price | money }}
+            {% endif %}
+        </p>
+
+        <p class="cart__item-remove">
+            <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0"><i class="fal fa-trash-alt"></i> {{ 'cart.general.remove' | t }}</a>
+        </p>
+        
+        {%- if is_free_trial -%}
+        <input type="hidden" id="updates_{{ item.key }}" name="updates[]" value="{{ item.quantity }}">
+        {%- else -%}
+        <div class="cart__item-quantity">
+            <label class="visually-hidden" for="quantity">Quantity:</label>
+        
+            <div x-data="{ count: {{ item.quantity }} }" class="ajax-qty">
+                <button type="button" x-on:click="( count > 0 : count-- )" data-qty-minus class="ajax-qty__btn btn btn--minus">-</button>
+                <input type="text" data-quantity="{{ item.quantity }}" id="updates_{{ item.key }}" name="updates[]" value="{{ item.quantity }}" class="ajax-qty__input">
+                <button type="button" x-on:click="count++" data-qty-plus class="ajax-qty__btn btn btn--plus">+</button>
+            </div>
+        </div>
+        {%- endif -%}
+
+    </div><!-- // cart-item__product-info -->
+
+</div><!-- // cart-item__product -->

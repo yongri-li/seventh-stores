@@ -1,0 +1,113 @@
+{%- paginate blog.articles by 5 -%}
+{%- if current_tags -%}
+  {%- capture blog_title -%}{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}{%- endcapture -%}
+{%- endif -%}
+
+{%- for block in section.blocks -%}
+{%- case block.type -%}
+    {%- when '@app' -%}
+        {% render block %}
+    {%- when 'breadcrumbs' -%}
+        {% render 'breadcrumb' %}
+    {%- when 'header' -%}
+        {% render 'page-header' %}
+    {%- when 'article_grid' -%}
+        <div class="[ mt-8 max-w-2xl mx-auto px-4 sm:px-6 lg:container lg:px-8 ]">
+            <div class="mt-12 max-w-lg mx-auto grid gap-5 {{ block.settings.articles_per_row_mobile }} {{ block.settings.articles_per_row_tablet }} {{ block.settings.articles_per_row_desktop }} lg:max-w-none">
+            {%- for article in blog.articles -%}
+                {% render 'article-grid-item' with article: article %}
+            {%- endfor -%}
+            </div>
+        </div>
+{%- endcase -%}
+{%- endfor -%}
+
+  {%- if paginate.pages > 1 -%}
+    {%- render 'pagination' -%}
+  {%- endif -%}
+
+</div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Blog",
+  "settings": [
+
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "breadcrumbs",
+      "name": "Breadcrumbs",
+      "limit": 1
+    },
+    {
+      "type": "header",
+      "name": "Header",
+      "limit": 1
+    },
+    {
+      "type": "article_grid",
+      "name": "Article Grid",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "articles_per_row_mobile",
+          "label": "Articles per row - Mobile",
+          "options": [
+            {
+              "value": "grid-cols-1",
+              "label": "1"
+            },
+            {
+              "value": "grid-cols-2",
+              "label": "2"
+            }
+          ],
+          "default": "grid-cols-1"
+        },
+        {
+          "type": "select",
+          "id": "articles_per_row_tablet",
+          "label": "Articles per row - Tablet",
+          "options": [
+            {
+              "value": "md:grid-cols-1",
+              "label": "1"
+            },
+            {
+              "value": "md:grid-cols-2",
+              "label": "2"
+            }
+          ],
+          "default": "md:grid-cols-2"
+        },
+        {
+          "type": "select",
+          "id": "articles_per_row_desktop",
+          "label": "Articles per row - Desktop",
+          "options": [
+            {
+              "value": "lg:grid-cols-1",
+              "label": "1"
+            },
+            {
+              "value": "lg:grid-cols-2",
+              "label": "2"
+            },
+            {
+              "value": "lg:grid-cols-3",
+              "label": "3"
+            }
+          ],
+          "default": "lg:grid-cols-3"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

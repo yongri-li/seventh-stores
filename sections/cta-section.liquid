@@ -1,0 +1,122 @@
+<!-- This example requires Tailwind CSS v2.0+ -->
+<div class="{{ section.settings.section_spacing }}" style="background-color: {{ section.settings.background_color }};">
+  <div class="[ max-w-4xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8 ]">
+    {%- unless section.settings.heading == blank -%}
+      <h2 style="color: {{ section.settings.font_color }};" class="[ text-3xl leading-normal text-white sm:text-4xl ]">
+        {{ section.settings.heading }}
+      </h2>
+    {%- endunless -%}
+    {%- unless section.settings.content == blank -%}
+      <p class="[ mt-4 text-lg leading-relaxed ]" style="color: {{ section.settings.font_color }};">
+        {{ section.settings.content }}
+      </p>
+    {%- endunless -%}
+    {%- unless section.settings.cta_text == blank -%}
+      <a
+        href="{{ section.settings.cta_link }}"
+        class="[ mt-8 w-full inline-flex items-center justify-center px-5 py-3 text-base sm:w-auto ] {{ section.settings.cta_style }}"
+      >
+        {{- section.settings.cta_text -}}
+      </a>
+    {%- endunless -%}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "CTA Section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_spacing",
+      "label": "Section Spacing",
+      "options": [
+        {
+          "value": "py-0",
+          "label": "None"
+        },
+        {
+          "value": "py-8",
+          "label": "Small"
+        },
+        {
+          "value": "py-16",
+          "label": "Medium"
+        },
+        {
+          "value": "py-32",
+          "label": "Large"
+        },
+        {
+          "value": "py-64",
+          "label": "x-Large"
+        }
+      ],
+      "default": "py-8"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#4438ca"
+    },
+    {
+      "type": "color",
+      "id": "font_color",
+      "label": "Font Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Boost your productivity<br/>Start using Workflow today"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content",
+      "default": "Ac euismod vel sit maecenas id pellentesque eu sed consectetur.<br/>Malesuada adipiscing sagittis vel nulla nec."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text"
+    },
+    {
+      "type": "header",
+      "content": "CTA"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Link"
+    },
+    {
+      "type": "select",
+      "id": "cta_style",
+      "label": "CTA Style",
+      "options": [
+        {
+          "label": "Primary",
+          "value": "primary-button"
+        },
+        {
+          "label": "Secondary",
+          "value": "secondary-button"
+        }
+      ],
+      "default": "primary-button"
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTA Section",
+      "category": "Content"
+    }
+  ]
+}
+{% endschema %}

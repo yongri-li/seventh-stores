@@ -1,0 +1,263 @@
+{%- liquid
+  assign flip_section_desktop = section.settings.flip_section_desktop
+  assign flip_section_mobile = section.settings.flip_section_mobile
+  assign section_spacing = section.settings.section_spacing
+  assign background_color = section.settings.background_color
+
+  if flip_section_desktop and flip_section_mobile
+    assign flip_section = true
+  else
+    assign flip_section = false
+  endif
+
+  assign pre_heading = section.settings.pre_heading
+  assign heading = section.settings.heading
+  assign content = section.settings.content
+  assign section_image = section.settings.section_image
+
+  assign pre_heading_color = section.settings.pre_heading_color
+  assign heading_color = section.settings.heading_color
+  assign content_color = section.settings.content_color
+
+  assign pre_heading_size_mobile = section.settings.pre_heading_size_mobile
+  assign pre_heading_size_desktop = section.settings.pre_heading_size_desktop
+  assign heading_size_mobile = section.settings.heading_size_mobile
+  assign heading_size_desktop = section.settings.heading_size_desktop
+  assign content_size_mobile = section.settings.content_size_mobile
+  assign content_size_desktop = section.settings.content_size_desktop
+-%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .content-with-image{
+      background-color: {{ background_color }};
+  }
+
+  #shopify-section-{{ section.id }} .content-with-image .content-with-image__pre-heading{
+      color: {{ pre_heading_color }};
+      font-size: {{ pre_heading_size_mobile }}px;
+  }
+
+  #shopify-section-{{ section.id }} .content-with-image .content-with-image__heading{
+      color: {{ heading_color }};
+      font-size: {{ heading_size_mobile }}px;
+  }
+
+  #shopify-section-{{ section.id }} .content-with-image .content-with-image__content{
+      color: {{ content_color }};
+      font-size: {{ content_size_mobile }}px;
+  }
+
+  @media only screen and (min-width:991px){
+      #shopify-section-{{ section.id }} .content-with-image .content-with-image__pre-heading{
+          font-size: {{ pre_heading_size_desktop }}px;
+      }
+
+      #shopify-section-{{ section.id }} .content-with-image .content-with-image__heading{
+          font-size: {{ heading_size_desktop }}px;
+      }
+
+      #shopify-section-{{ section.id }} .content-with-image .content-with-image__content{
+          font-size: {{ content_size_desktop }}px;
+      }
+  }
+{%- endstyle -%}
+
+{%- capture section_content -%}
+{%- unless pre_heading == blank -%}
+<h6 class="content-with-image__pre-heading leading-relaxed mb-2 {% if flip_section %}mt-4{% endif %}">{{ pre_heading }}</h6>
+{%- endunless -%}
+
+{%- unless heading == blank -%}
+<h2 class="content-with-image__heading leading-relaxed mb-6">{{ heading }}</h2>
+{%- endunless -%}
+
+{%- unless content == blank -%}
+<div class="rte content-with-image__content leading-relaxed {% if flip_section == false %}mb-4{% endif %}">{{ content }}</div>
+{%- endunless -%}
+{%- endcapture -%}
+
+<section class="content-with-image {{ section_spacing }}">
+  <div class="container">
+    <div class="flex flex-wrap items-center overflow-hidden -mx-4">
+      <div class="w-full md:w-1/2 px-4 {% if flip_section_mobile %}order-2{% endif %} {% if flip_section_desktop %}lg:order-2{% endif %}">
+        {%- render 'responsive-image' with image: section_image, image_class: "mx-auto" -%}
+      </div>
+
+      <div class="w-full md:w-1/2 px-4 {% if flip_section_mobile %}pb-4{% else %}pt-4{% endif %} lg:pt-0">
+        {{ section_content }}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Content With Image",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip_section_desktop",
+      "label": "Flip section? Desktop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "flip_section_mobile",
+      "label": "Flip section? Mobile",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "section_spacing",
+      "label": "Section Spacing",
+      "options": [
+        {
+          "value": "py-0",
+          "label": "None"
+        },
+        {
+          "value": "py-8",
+          "label": "Small"
+        },
+        {
+          "value": "py-16",
+          "label": "Medium"
+        },
+        {
+          "value": "py-32",
+          "label": "Large"
+        },
+        {
+          "value": "py-64",
+          "label": "x-Large"
+        }
+      ],
+      "default": "py-8"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#37C4EF"
+    },
+    {
+      "type": "header",
+      "content": "Pre Heading"
+    },
+    {
+      "type": "text",
+      "id": "pre_heading",
+      "label": "Pre Heading"
+    },
+    {
+      "type": "color",
+      "id": "pre_heading_color",
+      "label": "Pre Heading Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "pre_heading_size_mobile",
+      "label": "Pre Heading Size - Mobile",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "pre_heading_size_desktop",
+      "label": "Pre Heading Size - Desktop",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Heading Size - Mobile",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "label": "Heading Size - Desktop",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "color",
+      "id": "content_color",
+      "label": "Content Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "content_size_mobile",
+      "label": "Content Size - Mobile",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "content_size_desktop",
+      "label": "Content Size - Desktop",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "section_image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Content With Image",
+      "category": "Content"
+    }
+  ]
+}
+{% endschema %}

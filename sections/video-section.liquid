@@ -1,0 +1,174 @@
+{%- assign show_content = section.settings.show_content -%}
+{%- assign show_video = section.settings.show_video -%}
+{%- assign video_embed_code = section.settings.video_embed_code -%}
+{%- assign contain_video = section.settings.contain_video -%}
+<style>
+    .video-section .video-container{
+        margin: 0 auto;
+    }
+</style>
+<section class="video-section">
+    <div class="{{ section.settings.section_spacing }}" style="background-color: {{ section.settings.background_color }};">
+        {%- if show_content -%}
+        <div class="[ max-w-4xl mx-auto text-center py-4 px-4 pt-0 sm:py-8 sm:pt-0 sm:px-8 ]">
+            {%- unless section.settings.heading == blank -%}
+            <h2 style="color: {{ section.settings.heading_color }};"class="[ text-3xl leading-normal text-white sm:text-4xl ]">{{ section.settings.heading }}</h2>
+            {%- endunless -%}
+            {%- unless section.settings.content == blank -%}
+            <p class="[ mt-4 text-lg leading-relaxed ]" style="color: {{ section.settings.content_color }};">{{ section.settings.content }}</p>
+            {%- endunless -%}
+        </div>
+        {%- endif -%}
+
+        {%- if show_video -%}
+        {%- if contain_video -%}
+        <div class="{% if contain_video %}container mx-auto px-4{% endif %}">
+        {%- endif -%}
+            <div class="w-100 flex flex-row justify-center">
+                {{ video_embed_code }}
+            </div>
+        {%- if contain_video -%}
+        </div>
+        {%- endif -%}
+        {%- endif -%}
+
+        {%- unless section.settings.cta_text == blank -%}
+        <div class="text-center">
+            <a href="{{ section.settings.cta_link }}" class="[ inline-block mt-8 w-full px-5 py-3 text-base sm:w-auto ] {{ section.settings.cta_style }}">{{ section.settings.cta_text }}</a>
+        </div>
+        {%- endunless -%}
+    </div>
+</section>
+{% schema %}
+{
+  "name": "Video Section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_spacing",
+      "label": "Section Spacing",
+      "options": [
+        {
+          "value": "py-0",
+          "label": "None"
+        },
+        {
+          "value": "py-8",
+          "label": "Small"
+        },
+        {
+          "value": "py-16",
+          "label": "Medium"
+        },
+        {
+          "value": "py-32",
+          "label": "Large"
+        },
+        {
+          "value": "py-64",
+          "label": "x-Large"
+        }
+      ],
+      "default": "py-8"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#4438ca"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "content_color",
+      "label": "Content Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_content",
+      "label": "Show Content?",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Boost your productivity<br/>Start using Workflow today"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content",
+      "default": "Ac euismod vel sit maecenas id pellentesque eu sed consectetur.<br/>Malesuada adipiscing sagittis vel nulla nec."
+    },
+    {
+      "type": "header",
+      "content": "CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Link"
+    },
+    {
+      "type": "select",
+      "id": "cta_style",
+      "label": "CTA Style",
+      "options": [
+        {
+          "label": "Primary",
+          "value": "primary-button"
+        },
+        {
+          "label": "Secondary",
+          "value": "secondary-button"
+        }
+      ],
+      "default": "primary-button"
+    },
+    {
+      "type": "header",
+      "content": "Video"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_video",
+      "label": "Show Video?",
+      "default": true
+    },
+    {
+      "type": "html",
+      "id": "video_embed_code",
+      "label": "Video Embed Code",
+      "default": "<div><p>Some HTML content</p></div>"
+    },
+    {
+      "type": "checkbox",
+      "id": "contain_video",
+      "label": "Contain Video?",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Section",
+      "category": "Content"
+    }
+  ]
+}
+{% endschema %}

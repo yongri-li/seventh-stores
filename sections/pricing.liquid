@@ -1,0 +1,348 @@
+{%- liquid
+assign show_section = section.settings.show_section
+assign background_color = section.settings.background_color
+assign secondary_background_color = section.settings.secondary_background_color
+assign pre_heading = section.settings.pre_heading
+assign pre_heading_color = section.settings.pre_heading_color
+assign heading = section.settings.heading
+assign heading_color = section.settings.heading_color
+assign content = section.settings.content
+assign content_color = section.settings.content_color -%}
+
+{%- style -%}
+  .pricing{
+    background-color: {{ background_color }};
+  }
+
+  .pricing .pricing__inset{
+    background-color: {{ background_color }};
+  }
+
+  .pricing .pricing__boxes-container{
+    background-color: {{ secondary_background_color }};
+  }
+
+  .pricing .pricing__preheading{
+    color: {{ pre_heading_color }};
+  }
+
+  .pricing .pricing__heading{
+    color: {{ heading_color }};
+  }
+
+  .pricing .pricing__content{
+    color: {{ content_color }};
+  }
+
+  {%- for block in section.blocks -%}
+  {%- liquid
+  assign background_color = block.settings.background_color
+  assign pre_heading_bg_color = block.settings.pre_heading_bg_color
+  assign pre_heading_color = block.settings.pre_heading_color
+  assign price_color = block.settings.price_color
+  assign frequency_color = block.settings.frequency_color
+  assign pricing_description_color = block.settings.pricing_description_color
+  assign benefits_color = block.settings.benefits_color -%}
+
+  .pricing #pricingStructure{{ forloop.index }}{
+    background-color: {{ background_color }};
+  }
+
+  .pricing #pricingStructure{{ forloop.index }} .pricing-structure__tier{
+    background-color: {{ pre_heading_bg_color }};
+    color: {{ pre_heading_color }};
+  }
+
+  .pricing #pricingStructure{{ forloop.index }} .pricing-structure__price{
+    color: {{ price_color }};
+  }
+
+  .pricing #pricingStructure{{ forloop.index }} .pricing-structure__frequency{
+    color: {{ frequency_color }};
+  }
+
+  .pricing #pricingStructure{{ forloop.index }} .pricing-structure__description{
+    color: {{ pricing_description_color }};
+  }
+
+  .pricing #pricingStructure{{ forloop.index }} .pricing-structure__benefits_description{
+    color: {{ benefits_color }};
+  }
+  {%- endfor -%}
+
+{%- endstyle -%}
+
+{%- if show_section -%}
+<div class="pricing">
+  <div class="pt-12 sm:pt-16 lg:pt-24">
+    <div class="container mx-auto text-center px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto space-y-2 lg:max-w-none">
+        {%- unless pre_heading == blank -%}
+        <h2 class="[ text-lg leading-relaxed  uppercase ] pricing__preheading">{{ pre_heading }}</h2>
+        {%- endunless -%}
+        {%- unless heading == blank -%}
+        <p class="[ mt-2 text-3xl sm:text-4xl lg:text-5xl leading-relaxed ] pricing__heading">{{ heading }}</p>
+        {%- endunless -%}
+        {%- unless content == blank -%}
+        <p class="[ mt-3 max-w-4xl mx-auto text-xl sm:mt-5 sm:text-2xl leading-relaxed ] pricing__content">{{ content }}</p>
+        {%- endunless -%}
+      </div>
+    </div>
+  </div>
+  <div class="mt-8 pb-12 sm:mt-12 sm:pb-16 lg:mt-16 lg:pb-24 ] pricing__boxes-container">
+    <div class="relative">
+      <div class="[ absolute inset-0 h-3/4 bg-gray-900 ] pricing__inset" ></div>
+      <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md mx-auto space-y-4 lg:max-w-5xl lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0">
+          {%- for block in section.blocks -%}
+          {%- liquid
+          assign pre_heading = block.settings.pre_heading
+          assign price = block.settings.price
+          assign frequency = block.settings.frequency
+          assign pricing_description = block.settings.pricing_description
+          assign benefits_description = block.settings.benefits_description
+          assign cta_text = block.settings.cta_text
+          assign cta_url = block.settings.cta_url
+          assign cta_style = block.settings.cta_style -%}
+          
+          <div class="[ flex flex-col rounded-lg shadow-lg overflow-hidden ] pricing-structure" id="pricingStructure{{ forloop.index }}">
+            <div class="px-6 py-8 pricing-structure__head sm:p-10 sm:pb-6">
+              {%- unless pre_heading == blank -%}
+              <div>
+                <h3 class="[ inline-flex px-4 py-1 text-sm font-semibold uppercase ] pricing-structure__tier" id="tier-standard">{{ pre_heading }}</h3>
+              </div>
+              {%- endunless -%}
+
+              {%- unless price == blank -%}
+              <div class="mt-4 flex items-baseline text-6xl pricing-structure__price">
+                {{ price }}
+                {%- unless frequency == blank -%}
+                <span class="ml-1 text-2xl font-medium text-gray-500 pricing-structure__frequency">
+                  {{ frequency }}
+                </span>
+                {%- endunless -%}
+              </div>
+              {%- endunless -%}
+
+              {%- unless pricing_description == blank -%}
+              <p class="[ mt-5 text-lg leading-relaxed ] pricing-structure__description">{{ pricing_description }}</p>
+              {%- endunless -%}
+            </div>
+            <div class="flex-1 flex flex-col justify-between sm:p-10 sm:pt-0 px-6 pt-0 pb-8 bg-gray-50 space-y-6">
+              {%- unless benefits_description == blank -%}
+              <div class="[ pt-6 border-solid border-t-2 border-gray-400 leading-relaxed ] pricing-structure__benefits_description">
+                {{ benefits_description | newline_to_br }}
+              </div>
+              {%- endunless -%}
+              {%- unless cta_text == blank -%}
+              <div class="w-full pt-6">
+                <a href="{{ cta_url }}" class="[ w-full block focus:shadow-outline focus:outline-none font-bold py-3 px-4 leading-tight ] btn {{ cta_style }}" aria-describedby="tier-standard">
+                  {{ cta_text }}
+                </a>
+              </div>
+              {%- endunless -%}
+            </div>
+          </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Pricing",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_section",
+      "label": "Show Section?",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "secondary_background_color",
+      "label": "Secondary Background Color",
+      "default": "#000000",
+      "info": "Appears at the bottom quarter of the section"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "pre_heading",
+      "label": "Pre Heading",
+      "default": "Pricing"
+    },
+    {
+      "type": "color",
+      "id": "pre_heading_color",
+      "label": "Pre Heading Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The right price for you, whoever you are"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content",
+      "default": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit numquam eligendi quos odit doloribus molestiae voluptatum"
+    },
+    {
+      "type": "color",
+      "id": "content_color",
+      "label": "Content Color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pricing_structure",
+      "name": "Pricing Structure",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Block Settings"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "header",
+          "content": "Pre Heading"
+        },
+        {
+          "type": "text",
+          "id": "pre_heading",
+          "label": "Pre Heading"
+        },
+        {
+          "type": "color",
+          "id": "pre_heading_bg_color",
+          "label": "Background Color",
+          "default": "#EEEEEE"
+        },
+        {
+          "type": "color",
+          "id": "pre_heading_color",
+          "label": "Font Color",
+          "default": "#666666"
+        },
+        {
+          "type": "header",
+          "content": "Price"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price"
+        },
+        {
+          "type": "color",
+          "id": "price_color",
+          "label": "Price Color",
+          "default": "#000000"
+        },
+        {
+          "type": "text",
+          "id": "frequency",
+          "label": "Frequency"
+        },
+        {
+          "type": "color",
+          "id": "frequency_color",
+          "label": "Frequency Color",
+          "default": "#666666"
+        },
+        {
+          "type": "textarea",
+          "id": "pricing_description",
+          "label": "Description",
+          "default": "Lorem ipsum dolor sit amet consectetur, adipisicing elit."
+        },
+        {
+          "type": "color",
+          "id": "pricing_description_color",
+          "label": "Description Color",
+          "default": "#666666"
+        },
+        {
+          "type": "header",
+          "content": "Benefits"
+        },
+        {
+          "type": "textarea",
+          "id": "benefits_description",
+          "label": "Benefits Description",
+          "default": "Lorem ipsum dolor sit amet consectetur, adipisicing elit."
+        },
+        {
+          "type": "color",
+          "id": "benefits_color",
+          "label": "Description Color",
+          "default": "#000000"
+        },
+        {
+          "type": "header",
+          "content": "CTA"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "CTA Text"
+        },
+        {
+          "type": "url",
+          "id": "cta_url",
+          "label": "URL"
+        },
+        {
+          "type": "select",
+          "id": "cta_style",
+          "label": "CTA Style",
+          "options": [
+            {
+              "value": "primary-button",
+              "label": "Primary Button"
+            },
+            {
+              "value": "secondary-button",
+              "label": "Secondary Button"
+            }
+          ],
+          "default": "secondary-button"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pricing",
+      "category": "Content"
+    }
+  ]
+}
+{% endschema %}

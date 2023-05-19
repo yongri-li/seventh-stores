@@ -1,0 +1,65 @@
+{%- assign return__url = "/account" -%}
+{%- unless return_url == blank -%}
+    {%- assign return__url = return_url -%}
+{%- endunless -%}
+<!-- {{ return__url }} -->
+{% form 'customer_login', return_to: return__url %}
+{%- if form.errors != blank -%}
+<div class="[ w-full mb-5 bg-red-100 border-t-4 border-red-500 rounded-b text-red-900 px-4 py-3 shadow-md ]" role="alert">
+    <div class="flex items-center">
+    <div class="py-1">
+        <svg class="fill-current h-6 w-6 text-red-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg>
+    </div>
+    <p>{{ form.errors | default_errors }}</p>
+    </div>
+</div>
+{%- endif -%}
+<div class="rounded-md shadow-sm">
+    <div class="mb-4">
+    <input id="CustomerEmail"
+    class="appearance-none rounded-none relative block w-full py-3 px-4 border leading-tight border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 {% if form.errors contains 'email' %}input-error{% endif %}"
+    placeholder="{{ 'customer.login.email' | t }}"
+    aria-label="Email address"
+    name="customer[email]"
+    type="email"
+    required
+    spellcheck="false"
+    autocomplete="off"
+    autocapitalize="off"
+    autofocus>
+    </div>
+    <div class="-mt-px">
+    <input id="CustomerPassword"
+    class="appearance-none rounded-none relative block w-full py-3 px-4 border leading-tight border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 {% if form.errors contains 'password' %}input-error{% endif %}" 
+    aria-label="Password"
+    name="customer[password]"
+    type="password"
+    required
+    placeholder="{{ 'customer.login.password' | t }}">
+    </div>
+</div>
+
+{%- unless hide_helpful_links -%}
+    {% if form.password_needed %}
+    <div class="mt-6 flex items-center justify-center">
+        <div class="text-sm leading-5">
+        <p class="block text-center focus:outline-none underline focus:underline transition ease-in-out duration-150 cursor-pointer" data-micromodal-trigger="PasswordReset">{{ 'customer.login.forgot_password' | t }}</p>
+        <a href="/account/register" class="mt-2 block underline text-center focus:outline-none focus:underline transition ease-in-out duration-150">
+            {{ 'layout.customer.create_account' | t }}
+        </a>
+        </div>
+    </div>
+    {% endif %}
+{% endunless %}
+
+<div class="mt-6">
+    <button type="submit" class="[ group relative w-full focus:shadow-outline focus:outline-none font-bold py-3 px-4 border leading-tight ] btn primary-button">
+    <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+        <svg class="h-5 w-5 transition ease-in-out duration-150" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+        </svg>
+    </span>
+    {{ 'customer.login.sign_in' | t }}
+    </button>
+</div>
+{% endform %}

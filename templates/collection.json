@@ -1,0 +1,32 @@
+{
+  "wrapper": "div#div_id.div_class[attribute-one=value]",
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "7e2e2c16-d6ee-4393-9379-27fc943a6506": {
+          "type": "breadcrumbs",
+          "settings": {
+          }
+        },
+        "4a5ea2cf-d2ba-4d27-837f-667600198ba0": {
+          "type": "header",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "7e2e2c16-d6ee-4393-9379-27fc943a6506",
+        "4a5ea2cf-d2ba-4d27-837f-667600198ba0"
+      ],
+      "settings": {
+        "contain": false,
+        "show_filters": true,
+        "enable_quick_buy": true
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

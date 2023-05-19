@@ -1,0 +1,40 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-search",
+      "blocks": {
+        "2e8f17fa-5fc3-4a2c-8d31-5fafe9a15ef4": {
+          "type": "header",
+          "settings": {
+          }
+        },
+        "53585924-d449-4abe-8a44-3604ce9225e7": {
+          "type": "breadcrumbs",
+          "settings": {
+          }
+        },
+        "19515720-47ec-48be-a8a9-4d8cf8740eb9": {
+          "type": "search-form",
+          "settings": {
+          }
+        },
+        "5b4affb8-71b7-446a-89b8-3184f77cbd29": {
+          "type": "search-results",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "2e8f17fa-5fc3-4a2c-8d31-5fafe9a15ef4",
+        "53585924-d449-4abe-8a44-3604ce9225e7",
+        "19515720-47ec-48be-a8a9-4d8cf8740eb9",
+        "5b4affb8-71b7-446a-89b8-3184f77cbd29"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

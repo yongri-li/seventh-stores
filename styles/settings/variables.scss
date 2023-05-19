@@ -1,0 +1,46 @@
+
+/*================ Color Variables ================*/
+$color-primary: var(--primary-color);
+
+// Text colors
+$color-body-text: var(--body-text-color);
+
+// Blankstate
+$color-blankstate: var(--color-blankstate);
+$color-blankstate-border: var(--color-blankstate-border);
+$color-blankstate-background: var(--color-blankstate-background);
+
+// Backgrounds
+$color-body: #fff;
+
+// Border colors
+$color-border: #f6f6f6;
+
+// Helper colors for form error states
+$color-disabled: #f6f6f6;
+$color-disabled-border: #f6f6f6;
+$color-error: #F00;
+$color-error-bg: #ffc4c4;
+$color-success: #29cb1b;
+$color-success-bg: #bdffc7;
+
+/*================ Typography Variables ================*/
+$heading_one_fs: var(--heading_one_fs);
+$heading_two_fs: var(--heading_two_fs);
+$heading_three_fs: var(--heading_three_fs);
+$heading_four_fs: var(--heading_four_fs);
+$heading_five_fs: var(--heading_five_fs);
+$heading_six_fs: var(--heading_six_fs);
+
+/*================ Typography Variables ================*/
+$logo-size-base: 16px;
+
+/*============================================================================
+  Grid Breakpoints and Class Names
+    - Do not change the variable names
+==============================================================================*/
+$grid-small: 640px;
+$grid-medium: 768px;
+$grid-large: 1024px;
+$grid-widescreen: 1280px;
+$grid-gutter: 30px;

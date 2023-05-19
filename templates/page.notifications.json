@@ -1,0 +1,98 @@
+{
+  "wrapper": "div#div_id.div_class[attribute-one=value]",
+  "sections": {
+    "hero": {
+      "type": "featured-hero",
+      "disabled": true,
+      "settings": {
+        "max_height_mobile": 50,
+        "max_height_desktop": 65,
+        "mobile_image_focus": "top left",
+        "desktop_image_focus": "top left",
+        "mobile_content_focus": "justify-start items-start",
+        "mobile_content_alignment": "text-left",
+        "desktop_content_focus": "lg:justify-start lg:items-start",
+        "desktop_content_alignment": "lg:text-left",
+        "heading": "",
+        "content": "",
+        "show_cta_one": false,
+        "cta_text": "",
+        "cta_link": "shopify://collections/menswear",
+        "cta_style": "primary-button",
+        "show_cta_two": false,
+        "cta_text_two": "",
+        "cta_link_two": "",
+        "cta_style_two": "primary-button",
+        "heading_size_mobile": 28,
+        "content_size_mobile": 16,
+        "content_color_mobile": "#ffffff",
+        "heading_size_desktop": 34,
+        "content_size_desktop": 16,
+        "content_color_desktop": "#ffffff"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "711ee7d1-225a-4582-b7e0-269360dd87de": {
+          "type": "header",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "4c9e6e40-0a78-48d4-8c78-06f627872584": {
+          "type": "breadcrumbs",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "57d04156-22d9-49f6-9acd-e0119f2a8656": {
+          "type": "content",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "711ee7d1-225a-4582-b7e0-269360dd87de",
+        "4c9e6e40-0a78-48d4-8c78-06f627872584",
+        "57d04156-22d9-49f6-9acd-e0119f2a8656"
+      ],
+      "settings": {
+      }
+    },
+    "16545146728c3e282f": {
+      "type": "notifications",
+      "blocks": {
+        "66c580ff-c9c3-4087-b38f-df438b5f6407": {
+          "type": "discount",
+          "settings": {
+            "image": "shopify://shop_images/close-up-leather-jacket-over-shoulders.jpg",
+            "discount_code": "10OFF",
+            "page_link": "shopify://collections/all",
+            "heading": "GET 10% OFF YOUR NEXT ORDER",
+            "content": "Click here to apply a discount and get 10% off your next order."
+          }
+        },
+        "f4ffb4cd-fc4c-49f6-9679-c6b3154828d2": {
+          "type": "sale",
+          "settings": {
+            "image": "shopify://shop_images/woman-in-sports-clothes-stands-on-a-beach-in-the-morning-light.jpg",
+            "heading": "Newest collection now live",
+            "content": "Shop the latest collection now!"
+          }
+        }
+      },
+      "block_order": [
+        "66c580ff-c9c3-4087-b38f-df438b5f6407",
+        "f4ffb4cd-fc4c-49f6-9679-c6b3154828d2"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "main",
+    "16545146728c3e282f"
+  ]
+}

@@ -1,0 +1,243 @@
+{%- liquid
+  assign products_xl = section.settings.products_xl
+  assign products_desktop = section.settings.products_desktop
+  assign products_tablet = section.settings.products_tablet
+  assign products_mobile = section.settings.products_mobile
+  assign total_products = section.settings.total_products
+-%}
+<div
+  class="product-recommendations"
+  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ total_products }}"
+>
+  {%- if recommendations.products_count > 0 -%}
+    <div class="{% if section.settings.contain %}container{% endif %} mx-auto py-12 px-4 sm:px-6 lg:px-8 lg:py-16">
+      <div class="flex align-center items-center justify-between mb-4 md:mb-8">
+        <h2 id="trending-heading" class="text-base lg:text-xl flex-grow">
+          {{ 'products.product.product_recommendations' | t }}
+        </h2>
+        <div class="slider-buttons no-js-hidden flex items-center flex-shrink-0">
+          <button
+            id="previousButton-{{ section.id }}"
+            type="button"
+            class="mr-2 slider-button slider-button--prev p-1 cursor-pointer"
+            name="previous"
+            aria-label="{{ 'accessibility.previous_slide' | t }}"
+          >
+            {% render 'icon-chevron-left', height: 20, width: 20 %}
+          </button>
+          <div class="slider-counter hidden">
+            <span id="counter-{{ section.id }}" class="slider-counter--current">1</span>
+            <span aria-hidden="true"> / </span>
+            <span class="visually-hidden">{{ 'accessibility.of' | t }}</span>
+            <span id="total-{{ section.id }}" class="slider-counter--total">{{ recommendations.products_count }}</span>
+          </div>
+          <button
+            id="nextButton-{{ section.id }}"
+            type="button"
+            class="slider-button slider-button--next p-1 cursor-pointer"
+            name="next"
+            aria-label="{{ 'accessibility.next_slide' | t }}"
+          >
+            {% render 'icon-chevron-right', height: 20, width: 20 %}
+          </button>
+        </div>
+      </div>
+      <slider-component
+        data-page-total="#total-{{ section.id }}"
+        data-page-count="#counter-{{ section.id }}"
+        data-previous-button="#previousButton-{{ section.id }}"
+        data-next-button="#nextButton-{{ section.id }}"
+        class="slider-mobile-gutter relative"
+      >
+        <ul class="relative w-full flex flex-nowrap flex-row -mx-4 overflow-x-auto pb-4 scroll-bar">
+          {%- for related_product in recommendations.products -%}
+            <li class="[ {{ products_xl }} {{ products_desktop }} {{ products_tablet }} {{ products_mobile }} px-4 flex-shrink-0 ]">
+              {% render 'product-grid-item' with product: related_product %}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </slider-component>
+    </div>
+  {%- endif -%}
+</div>
+
+{% javascript %}
+  var loadProductRecommendationsIntoSection = function () {
+    // Look for an element with class 'product-recommendations'
+    var productRecommendationsSection = document.querySelector('.product-recommendations');
+    if (productRecommendationsSection === null) {
+      return;
+    }
+    // Create request and submit it using Ajax
+    var request = new XMLHttpRequest();
+    request.open('GET', productRecommendationsSection.dataset.url);
+    request.onload = function () {
+      if (request.status >= 200 && request.status < 300) {
+        var container = document.createElement('div');
+        container.innerHTML = request.response;
+        productRecommendationsSection.innerHTML = container.querySelector('.product-recommendations').innerHTML;
+      }
+    };
+    request.send();
+  };
+  // If your section has theme settings, the theme editor
+  // reloads the section as you edit those settings. When that happens, the
+  // recommendations need to be fetched again.
+  // See https://help.shopify.com/en/themes/development/sections/integration-with-theme-editor
+  document.addEventListener('shopify:section:load', function (event) {
+    if (event.detail.sectionId === 'product-recommendations') {
+      loadProductRecommendationsIntoSection();
+    }
+  });
+  // Fetching the recommendations on page load
+  loadProductRecommendationsIntoSection();
+{% endjavascript %}
+
+{%- if settings.development_mode -%}
+  <script src="{{ 'slider.js' | asset_url }}" defer="defer"></script>
+{%- else -%}
+  <script src="{{ 'slider.min.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product recommendations",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "contain",
+      "label": "Contain the Footer within a wrapper?",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "total_products",
+      "label": "Total number of products",
+      "min": 4,
+      "max": 28,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Extra Large Devices"
+    },
+    {
+      "type": "select",
+      "id": "products_xl",
+      "label": "Products per row",
+      "options": [
+        {
+          "value": "xl:w-1/6",
+          "label": "6"
+        },
+        {
+          "value": "xl:w-1/5",
+          "label": "5"
+        },
+        {
+          "value": "xl:w-1/4",
+          "label": "4"
+        },
+        {
+          "value": "xl:w-1/3",
+          "label": "3"
+        },
+        {
+          "value": "xl:w-1/2",
+          "label": "2"
+        },
+        {
+          "value": "xl:w-full",
+          "label": "1"
+        }
+      ],
+      "default": "xl:w-1/5"
+    },
+    {
+      "type": "header",
+      "content": "Desktop"
+    },
+    {
+      "type": "select",
+      "id": "products_desktop",
+      "label": "Products per row",
+      "options": [
+        {
+          "value": "lg:w-1/6",
+          "label": "6"
+        },
+        {
+          "value": "lg:w-1/5",
+          "label": "5"
+        },
+        {
+          "value": "lg:w-1/4",
+          "label": "4"
+        },
+        {
+          "value": "lg:w-1/3",
+          "label": "3"
+        },
+        {
+          "value": "lg:w-1/2",
+          "label": "2"
+        },
+        {
+          "value": "lg:w-full",
+          "label": "1"
+        }
+      ],
+      "default": "lg:w-1/4"
+    },
+    {
+      "type": "header",
+      "content": "Tablet"
+    },
+    {
+      "type": "select",
+      "id": "products_tablet",
+      "label": "Products per row",
+      "options": [
+        {
+          "value": "md:w-1/4",
+          "label": "4"
+        },
+        {
+          "value": "md:w-1/3",
+          "label": "3"
+        },
+        {
+          "value": "md:w-1/2",
+          "label": "2"
+        },
+        {
+          "value": "md:w-full",
+          "label": "1"
+        }
+      ],
+      "default": "md:w-1/3"
+    },
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "type": "select",
+      "id": "products_mobile",
+      "label": "Products per row",
+      "options": [
+        {
+          "value": "w-1/2",
+          "label": "2"
+        },
+        {
+          "value": "w-full",
+          "label": "1"
+        }
+      ],
+      "default": "w-1/2"
+    }
+  ]
+}
+{% endschema %}

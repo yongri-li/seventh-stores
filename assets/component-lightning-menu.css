@@ -1,0 +1,24 @@
+.lightning-toggle{
+    display: block;
+    cursor: pointer;
+}
+
+.lightning-toggle.is--active .lightning-toggle__active{
+    display: none;
+}
+
+.lightning-toggle .lightning-toggle__disabled{
+    display: none;
+}
+
+.lightning-toggle.is--active .lightning-toggle__disabled{
+    display: block;
+}
+
+.lightning-menu{
+    display: none;
+}
+
+.lightning-menu.is--visible{
+    display: block;
+}

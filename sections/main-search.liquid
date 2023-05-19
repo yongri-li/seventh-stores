@@ -1,0 +1,100 @@
+{%- liquid
+assign product_search_results = false
+assign article_search_results = false -%}
+
+{%- for block in section.blocks -%}
+    {%- case block.type -%}
+        {%- when '@app' -%}
+            {% render block %}
+        {%- when 'breadcrumbs' -%}
+            {% render 'breadcrumb' %}
+        {%- when 'header' -%}
+            {% render 'page-header' %}
+        {%- when 'search-form' -%}
+            <div class="container mx-auto py-8 px-4 lg:px-8 overflow-hidden">
+                {% render 'inline-search-form' %}
+            </div>
+        {%- when 'search-results' -%}
+            {%- if search.performed and search.results.size > 0 -%}
+                {% paginate search.results by 16 %}
+                    {%- capture product_search_results -%}
+                        {%- for item in search.results -%}
+                            {%- if item.object_type == 'product' -%}
+                                {%- assign the_product = item -%}
+                                <div>
+                                    {% render 'product-grid-item' with product: the_product %}
+                                </div>
+                            {%- endif -%}
+                        {%- endfor -%}
+                    {%- endcapture -%}
+                
+                    {%- capture article_search_results -%}
+                        {%- for item in search.results -%}
+                            {%- if item.object_type == 'article' -%}
+                                {%- assign the_article = item -%}
+                                <div>{% render 'article-grid-item' with article: the_article %}</div>
+                            {%- endif -%}
+                        {%- endfor -%}
+                    {%- endcapture -%}
+                
+                    {%- if product_search_results != blank -%}
+                        <div class="container mx-auto py-8 px-4 lg:px-8 overflow-hidden">
+                            <h3>Product Search Results</h3>
+                            <div class="[ grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 ]">
+                                {{ product_search_results }}
+                            </div>
+                        </div>
+                    {%- endif -%}
+            
+                    {%- if article_search_results != blank -%}
+                        <div class="container mx-auto py-8 px-4 lg:px-8 overflow-hidden">
+                            <h3>Article Search Results</h3>
+                            <div class="[ grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 ]">
+                                {{ article_search_results }}
+                            </div>
+                        </div>
+                    {%- endif -%}
+                    
+                    {%- if paginate.pages > 1 -%}
+                        {% render 'pagination' %}
+                    {%- endif -%}
+                </div>
+                {%- endpaginate -%}
+            {%- else -%}
+                <div class="container mx-auto py-8 px-4 lg:px-8 overflow-hidden">
+                    <p>{{ 'general.search.no_results_html' | t: terms: search.terms }}</p>
+                </div>
+            {%- endif -%}
+    {%- endcase -%}
+{%- endfor -%}
+
+{% schema %}
+{
+  "name": "Search",
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "breadcrumbs",
+      "name": "Breadcrumbs",
+      "limit": 1
+    },
+    {
+      "type": "header",
+      "name": "Header",
+      "limit": 1
+    },
+    {
+      "type": "search-results",
+      "name": "Search Results",
+      "limit": 1
+    },
+    {
+      "type": "search-form",
+      "name": "Search Form",
+      "limit": 1
+    }
+  ]
+}
+{% endschema %}

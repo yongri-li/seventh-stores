@@ -1,0 +1,28 @@
+
+{%- if block.settings.show_social_icons -%}
+{%- if block.settings.social_header -%}
+    <h6 class="text-sm">{{ block.settings.social_header }}</h6>
+{%- endif -%}
+{%- render 'social-icons' -%}
+{%- endif -%}
+
+{%- if block.settings.show_payment_icons -%}
+{%- if block.settings.payments_header -%}
+    <h6 class="text-sm">{{ block.settings.payments_header }}</h6>
+{%- endif -%}
+{%- unless shop.enabled_payment_types == empty -%}
+    {%- assign payment_icons_available = 'amazon_payments,american_express,apple_pay,bitcoin,cirrus,dankort,diners_club,discover,dogecoin,dwolla,forbrugsforeningen,interac,jcb,litecoin,maestro,master,paypal,visa' | split: ',' -%}
+    <span class="visually-hidden">{{ 'layout.footer.payment_methods' | t }}</span>
+    <ul class="payment-icons">
+    {%- for type in shop.enabled_payment_types -%}
+        {%- if payment_icons_available contains type -%}
+        <li>
+            {%- assign icon_name = type | prepend: 'icon-' -%}
+            {%- render icon_name -%}
+            <span class="visually-hidden">{{ type | capitalize | replace: '_', ' ' }}</span>
+        </li>
+        {%- endif -%}
+    {%- endfor -%}
+    </ul>
+{%- endunless -%}
+{%- endif -%}

@@ -1,0 +1,122 @@
+{% style %}
+notice-item[data-read="false"]{
+  background-color: #f0f9ff;
+  cursor: pointer;
+}
+
+notice-item[data-read="true"]{
+  background-color: #f8f8f8;
+}
+{% endstyle %}
+
+<section id="notice-section" class="max-w-screen-md mx-auto px-4 sm:px-6">
+  <notice-list id="notice-list" data-all-read="false">
+  {%- for block in section.blocks -%}
+    <notice-item class="block p-4 rounded-md mb-4" data-read="false" data-cookie="{{ block.id }}">
+      {%- liquid
+      assign no_link = true
+      if block.settings.page_link != blank or block.settings.discount_code != blank
+        assign no_link = false
+      endif -%}
+      {% capture notice_link %}
+      {%- if block.type == "discount" and block.settings.discount_code != blank -%}
+      /discount/{{ block.settings.discount_code }}
+      {%- endif -%}
+      {%- if block.settings.page_link != blank -%}
+      {%- if block.type == "discount" and block.settings.discount_code != blank -%}?redirect={%- endif -%}
+      {{ block.settings.page_link }}
+      {%- endif -%}
+      {%- endcapture -%}
+      {%- unless no_link -%}
+      <a href="{{ notice_link | strip_newlines }}">
+      {%- endunless -%}
+      <div class="flex items-center">
+        {%- unless block.settings.image == blank -%}
+        <div class="h-16 w-16 lg:h-28 lg:w-28 flex-shrink-0 mr-4 rounded-full overflow-hidden">
+          <img loading="lazy" height="{{ block.settings.image.height }}" width="{{ block.settings.image.width }}" class="object-center object-cover h-full w-full" src="{{ block.settings.image | image_url: width: 350 }}" alt="{{ block.settings.image.alt }}">
+        </div>
+        {%- endunless -%}
+        <div>
+          <h6 class="mb-2 text-sm lg:text-lg">{{ block.settings.heading }}</h6>
+          <p class="text-xs lg:text-base">{{ block.settings.content }}</p>
+        </div>
+      </div>
+      {%- unless no_link -%}
+      </a>
+      {%- endunless -%}
+    </notice-item>
+  {%- endfor -%}
+  </notice-list>
+</section>
+
+<script src="{{ 'notice-component.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Notifications",
+  "settings": [
+
+  ],
+  "blocks": [
+    {
+      "type": "discount",
+      "name": "Discount",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "discount_code",
+          "label": "Discount Code"
+        },
+        {
+          "type": "url",
+          "id": "page_link",
+          "label": "Link",
+          "info": "Link to a different page when the notification is clicked."
+        },
+        {
+          "type": "textarea",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    },
+    {
+      "type": "sale",
+      "name": "Sale",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "textarea",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Notifications",
+      "category": "Content"
+    }
+  ]
+}
+{% endschema %}

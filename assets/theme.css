@@ -1,0 +1,1620 @@
+/*============================================================================
+  Block Framework | Built with Slate
+    - You cannot use native CSS/Sass @imports in this file without a build script
+==============================================================================*/
+/*================ UTILS ================*/
+/*================ Mixins ================*/
+/*============================================================================
+  Prefix mixin for generating vendor prefixes.
+  Based on https://github.com/thoughtbot/bourbon/blob/v4-stable/app/assets/stylesheets/addons/_prefixer.scss
+
+  Usage:
+    // Input:
+    .element {
+      @include prefix(transform, scale(1), ms webkit spec);
+    }
+
+    // Output:
+    .element {
+      -ms-transform: scale(1);
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+==============================================================================*/
+/*================ Media Query Mixin ================*/
+/*================ Responsive Show/Hide Helper ================*/
+/*================ Responsive Text Alignment Helper ================*/
+/*================ SETTINGS ================*/
+/*================ Color Variables ================*/
+/*================ Typography Variables ================*/
+/*================ Typography Variables ================*/
+/*============================================================================
+  Grid Breakpoints and Class Names
+    - Do not change the variable names
+==============================================================================*/
+/*============================================================================
+  Generate breakpoint-specific column widths and push classes
+    - Default column widths: $breakpoint-has-widths: ($small, $medium-up);
+    - Default is no push classes
+    - Will not work if `styles/global/grid.scss` is removed
+==============================================================================*/
+/*================ Sizing Variables ================*/
+/*================ Z-Index ================*/
+/*================ SVG ================*/
+/*================ COMMON ================*/
+/*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
+/* Document
+   ========================================================================== */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in
+ *    IE on Windows Phone and in iOS.
+ */
+html {
+  line-height: 1.15;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */ }
+
+/* Sections
+   ========================================================================== */
+/**
+ * Remove the margin in all browsers (opinionated).
+ */
+body {
+  margin: 0; }
+
+/**
+ * Add the correct display in IE 9-.
+ */
+article,
+aside,
+footer,
+header,
+nav,
+section {
+  display: block; }
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0; }
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in IE.
+ */
+figcaption,
+figure,
+main {
+  /* 1 */
+  display: block; }
+
+/**
+ * Add the correct margin in IE 8.
+ */
+figure {
+  margin: 1em 40px; }
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */ }
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */ }
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * 1. Remove the gray background on active links in IE 10.
+ * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ */
+a {
+  background-color: transparent;
+  /* 1 */
+  -webkit-text-decoration-skip: objects;
+  /* 2 */ }
+
+/**
+ * 1. Remove the bottom border in Chrome 57- and Firefox 39-.
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  -webkit-text-decoration: underline dotted;
+  text-decoration: underline dotted;
+  /* 2 */ }
+
+/**
+ * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+ */
+b,
+strong {
+  font-weight: inherit; }
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder; }
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */ }
+
+/**
+ * Add the correct font style in Android 4.3-.
+ */
+dfn {
+  font-style: italic; }
+
+/**
+ * Add the correct background and color in IE 9-.
+ */
+mark {
+  background-color: #ff0;
+  color: #000; }
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%; }
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sub {
+  bottom: -0.25em; }
+
+sup {
+  top: -0.5em; }
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Add the correct display in IE 9-.
+ */
+audio,
+video {
+  display: inline-block; }
+
+/**
+ * Add the correct display in iOS 4-7.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+/**
+ * Remove the border on images inside links in IE 10-.
+ */
+img {
+  border-style: none; }
+
+/**
+ * Hide the overflow in IE.
+ */
+svg:not(:root) {
+  overflow: hidden; }
+
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change the font styles in all browsers (opinionated).
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: sans-serif;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  line-height: 1.15;
+  /* 1 */
+  margin: 0;
+  /* 2 */ }
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+button,
+input {
+  /* 1 */
+  overflow: visible; }
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select {
+  /* 1 */
+  text-transform: none; }
+
+/**
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+ *    controls in Android 4.
+ * 2. Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */ }
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0; }
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText; }
+
+/**
+ * Correct the padding in Firefox.
+ */
+fieldset {
+  padding: 0.35em 0.75em 0.625em; }
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  box-sizing: border-box;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  white-space: normal;
+  /* 1 */ }
+
+/**
+ * 1. Add the correct display in IE 9-.
+ * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */ }
+
+/**
+ * Remove the default vertical scrollbar in IE.
+ */
+textarea {
+  overflow: auto; }
+
+/**
+ * 1. Add the correct box sizing in IE 10-.
+ * 2. Remove the padding in IE 10-.
+ */
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */ }
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto; }
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */ }
+
+/**
+ * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
+ */
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */ }
+
+/* Interactive
+   ========================================================================== */
+/*
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in Edge, IE, and Firefox.
+ */
+details,
+menu {
+  display: block; }
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item; }
+
+/* Scripting
+   ========================================================================== */
+/**
+ * Add the correct display in IE 9-.
+ */
+canvas {
+  display: inline-block; }
+
+/**
+ * Add the correct display in IE.
+ */
+template {
+  display: none; }
+
+/* Hidden
+   ========================================================================== */
+/**
+ * Add the correct display in IE 10-.
+ */
+[hidden] {
+  display: none; }
+
+/*================ Slate specific reset ================*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box; }
+
+body,
+input,
+textarea,
+button,
+select {
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%; }
+
+a:focus {
+  color: inherit; }
+
+img {
+  max-width: 100%; }
+
+/*================ Form element helpers ================*/
+form {
+  margin: 0; }
+
+@media only screen and (max-width: 1023px) {
+  input,
+  textarea,
+  select {
+    font-size: 16px; } }
+
+button,
+input[type="submit"],
+label[for] {
+  cursor: pointer; }
+
+optgroup {
+  font-weight: "bold"; }
+
+option {
+  color: var(--body-text-color);
+  background-color: #fff; }
+
+[tabindex='-1']:focus {
+  outline: none; }
+
+/*============================================================================
+  Fast Tap
+  enables no-delay taps (FastClick-esque) on supporting browsers
+==============================================================================*/
+a,
+button,
+[role="button"],
+input,
+label,
+select,
+textarea {
+  touch-action: manipulation; }
+
+/*================ Helper Classes ================*/
+.clearfix {
+  *zoom: 1; }
+  .clearfix::after {
+    content: '';
+    display: table;
+    clear: both; }
+
+.visually-hidden {
+  position: absolute !important;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0; }
+
+.js-focus-hidden:focus {
+  outline: none; }
+
+.label-hidden {
+  position: absolute !important;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0; }
+  .no-placeholder .label-hidden {
+    position: inherit !important;
+    overflow: auto;
+    clip: auto;
+    width: auto;
+    height: auto;
+    margin: 0; }
+
+.visually-shown {
+  position: inherit !important;
+  overflow: auto;
+  clip: auto;
+  width: auto;
+  height: auto;
+  margin: 0; }
+
+.no-js:not(html) {
+  display: none; }
+  .no-js .no-js:not(html) {
+    display: block; }
+
+.no-js .js {
+  display: none; }
+
+.supports-no-cookies:not(html) {
+  display: none; }
+  html.supports-no-cookies .supports-no-cookies:not(html) {
+    display: block; }
+
+html.supports-no-cookies .supports-cookies {
+  display: none; }
+
+/*============================================================================
+  Skip to content button
+    - Overrides .visually-hidden when focused
+==============================================================================*/
+.skip-link:focus {
+  position: absolute !important;
+  overflow: auto;
+  clip: auto;
+  width: auto;
+  height: auto;
+  margin: 0;
+  color: var(--body-text-color);
+  background-color: #fff;
+  padding: 15px;
+  z-index: 10000;
+  transition: none; }
+
+.no--scroll {
+  overflow: hidden; }
+
+/*============================================================================
+  Grid
+    - Based on CSS Wizardry grid
+==============================================================================*/
+.grid {
+  *zoom: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-left: -30px; }
+  .grid::after {
+    content: '';
+    display: table;
+    clear: both; }
+
+.grid__item {
+  float: left;
+  padding-left: 30px;
+  width: 100%; }
+  .grid__item[class*='--push'] {
+    position: relative; }
+
+/*============================================================================
+  Reversed grids allow you to structure your source in the opposite
+  order to how your rendered layout will appear.
+==============================================================================*/
+.grid--rev {
+  direction: rtl;
+  text-align: left; }
+  .grid--rev > .grid__item {
+    direction: ltr;
+    text-align: left;
+    float: right; }
+
+/*============================================================================
+  Grid Columns
+    - Create width classes, prepended by the breakpoint name.
+==============================================================================*/
+/*================ Grid push classes ================*/
+/*================ Clearfix helper on uniform grids ================*/
+/*================ Build Base Grid Classes ================*/
+/** Whole */
+.one-whole {
+  width: 100%; }
+
+/* Halves */
+.one-half {
+  width: 50%; }
+
+/* Thirds */
+.one-third {
+  width: 33.33333%; }
+
+.two-thirds {
+  width: 66.66667%; }
+
+/* Quarters */
+.one-quarter {
+  width: 25%; }
+
+.two-quarters {
+  width: 50%; }
+
+.three-quarters {
+  width: 75%; }
+
+/* Fifths */
+.one-fifth {
+  width: 20%; }
+
+.two-fifths {
+  width: 40%; }
+
+.three-fifths {
+  width: 60%; }
+
+.four-fifths {
+  width: 80%; }
+
+/* Sixths */
+.one-sixth {
+  width: 16.66667%; }
+
+.two-sixths {
+  width: 33.33333%; }
+
+.three-sixths {
+  width: 50%; }
+
+.four-sixths {
+  width: 66.66667%; }
+
+.five-sixths {
+  width: 83.33333%; }
+
+/* Eighths */
+.one-eighth {
+  width: 12.5%; }
+
+.two-eighths {
+  width: 25%; }
+
+.three-eighths {
+  width: 37.5%; }
+
+.four-eighths {
+  width: 50%; }
+
+.five-eighths {
+  width: 62.5%; }
+
+.six-eighths {
+  width: 75%; }
+
+.seven-eighths {
+  width: 87.5%; }
+
+/* Tenths */
+.one-tenth {
+  width: 10%; }
+
+.two-tenths {
+  width: 20%; }
+
+.three-tenths {
+  width: 30%; }
+
+.four-tenths {
+  width: 40%; }
+
+.five-tenths {
+  width: 50%; }
+
+.six-tenths {
+  width: 60%; }
+
+.seven-tenths {
+  width: 70%; }
+
+.eight-tenths {
+  width: 80%; }
+
+.nine-tenths {
+  width: 90%; }
+
+/* Twelfths */
+.one-twelfth {
+  width: 8.33333%; }
+
+.two-twelfths {
+  width: 16.66667%; }
+
+.three-twelfths {
+  width: 25%; }
+
+.four-twelfths {
+  width: 33.33333%; }
+
+.five-twelfths {
+  width: 41.66667%; }
+
+.six-twelfths {
+  width: 50%; }
+
+.seven-twelfths {
+  width: 58.33333%; }
+
+.eight-twelfths {
+  width: 66.66667%; }
+
+.nine-twelfths {
+  width: 75%; }
+
+.ten-twelfths {
+  width: 83.33333%; }
+
+.eleven-twelfths {
+  width: 91.66667%; }
+
+.show {
+  display: block !important; }
+
+.hide {
+  display: none !important; }
+
+.text-left {
+  text-align: left !important; }
+
+.text-right {
+  text-align: right !important; }
+
+.text-center {
+  text-align: center !important; }
+
+/*================ Build Responsive Grid Classes ================*/
+@media only screen and (max-width: 640px) {
+  /** Whole */
+  .small--one-whole {
+    width: 100%; }
+  /* Halves */
+  .small--one-half {
+    width: 50%; }
+  /* Thirds */
+  .small--one-third {
+    width: 33.33333%; }
+  .small--two-thirds {
+    width: 66.66667%; }
+  /* Quarters */
+  .small--one-quarter {
+    width: 25%; }
+  .small--two-quarters {
+    width: 50%; }
+  .small--three-quarters {
+    width: 75%; }
+  /* Fifths */
+  .small--one-fifth {
+    width: 20%; }
+  .small--two-fifths {
+    width: 40%; }
+  .small--three-fifths {
+    width: 60%; }
+  .small--four-fifths {
+    width: 80%; }
+  /* Sixths */
+  .small--one-sixth {
+    width: 16.66667%; }
+  .small--two-sixths {
+    width: 33.33333%; }
+  .small--three-sixths {
+    width: 50%; }
+  .small--four-sixths {
+    width: 66.66667%; }
+  .small--five-sixths {
+    width: 83.33333%; }
+  /* Eighths */
+  .small--one-eighth {
+    width: 12.5%; }
+  .small--two-eighths {
+    width: 25%; }
+  .small--three-eighths {
+    width: 37.5%; }
+  .small--four-eighths {
+    width: 50%; }
+  .small--five-eighths {
+    width: 62.5%; }
+  .small--six-eighths {
+    width: 75%; }
+  .small--seven-eighths {
+    width: 87.5%; }
+  /* Tenths */
+  .small--one-tenth {
+    width: 10%; }
+  .small--two-tenths {
+    width: 20%; }
+  .small--three-tenths {
+    width: 30%; }
+  .small--four-tenths {
+    width: 40%; }
+  .small--five-tenths {
+    width: 50%; }
+  .small--six-tenths {
+    width: 60%; }
+  .small--seven-tenths {
+    width: 70%; }
+  .small--eight-tenths {
+    width: 80%; }
+  .small--nine-tenths {
+    width: 90%; }
+  /* Twelfths */
+  .small--one-twelfth {
+    width: 8.33333%; }
+  .small--two-twelfths {
+    width: 16.66667%; }
+  .small--three-twelfths {
+    width: 25%; }
+  .small--four-twelfths {
+    width: 33.33333%; }
+  .small--five-twelfths {
+    width: 41.66667%; }
+  .small--six-twelfths {
+    width: 50%; }
+  .small--seven-twelfths {
+    width: 58.33333%; }
+  .small--eight-twelfths {
+    width: 66.66667%; }
+  .small--nine-twelfths {
+    width: 75%; }
+  .small--ten-twelfths {
+    width: 83.33333%; }
+  .small--eleven-twelfths {
+    width: 91.66667%; }
+  .grid--uniform .small--one-half:nth-child(2n+1),
+  .grid--uniform .small--one-third:nth-child(3n+1),
+  .grid--uniform .small--one-quarter:nth-child(4n+1),
+  .grid--uniform .small--one-fifth:nth-child(5n+1),
+  .grid--uniform .small--one-sixth:nth-child(6n+1),
+  .grid--uniform .small--two-sixths:nth-child(3n+1),
+  .grid--uniform .small--three-sixths:nth-child(2n+1),
+  .grid--uniform .small--one-eighth:nth-child(8n+1),
+  .grid--uniform .small--two-eighths:nth-child(4n+1),
+  .grid--uniform .small--four-eighths:nth-child(2n+1),
+  .grid--uniform .small--five-tenths:nth-child(2n+1),
+  .grid--uniform .small--one-twelfth:nth-child(12n+1),
+  .grid--uniform .small--two-twelfths:nth-child(6n+1),
+  .grid--uniform .small--three-twelfths:nth-child(4n+1),
+  .grid--uniform .small--four-twelfths:nth-child(3n+1),
+  .grid--uniform .small--six-twelfths:nth-child(2n+1) {
+    clear: both; }
+  .small--show {
+    display: block !important; }
+  .small--hide {
+    display: none !important; }
+  .small--text-left {
+    text-align: left !important; }
+  .small--text-right {
+    text-align: right !important; }
+  .small--text-center {
+    text-align: center !important; } }
+
+@media only screen and (min-width: 768px) {
+  /** Whole */
+  .medium-up--one-whole {
+    width: 100%; }
+  /* Halves */
+  .medium-up--one-half {
+    width: 50%; }
+  /* Thirds */
+  .medium-up--one-third {
+    width: 33.33333%; }
+  .medium-up--two-thirds {
+    width: 66.66667%; }
+  /* Quarters */
+  .medium-up--one-quarter {
+    width: 25%; }
+  .medium-up--two-quarters {
+    width: 50%; }
+  .medium-up--three-quarters {
+    width: 75%; }
+  /* Fifths */
+  .medium-up--one-fifth {
+    width: 20%; }
+  .medium-up--two-fifths {
+    width: 40%; }
+  .medium-up--three-fifths {
+    width: 60%; }
+  .medium-up--four-fifths {
+    width: 80%; }
+  /* Sixths */
+  .medium-up--one-sixth {
+    width: 16.66667%; }
+  .medium-up--two-sixths {
+    width: 33.33333%; }
+  .medium-up--three-sixths {
+    width: 50%; }
+  .medium-up--four-sixths {
+    width: 66.66667%; }
+  .medium-up--five-sixths {
+    width: 83.33333%; }
+  /* Eighths */
+  .medium-up--one-eighth {
+    width: 12.5%; }
+  .medium-up--two-eighths {
+    width: 25%; }
+  .medium-up--three-eighths {
+    width: 37.5%; }
+  .medium-up--four-eighths {
+    width: 50%; }
+  .medium-up--five-eighths {
+    width: 62.5%; }
+  .medium-up--six-eighths {
+    width: 75%; }
+  .medium-up--seven-eighths {
+    width: 87.5%; }
+  /* Tenths */
+  .medium-up--one-tenth {
+    width: 10%; }
+  .medium-up--two-tenths {
+    width: 20%; }
+  .medium-up--three-tenths {
+    width: 30%; }
+  .medium-up--four-tenths {
+    width: 40%; }
+  .medium-up--five-tenths {
+    width: 50%; }
+  .medium-up--six-tenths {
+    width: 60%; }
+  .medium-up--seven-tenths {
+    width: 70%; }
+  .medium-up--eight-tenths {
+    width: 80%; }
+  .medium-up--nine-tenths {
+    width: 90%; }
+  /* Twelfths */
+  .medium-up--one-twelfth {
+    width: 8.33333%; }
+  .medium-up--two-twelfths {
+    width: 16.66667%; }
+  .medium-up--three-twelfths {
+    width: 25%; }
+  .medium-up--four-twelfths {
+    width: 33.33333%; }
+  .medium-up--five-twelfths {
+    width: 41.66667%; }
+  .medium-up--six-twelfths {
+    width: 50%; }
+  .medium-up--seven-twelfths {
+    width: 58.33333%; }
+  .medium-up--eight-twelfths {
+    width: 66.66667%; }
+  .medium-up--nine-twelfths {
+    width: 75%; }
+  .medium-up--ten-twelfths {
+    width: 83.33333%; }
+  .medium-up--eleven-twelfths {
+    width: 91.66667%; }
+  .grid--uniform .medium-up--one-half:nth-child(2n+1),
+  .grid--uniform .medium-up--one-third:nth-child(3n+1),
+  .grid--uniform .medium-up--one-quarter:nth-child(4n+1),
+  .grid--uniform .medium-up--one-fifth:nth-child(5n+1),
+  .grid--uniform .medium-up--one-sixth:nth-child(6n+1),
+  .grid--uniform .medium-up--two-sixths:nth-child(3n+1),
+  .grid--uniform .medium-up--three-sixths:nth-child(2n+1),
+  .grid--uniform .medium-up--one-eighth:nth-child(8n+1),
+  .grid--uniform .medium-up--two-eighths:nth-child(4n+1),
+  .grid--uniform .medium-up--four-eighths:nth-child(2n+1),
+  .grid--uniform .medium-up--five-tenths:nth-child(2n+1),
+  .grid--uniform .medium-up--one-twelfth:nth-child(12n+1),
+  .grid--uniform .medium-up--two-twelfths:nth-child(6n+1),
+  .grid--uniform .medium-up--three-twelfths:nth-child(4n+1),
+  .grid--uniform .medium-up--four-twelfths:nth-child(3n+1),
+  .grid--uniform .medium-up--six-twelfths:nth-child(2n+1) {
+    clear: both; }
+  .medium-up--show {
+    display: block !important; }
+  .medium-up--hide {
+    display: none !important; }
+  .medium-up--text-left {
+    text-align: left !important; }
+  .medium-up--text-right {
+    text-align: right !important; }
+  .medium-up--text-center {
+    text-align: center !important; } }
+
+/*================ Build Grid Push Classes ================*/
+/*================ General layout styles ================*/
+body,
+html {
+  background-color: #fff; }
+
+.page-width {
+  *zoom: 1;
+  max-width: 1180px;
+  padding: 0 30px;
+  margin: 0 auto; }
+  .page-width::after {
+    content: '';
+    display: table;
+    clear: both; }
+
+/*================ Icons ================*/
+.icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  fill: currentColor; }
+  .no-svg .icon {
+    display: none; }
+
+.icon--wide {
+  width: 40px;
+}
+
+/*============================================================================
+  A generic way to visually hide content while
+  remaining accessible to screen readers (h5bp.com)
+==============================================================================*/
+.icon-fallback-text {
+  position: absolute !important;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0; }
+  .no-svg .icon-fallback-text {
+    position: static !important;
+    overflow: auto;
+    clip: auto;
+    width: auto;
+    height: auto;
+    margin: 0; }
+
+/*================ Payment Icons ================*/
+.payment-icons {
+  -moz-user-select: "none";
+  -ms-user-select: "none";
+  -webkit-user-select: "none";
+  user-select: "none";
+  cursor: default; }
+
+/*================ Shopify icon on password page ================*/
+.icon-shopify-logo {
+  width: 82.28571px;
+  height: 24px; }
+
+/*================ Rich Text Editor ================*/
+.rte img {
+  height: auto; }
+
+.rte table {
+  table-layout: fixed; }
+
+.rte ul,
+.rte ol {
+  margin: 0 0 15px 30px; }
+
+.rte ul {
+  list-style: disc outside; }
+  .rte ul ul {
+    list-style: circle outside; }
+    .rte ul ul ul {
+      list-style: square outside; }
+
+.text-center.rte ul,
+.text-center.rte ol,
+.text-center .rte ul,
+.text-center .rte ol {
+  margin-left: 0;
+  list-style-position: inside; }
+
+.rte-table {
+  max-width: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch; }
+
+.rte__video-wrapper {
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  height: auto; }
+  .rte__video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+
+.rte__table-wrapper {
+  max-width: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch; }
+
+/*============================================================================
+  Responsive tables, defined with .responsive-table on table element.
+==============================================================================*/
+@media only screen and (max-width: 640px) {
+  .responsive-table {
+    width: 100%; }
+    .responsive-table thead {
+      display: none; }
+    .responsive-table tr {
+      display: block; }
+    .responsive-table tr,
+    .responsive-table td {
+      float: left;
+      clear: both;
+      width: 100%; }
+    .responsive-table th,
+    .responsive-table td {
+      display: block;
+      text-align: right;
+      padding: 15px;
+      margin: 0; }
+    .responsive-table td::before {
+      content: attr(data-label);
+      float: left;
+      text-align: center;
+      padding-right: 10px; }
+  .responsive-table-row + .responsive-table-row,
+  tfoot > .responsive-table-row:first-child {
+    position: relative;
+    margin-top: 10px;
+    padding-top: 15px; }
+    .responsive-table-row + .responsive-table-row::after,
+    tfoot > .responsive-table-row:first-child::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 15px;
+      right: 15px;
+      border-bottom: 1px solid #f6f6f6; } }
+
+/*================ Links & Buttons ================*/
+.primary-button {
+  background-color: var(--primary-btn-bg);
+  color: var(--primary-btn-text); }
+  .primary-button:hover {
+    background-color: var(--primary-btn-bg-hover);
+    color: var(--primary-btn-text-hover); }
+
+.btn {
+  -moz-user-select: "none";
+  -ms-user-select: "none";
+  -webkit-user-select: "none";
+  user-select: "none";
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  width: auto;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  border: 0; }
+  .btn.btn--close {
+    width: 2em;
+    height: 2em; }
+    .btn.btn--close .line {
+      display: block;
+      height: 1px;
+      width: 2em;
+      background-color: #000000; }
+      .btn.btn--close .line.line--top {
+        transform: rotate(45deg); }
+      .btn.btn--close .line.line--bottom {
+        transform: rotate(-45deg); }
+
+/*============================================================================
+  Form scaffolding
+    - Selectors setup for you to style form elements how you want
+    - Focus, error, and disabled states are set to be extended
+==============================================================================*/
+input,
+textarea,
+select {
+  border: 1px solid #f6f6f6;
+  border-radius: 0;
+  max-width: 100%;
+}
+
+input[disabled],
+textarea[disabled],
+select[disabled] {
+  cursor: default;
+}
+
+textarea {
+  min-height: 100px; }
+
+/*================ Custom select style ================*/
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-position: right center;
+  background-image: url(--var(--svg-select-icon));
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-color: transparent;
+  padding-right: 28px;
+  text-indent: 0.01px;
+  text-overflow: '';
+  cursor: pointer;
+  /*================ Hide the svg arrow in IE9 ================*/ }
+  .ie9 select {
+    padding-right: 10px;
+    background-image: none; }
+
+select::-ms-expand {
+  display: none; }
+
+/*================ Error styles ================*/
+input.input-error,
+select.input-error,
+textarea.input-error {
+  border-color: #000;
+  background-color: #000;
+  color: #000; }
+
+.placeholder-svg {
+  display: block;
+  fill: var(--color-blankstate);
+  background-color: var(--color-blankstate-background);
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  border: 1px solid var(--color-blankstate-border); }
+
+.placeholder-svg--small {
+  width: 480px; }
+
+.placeholder-noblocks {
+  padding: 40px;
+  text-align: center; }
+
+.placeholder-background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; }
+  .placeholder-background .icon {
+    border: 0; }
+
+/*================ COMPONENTS ================*/
+.drawer {
+  position: fixed;
+  top: 0px;
+  bottom: 0;
+  height: 100vh;
+  width: 0;
+  max-width: 100vw;
+  overflow: hidden;
+  z-index: 99999;
+  transition: width ease-in-out 0.25s 0s;
+  overflow-y: auto;
+  background-color: #FFFFFF; }
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .drawer {
+      max-width: 50vw; } }
+  @media only screen and (min-width: 1024px) {
+    .drawer {
+      max-width: 45vw; } }
+  .drawer.is--active {
+    width: 100%; }
+    .drawer.is--active .drawer__inner {
+      opacity: 1; }
+    .drawer.is--active + .drawer-close-area {
+      display: block;
+      background-color: rgba(0, 0, 0, 0.6); }
+  .drawer .drawer__close {
+    display: block;
+    margin-left: auto;
+    margin-right: 1em; }
+  .drawer .drawer__inner {
+    min-width: 100vw;
+    opacity: 0;
+    padding-top: 2em;
+    padding-bottom: 5em;
+    transition: 0.25s 0.25s opacity ease-in-out; }
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+      .drawer .drawer__inner {
+        min-width: 50vw;
+        padding-bottom: 100px; } }
+    @media only screen and (min-width: 1024px) {
+      .drawer .drawer__inner {
+        min-width: 45vw;
+        padding-bottom: 35px; } }
+
+.drawer-close-area {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: none;
+  content: " ";
+  height: 100vh;
+  width: 100vw;
+  z-index: 101; }
+
+.drawer--left {
+  left: 0; }
+
+.drawer--right {
+  right: 0; }
+  .drawer--right .drawer__close {
+    top: 15px;
+    right: 25px; }
+
+.ajax-qty {
+  width: 7.1em;
+  border: 1px solid var(--form-border-color); }
+  .ajax-qty .ajax-qty__btn {
+    width: 2em; }
+  .ajax-qty .ajax-qty__input {
+    width: 3em;
+    border: none;
+    text-align: center;
+    border-left: 1px solid var(--form-border-color);
+    border-right: 1px solid var(--form-border-color); }
+
+.accordion .accordion__bar {
+  display: flex;
+  position: relative;
+  align-items: center;
+  height: 2.5rem;
+  padding: 0.5rem 0; }
+  .accordion .accordion__bar .accordion__trigger {
+    position: absolute;
+    top: 0.5rem;
+    right: 0;
+    height: 1.5rem;
+    width: 1.5rem; }
+    .accordion .accordion__bar .accordion__trigger:after {
+      content: '+'; }
+  .accordion .accordion__bar:hover {
+    cursor: pointer; }
+
+.accordion .accordion__section {
+  border-bottom: 1px solid var(--form-border-color); }
+  .accordion .accordion__section:first-child {
+    border-top: 1px solid var(--form-border-color); }
+  .accordion .accordion__section.is--active .accordion__content {
+    display: block; }
+  .accordion .accordion__section.is--active .accordion__trigger:after {
+    content: '-'; }
+
+.accordion .accordion__content {
+  display: none; }
+
+.pagination span {
+  height: 1.65rem;
+  min-width: 1.45rem;
+  margin: 0 0.15rem;
+  text-align: center;
+  line-height: 1.65rem;
+  border: 1px solid var(--form-border-color);
+  box-shadow: none;
+  font-size: 0.85rem; }
+  .pagination span > a {
+    display: block;
+    padding: 0 0.25rem;
+    line-height: 1.65rem; }
+
+/**************************\
+  Basic Modal Styles
+\**************************/
+.modal {
+  font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif; }
+
+.modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.modal__container {
+  background-color: #fff;
+  padding: 30px;
+  max-width: 500px;
+  max-height: 100vh;
+  border-radius: 4px;
+  overflow-y: auto;
+  box-sizing: border-box; }
+
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.modal__title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  color: #00449e;
+  box-sizing: border-box; }
+
+.modal__close {
+  background: transparent;
+  border: 0; }
+
+.modal__header .modal__close:before {
+  content: "\2715"; }
+
+.modal__content {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.8); }
+
+.modal__btn {
+  font-size: .875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  background-color: #e6e6e6;
+  color: rgba(0, 0, 0, 0.8);
+  border-radius: .25rem;
+  border-style: none;
+  border-width: 0;
+  cursor: pointer;
+  -webkit-appearance: button;
+  text-transform: none;
+  overflow: visible;
+  line-height: 1.15;
+  margin: 0;
+  will-change: transform;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: transform .25s ease-out; }
+
+.modal__btn:focus, .modal__btn:hover {
+  transform: scale(1.05); }
+
+.modal__btn-primary {
+  background-color: #00449e;
+  color: #fff; }
+
+/**************************\
+  Demo Animation Style
+\**************************/
+@-webkit-keyframes mmfadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@keyframes mmfadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@-webkit-keyframes mmfadeOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+@keyframes mmfadeOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+@-webkit-keyframes mmslideIn {
+  from {
+    transform: translateY(15%); }
+  to {
+    transform: translateY(0); } }
+
+@keyframes mmslideIn {
+  from {
+    transform: translateY(15%); }
+  to {
+    transform: translateY(0); } }
+
+@-webkit-keyframes mmslideOut {
+  from {
+    transform: translateY(0); }
+  to {
+    transform: translateY(-10%); } }
+
+@keyframes mmslideOut {
+  from {
+    transform: translateY(0); }
+  to {
+    transform: translateY(-10%); } }
+
+.micromodal-slide {
+  display: none; }
+
+.micromodal-slide.is-open {
+  display: block; }
+
+.micromodal-slide[aria-hidden="false"] .modal__overlay {
+  -webkit-animation: mmfadeIn 0.3s cubic-bezier(0, 0, 0.2, 1);
+  animation: mmfadeIn 0.3s cubic-bezier(0, 0, 0.2, 1); }
+
+.micromodal-slide[aria-hidden="false"] .modal__container {
+  -webkit-animation: mmslideIn 0.3s cubic-bezier(0, 0, 0.2, 1);
+  animation: mmslideIn 0.3s cubic-bezier(0, 0, 0.2, 1); }
+
+.micromodal-slide[aria-hidden="true"] .modal__overlay {
+  -webkit-animation: mmfadeOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+  animation: mmfadeOut 0.3s cubic-bezier(0, 0, 0.2, 1); }
+
+.micromodal-slide[aria-hidden="true"] .modal__container {
+  -webkit-animation: mmslideOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+  animation: mmslideOut 0.3s cubic-bezier(0, 0, 0.2, 1); }
+
+.micromodal-slide .modal__container,
+.micromodal-slide .modal__overlay {
+  will-change: transform; }
+
+/*================ MODULES ================*/
+/*================ Site Header ================*/
+.site-logo {
+  display: block; }
+  .site-logo img {
+    display: block;
+    width: 100%; }
+
+/*================ Giftcard Template ================*/
+.giftcard-qr img {
+  display: block;
+  margin: 0 auto; }
+
+.apple-wallet-image {
+  display: block;
+  margin: 0 auto; }
+
+/*================ Print Giftcard Styles ================*/
+@media print {
+  @page {
+    margin: 0.5cm; }
+  p {
+    orphans: 3;
+    widows: 3; }
+  html,
+  body {
+    background-color: #fff;
+    color: #000; }
+  .print-giftcard,
+  .apple-wallet {
+    display: none; } }
+
+/*================ THEME SETTINGS ================*/
+body {
+  color: var(--body-text-color); }
+
+h1, .h1 {
+  font-size: var(--heading_one_fs); }
+
+h2, .h2 {
+  font-size: var(--heading_two_fs); }
+
+h3, .h3 {
+  font-size: var(--heading_three_fs); }
+
+h4, .h4 {
+  font-size: var(--heading_four_fs); }
+
+h5, .h5 {
+  font-size: var(--heading_five_fs); }
+
+h6, .h6 {
+  font-size: var(--heading_six_fs); }

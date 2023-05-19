@@ -1,0 +1,114 @@
+{%- assign section_spacing = section.settings.section_spacing -%}
+{%- assign section_background = section.settings.section_background -%}
+{%- assign total_articles = section.settings.total_articles -%}
+{%- assign section_blog = blogs[section.settings.blog] -%}
+
+<section class="{{ section_spacing }}" style="background-color: {{ section_background }};">
+  {% if section.settings.title != blank %}
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="[ flex flex-wrap overflow-hidden -mx-4 ]">
+        <div class="[ w-full px-4 overflow-hidden ]">
+          <h2 class="mb-4 md:mb-8 text-base lg:text-xl">
+            <a href="{{ section_blog.url }}">{{ section.settings.title | escape }}</a>
+          </h2>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="container mx-auto px-4">
+    <div class="[ flex flex-wrap overflow-hidden -mx-4 ]">
+      {% for article in section_blog.articles limit: total_articles %}
+        <div {{ block.shopify_attributes }} class="[ w-full md:w-1/2 lg:w-1/3 px-4 mb-10 ]">
+          {%- render 'article-grid-item' with article: article -%}
+        </div>
+      {% else %}
+        {% for i in (1..6) %}
+          <a href="#">
+            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+            {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+            <p>
+              {{ 'homepage.onboarding.product_title' | t }}
+            </p>
+          </a>
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Blog",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Styling"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "select",
+      "id": "section_spacing",
+      "label": "Section Spacing",
+      "options": [
+        {
+          "value": "py-0",
+          "label": "None"
+        },
+        {
+          "value": "py-8",
+          "label": "Small"
+        },
+        {
+          "value": "py-16",
+          "label": "Medium"
+        },
+        {
+          "value": "py-32",
+          "label": "Large"
+        },
+        {
+          "value": "py-64",
+          "label": "x-Large"
+        }
+      ],
+      "default": "py-8"
+    },
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "LATEST FROM THE JOURNAL"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog"
+    },
+    {
+      "type": "range",
+      "id": "total_articles",
+      "label": "Total Articles",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 3
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog",
+      "category": "Content"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,13 @@
+production:
+  password: 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
+  theme_id: "126464721103"
+  store: tailpine-demo.myshopify.com
+  ignore_files:
+  - settings_data.json
+
+development:
+  password: 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
+  theme_id: "126952112335"
+  store: tailpine-demo.myshopify.com
+  ignore_files:
+  - settings_data.json

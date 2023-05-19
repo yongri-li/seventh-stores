@@ -1,0 +1,213 @@
+{% assign tab_one_menu = section.settings.tab_one_menu %}
+{% assign tab_two_menu = section.settings.tab_two_menu %}
+{% render 'drawer-menu', menu_one: tab_one_menu, menu_two: tab_two_menu %}
+
+{% schema %}
+{
+  "name": {
+    "en": "Mobile Menu"
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "tab_one",
+      "label": "Tab one heading"
+    },
+    {
+      "type": "link_list",
+      "id": "tab_one_menu",
+      "label": "Tab one menu"
+    },
+    {
+      "type": "text",
+      "id": "tab_two",
+      "label": "Tab two heading"
+    },
+    {
+      "type": "link_list",
+      "id": "tab_two_menu",
+      "label": "Tab two menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_footer_menu",
+      "label": "Show Footer Menu?",
+      "default": true,
+      "info": "This is the section at the bottom displaying the contact information and accounts link etc."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account_link",
+      "label": "Show Account Link?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search_link",
+      "label": "Show Search Link?",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Contact Information"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_phone_number",
+      "label": "Show Contact Phone Number?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_email",
+      "label": "Show Contact Email?",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "tab_one",
+          "label": "Show under tab 1?",
+          "default": false,
+          "info": "Choose either tab 1 or 2. It cannot appear under both."
+        },
+        {
+          "type": "checkbox",
+          "id": "tab_two",
+          "label": "Show under tab 2?",
+          "default": false,
+          "info": "Choose either tab 1 or 2. It cannot appear under both."
+        },
+        {
+          "type": "image_picker",
+          "id": "bg_image",
+          "label": "Background Image"
+        },
+        {
+          "type": "url",
+          "id": "block_link",
+          "label": "Block Link"
+        },
+        {
+          "type": "select",
+          "id": "bg_image_focus",
+          "label": "Background Image Focus",
+          "options": [
+            {
+              "label": "Top Left",
+              "value": "bg-left-top"
+            },
+            {
+              "label": "Center Left",
+              "value": "bg-center bg-left"
+            },
+            {
+              "label": "Bottom Left",
+              "value": "bg-left-bottom"
+            },
+            {
+              "label": "Top Center",
+              "value": "bg-top"
+            },
+            {
+              "label": "Center Center",
+              "value": "bg-center"
+            },
+            {
+              "label": "Bottom Center",
+              "value": "bg-bottom"
+            },
+            {
+              "label": "Top Right",
+              "value": "bg-right-top"
+            },
+            {
+              "label": "Center Right",
+              "value": "bg-right"
+            },
+            {
+              "label": "Bottom Right",
+              "value": "bg-right-bottom"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "select",
+          "id": "content_focus",
+          "label": "Content Focus",
+          "options": [
+            {
+              "label": "Left",
+              "value": "text-left"
+            },
+            {
+              "label": "Center",
+              "value": "text-center"
+            },
+            {
+              "label": "Right",
+              "value": "text-right"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "Fonts",
+          "info": "Font sizes"
+        },
+        {
+          "type": "range",
+          "id": "subtitle_font_size",
+          "min": 8,
+          "max": 38,
+          "step": 1,
+          "unit": "px",
+          "label": "Subtitle Font Size",
+          "default": 12
+        },
+        {
+          "type": "range",
+          "id": "title_font_size",
+          "min": 8,
+          "max": 38,
+          "step": 1,
+          "unit": "px",
+          "label": "Title Font Size",
+          "default": 16
+        },
+        {
+          "type": "header",
+          "content": "Colours"
+        },
+        {
+          "type": "color",
+          "id": "overlay_color",
+          "label": "Overlay Color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#000000"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

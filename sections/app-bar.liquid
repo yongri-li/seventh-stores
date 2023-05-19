@@ -1,0 +1,431 @@
+{% style %}
+.app-bar{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3.75rem;
+  z-index: 999;
+  box-shadow: 0px 22px 11px 14px #000000;
+  background-color: {{ section.settings.background_color }};
+}
+
+.app-bar__wrap{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.app-bar .app-bar__icon{
+  border-left: 1px solid {{ section.settings.border_color }};
+}
+
+.app-bar .app-bar__icon:first-child{ border-left: none; }
+
+.app-bar .app-bar__icon{
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+{%- for block in section.blocks -%}
+.app-bar #app-bar-icon-{{ block.id }} svg,
+.app-bar #app-bar-icon-{{ block.id }} [data-cart-count]{
+  color: {{ block.settings.icon_color }};
+  opacity: 0.35;
+}
+
+.app-bar #app-bar-icon-{{ block.id }}.app-bar__icon--active svg,
+.app-bar #app-bar-icon-{{ block.id }} .active svg{
+  opacity: 1;
+}
+{%- endfor -%}
+
+@-webkit-keyframes ring {
+  0% { -webkit-transform: rotateZ(0); }
+  1% { -webkit-transform: rotateZ(30deg); }
+  3% { -webkit-transform: rotateZ(-28deg); }
+  5% { -webkit-transform: rotateZ(34deg); }
+  7% { -webkit-transform: rotateZ(-32deg); }
+  9% { -webkit-transform: rotateZ(30deg); }
+  11% { -webkit-transform: rotateZ(-28deg); }
+  13% { -webkit-transform: rotateZ(26deg); }
+  15% { -webkit-transform: rotateZ(-24deg); }
+  17% { -webkit-transform: rotateZ(22deg); }
+  19% { -webkit-transform: rotateZ(-20deg); }
+  21% { -webkit-transform: rotateZ(18deg); }
+  23% { -webkit-transform: rotateZ(-16deg); }
+  25% { -webkit-transform: rotateZ(14deg); }
+  27% { -webkit-transform: rotateZ(-12deg); }
+  29% { -webkit-transform: rotateZ(10deg); }
+  31% { -webkit-transform: rotateZ(-8deg); }
+  33% { -webkit-transform: rotateZ(6deg); }
+  35% { -webkit-transform: rotateZ(-4deg); }
+  37% { -webkit-transform: rotateZ(2deg); }
+  39% { -webkit-transform: rotateZ(-1deg); }
+  41% { -webkit-transform: rotateZ(1deg); }
+
+  43% { -webkit-transform: rotateZ(0); }
+  100% { -webkit-transform: rotateZ(0); }
+}
+
+@-moz-keyframes ring {
+  0% { -moz-transform: rotate(0); }
+  1% { -moz-transform: rotate(30deg); }
+  3% { -moz-transform: rotate(-28deg); }
+  5% { -moz-transform: rotate(34deg); }
+  7% { -moz-transform: rotate(-32deg); }
+  9% { -moz-transform: rotate(30deg); }
+  11% { -moz-transform: rotate(-28deg); }
+  13% { -moz-transform: rotate(26deg); }
+  15% { -moz-transform: rotate(-24deg); }
+  17% { -moz-transform: rotate(22deg); }
+  19% { -moz-transform: rotate(-20deg); }
+  21% { -moz-transform: rotate(18deg); }
+  23% { -moz-transform: rotate(-16deg); }
+  25% { -moz-transform: rotate(14deg); }
+  27% { -moz-transform: rotate(-12deg); }
+  29% { -moz-transform: rotate(10deg); }
+  31% { -moz-transform: rotate(-8deg); }
+  33% { -moz-transform: rotate(6deg); }
+  35% { -moz-transform: rotate(-4deg); }
+  37% { -moz-transform: rotate(2deg); }
+  39% { -moz-transform: rotate(-1deg); }
+  41% { -moz-transform: rotate(1deg); }
+
+  43% { -moz-transform: rotate(0); }
+  100% { -moz-transform: rotate(0); }
+}
+
+@keyframes ring {
+  0% { transform: rotate(0); }
+  1% { transform: rotate(30deg); }
+  3% { transform: rotate(-28deg); }
+  5% { transform: rotate(34deg); }
+  7% { transform: rotate(-32deg); }
+  9% { transform: rotate(30deg); }
+  11% { transform: rotate(-28deg); }
+  13% { transform: rotate(26deg); }
+  15% { transform: rotate(-24deg); }
+  17% { transform: rotate(22deg); }
+  19% { transform: rotate(-20deg); }
+  21% { transform: rotate(18deg); }
+  23% { transform: rotate(-16deg); }
+  25% { transform: rotate(14deg); }
+  27% { transform: rotate(-12deg); }
+  29% { transform: rotate(10deg); }
+  31% { transform: rotate(-8deg); }
+  33% { transform: rotate(6deg); }
+  35% { transform: rotate(-4deg); }
+  37% { transform: rotate(2deg); }
+  39% { transform: rotate(-1deg); }
+  41% { transform: rotate(1deg); }
+
+  43% { transform: rotate(0); }
+  100% { transform: rotate(0); }
+}
+
+notice-bell[data-unread="true"]{
+  display: block;
+  position: relative;
+  -webkit-animation: ring 4s .7s ease-in-out infinite;
+  -webkit-transform-origin: 50% 4px;
+  -moz-animation: ring 4s .7s ease-in-out infinite;
+  -moz-transform-origin: 50% 4px;
+  animation: ring 4s .7s ease-in-out infinite;
+}
+
+notice-bell[data-unread="true"]:after{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 5px;
+  width: 5px;
+  border-radius: 10px;
+  background-color: #F00;
+  content: ' ';
+}
+{% endstyle %}
+<section class="app-bar lg:hidden">
+  <div class="app-bar__wrap">
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {%- when "link" -%}
+      <div class="app-bar__icon" id="app-bar-icon-{{ block.id }}">
+        {%- unless block.settings.link -%}<a href="block.settings.link">{%- endunless -%}
+        {{ block.settings.icon }}
+        {%- unless block.settings.link -%}</a>{%- endunless -%}
+      </div>
+      {%- when "menu" -%}
+      <div class="app-bar__icon" id="app-bar-icon-{{ block.id }}">
+        <drawer-trigger data-target="[data-menu-drawer]" data-open-class="flex" data-close-class="hidden">
+          <button type="button" class="">
+              <span class="sr-only">Open menu</span>
+              {% render 'icon-hamburger' %}
+          </button>
+        </drawer-trigger>
+      </div>
+      {%- when "cart" -%}
+      <div class="app-bar__icon {% if template == 'cart' %}app-bar__icon--active{% endif %}" id="app-bar-icon-{{ block.id }}">
+        <drawer-trigger data-target="[data-mini-cart]" data-open-class="flex" data-close-class="hidden">
+          <a href="/cart" class="group block items-center">
+            <span class="flex">
+              {%- render "icon-bag" -%}
+              <span data-cart-count class="lg:ml-2 text-xs lg:text-sm">{{ cart.item_count }}</span>
+              <span class="sr-only">items in cart, view bag</span>
+            </span>
+          </a>
+        </drawer-trigger>
+      </div>
+      {%- when "home" -%}
+      <div class="app-bar__icon {% if template == 'index' %}app-bar__icon--active{% endif %}" id="app-bar-icon-{{ block.id }}">
+        <a href="{{ shop.url }}">
+          {%- render 'icon-home' -%}
+        </a>
+      </div>
+      {%- when "account" -%}
+      <div class="app-bar__icon {% if canonical_url contains 'account' %}app-bar__icon--active{% endif %}" id="app-bar-icon-{{ block.id }}">
+        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}">
+          {%- render 'icon-account' -%}
+        </a>
+      </div>
+      {%- when "notifications" -%}
+      <div class="app-bar__icon {% if page.url == block.settings.link %}app-bar__icon--active{% endif %}" id="app-bar-icon-{{ block.id }}">
+        <notice-bell data-unread="false">
+          <a href="{{ block.settings.link }}">
+            {%- render 'icon-bell' -%}
+          </a>
+        </notice-bell>
+      </div>
+      <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function(event) {
+          class NoticeBell extends HTMLElement{
+
+            constructor() {
+              super();
+
+              this.notificationURL = "{{ block.settings.link }}";
+              this.cookieName = "notification_cookies";
+
+              this.setStatus();
+            }
+
+            getCookies () {
+
+              const check = window.hasCookie(this.cookieName);
+
+              if( !check ) return [];
+
+              const cookies = window.getCookie(this.cookieName);
+
+              if( cookies.length > 1 ) return cookies.split("|");
+
+              return cookies;
+            }
+
+            setStatus() {
+
+              const _this = this;
+
+              fetch(`${this.notificationURL}#notice-list`)
+                .then(response => response.text())
+                .then(text => {
+                  
+                  const noticeHTML = new DOMParser().parseFromString(text, "text/html");
+                  const noticeItems = noticeHTML.querySelectorAll('notice-item');
+                  const storedCookies = _this.getCookies();
+
+                  let unread = false;
+
+                  noticeItems.forEach((item) => {
+                    if( !storedCookies.includes(item.dataset.cookie) ) unread = true;
+                  });
+
+                  if( unread ) this.dataset.unread = true;
+              })
+              .catch(e => {
+                  console.error(e);
+              });
+            }
+          }
+
+          customElements.define('notice-bell', NoticeBell);
+        });
+      </script>
+      {%- else -%}
+        
+      {%- endcase -%}
+  {%- endfor -%}
+  </div>
+</section>
+
+<script type="text/javascript">
+  window.addEventListener('DOMContentLoaded', function() {
+    const appBar = document.querySelector('.app-bar');
+    document.documentElement.style.setProperty('--app-bar-height', `${appBar.offsetHeight}px`);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "App Bar",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF",
+      "info": "default"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#EFEFEF",
+      "info": "default"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "icon",
+          "label": "Icon SVG",
+          "info": "default"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "URL"
+        },
+        {
+          "type": "color",
+          "id": "icon_color",
+          "label": "Icon Color",
+          "default": "#000000",
+          "info": "default"
+        },
+        {
+          "type": "color",
+          "id": "icon_color_active",
+          "label": "Icon Color - Active State",
+          "default": "#EEEEEE",
+          "info": "default"
+        }
+      ]
+    },
+    {
+      "type": "menu",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "color",
+          "id": "icon_color",
+          "label": "Icon Color",
+          "default": "#000000",
+          "info": "default"
+        },
+        {
+          "type": "color",
+          "id": "icon_color_active",
+          "label": "Icon Color - Active State",
+          "default": "#EEEEEE",
+          "info": "default"
+        }
+      ]
+    },
+    {
+      "type": "cart",
+      "name": "Cart",
+      "settings": [
+        {
+          "type": "color",
+          "id": "icon_color",
+          "label": "Icon Color",
+          "default": "#000000",
+          "info": "default"
+        },
+        {
+          "type": "color",
+          "id": "icon_color_active",
+          "label": "Icon Color - Active State",
+          "default": "#EEEEEE",
+          "info": "default"
+        }
+      ]
+    },
+    {
+      "type": "home",
+      "name": "Home",
+      "settings": [
+        {
+          "type": "color",
+          "id": "icon_color",
+          "label": "Icon Color",
+          "default": "#000000",
+          "info": "default"
+        },
+        {
+          "type": "color",
+          "id": "icon_color_active",
+          "label": "Icon Color - Active State",
+          "default": "#EEEEEE",
+          "info": "default"
+        }
+      ]
+    },
+    {
+      "type": "account",
+      "name": "Account",
+      "settings": [
+        {
+          "type": "color",
+          "id": "icon_color",
+          "label": "Icon Color",
+          "default": "#000000",
+          "info": "default"
+        },
+        {
+          "type": "color",
+          "id": "icon_color_active",
+          "label": "Icon Color - Active State",
+          "default": "#EEEEEE",
+          "info": "default"
+        }
+      ]
+    },
+    {
+      "type": "notifications",
+      "name": "Notifications",
+      "settings": [
+        {
+          "type": "url",
+          "id": "link",
+          "label": "URL"
+        },
+        {
+          "type": "color",
+          "id": "icon_color",
+          "label": "Icon Color",
+          "default": "#000000",
+          "info": "default"
+        },
+        {
+          "type": "color",
+          "id": "icon_color_active",
+          "label": "Icon Color - Active State",
+          "default": "#EEEEEE",
+          "info": "default"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

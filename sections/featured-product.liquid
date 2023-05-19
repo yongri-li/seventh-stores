@@ -1,0 +1,125 @@
+{%- liquid
+assign product = all_products[section.settings.product]
+assign current_variant = product.selected_or_first_available_variant
+assign featured_image = current_variant.featured_image | default: product.featured_image
+
+if product == empty
+  
+  assign onboarding_title = 'homepage.onboarding.product_title' | t
+endif -%}
+
+{%- unless product == blank -%}
+
+<section class="featured-product {{ section.settings.section_spacing }}">
+  <div data-section-id="{{ section.id }}" data-section-type="product" itemscope itemtype="http://schema.org/Product">
+    <div class="container mx-auto px-4">
+      <div class="[ flex flex-wrap overflow-hidden -mx-4 ]">
+        <div class="[ w-full md:w-7/12 lg:px-4 overflow-hidden pb-4 ]">
+          {%- if product.images.size > 1 -%}
+          <div class="flex flex-row flex-nowrap overflow-x-auto scroll-bar">
+            {%- for image in product.images -%}
+              <img height="640" width="640" loading="lazy" src="{{ image.src | image_url: width: 640, height: 640 }}">
+            {%- endfor -%}
+          </div>
+          {%- else -%}
+            {%- if featured_image.src != blank -%}
+              <img height="480" width="480" class="[ w-full d-block ]" loading="lazy" src="{{ featured_image | image_url: width: 480, height: 480 }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+
+        <div class="[ w-full md:w-5/12 px-4 overflow-hidden ]">
+          <h1 class="text-2xl">{{ product.title | default: onboarding_title }}</h1>
+          <hr class="my-4">
+          <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+            <meta itemprop="name" content="{{ product.title }}">
+            <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+            <meta itemprop="image" content="{{ featured_image | image_url: width: 800 }}">
+            <meta itemprop="description" content="{{ product.description | strip_html | escape }}">
+            <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+            {%- render 'product-form', with product: product, history_state: false -%}
+          </div>
+          <hr class="mt-5 mb-4">
+          <div class="leading-6">
+            {{ product.description }}
+          </div>
+
+          {% if section.settings.show_share_buttons %}
+            {% render 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product, history_state: false %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{%- endunless -%}
+
+{% schema %}
+{
+  "name": "Featured product",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_spacing",
+      "label": "Section Spacing",
+      "options": [
+        {
+          "value": "my-0",
+          "label": "None"
+        },
+        {
+          "value": "my-8",
+          "label": "Small"
+        },
+        {
+          "value": "my-16",
+          "label": "Medium"
+        },
+        {
+          "value": "my-32",
+          "label": "Large"
+        },
+        {
+          "value": "my-64",
+          "label": "x-Large"
+        }
+      ],
+      "default": "my-8"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay?",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "autoplay_speed",
+      "label": "Autoplay Speed",
+      "info": "In milliseconds"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dots",
+      "label": "Show dots?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_share_buttons",
+      "label": "Show social sharing buttons"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured product",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}

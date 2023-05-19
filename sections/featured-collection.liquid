@@ -1,0 +1,214 @@
+{%- liquid
+  assign section_spacing = section.settings.section_spacing
+  assign section_background = section.settings.section_background
+
+  assign total_products = section.settings.total_products
+  assign collection = collections[section.settings.collection]
+-%}
+
+<section class="{{ section_spacing }}" style="background-color: {{ section_background }};">
+  {% if section.settings.title != blank %}
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="[ flex w-full items-center overflow-hidden mb-4 md:mb-8 ]">
+        <h2 class="text-base lg:text-xl flex-grow">
+          <a href="{{ collection.url }}">{{ section.settings.title | escape }}</a>
+        </h2>
+        <div class="slider-buttons no-js-hidden flex items-center flex-shrink-0">
+          <button
+            id="previousButton-{{ section.id }}"
+            type="button"
+            class="mr-2 slider-button slider-button--prev p-1 cursor-pointer"
+            name="previous"
+            aria-label="{{ 'accessibility.previous_slide' | t }}"
+          >
+            {% render 'icon-chevron-left', height: 20, width: 20 %}
+          </button>
+          <div class="slider-counter hidden">
+            <span id="counter-{{ section.id }}" class="slider-counter--current">1</span>
+            <span aria-hidden="true"> / </span>
+            <span class="visually-hidden">{{ 'accessibility.of' | t }}</span>
+            <span id="total-{{ section.id }}" class="slider-counter--total">{{ total_products }}</span>
+          </div>
+          <button
+            id="nextButton-{{ section.id }}"
+            type="button"
+            class="slider-button slider-button--next p-1 cursor-pointer"
+            name="next"
+            aria-label="{{ 'accessibility.next_slide' | t }}"
+          >
+            {% render 'icon-chevron-right', height: 20, width: 20 %}
+          </button>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="{% if section.settings.contain %}container{% endif %} mx-auto px-4">
+    <slider-component
+      data-page-total="#total-{{ section.id }}"
+      data-page-count="#counter-{{ section.id }}"
+      data-previous-button="#previousButton-{{ section.id }}"
+      data-next-button="#nextButton-{{ section.id }}"
+      class="slider-mobile-gutter relative"
+    >
+      <ul class="[ flex flex-no-wrap flex-row overflow-y-hidden overflow-x-auto ] scroll-bar scroll-bar--hidden">
+        {% for product in collection.products limit: total_products %}
+          <li
+            {{ block.shopify_attributes }}
+            class="[ relative w-7/10 md:w-4/10 lg:w-2/10 flex-shrink-0 pr-4 mb-4 lg:mb-10 ]"
+          >
+            <div class="h-full">
+              {% render 'product-grid-item' with product: product %}
+            </div>
+          </li>
+        {% else %}
+          {% for i in (1..6) %}
+            <li>
+              <a href="#">
+                {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+                <p>
+                  {{ 'homepage.onboarding.product_title' | t }}
+                </p>
+              </a>
+              <p>{{ 1999 | money }}</p>
+            </li>
+          {% endfor %}
+        {% endfor %}
+      </ul>
+    </slider-component>
+    {%- if section.settings.show_cta -%}
+      <div class="text-center">
+        <a
+          href="{{ collection.url }}"
+          class="inline-block btn {{ section.settings.cta_style }} leading-normal text-sm p-4"
+        >
+          {%- if section.settings.cta_copy == blank -%}
+            {{- 'buttons.shop_with_collection' | t: collection: collection.title -}}
+          {%- else -%}
+            {{- section.settings.cta_copy -}}
+          {%- endif -%}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{%- if settings.development_mode -%}
+  <script src="{{ 'slider.js' | asset_url }}" defer="defer"></script>
+{%- else -%}
+  <script src="{{ 'slider.min.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Featured collection",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "contain",
+      "label": "Contain the Section within a wrapper?",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Section Styling"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "select",
+      "id": "section_spacing",
+      "label": "Section Spacing",
+      "options": [
+        {
+          "value": "py-0",
+          "label": "None"
+        },
+        {
+          "value": "py-8",
+          "label": "Small"
+        },
+        {
+          "value": "py-16",
+          "label": "Medium"
+        },
+        {
+          "value": "py-32",
+          "label": "Large"
+        },
+        {
+          "value": "py-64",
+          "label": "x-Large"
+        }
+      ],
+      "default": "py-8"
+    },
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Featured collection"
+    },
+    {
+      "id": "collection",
+      "type": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "total_products",
+      "label": "Total number of products",
+      "min": 4,
+      "max": 28,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show Collection CTA?",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_copy",
+      "label": "CTA Copy"
+    },
+    {
+      "type": "select",
+      "id": "cta_style",
+      "label": "CTA Style",
+      "options": [
+        {
+          "label": "Primary",
+          "value": "primary-button"
+        },
+        {
+          "label": "Secondary",
+          "value": "secondary-button"
+        },
+        {
+          "label": "Tertiary",
+          "value": "tertiary-button"
+        }
+      ],
+      "default": "primary-button"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrolling collection",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}

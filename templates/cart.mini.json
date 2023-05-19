@@ -1,0 +1,21 @@
+{
+  "layout": false,
+  "sections": {
+    "main": {
+      "type": "main-cart-mini",
+      "settings": {
+      },
+      "blocks": {
+        "cart": {
+          "type": "cart"
+        }
+      },
+      "block_order": [
+        "cart"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

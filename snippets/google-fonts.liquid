@@ -1,0 +1,34 @@
+{%- liquid
+assign navigation_font = settings.navigation_font
+assign header_font = settings.heading_font
+assign body_font = settings.body_font
+
+assign navigation_font_bold = navigation_font | font_modify: 'weight', 'bold'
+assign navigation_font_italic = navigation_font | font_modify: 'style', 'italic'
+assign navigation_font_bold_italic = navigation_font_bold | font_modify: 'style', 'italic'
+
+assign header_font_bold = header_font | font_modify: 'weight', 'bold'
+assign header_font_italic = header_font | font_modify: 'style', 'italic'
+assign header_font_bold_italic = header_font_bold | font_modify: 'style', 'italic'
+
+assign body_font_bold = body_font | font_modify: 'weight', 'bold'
+assign body_font_italic = body_font | font_modify: 'style', 'italic'
+assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic' -%}
+
+{% style %}
+{{ navigation_font | font_face: font_display: 'swap' }}
+{{ header_font | font_face: font_display: 'swap' }}
+{{ body_font | font_face: font_display: 'swap' }}
+
+{{ navigation_font_bold | font_face: font_display: 'swap' }}
+{{ navigation_font_italic | font_face: font_display: 'swap' }}
+{{ navigation_font_bold_italic | font_face: font_display: 'swap' }}
+
+{{ header_font_bold | font_face: font_display: 'swap' }}
+{{ header_font_italic | font_face: font_display: 'swap' }}
+{{ header_font_bold_italic | font_face: font_display: 'swap' }}
+
+{{ body_font_bold | font_face: font_display: 'swap' }}
+{{ body_font_italic | font_face: font_display: 'swap' }}
+{{ body_font_bold_italic | font_face: font_display: 'swap' }}
+{% endstyle %}

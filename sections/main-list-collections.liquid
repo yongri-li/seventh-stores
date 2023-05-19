@@ -1,0 +1,64 @@
+<div data-section-id="{{ section.id }}">
+
+    {%- for block in section.blocks -%}
+        {%- case block.type -%}
+            {%- when '@app' -%}
+                {% render block %}
+                
+            {%- when 'breadcrumbs' -%}
+                {% render 'breadcrumb' %}
+
+            {%- when 'header' -%}
+                {% render 'page-header' %}
+
+            {%- when 'collection_grid' -%}
+                <div class="container mx-auto py-16 px-4 overflow-hidden sm:py-24 sm:px-6 lg:px-8">
+                    <div class="[ grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 ]" id="ajaxCollectionGrid">
+                    {% for collection in collections %}
+                        {% unless collection.handle == 'frontpage' %}
+                        <div>
+                            <div class="h-80 shadow-md">    
+                                <a class="block h-full" href="{{ collection.url }}">
+                                    {%- liquid
+                                    if collection.image != blank
+                                        render 'responsive-image' with image: collection.image, image_class: 'object-cover h-full'
+                                    elsif collection.products.first != blank
+                                        render 'responsive-image' with image: collection.products.first.featured_image, image_class: 'object-cover h-full'
+                                    endif -%}
+                                </a>
+                            </div>
+                            <p class="heading pt-4"><a href="{{ collection.url }}">{{ collection.title }}</a></p>
+                        </div>
+                        {%- endunless -%}
+                    {% endfor %}
+                    </div>
+                </div>
+        {%- endcase -%}
+    {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "List collections page",
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "breadcrumbs",
+      "name": "Breadcrumbs",
+      "limit": 1
+    },
+    {
+      "type": "header",
+      "name": "Header",
+      "limit": 1
+    },
+    {
+      "type": "collection_grid",
+      "name": "Collection Grid",
+      "limit": 1
+    }
+  ]
+}
+{% endschema %}

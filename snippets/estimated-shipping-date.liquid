@@ -1,0 +1,19 @@
+<p class="my-4 leading-relaxed text-xs heading">
+  Order today, and you'll receive your package between <span class="underline" id="fromDate"></span> and
+  <span class="underline" id="toDate"></span>.
+</p>
+<script src="//cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js" defer></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    let fromDate = Date.today().addDays(2);
+    if (fromDate.is().saturday() || fromDate.is().sunday()) {
+      fromDate = fromDate.next().monday();
+    }
+    let toDate = Date.today().addDays(5);
+    if (toDate.is().saturday() || toDate.is().sunday()) {
+      toDate = toDate.next().monday();
+    }
+    document.getElementById('fromDate').innerHTML = fromDate.toString('dddd MMMM dS');
+    document.getElementById('toDate').innerHTML = toDate.toString('dddd MMMM dS');
+  });
+</script>

@@ -1,0 +1,57 @@
+<div class="flex space-x-6 md:order-2">
+    {%- unless settings.social_twitter_link == blank -%}
+    <a href="{{ settings.social_twitter_link }}" class="leading-relaxed">
+        {% render 'icon-twitter' with height: 20, width: 20 %}
+        <span class="sr-only">Twitter</span>
+    </a>
+    {%- endunless -%}
+
+    {%- unless settings.social_facebook_link == blank -%}
+        <a href="{{ settings.social_facebook_link }}" class="leading-relaxed">
+            {% render 'icon-facebook' with height: 20, width: 20 %}
+            <span class="sr-only">facebook</span>
+        </a>
+    {%- endunless -%}
+
+    {%- unless settings.social_pinterest_link == blank -%}
+        <a href="{{ settings.social_pinterest_link }}" class="leading-relaxed">
+            {% render 'icon-pinterest' with height: 20, width: 20 %}
+            <span class="sr-only">pinterest</span>
+        </a>
+    {%- endunless -%}
+
+    {%- unless settings.social_instagram_link == blank -%}
+        <a href="{{ settings.social_instagram_link }}" class="leading-relaxed">
+            {% render 'icon-instagram' with height: 20, width: 20 %}
+            <span class="sr-only">instagram</span>
+        </a>
+    {%- endunless -%}
+
+    {%- unless settings.social_snapchat_link == blank -%}
+        <a href="{{ settings.social_snapchat_link }}" class="leading-relaxed">
+            {% render 'icon-snapchat' with height: 20, width: 20 %}
+            <span class="sr-only">snapchat</span>
+        </a>
+    {%- endunless -%}
+
+    {%- unless settings.social_tumblr_link == blank -%}
+        <a href="{{ settings.social_tumblr_link }}" class="leading-relaxed">
+            {% render 'icon-tumblr' with height: 20, width: 20 %}
+            <span class="sr-only">tumblr</span>
+        </a>
+    {%- endunless -%}
+
+    {%- unless settings.social_youtube_link == blank -%}
+        <a href="{{ settings.social_youtube_link }}" class="leading-relaxed">
+            {% render 'icon-youtube' with height: 20, width: 20 %}
+            <span class="sr-only">youtube</span>
+        </a>
+    {%- endunless -%}
+
+    {%- unless settings.social_vimeo_link == blank -%}
+        <a href="{{ settings.social_vimeo_link }}" class="leading-relaxed">
+            {% render 'icon-vimeo' with height: 20, width: 20 %}
+            <span class="sr-only">vimeo</span>
+        </a>
+    {%- endunless -%}
+</div>

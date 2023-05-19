@@ -1,0 +1,43 @@
+{%- for block in section.blocks -%}
+    {%- case block.type -%}
+        {%- when '@app' -%}
+            {% render block %}
+        {%- when 'breadcrumbs' -%}
+            {% render 'breadcrumb' %}
+        {%- when 'header' -%}
+            {% render 'page-header' %}
+        {%- when 'content' -%}
+            <div class="container mx-auto py-8 px-4 overflow-hidden">
+                <div class="rte">
+                    {{ page.content }}
+                </div>
+            </div>
+    {%- endcase -%}
+{%- endfor -%}
+
+{% schema %}
+{
+  "name": "Page",
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "breadcrumbs",
+      "name": "Breadcrumbs",
+      "limit": 1
+    },
+    {
+      "type": "header",
+      "name": "Header",
+      "limit": 1
+    },
+    {
+      "type": "content",
+      "name": "Content",
+      "limit": 1
+    }
+  ]
+}
+{% endschema %}
+  

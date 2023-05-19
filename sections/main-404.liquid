@@ -1,0 +1,33 @@
+{%- liquid
+for block in section.blocks
+    case block.type
+    when '@app'
+        render block
+    when 'breadcrumbs'
+        render 'breadcrumb'
+    when 'header'
+        render 'page-header'
+    endcase
+endfor -%}
+
+{% schema %}
+{
+  "name": "404 page",
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "breadcrumbs",
+      "name": "Breadcrumbs",
+      "limit": 1
+    },
+    {
+      "type": "header",
+      "name": "Header",
+      "limit": 1
+    }
+  ]
+}
+{% endschema %}
+  

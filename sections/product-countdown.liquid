@@ -1,0 +1,222 @@
+{%- render 'product-countdown' -%}
+
+{% schema %}
+{
+  "name": "Countdown",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_countdown",
+      "label": "Show Countdown?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_when_expired",
+      "label": "Show when expired?",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "count_to",
+      "label": "Count to..?",
+      "options": [
+        {
+          "value": "date",
+          "label": "Date"
+        },
+        {
+          "value": "time",
+          "label": "Time"
+        },
+        {
+          "value": "both",
+          "label": "Both"
+        }
+      ],
+      "default": "both"
+    },
+    {
+      "type": "header",
+      "content": "Days to show promo"
+    },
+    {
+      "type": "checkbox",
+      "id": "monday",
+      "label": "Monday",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "tuesday",
+      "label": "Tuesday",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "wednesday",
+      "label": "Wednesday",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "thursday",
+      "label": "Thursday",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "friday",
+      "label": "Friday",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "saturday",
+      "label": "Saturday",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "sunday",
+      "label": "Sunday",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Delivery"
+    },
+    {
+      "type": "text",
+      "id": "content",
+      "label": "Content",
+      "info": "Add '{countdown}' in to the text if you wish to show a countdown.",
+      "default": "Order within {countdown} for same day dispatch."
+    },
+    {
+      "type": "header",
+      "content": "Date"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_days",
+      "label": "Show Days?",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "month",
+      "label": "Month",
+      "options": [
+        {
+          "value": "Jan",
+          "label": "January"
+        },
+        {
+          "value": "Feb",
+          "label": "February"
+        },
+        {
+          "value": "Mar",
+          "label": "March"
+        },
+        {
+          "value": "Apr",
+          "label": "Apri"
+        },
+        {
+          "value": "May",
+          "label": "May"
+        },
+        {
+          "value": "Jun",
+          "label": "June"
+        },
+        {
+          "value": "Jul",
+          "label": "July"
+        },
+        {
+          "value": "Aug",
+          "label": "August"
+        },
+        {
+          "value": "Sep",
+          "label": "September"
+        },
+        {
+          "value": "Oct",
+          "label": "October"
+        },
+        {
+          "value": "Nov",
+          "label": "November"
+        },
+        {
+          "value": "Dec",
+          "label": "December"
+        }
+      ],
+      "default": "Jan"
+    },
+    {
+      "type": "range",
+      "id": "day",
+      "label": "Day",
+      "min": 1,
+      "max": 31,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "text",
+      "id": "year",
+      "label": "Year",
+      "info": "Enter in for digit format. For example, 2021."
+    },
+    {
+      "type": "header",
+      "content": "Time"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_time",
+      "label": "Show Time?",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "second",
+      "label": "Second",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "minute",
+      "label": "Minute",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "hour",
+      "label": "Hour",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "default": 14
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,490 @@
+{%- if section.settings.show_lightning_nav -%}
+  <link
+    rel="stylesheet"
+    href="{{ 'component-lightning-menu.css' | asset_url }}"
+    media="print"
+    onload="this.media='all'"
+  >
+  <noscript>{{ 'component-lightning-menu.css' | asset_url | stylesheet_tag }}</noscript>
+{%- endif -%}
+{% style %}
+  :root{
+    --header-background-color: {{ section.settings.background_color }};
+    --header-border-bottom: {{ section.settings.border_color_bottom }};
+    --header-menu-link-color: {{ section.settings.menu_link_color }};
+    --header-menu-link-color-hover: {{ section.settings.menu_link_color_hover }};
+  }
+
+  header{
+    border-bottom-color: var(--header-border-bottom);
+  }
+
+  header,
+  .mega-menu {
+    background-color: var(--header-background-color);
+  }
+
+  .header-font-color{
+    color: var(--header-menu-link-color);
+  }
+
+  .header-font-color:hover{
+    color: var(--header-menu-link-color-hover);
+  }
+
+  .lightning-menu{
+    border-top-color: {{ section.settings.lightning_nav_border_top }};
+    border-bottom-color: {{ section.settings.lightning_nav_border_bottom }};
+    background-color: {{ section.settings.lightning_nav_bg_color }};
+  }
+
+  .lightning-link{
+    color: {{ section.settings.lightning_nav_link_color }};
+  }
+
+  .header-logo{
+    max-width: {{ section.settings.logo_max_width_mobile }}px;
+  }
+
+  @media only screen and (min-width: 1024px){
+    .header-logo{
+      max-width: {{ section.settings.logo_max_width_desktop }}px;
+    }
+  }
+
+  .navigation-link{
+    font-size: {{ section.settings.font_size }}px;
+  }
+{% endstyle %}
+
+<div data-section-id="{{ section.id }}" data-section-type="header-section">
+  {%- liquid
+    if section.settings.desktop_header_style == 'logo-left'
+      render 'desktop-header-style-one'
+    else
+      render 'desktop-header-style-two'
+    endif
+  -%}
+
+  {%- liquid
+    if section.settings.mobile_header_style == 'logo-left'
+      render 'mobile-header-logo-left'
+    else
+      render 'mobile-header-logo-center'
+    endif
+  -%}
+</div>
+
+<div data-search-box class="hidden search-results relative">
+  <div class="{% if section.settings.contain %}container{% endif %} mx-auto" x-data="productSearch()">
+    <form
+      action="{{ routes.search_url }}"
+      class="border border-color border-solid bg-gray-50 overflow-hidden relative z-50"
+    >
+      <div class="relative flex items-center sm:px-6 lg:px-8">
+        <input
+          type="search"
+          name="q"
+          id="Search"
+          placeholder="{{ 'general.search.placeholder' | t }}"
+          data-predictive-search-input
+          @keyup="getResults"
+          class="[ block flex-grow border-none appearance-none rounded-none relative py-2 px-4 md:py-4 leading-tight focus:outline-none focus:shadow-outline-blue focus:z-10 bg-gray-50 ]"
+        >
+        <button class="btn py-2 px-4 md:py-4 text-center leading-tight bg-gray-50" type="submit">
+          {% render 'icon-search', classes: 'w-5 h-5 md:w-6 md:h-6' %}
+        </button>
+        <p data-clear class="cursor-pointer pr-4" @click="clearResults">clear</p>
+      </div>
+    </form>
+    <template x-if="hasResults">
+      <div class="search-results px-4 pb-4 lg:px-8 absolute left-0 top-0 right-0 z-10">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+            <template x-for="product in products">
+              <div class="mb-2 flex items-center">
+                <div class="w-24">
+                  <a :href="product.url">
+                    <img
+                      class="w-full"
+                      loading="lazy"
+                      :src="product.featured_image.url"
+                      :width="product.featured_image.width"
+                      :height="product.featured_image.height"
+                      :alt="product.featured_image.alt"
+                    >
+                  </a>
+                </div>
+                <div class="pl-4">
+                  <a class="block" :href="product.url">
+                    <p class="heading text-sm" x-text="product.title"></p>
+                    <p class="text-xs" x-text="currencySymbol+product.price"></p>
+                  </a>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+    </template>
+    <template x-if="!hasResults">
+      <template x-if="searchQuery != false">
+        <div class="search-results px-4 pb-4 lg:px-8 absolute left-0 top-0 right-0 z-10">
+          <div class="container mx-auto mt-4">
+            <p>Sorry, there are no search results for "<span x-text="searchQuery"></span>".</p>
+          </div>
+        </div>
+      </template>
+    </template>
+  </div>
+  <div class="fixed inset-0 z10 bg-black opacity-50"></div>
+</div>
+<script type="text/javascript">
+  function productSearch(e) {
+    return {
+      hasResults: false,
+      products: null,
+      currencySymbol: '{{ cart.currency.symbol }}',
+      searchQuery: false,
+      getResults(e) {
+        const query = e.path[0].value;
+        if (query.length === 0) {
+          this.clearResults();
+          return;
+        }
+        if (query.length < 4) return;
+        this.searchQuery = query;
+        fetch(`/search/suggest.json?q=${query}&resources[type]=product&resources[limit]=4`)
+          .then((response) => response.json())
+          .then((suggestions) => {
+            const productSuggestions = suggestions.resources.results.products;
+            console.log('productSuggestions: ', productSuggestions);
+            if (productSuggestions.length > 0) {
+              this.products = productSuggestions;
+              this.hasResults = true;
+            }
+          });
+      },
+      clearResults() {
+        this.products = null;
+        this.hasResults = false;
+        this.searchQuery = false;
+        document.querySelectorAll('[data-predictive-search-input]')[0].value = '';
+      },
+    };
+  }
+</script>
+
+{%- unless settings.app_bar_enabled -%}
+  <div class="lg:hidden fixed rounded-full bottom-4 right-4 bg-white z-40 border border-color border-solid">
+    <drawer-trigger data-target="[data-menu-drawer]" data-open-class="flex" data-close-class="hidden">
+      <button type="button" class="p-2">
+        <span class="sr-only">Open menu</span>
+        {% render 'icon-hamburger', height: 20 %}
+      </button>
+    </drawer-trigger>
+  </div>
+{%- endunless -%}
+
+{% javascript %}
+  const localizationFormSubmit = function (event) {
+    event.target.form.submit();
+  };
+
+  document.querySelectorAll('.shopify-localization-form select').forEach(function (element) {
+    element.addEventListener('change', localizationFormSubmit);
+  });
+{% endjavascript %}
+
+{%- if section.settings.show_lightning_nav -%}
+  <script src="{{ 'lightning-menu.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    {% if section.settings.logo %}
+      "logo": {{ section.settings.logo | image_url: width: section.settings.logo.width | prepend: "https:" | json }},
+    {% endif %}
+    "sameAs": [
+      {{ settings.social_twitter_link | json }},
+      {{ settings.social_facebook_link | json }},
+      {{ settings.social_pinterest_link | json }},
+      {{ settings.social_instagram_link | json }},
+      {{ settings.social_tumblr_link | json }},
+      {{ settings.social_snapchat_link | json }},
+      {{ settings.social_youtube_link | json }},
+      {{ settings.social_vimeo_link | json }}
+    ],
+    "url": {{ shop.url | append: page.url | json }}
+  }
+</script>
+
+{%- if request.page_type == 'index' -%}
+  {% assign potential_action_target = shop.url | append: routes.search_url | append: '?q={search_term_string}' %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": {{ shop.name | json }},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {{ potential_action_target | json }},
+        "query-input": "required name=search_term_string"
+      },
+      "url": {{ shop.url | append: page.url | json }}
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Styling"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "border_color_bottom",
+      "label": "Border Color Bottom",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "menu_link_color",
+      "label": "Menu Link Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "menu_link_color_hover",
+      "label": "Menu Link Color - Hover",
+      "default": "#999999"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Navigation Font Size",
+      "min": 8,
+      "max": 28,
+      "step": 1,
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "contain",
+      "label": "Contain the Header within wrapper?",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "desktop_header_style",
+      "label": "Desktop Header Style",
+      "options": [
+        {
+          "value": "logo-left",
+          "label": "Logo left"
+        },
+        {
+          "value": "logo-center",
+          "label": "Logo Center"
+        }
+      ],
+      "default": "logo-center"
+    },
+    {
+      "type": "select",
+      "id": "mobile_header_style",
+      "label": "Mobile Header Style",
+      "options": [
+        {
+          "value": "logo-left",
+          "label": "Logo Left"
+        },
+        {
+          "value": "logo-center",
+          "label": "Logo Center"
+        }
+      ],
+      "default": "logo-center"
+    },
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width_mobile",
+      "min": 50,
+      "max": 450,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo max width - mobile",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width_desktop",
+      "min": 50,
+      "max": 450,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo max width - desktop",
+      "default": 200
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "main_linklist",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "header",
+      "content": "Secondary Navigation"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_nav",
+      "label": "Show secondary navigation menu?",
+      "default": true,
+      "info": "Only visible on Header Style Two"
+    },
+    {
+      "type": "link_list",
+      "id": "secondary_nav",
+      "label": "Secondary navigation menu",
+      "info": "The scrollable menu underneath the main header"
+    },
+    {
+      "type": "header",
+      "content": "Quick Links"
+    },
+    {
+      "type": "select",
+      "id": "account_type",
+      "label": "Account link type",
+      "options": [
+        {
+          "value": "icon",
+          "label": "Icon"
+        },
+        {
+          "value": "links",
+          "label": "Links"
+        }
+      ],
+      "default": "icon"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_currency_selector",
+      "label": "Show Currency Selector?",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "mega_menu_image",
+      "name": "Mega Menu - Image",
+      "settings": [
+        {
+          "type": "url",
+          "id": "menu_link",
+          "label": "Menu Link",
+          "info": "This should be the link you want your menu to appear under"
+        },
+        {
+          "type": "range",
+          "id": "column_width",
+          "label": "Column Width",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "default": 25
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "image_height",
+          "label": "Image Height",
+          "info": "Height in pixels. Do not add PX measurement."
+        },
+        {
+          "type": "url",
+          "id": "image_link",
+          "label": "Image Link"
+        },
+        {
+          "type": "text",
+          "id": "image_heading",
+          "label": "Image Heading"
+        }
+      ]
+    },
+    {
+      "type": "mega_menu_menu",
+      "name": "Mega Menu - Menu",
+      "settings": [
+        {
+          "type": "url",
+          "id": "menu_link",
+          "label": "Menu Link",
+          "info": "This should be the link you want your menu to appear under"
+        },
+        {
+          "type": "range",
+          "id": "column_width",
+          "label": "Column Width",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "default": 25
+        },
+        {
+          "type": "text",
+          "id": "menu_heading",
+          "label": "Menu Heading"
+        },
+        {
+          "type": "url",
+          "id": "heading_url",
+          "label": "Heading URL",
+          "info": "A link for the heading"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

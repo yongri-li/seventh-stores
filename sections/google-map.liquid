@@ -1,0 +1,47 @@
+{%- assign show_section = section.settings.show_section -%}
+{%- assign full_bleed = section.settings.full_bleed -%}
+{%- assign embed_code = section.settings.embed_code -%}
+
+{%- if show_section -%}
+<section class="google-map">
+{%- unless full_bleed -%}
+    <div class="container">
+{%- endunless -%}    
+        {{ embed_code }}
+{%- unless full_bleed -%}
+    </div>
+{%- endunless -%}
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Google Map",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_section",
+      "label": "Show section?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "full_bleed",
+      "label": "Full bleed map?",
+      "default": true
+    },
+    {
+      "type": "html",
+      "id": "embed_code",
+      "label": "Embed Code",
+      "default": "<div><p>Add your Google Map Embed Code here!</p></div>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Google Map",
+      "category": "Contact"
+    }
+  ]
+}
+{% endschema %}

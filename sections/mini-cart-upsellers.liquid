@@ -1,0 +1,43 @@
+<!-- mini cart upsellers -->
+{%- assign the_collection = blank -%}
+{%- if section.settings.the_collection == blank -%}
+    {%- assign the_collection = collections['all'] -%}
+{%- else -%}
+    {%- assign the_collection = collections[section.settings.the_collection] -%}
+{%- endif -%}
+<hr class="[ mt-8 mb-4 ]">
+
+<div class="[ container mx-auto px-4 pt-4 pb-8 ]">
+    <div class="[ flex flex-wrap overflow-hidden ]">
+        <div class="[ w-full mb-5 overflow-hidden ]">
+            <h2 class="[ text-sm md:text-base text-left ]">{{ 'cart.mini_cart.upsell_title' | t }}</h2>
+        </div>
+    </div>
+    <div class="[ flex flex-no-wrap flex-row overflow-y-hidden overflow-x-auto -ml-4 ] scroll-bar">
+    {% for product in the_collection.products limit: 8 %}
+        <div class="[ bg-white p-4 ml-4 mb-2 lg:mb-5 overflow-hidden flex-shrink-0 w-1/2 ]">
+            {% render 'product-grid-item-mini' with product: product %}
+        </div>
+    {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Mini Cart Upsell",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_section",
+      "label": "Show Mini Cart Upsells?",
+      "default": true
+    },
+    {
+      "type": "collection",
+      "id": "the_collection",
+      "label": "Collection",
+      "info": "Tip - Create a new collection referring all products and sort by Best Selling."
+    }
+  ]
+}
+{% endschema %}

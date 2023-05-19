@@ -1,0 +1,207 @@
+{%- liquid
+assign heading_type = section.settings.heading_type
+assign heading_size_mobile = section.settings.heading_size_mobile
+assign heading_size_desktop = section.settings.heading_size_desktop
+assign content_size_mobile = section.settings.content_size_mobile
+assign content_size_desktop = section.settings.content_size_desktop -%}
+{% style %}
+#shopify-section-{{ section.id }} .content-section__heading{
+    font-size: {{ heading_size_mobile }}px;
+}
+
+#shopify-section-{{ section.id }} .content-section__content{
+    font-size: {{ content_size_mobile }}px;
+}
+
+@media only screen and (min-width: 990px ){
+
+    #shopify-section-{{ section.id }} .content-section__heading{
+        font-size: {{ heading_size_desktop }}px;
+    }
+
+    #shopify-section-{{ section.id }} .content-section__content{
+        font-size: {{ content_size_desktop }}px;
+    }
+}
+{% endstyle %}
+
+<div class="{{ section.settings.section_spacing }}" style="background-color: {{ section.settings.background_color }};">
+    <div class="[ max-w-5xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8 ]">
+        {%- unless section.settings.heading == blank -%}
+        <{{ heading_type }} style="color: {{ section.settings.font_color }};"class="[ leading-normal ] content-section__heading">{{ section.settings.heading | newline_to_br }}</{{heading_type}}>
+        {%- endunless -%}
+        {%- unless section.settings.content == blank -%}
+        <p class="[ mt-4 leading-normal ] content-section__content" style="color: {{ section.settings.font_color }};">{{ section.settings.content | newline_to_br }}</p>
+        {%- endunless -%}
+        {%- unless section.settings.cta_text == blank -%}
+        <a href="{{ section.settings.cta_link }}" class="[ mt-8 w-full inline-flex items-center justify-center px-5 py-3 text-base sm:w-auto ] {{ section.settings.cta_style }}">{{ section.settings.cta_text }}</a>
+        {%- endunless -%}
+    </div>
+</div>
+{% schema %}
+{
+  "name": "Content Section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_spacing",
+      "label": "Section Spacing",
+      "options": [
+        {
+          "value": "my-0",
+          "label": "None"
+        },
+        {
+          "value": "my-8",
+          "label": "Small"
+        },
+        {
+          "value": "my-16",
+          "label": "Medium"
+        },
+        {
+          "value": "my-32",
+          "label": "Large"
+        },
+        {
+          "value": "my-64",
+          "label": "x-Large"
+        }
+      ],
+      "default": "my-8"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#4438ca"
+    },
+    {
+      "type": "color",
+      "id": "font_color",
+      "label": "Font Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "select",
+      "id": "heading_type",
+      "label": "Heading",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        }
+      ],
+      "default": "h1"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Boost your productivity<br/>Start using Workflow today"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Heading font size - Mobile",
+      "min": 8,
+      "max": 50,
+      "step": 1,
+      "default": 34
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "label": "Heading font size - Desktop",
+      "min": 8,
+      "max": 50,
+      "step": 1,
+      "default": 34
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content",
+      "default": "Ac euismod vel sit maecenas id pellentesque eu sed consectetur.<br/>Malesuada adipiscing sagittis vel nulla nec."
+    },
+    {
+      "type": "range",
+      "id": "content_size_mobile",
+      "label": "Content font size - Mobile",
+      "min": 8,
+      "max": 50,
+      "step": 1,
+      "default": 34
+    },
+    {
+      "type": "range",
+      "id": "content_size_desktop",
+      "label": "Content font size - Desktop",
+      "min": 8,
+      "max": 50,
+      "step": 1,
+      "default": 34
+    },
+    {
+      "type": "header",
+      "content": "CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Link"
+    },
+    {
+      "type": "select",
+      "id": "cta_style",
+      "label": "CTA Style",
+      "options": [
+        {
+          "label": "Primary",
+          "value": "primary-button"
+        },
+        {
+          "label": "Secondary",
+          "value": "secondary-button"
+        }
+      ],
+      "default": "primary-button"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Content Section",
+      "category": "Content"
+    }
+  ]
+}
+{% endschema %}

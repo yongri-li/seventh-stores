@@ -1,0 +1,194 @@
+{
+  "sections": {
+    "16317060921dba1150": {
+      "type": "featured-hero",
+      "settings": {
+        "max_height_mobile": 60,
+        "max_height_desktop": 65,
+        "mobile_image": "shopify://shop_images/tailpine-mobile-banner.jpg",
+        "mobile_image_focus": "object-bottom",
+        "desktop_image": "shopify://shop_images/tailpine-desktop-banner.jpg",
+        "desktop_image_focus": "lg:object-right",
+        "mobile_content_focus": "justify-start items-center",
+        "mobile_content_alignment": "text-center",
+        "desktop_content_focus": "lg:justify-center lg:items-start",
+        "desktop_content_alignment": "lg:text-left",
+        "heading": "VANS OLD SKOOL",
+        "content": "Truly \"Off the wall\"",
+        "show_cta_one": true,
+        "cta_text": "SHOP NOW",
+        "cta_link": "shopify://collections/all",
+        "cta_style": "primary-button",
+        "show_cta_two": false,
+        "cta_text_two": "FEATURED",
+        "cta_link_two": "shopify://collections/all",
+        "cta_style_two": "secondary-button",
+        "heading_size_mobile": 22,
+        "content_size_mobile": 12,
+        "content_color_mobile": "#262626",
+        "heading_size_desktop": 34,
+        "content_size_desktop": 16,
+        "content_color_desktop": "#262626"
+      }
+    },
+    "16360999361a597687": {
+      "type": "image-blocks",
+      "blocks": {
+        "16360999361a597687-0": {
+          "type": "image",
+          "settings": {
+            "spacing_bottom": false,
+            "transparent_background": true,
+            "background_color": "#ffffff",
+            "background_transparency": 0,
+            "font_color": "#000000",
+            "style": "four",
+            "promo_url": "shopify://collections/jackets",
+            "promo_image": "shopify://shop_images/urban-fashion.jpg",
+            "mobile_width": "w-1/2",
+            "tablet_width": "md:w-1/3",
+            "desktop_width": "lg:w-1/3",
+            "show_description": false,
+            "heading": "JACKETS",
+            "sub_heading": "SHOP NOW",
+            "content": "",
+            "content_focus_y": "justify-center",
+            "content_focus_x": "items-start",
+            "show_cta": false,
+            "cta_style": "primary-button",
+            "cta_text": ""
+          }
+        },
+        "3b50ac37-6231-47e9-91ea-4ba99022c4c8": {
+          "type": "image",
+          "settings": {
+            "spacing_bottom": false,
+            "transparent_background": true,
+            "background_color": "#ffffff",
+            "background_transparency": 0,
+            "font_color": "#000000",
+            "style": "four",
+            "promo_url": "shopify://collections/tops",
+            "promo_image": "shopify://shop_images/a-model-in-summer-fashion-with-grey-backdrop.jpg",
+            "mobile_width": "w-1/2",
+            "tablet_width": "md:w-1/3",
+            "desktop_width": "lg:w-1/3",
+            "show_description": false,
+            "heading": "TOPS",
+            "sub_heading": "SHOP NOW",
+            "content": "",
+            "content_focus_y": "justify-center",
+            "content_focus_x": "items-start",
+            "show_cta": false,
+            "cta_style": "primary-button",
+            "cta_text": ""
+          }
+        },
+        "4a9758b9-562a-4318-bbfb-26d1cba09a49": {
+          "type": "image",
+          "settings": {
+            "spacing_bottom": false,
+            "transparent_background": true,
+            "background_color": "#ffffff",
+            "background_transparency": 0,
+            "font_color": "#000000",
+            "style": "four",
+            "promo_url": "shopify://collections/jumpers",
+            "promo_image": "shopify://shop_images/woman-wearing-stripes.jpg",
+            "mobile_width": "w-full",
+            "tablet_width": "md:w-1/3",
+            "desktop_width": "lg:w-1/3",
+            "show_description": false,
+            "heading": "JUMPERS",
+            "sub_heading": "SHOP NOW",
+            "content": "",
+            "content_focus_y": "justify-center",
+            "content_focus_x": "items-start",
+            "show_cta": false,
+            "cta_style": "primary-button",
+            "cta_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "16360999361a597687-0",
+        "3b50ac37-6231-47e9-91ea-4ba99022c4c8",
+        "4a9758b9-562a-4318-bbfb-26d1cba09a49"
+      ],
+      "settings": {
+        "contain_section": false,
+        "column_spacing": true,
+        "section_background": "#ffffff",
+        "section_spacing": "py-8",
+        "title": ""
+      }
+    },
+    "1632327085e7741749": {
+      "type": "reviews",
+      "disabled": true,
+      "settings": {
+        "show_section": true,
+        "section_background": "#f9f9f9",
+        "section_spacing": "py-8",
+        "pre_heading": "TRUSTPILOT",
+        "pre_heading_color": "#000000",
+        "heading": "5 Star rated",
+        "heading_color": "#000000",
+        "content": "<p>Check out our awesome 5 star reviews!</p>",
+        "content_color": "#000000",
+        "reviews_link": "",
+        "reviews_logo": "shopify://shop_images/download.png",
+        "reviews_logo_width": 180,
+        "rating_color": "#ffbe00",
+        "rating": 5
+      }
+    },
+    "1632989409880eefd9": {
+      "type": "featured-collection",
+      "settings": {
+        "contain": false,
+        "section_background": "#ffffff",
+        "section_spacing": "py-8",
+        "title": "NEW IN",
+        "collection": "men",
+        "total_products": 8,
+        "show_cta": true,
+        "cta_copy": "",
+        "cta_style": "primary-button"
+      }
+    },
+    "1632838262e0ce1666": {
+      "type": "featured-blog",
+      "settings": {
+        "section_background": "#fafafa",
+        "section_spacing": "py-8",
+        "title": "LATEST FROM THE JOURNAL",
+        "blog": "news",
+        "total_articles": 3
+      }
+    },
+    "1630849043068283ff": {
+      "type": "newsletter",
+      "disabled": true,
+      "settings": {
+        "contain_section": false,
+        "section_style": "style-one",
+        "background_color": "#f9f9f9",
+        "font_color": "#000000",
+        "form_max_width": 375,
+        "section_heading": "Newsletter",
+        "section_content": "Subscribe today and keep up with our latest offers and discounts",
+        "sub_text": "<p><a href=\"#\" title=\"#\">Terms and Conditions</a></p>",
+        "content_alignment": "items-center"
+      }
+    }
+  },
+  "order": [
+    "16317060921dba1150",
+    "16360999361a597687",
+    "1632327085e7741749",
+    "1632989409880eefd9",
+    "1632838262e0ce1666",
+    "1630849043068283ff"
+  ]
+}

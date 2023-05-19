@@ -1,0 +1,192 @@
+<div class="bg-white {{ section.settings.section_spacing_top }} {{ section.settings.section_spacing_bottom }}" style="background-color: {{ section.settings.background_color }};">
+    <section aria-labelledby="product-reviews" class="container mx-auto py-4 md:py-8 px-4 lg:px-8">
+        <h2 class="text-base lg:text-xl pb-4">{{ 'products.product.tab_heading' | t }}</h2>
+        <div class="border-solid border-gray-200 border-b border-t divide-y divide-gray-200">
+            {%- for block in section.blocks -%}
+            <div {% if block.type == 'description' %}id="#description"{% endif %} class="border-solid border-gray-200" :class="{ 'is--active': open == true }" x-data="{ open: {{ block.settings.open }} }">
+                <div class="group relative w-full py-6 flex justify-between items-center text-left hover:cursor-pointer" @click="open = !open">
+                    <p class="text-base heading">{{ block.settings.accordion_heading }}</p>
+                    <button class="accordion__trigger">
+                        <svg x-show="!open" class="h-6 w-6 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                        </svg>
+                        <svg style="display: none;" x-show="open" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M18 12H6" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="pb-4" x-show="open">
+                    <div>
+                        {%- case block.type -%}
+                        {%- when 'description' -%}
+                            {{ product.description }}
+                        {%- when 'page' -%}
+                            {{ pages[block.settings.accordion_page].content }}
+                        {%- when 'reviews' -%}
+                            <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
+                        {%- else -%}
+                            {{ block.settings.accordion_content }}
+                        {%- endcase -%}
+                    </div>
+                </div>
+            </div>
+            {%- endfor -%}
+        </div>
+    </section>
+</div>
+
+{% schema %}
+{
+  "name": "Accordions",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_spacing_top",
+      "label": "Section Top Spacing",
+      "options": [
+        {
+          "value": "mt-0",
+          "label": "None"
+        },
+        {
+          "value": "mt-4",
+          "label": "Small"
+        },
+        {
+          "value": "mt-8",
+          "label": "Medium"
+        },
+        {
+          "value": "mt-16",
+          "label": "Large"
+        }
+      ],
+      "default": "mt-4"
+    },
+    {
+      "type": "select",
+      "id": "section_spacing_bottom",
+      "label": "Section Bottom Spacing",
+      "options": [
+        {
+          "value": "mb-0",
+          "label": "None"
+        },
+        {
+          "value": "mb-4",
+          "label": "Small"
+        },
+        {
+          "value": "mb-8",
+          "label": "Medium"
+        },
+        {
+          "value": "mb-16",
+          "label": "Large"
+        }
+      ],
+      "default": "mb-4"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FEFEFE"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "description",
+      "name": "Description",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "open",
+          "label": "Open?",
+          "default": false,
+          "info": "Is this accordion open by default?"
+        },
+        {
+          "type": "text",
+          "id": "accordion_heading",
+          "label": "Heading",
+          "info": "The name of the heading to appear in the accordion",
+          "default": "Product Description"
+        }
+      ]
+    },
+    {
+      "type": "page",
+      "name": "Page",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "open",
+          "label": "Open?",
+          "default": false,
+          "info": "Is this accordion open by default?"
+        },
+        {
+          "type": "text",
+          "id": "accordion_heading",
+          "label": "Heading",
+          "info": "The name of the heading to appear in the accordion",
+          "default": "Product Description"
+        },
+        {
+          "type": "page",
+          "id": "accordion_page",
+          "label": "Page",
+          "info": "Select a page to show it's content in the accordion. Only works if content type is set to Page"
+        }
+      ]
+    },
+    {
+      "type": "reviews",
+      "name": "Reviews",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "open",
+          "label": "Open?",
+          "default": false,
+          "info": "Is this accordion open by default?"
+        },
+        {
+          "type": "text",
+          "id": "accordion_heading",
+          "label": "Heading",
+          "info": "The name of the heading to appear in the accordion",
+          "default": "Product Description"
+        }
+      ]
+    },
+    {
+      "type": "custom_content",
+      "name": "Cusotm Content",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "open",
+          "label": "Open?",
+          "default": false,
+          "info": "Is this accordion open by default?"
+        },
+        {
+          "type": "text",
+          "id": "accordion_heading",
+          "label": "Heading",
+          "info": "The name of the heading to appear in the accordion",
+          "default": "Product Description"
+        },
+        {
+          "type": "richtext",
+          "id": "accordion_content",
+          "label": "Content",
+          "default": "<p>Default <em>richtext</em> <a href=\"https://example.com/\">content</a></p>"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,11 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env"
+    ]
+  ],
+  "compact": false,
+  "ignore": [
+    "/bower_components/handlebars/"
+  ]
+}

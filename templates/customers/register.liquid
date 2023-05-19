@@ -1,0 +1,27 @@
+<div class="[ flex items-center justify-center bg-gray-50 py-20 md:py-40 px-4 sm:px-6 lg:px-8 ] cls-fix">
+  <div class="max-w-lg w-full bg-white p-4 lg:p-16">
+    <!-- password reset success -->
+    <div class="[ bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md ] form-success hidden" role="alert" id="ResetSuccess">
+      <div class="flex">
+        <div class="py-1">
+          <svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg>
+        </div>
+        <div>
+          <p class="font-bold">{{ 'customer.recover_password.success' | t }}</p>
+          <p class="text-sm">{{ 'customer.recover_password.success' | t }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex divide-x divide-gray-200">
+      <h2 class="mb-6 text-center text-xs lg:text-base leading-relaxed w-1/2">
+        <a href="/account/login" class="opacity-50">{{ 'customer.login.title' | t }}</a>
+      </h2>
+      <h1 class="mb-6 text-center text-xs lg:text-base leading-relaxed w-1/2">
+        {{ 'customer.register.title' | t }}
+      </h1>
+    </div>
+
+    {%- render 'customer-registration-form' -%}
+  </div>
+</div>

@@ -1,0 +1,236 @@
+{%- liquid
+assign section_style = section.settings.section_style
+assign section_spacing = section.settings.section_spacing
+assign section_background = section.settings.section_background -%}
+
+<section class="{{ section_spacing }} collection-with-products" style="background-color: {{ section_background }};">
+    {%- if section.settings.contain_section -%}
+    <div class="container mx-auto px-4">
+    {%- else -%}
+    <div class="mx-auto px-4">
+    {%- endif -%}
+        {%- liquid
+        case section_style
+        when 'style-one'
+            render 'collection-with-products-one'
+        when 'style-two'
+            render 'collection-with-products-two'
+        when 'style-three'
+            render 'collection-with-products-three'
+        else
+            render 'collection-with-products-four'
+        endcase -%}
+
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection with Products",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Styling"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "select",
+      "id": "section_spacing",
+      "label": "Section Spacing",
+      "options": [
+        {
+          "value": "py-0",
+          "label": "None"
+        },
+        {
+          "value": "py-8",
+          "label": "Small"
+        },
+        {
+          "value": "py-16",
+          "label": "Medium"
+        },
+        {
+          "value": "py-32",
+          "label": "Large"
+        },
+        {
+          "value": "py-64",
+          "label": "x-Large"
+        }
+      ],
+      "default": "py-8"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "contain_section",
+      "label": "Contain section within wrapper?",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "section_style",
+      "label": "Section Style",
+      "options": [
+        {
+          "label": "Style one",
+          "value": "style-one"
+        },
+        {
+          "label": "Style two",
+          "value": "style-two"
+        },
+        {
+          "label": "Style three",
+          "value": "style-three"
+        },
+        {
+          "label": "Style four",
+          "value": "style-four"
+        }
+      ],
+      "default": "style-one"
+    },
+    {
+      "type": "header",
+      "content": "Collection"
+    },
+    {
+      "type": "collection",
+      "id": "section_collection",
+      "label": "Collection"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "image_picker",
+      "id": "collection_image",
+      "label": "Collection Image"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "info": "The title that appears on the image."
+    },
+    {
+      "type": "textarea",
+      "id": "section_subtitle",
+      "label": "Section Subtitle",
+      "info": "The subtitle that appears on the image."
+    },
+    {
+      "type": "select",
+      "id": "content_focus_y",
+      "label": "Content Focus - Vertical",
+      "info": "Only applies for styles 1 and 2.",
+      "default": "justify-start",
+      "options": [
+        {
+          "label": "Top",
+          "value": "justify-start"
+        },
+        {
+          "label": "Center",
+          "value": "justify-center"
+        },
+        {
+          "label": "Bottom",
+          "value": "justify-end"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "content_focus_x",
+      "label": "Content Focus - Horizontal",
+      "default": "items-start",
+      "options": [
+        {
+          "label": "Left",
+          "value": "items-start"
+        },
+        {
+          "label": "Center",
+          "value": "items-center"
+        },
+        {
+          "label": "Right",
+          "value": "items-end"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "content_background_color",
+      "label": "Content background color.",
+      "default": "#000000",
+      "info": "One styles 1 and 2, this colour will be at 50% opacity"
+    },
+    {
+      "type": "color",
+      "id": "content_text_color",
+      "label": "Content font color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show CTA?",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Shop the Collection"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Link"
+    },
+    {
+      "type": "select",
+      "id": "cta_style",
+      "label": "CTA Style",
+      "options": [
+        {
+          "label": "Primary",
+          "value": "primary-button"
+        },
+        {
+          "label": "Secondary",
+          "value": "secondary-button"
+        }
+      ],
+      "default": "primary-button"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection with Products",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}

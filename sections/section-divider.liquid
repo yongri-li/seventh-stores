@@ -1,0 +1,86 @@
+{%- assign contain_divider = section.settings.contain_divider -%}
+{%- assign divider_height = section.settings.divider_height -%}
+{%- assign divider_color = section.settings.divider_color -%}
+{% style %}
+#shopify-section-{{ section.id }} .divider{
+    
+}
+{% endstyle %}
+
+<div class="{{ section.settings.section_spacing }}" style="background-color: {{ section.settings.background_color }};">
+    {%- if contain_divider -%}
+    <div class="container mx-auto px-4">
+    {%- endif -%}
+        <hr style="height: {{ divider_height }}px; background-color: {{ divider_color }};">
+    {%- if contain_divider -%}
+    </div>
+    {%- endif -%}
+</div>
+{% schema %}
+{
+  "name": "Section Divider",
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_spacing",
+      "label": "Section Spacing",
+      "options": [
+        {
+          "value": "my-0",
+          "label": "None"
+        },
+        {
+          "value": "my-8",
+          "label": "Small"
+        },
+        {
+          "value": "my-16",
+          "label": "Medium"
+        },
+        {
+          "value": "my-32",
+          "label": "Large"
+        },
+        {
+          "value": "my-64",
+          "label": "x-Large"
+        }
+      ],
+      "default": "my-8"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#4438ca"
+    },
+    {
+      "type": "checkbox",
+      "id": "contain_divider",
+      "label": "Contain Divider?",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "divider_height",
+      "label": "Divider Height",
+      "min": 0,
+      "max": 25,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider Color",
+      "default": "#EEEEEE"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Section Divider",
+      "category": "Content"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,782 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Tailpine",
+    "theme_version": "1.0.0",
+    "theme_author": "Shopify",
+    "theme_documentation_url": "https://shopify.github.io/slate/",
+    "theme_support_email": "studio@blockdigital.co.uk"
+  },
+  {
+    "name": "Site Settings",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "use_mini_cart",
+        "label": "Use Mini Cart?",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Wholesale Settings",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "wholesale_enabled",
+        "label": "Enable Wholesale?",
+        "info": "Enabling this means customers need to be logged in to see prices."
+      },
+      {
+        "type": "text",
+        "id": "wholesale_tag",
+        "label": "Wholesale tag",
+        "info": "The tag we should check for to see if a customer is approved.",
+        "default": "approved"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Navigation"
+      },
+      {
+        "type": "font_picker",
+        "id": "navigation_font",
+        "label": "Navigation Font Family",
+        "default": "work_sans_n4"
+      },
+      {
+        "type": "select",
+        "id": "navigation_transform",
+        "label": "Navigation Style",
+        "options": [
+          {
+            "value": "uppercase",
+            "label": "Uppercase"
+          },
+          {
+            "value": "capitalize",
+            "label": "Capitalize"
+          },
+          {
+            "value": "lowercase",
+            "label": "Lowercase"
+          },
+          {
+            "value": "inherit",
+            "label": "Default"
+          }
+        ],
+        "default": "inherit"
+      },
+      {
+        "type": "range",
+        "id": "navigation_letter_spacing",
+        "label": "Navigation Letter Spacing",
+        "min": 0,
+        "max": 2,
+        "step": 0.1,
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Headings"
+      },
+      {
+        "type": "font_picker",
+        "id": "heading_font",
+        "label": "Heading Font Family",
+        "default": "work_sans_n4"
+      },
+      {
+        "type": "select",
+        "id": "heading_transform",
+        "label": "Heading Style",
+        "options": [
+          {
+            "value": "uppercase",
+            "label": "Uppercase"
+          },
+          {
+            "value": "capitalize",
+            "label": "Capitalize"
+          },
+          {
+            "value": "lowercase",
+            "label": "Lowercase"
+          },
+          {
+            "value": "inherit",
+            "label": "Default"
+          }
+        ],
+        "default": "inherit"
+      },
+      {
+        "type": "range",
+        "id": "heading_letter_spacing",
+        "label": "Heading Letter Spacing",
+        "min": 0,
+        "max": 2,
+        "step": 0.1,
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Body Font"
+      },
+      {
+        "type": "font_picker",
+        "id": "body_font",
+        "label": "Body Font Family",
+        "default": "work_sans_n4"
+      },
+      {
+        "type": "header",
+        "content": "Font Sizes"
+      },
+      {
+        "type": "range",
+        "id": "body_fs",
+        "min": 10,
+        "max": 18,
+        "step": 1,
+        "unit": "px",
+        "label": "Base Size",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "heading_1_fs",
+        "min": 12,
+        "max": 64,
+        "step": 1,
+        "unit": "px",
+        "label": "Heading 1 Font Size",
+        "default": 32
+      },
+      {
+        "type": "range",
+        "id": "heading_2_fs",
+        "min": 12,
+        "max": 64,
+        "step": 1,
+        "unit": "px",
+        "label": "Heading 2 Font Size",
+        "default": 28
+      },
+      {
+        "type": "range",
+        "id": "heading_3_fs",
+        "min": 12,
+        "max": 64,
+        "step": 1,
+        "unit": "px",
+        "label": "Heading 3 Font Size",
+        "default": 26
+      },
+      {
+        "type": "range",
+        "id": "heading_4_fs",
+        "min": 12,
+        "max": 64,
+        "step": 1,
+        "unit": "px",
+        "label": "Heading 4 Font Size",
+        "default": 24
+      },
+      {
+        "type": "range",
+        "id": "heading_5_fs",
+        "min": 12,
+        "max": 64,
+        "step": 1,
+        "unit": "px",
+        "label": "Heading 5 Font Size",
+        "default": 22
+      },
+      {
+        "type": "range",
+        "id": "heading_6_fs",
+        "min": 12,
+        "max": 64,
+        "step": 1,
+        "unit": "px",
+        "label": "Heading 6 Font Size",
+        "default": 20
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "General colors"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary color",
+        "default": "#000",
+        "info": "Used for accents"
+      },
+      {
+        "type": "color",
+        "id": "color_body_text",
+        "label": "Text color",
+        "default": "#000",
+        "info": "Color used for content and paragraph text"
+      },
+      {
+        "type": "color",
+        "id": "color_scrollbar",
+        "label": "Scrollbar color",
+        "default": "#000",
+        "info": "Color used for scrollbars"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "Border color",
+        "default": "#EEEEEE",
+        "info": "Used for accents"
+      },
+      {
+        "type": "header",
+        "content": "Link colors"
+      },
+      {
+        "type": "color",
+        "id": "primary_link_color",
+        "label": "Primary link color",
+        "default": "#000000",
+        "info": "Color used for primary links"
+      },
+      {
+        "type": "color",
+        "id": "primary_link_color_hover",
+        "label": "Primary link color - Hover State",
+        "default": "#EEEEEE",
+        "info": "Color used for primary links hover state"
+      },
+      {
+        "type": "color",
+        "id": "secondary_link_color",
+        "label": "Secondary link color",
+        "default": "#000000",
+        "info": "Color used for secondary links"
+      },
+      {
+        "type": "color",
+        "id": "secondary_link_color_hover",
+        "label": "Secondary link color - Hover State",
+        "default": "#EEEEEE",
+        "info": "Color used for secondary links hover state"
+      },
+      {
+        "type": "header",
+        "content": "Primary Button"
+      },
+      {
+        "type": "checkbox",
+        "id": "primary_button_alternative",
+        "label": "Use alternative styling?",
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "btn_primary_bg",
+        "label": "Background color",
+        "default": "#000000",
+        "info": "Used for Add to Cart Buttons"
+      },
+      {
+        "type": "color",
+        "id": "btn_primary_text",
+        "label": "Text color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "btn_primary_bg_hover",
+        "label": "Background color",
+        "default": "#EEEEEE",
+        "info": "Hover state"
+      },
+      {
+        "type": "color",
+        "id": "btn_primary_text_hover",
+        "label": "Text color",
+        "default": "#8a8a8a",
+        "info": "Hover state"
+      },
+      {
+        "type": "header",
+        "content": "Secondary Button"
+      },
+      {
+        "type": "checkbox",
+        "id": "secondary_button_alternative",
+        "label": "Use alternative styling?",
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "btn_secondary_bg",
+        "label": "Background color",
+        "default": "#000000",
+        "info": "Used for Add to Cart Buttons"
+      },
+      {
+        "type": "color",
+        "id": "btn_secondary_text",
+        "label": "Text color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "btn_secondary_bg_hover",
+        "label": "Background color",
+        "default": "#EEEEEE",
+        "info": "Hover state"
+      },
+      {
+        "type": "color",
+        "id": "btn_secondary_text_hover",
+        "label": "Text color",
+        "default": "#8a8a8a",
+        "info": "Hover state"
+      },
+      {
+        "type": "header",
+        "content": "Tertiary Button"
+      },
+      {
+        "type": "checkbox",
+        "id": "tertiary_button_alternative",
+        "label": "Use alternative styling?",
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "btn_tertiary_bg",
+        "label": "Background color",
+        "default": "#000000",
+        "info": "Used for Add to Cart Buttons"
+      },
+      {
+        "type": "color",
+        "id": "btn_tertiary_text",
+        "label": "Text color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "btn_tertiary_bg_hover",
+        "label": "Background color",
+        "default": "#EEEEEE",
+        "info": "Hover state"
+      },
+      {
+        "type": "color",
+        "id": "btn_tertiary_text_hover",
+        "label": "Text color",
+        "default": "#8a8a8a",
+        "info": "Hover state"
+      },
+      {
+        "type": "header",
+        "content": "Add To Cart Button"
+      },
+      {
+        "type": "checkbox",
+        "id": "add_to_cart_button_alternative",
+        "label": "Use alternative styling?",
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "btn_atc_bg",
+        "label": "Background color",
+        "default": "#000000",
+        "info": "Used for Add to Cart Buttons"
+      },
+      {
+        "type": "color",
+        "id": "btn_atc_text",
+        "label": "Text color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "btn_atc_bg_hover",
+        "label": "Background color",
+        "default": "#EEEEEE",
+        "info": "Hover state"
+      },
+      {
+        "type": "color",
+        "id": "btn_atc_text_hover",
+        "label": "Text color",
+        "default": "#8a8a8a",
+        "info": "Hover state"
+      },
+      {
+        "type": "header",
+        "content": "Header"
+      },
+      {
+        "type": "color",
+        "id": "header_link_color",
+        "label": "Header Link color",
+        "default": "#000000"
+      },
+      {
+        "type": "header",
+        "content": "Subscription Product"
+      },
+      {
+        "type": "color",
+        "id": "subscription_product_block_background_color",
+        "label": "Block Background Color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "subscription_product_block_text_color",
+        "label": "Block Text Color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "subscription_product_active_block_background_color",
+        "label": "Active Block Background Color",
+        "default": "#f1f1f1"
+      },
+      {
+        "type": "color",
+        "id": "subscription_product_activeblock_text_color",
+        "label": "Active Block Text Color",
+        "default": "#000"
+      }
+    ]
+  },
+  {
+    "name": "Product Grid Item",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "pgi_use_swatches",
+        "label": "Use Swatches?",
+        "info": "Swatches will be used instead of select boxes.",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "App Bar",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "app_bar_enabled",
+        "label": "Enable App Bar?",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social sharing options"
+      },
+      {
+        "type": "checkbox",
+        "id": "social_sharing_blog",
+        "label": "Enable sharing for blog articles",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_facebook",
+        "label": "Share on Facebook",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_twitter",
+        "label": "Tweet on Twitter",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_pinterest",
+        "label": "Pin on Pinterest",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Sharing links"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "Twitter link"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook link"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": "Pinterest link"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram link"
+      },
+      {
+        "type": "text",
+        "id": "social_snapchat_link",
+        "label": "Snapchat link"
+      },
+      {
+        "type": "text",
+        "id": "social_tumblr_link",
+        "label": "Tumblr link"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": "Youtube link"
+      },
+      {
+        "type": "text",
+        "id": "social_vimeo_link",
+        "label": "Vimeo link"
+      }
+    ]
+  },
+  {
+    "name": "Page Headers",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "title_default_bg_image",
+        "label": "Default Background image",
+        "info": "This is the default background image for title sections. These can also be overwritten on a per collection status."
+      },
+      {
+        "type": "color",
+        "id": "title_default_bg_color",
+        "label": "Default Background Color",
+        "default": "#EEEEEE"
+      },
+      {
+        "type": "color",
+        "id": "title_default_text_color",
+        "label": "Font Background Color",
+        "default": "#000000"
+      },
+      {
+        "type": "checkbox",
+        "id": "title_overlay",
+        "label": "Use a color overlay for the Page Title",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "title_default_bg_opacity",
+        "label": "Overlay Colour Opacity",
+        "min": 0,
+        "max": 1,
+        "step": 0.1,
+        "default": 0.6,
+        "info": "Only visible if page overlay is active."
+      },
+      {
+        "type": "checkbox",
+        "id": "show_nav_menu",
+        "label": "Show nav menu?",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "Product Forms",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_in_stock",
+        "label": "Show in stock notice?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_qty_selector",
+        "label": "Show quantity selector?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show Vendor?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_reviews",
+        "label": "Show Reviews?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_short_description",
+        "label": "Show short description?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "low_stock_warning",
+        "label": "Show in low stock warning?",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "low_stock_threshold",
+        "label": "Low stock threshold",
+        "default": "10"
+      },
+      {
+        "type": "header",
+        "content": "Price Alert"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_price_alert",
+        "label": "Show Price Alert?",
+        "info": "This is the box that appears underneath the price",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "pa_background_color",
+        "label": "Background Color",
+        "default": "#ebf8ff"
+      },
+      {
+        "type": "color",
+        "id": "pa_font_color",
+        "label": "Font and Border Color",
+        "default": "#2b6cb0"
+      },
+      {
+        "type": "header",
+        "content": "Variant Metafields"
+      },
+      {
+        "type": "color",
+        "id": "product_form_meta_bg",
+        "label": "Background Color",
+        "default": "#EEEEEE"
+      },
+      {
+        "type": "color",
+        "id": "product_form_meta_color",
+        "label": "Font Color",
+        "default": "#000000"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cart_notes_enable",
+        "label": "Enable cart notes",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Newsletter",
+    "settings": [
+      {
+        "type": "text",
+        "id": "action_url",
+        "label": "Action URL",
+        "info": "Insert a Mailchimp or Klaviyo URL."
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon image",
+        "info": "Will be scaled down to 32 x 32px"
+      }
+    ]
+  },
+  {
+    "name": "Password Page",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "password_background_image",
+        "label": "Background Image"
+      },
+      {
+        "type": "color",
+        "id": "password_background_color",
+        "label": "Background Color",
+        "default": "#ebf8ff"
+      },
+      {
+        "type": "color",
+        "id": "password_font_color",
+        "label": "Font Color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "checkbox",
+        "id": "password_use_logo",
+        "label": "Enable cart notes",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "password_logo_mw",
+        "label": "Logo Max Width"
+      },
+      {
+        "type": "image_picker",
+        "id": "password_logo",
+        "label": "Logo"
+      }
+    ]
+  },
+  {
+    "name": "Development",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "development_mode",
+        "label": "Enable development mode",
+        "default": false
+      }
+    ]
+  }
+]

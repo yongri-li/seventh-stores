@@ -1,0 +1,71 @@
+{%- assign featured_image = product.featured_image -%}
+<div class="flex">
+    <div class="relative">
+        {%- render 'product-grid-item-sticker' with product: product -%}
+        <div class="w-40 bg-gray-200 overflow-hidden group-hover:opacity-75">
+            <a class="block" href="{{ product.url | within: collection }}">
+                {%- render 'responsive-image' with image: featured_image -%}
+            </a>
+        </div>
+    </div>
+    <div class="pl-2 mt-4">
+        <h3 class="text-sm text-gray-700">
+            <a href="{{ product.url }}">{{ product.title }}</a>
+        </h3>
+        {%- if settings.wholesale_enabled -%}
+            {%- assign is_approved = false -%}
+                {%- if customer -%}
+                    {%- for tag in customer.tags -%}
+                        {%- if tag == settings.wholesale_tag -%}
+                            {%- assign is_approved = true -%}
+                        {%- endif -%}
+                    {%- endfor -%}
+                {%- endif -%}
+            {%- if customer -%}
+                {%- if is_approved -%}
+                <p class="mt-4 text-sm font-medium text-gray-900">
+                    {%- if product.compare_at_price > product.price -%}
+                        {%- assign sale_price = product.price | money -%}
+                        {%- assign original_price = product.compare_at_price | money -%}
+                        {%- if product.price_varies -%}
+                            {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+                        {%- else -%}
+                            <span class="">{{ product.price | money }}</span><br/><small class="[ text-gray-500 ]"><s>{{ original_price }}</s></small>
+                        {%- endif -%}
+                    {%- else -%}
+                        {%- if product.price_varies -%}
+                            {%- assign price = product.price | money -%}
+                            {{ 'products.product.from_text_html' | t: price: price }}
+                        {%- else -%}
+                            <span class="">{{ product.price | money }}</span>
+                        {%- endif -%}
+                    {%- endif -%}
+                </p>
+                {%- else -%}
+                    <p class="mt-1 text-sm font-bold text-red-500">{{ 'wholesale.approval_needed' | t }}</p>
+                {%- endif -%}
+            {%- else -%}
+            <p class="mt-1 text-sm font-bold text-red-500">{{ 'wholesale.log_in_notice' | t }}</p>
+            {%- endif -%}
+        {%- else -%}
+        <p class="mt-4 text-sm font-medium text-gray-900">
+            {%- if product.compare_at_price > product.price -%}
+                {%- assign sale_price = product.price | money -%}
+                {%- assign original_price = product.compare_at_price | money -%}
+                {%- if product.price_varies -%}
+                    {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+                {%- else -%}
+                    <span class="">{{ product.price | money }}</span><br/><small class="[ text-gray-500 ]"><s>{{ original_price }}</s></small>
+                {%- endif -%}
+            {%- else -%}
+                {%- if product.price_varies -%}
+                    {%- assign price = product.price | money -%}
+                    {{ 'products.product.from_text_html' | t: price: price }}
+                {%- else -%}
+                    <span class="">{{ product.price | money }}</span>
+                {%- endif -%}
+            {%- endif -%}
+        </p>
+        {%- endif -%}
+    </div>
+</div>

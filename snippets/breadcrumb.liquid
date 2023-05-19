@@ -1,0 +1,212 @@
+{%- assign t = template | split: '.' | first -%}
+<div class="mx-auto">
+  <nav class="bg-white flex" aria-label="Breadcrumb">
+    <ol class="flex space-x-4">
+      <li class="flex">
+        <div class="flex items-center">
+          <a href="/" class="text-gray-400 hover:text-gray-500">
+            {{ 'general.accessibility.breadcrumbs.home' | t }}
+          </a>
+        </div>
+      </li>
+      {%- case t -%}
+        {%- when 'page' -%}
+          <li class="flex">
+            <div class="flex items-center">
+              <svg
+                class="flex-shrink-0 h-5 w-5 text-gray-300"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                aria-hidden="true"
+              >
+                <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
+              </svg>
+              <a class="ml-2 text-sm font-medium" aria-current="page" href="{{ page.url }}" aria-current="page">
+                {{- page.title -}}
+              </a>
+            </div>
+          </li>
+        {%- when 'product' -%}
+          {%- if collection.url -%}
+            <li class="flex">
+              <div class="flex items-center">
+                <svg
+                  class="flex-shrink-0 h-5 w-5 text-gray-300"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  aria-hidden="true"
+                >
+                  <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
+                </svg>
+                <a class="ml-2 text-sm font-medium" aria-current="page" href="{{ collection.url }}" aria-current="page">
+                  {{- collection.title -}}
+                </a>
+              </div>
+            </li>
+          {%- endif -%}
+          <li class="flex">
+            <div class="flex items-center">
+              <svg
+                class="flex-shrink-0 h-5 w-5 text-gray-300"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                aria-hidden="true"
+              >
+                <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
+              </svg>
+              <a class="ml-2 text-sm font-medium" aria-current="page" href="{{ product.url }}">{{ product.title }}</a>
+            </div>
+          </li>
+        {%- when 'collection' and collection.handle -%}
+          {%- if current_tags -%}
+            <li class="flex">
+              <div class="flex items-center">
+                <svg
+                  class="flex-shrink-0 h-5 w-5 text-gray-300"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  aria-hidden="true"
+                >
+                  <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
+                </svg>
+                <a class="ml-2 text-sm font-medium" aria-current="page" href="{{ collection.url }}">
+                  {{- collection.title -}}
+                </a>
+              </div>
+            </li>
+            <li class="flex">
+              <div class="flex items-center">
+                <svg
+                  class="flex-shrink-0 h-5 w-5 text-gray-300"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  aria-hidden="true"
+                >
+                  <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
+                </svg>
+                {%- capture tag_url -%}{{ collection.url }}/{{ current_tags | join: "+" }}{%- endcapture -%}
+                <a class="ml-2 text-sm font-medium" aria-current="page" href="{{ tag_url }}">
+                  {{- current_tags | join: ' + ' -}}
+                </a>
+              </div>
+            </li>
+          {%- else -%}
+            <li class="flex">
+              <div class="flex items-center">
+                <svg
+                  class="flex-shrink-0 h-5 w-5 text-gray-300"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  aria-hidden="true"
+                >
+                  <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
+                </svg>
+                <a class="ml-2 text-sm font-medium" aria-current="page" href="{{ collection.url }}">
+                  {{- collection.title -}}
+                </a>
+              </div>
+            </li>
+          {%- endif -%}
+        {%- when 'blog' -%}
+          {%- if current_tags -%}
+            <li class="flex">
+              <div class="flex items-center">
+                <svg
+                  class="flex-shrink-0 h-5 w-5 text-gray-300"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  aria-hidden="true"
+                >
+                  <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
+                </svg>
+                <a class="ml-2 text-sm font-medium" aria-current="page" href="{{ blog.url }}">{{ blog.title }}</a>
+              </div>
+            </li>
+            <li class="flex">
+              <div class="flex items-center">
+                <svg
+                  class="flex-shrink-0 h-5 w-5 text-gray-300"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  aria-hidden="true"
+                >
+                  <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
+                </svg>
+                {%- capture tag_url -%}{{ blog.url }}/tagged/{{ current_tags | join: "+" }}{%- endcapture -%}
+                <a class="ml-2 text-sm font-medium" aria-current="page" href="{{ tag_url }}">
+                  {{- current_tags | join: ' + ' -}}
+                </a>
+              </div>
+            </li>
+          {%- else -%}
+            <li class="flex">
+              <div class="flex items-center">
+                <svg
+                  class="flex-shrink-0 h-5 w-5 text-gray-300"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  aria-hidden="true"
+                >
+                  <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
+                </svg>
+                <a class="ml-2 text-sm font-medium" aria-current="page" href="{{ blog.url }}">{{ blog.title }}</a>
+              </div>
+            </li>
+          {%- endif -%}
+        {%- when 'article' -%}
+          <li class="flex">
+            <div class="flex items-center">
+              <svg
+                class="flex-shrink-0 h-5 w-5 text-gray-300"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                aria-hidden="true"
+              >
+                <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
+              </svg>
+              <a class="ml-2 text-sm font-medium" aria-current="page" href="{{ blog.url }}">{{ blog.title }}</a>
+            </div>
+          </li>
+          <li class="flex">
+            <div class="flex items-center">
+              <svg
+                class="flex-shrink-0 h-5 w-5 text-gray-300"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                aria-hidden="true"
+              >
+                <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
+              </svg>
+              <a class="ml-2 text-sm font-medium" href="{{ article.url }}" aria-current="page">{{ article.title }}</a>
+            </div>
+          </li>
+        {%- else -%}
+          <li class="flex">
+            <div class="flex items-center">
+              <svg
+                class="flex-shrink-0 h-5 w-5 text-gray-300"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                aria-hidden="true"
+              >
+                <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
+              </svg>
+              <a class="ml-2 text-sm font-medium" href="{{ request.path }}" aria-current="page">{{ page_title }}</a>
+            </div>
+          </li>
+      {%- endcase -%}
+    </ol>
+  </nav>
+</div>

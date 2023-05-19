@@ -1,0 +1,25 @@
+{%- style -%}
+
+.personalisation-modal{
+  display: none;
+}
+
+.personalisation-modal.is--visible{
+  display: block;
+}
+
+{%- endstyle -%}
+
+<personalisation-modal data-logged-in="{% if customer %}true{% else %}false{% endif %}" class="personalisation-modal border z-10 border-color bg-white fixed bottom-4 left-4 right-4 lg:right-auto shadow-md">
+  <div class="relative p-6">
+    <button class="absolute right-1 top-1" data-close>{% render 'icon-close' %}</button>
+    <p class="heading text-lg lg:text-xl text-center mb-2 leading-snug">Log in to earn rewards.</p>
+    <p class="mb-4">Login or create an account to personalise your experience and <strong>earn rewards</strong></p>
+    <div class="flex items-center justify-center">
+      <a class="p-2 md:p-4 text-xs md:text-base leading-tight btn primary-button mr-2" href="{{ routes.account_login_url }}">Login</a>
+      <a class="p-2 md:p-4 text-xs md:text-base leading-tight btn secondary-button" href="{{ routes.account_login_url }}">Create Account</a>
+    </div>
+  </div>
+</personalisation-modal>
+
+<script defer="defer" src="{{ 'component-personalisation-modal.js' | asset_url }}"></script>

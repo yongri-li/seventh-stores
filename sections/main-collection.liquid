@@ -1,0 +1,165 @@
+{%- liquid
+  assign title_default_bg_image = settings.title_default_bg_image | image_url: width: 1280, height: 640
+  assign title_default_bg_color = settings.title_default_bg_color
+  assign title_default_bg_opacity = settings.title_default_bg_opacity
+  assign the_title = collection.title
+  if collection.handle == 'all'
+    assign the_description = shop.description
+  else
+    assign the_description = collection.description
+  endif
+-%}
+<div data-section-id="{{ section.id }}" data-section-type="collection">
+  <header
+    class="header header--title bg-cover bg-center"
+    role="banner"
+    {% unless settings.title_default_bg_image == blank %}
+      style="background-image: url('{{ title_default_bg_image }}');"
+    {% endunless %}
+  >
+    <div class="container mx-auto pt-4 px-4 lg:px-8 lg:flex">
+      <div class="lg:flex-1 lg:flex-col lg:items-end pb-4">
+        {%- for block in section.blocks -%}
+          <div class="{% unless forloop.last %}mb-4{% endunless %}">
+            {%- case block.type -%}
+              {%- when '@app' -%}
+                {% render block %}
+
+              {%- when 'breadcrumbs' -%}
+                {% render 'breadcrumb' %}
+
+              {%- when 'header' -%}
+                {%- assign collection_nav = linklists[collection.handle] -%}
+                {% comment %} {% render 'page-header' with collection_nav: collection_nav %} {% endcomment %}
+                <h1
+                  class="[ text-lg lg:text-2xl ] header__heading"
+                  style="color: {{ settings.title_default_text_color }};"
+                >
+                  {{ the_title }}
+                </h1>
+                {%- unless the_description == blank or the_description == '' -%}
+                  <div
+                    class="[ mt-4 max-w-xl mx-auto text-sm leading-relaxed ] rte header__rte"
+                  >
+                    {{ the_description }}
+                  </div>
+                {%- endunless -%}
+            {%- endcase -%}
+          </div>
+        {%- endfor -%}
+      </div>
+      <div class="lg:flex lg:flex-1 lg:items-end lg:justify-center pb-4">
+        {%- if collection_nav != blank -%}
+          <div class="-ml-2.5">
+            {%- for link in collection_nav.links -%}
+              <span class="inline-flex items-center px-2.5 py-0.5">
+                <a
+                  style="color: {{ settings.title_default_text_color }};"
+                  class="[ text-xs rounded-full block p-2 border border-solid border-color ]"
+                  href="{{ link.url }}"
+                >
+                  {{- link.title -}}
+                </a>
+              </span>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+      <div class="flex flex-1 justify-end items-end pb-4">
+        <drawer-trigger data-target="[data-filters-drawer]" data-open-class="flex" data-close-class="hidden">
+          <button
+            type="button"
+            class="flex items-center heading bg-white border border-color p-2 lg:px-4 lg:py-3 pr-8 leading-tight text-sm"
+            aria-controls="disclosure-1"
+            aria-expanded="false"
+          >
+            <svg height="16" width="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+            </svg>
+            <span class="pl-4">{{ 'collections.general.filter' | t }}</span>
+            <p class="sr-only">Filters</p>
+          </button>
+        </drawer-trigger>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div id="CollectionProductGrid">
+      {%- paginate collection.products by 36 -%}
+        <div class="{% if section.settings.contain %}container{% endif %} mx-auto py-4 lg:py-16 px-4 overflow-hidden sm:px-6 lg:px-8">
+          <div id="main-collection-product-grid" data-id="{{ section.id }}" class="collection">
+            <div class="[ grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 lg:gap-x-8 ]">
+              {%- for product in collection.products -%}
+                {%- render 'product-grid-item' with product: product -%}
+              {%- endfor -%}
+            </div>
+          </div>
+        </div>
+
+        {% render 'pagination' with paginate: paginate %}
+      {%- endpaginate -%}
+    </div>
+  </section>
+</div>
+
+{%- render 'drawer-filters' -%}
+
+<script type="text/javascript">
+  const fakeSorting = document.querySelector('[data-sorting]');
+  const sorting = document.querySelector('#sort_by');
+  const filterForm = document.querySelector('collection-filters-form > form');
+
+  fakeSorting.addEventListener('change', function (e) {
+    sorting.value = e.currentTarget.value;
+    filterForm.dispatchEvent(new Event('input'));
+  });
+</script>
+
+<script src="{{ 'collection-filters-form.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Collection page",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "contain",
+      "label": "Contain the Grid within wrapper?",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_filters",
+      "label": "Show Filters?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_quick_buy",
+      "label": "Enable Quick Buy?",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "breadcrumbs",
+      "name": "Breadcrumbs",
+      "limit": 1
+    },
+    {
+      "type": "header",
+      "name": "Header",
+      "limit": 1
+    },
+    {
+      "type": "product_grid",
+      "name": "Product Grid",
+      "limit": 1
+    }
+  ]
+}
+{% endschema %}

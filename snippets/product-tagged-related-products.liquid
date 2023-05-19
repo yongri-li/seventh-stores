@@ -1,0 +1,20 @@
+{%- liquid
+assign has_tagged_products = false
+assign related_tags = "" | split: ','
+for tag in product.tags
+    if tag contains 'related:'
+        assign has_tagged_products = true
+        assign the_tag = tag | append: ','
+        assign related_tags = related_tags | append: the_tag
+    endif
+endfor -%}
+
+{%- if has_tagged_products -%}
+{%- assign product_handles = related_tags | split: ',' -%}
+<h3>{{ 'products.product.shop_the_look' | t }}</h3>
+{%- for related_handle in product_handles -%}
+    {%- assign handle = related_handle | split: ':' | last -%}
+    {%- assign related_product = all_products[handle] -%}
+    <div>{% render 'product-grid-item' with product: related_product %}</div>
+{%- endfor -%}
+{%- endif -%}

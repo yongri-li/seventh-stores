@@ -1,0 +1,27 @@
+
+{%- liquid 
+assign font_color = section.settings.font_color
+assign section_heading = section.settings.section_heading
+assign section_content = section.settings.section_content
+assign sub_text = section.settings.sub_text -%}
+
+<div class="max-w-6xl mx-auto py-12 sm:px-6 lg:py-16 lg:px-8">
+    <div class="md:py-12 md:px-12 lg:py-16 lg:px-16 xl:flex xl:items-center">
+        <div class="xl:w-0 xl:flex-1">
+            {%- if section_heading != blank -%}
+            <h2 class="text-2xl sm:text-3xl" style="color: {{ font_color }};">{{ section_heading }}</h2>
+            {%- endif -%}
+            {%- if section_content != blank -%}
+            <p class="mt-3 max-w-3xl text-lg leading-6" style="color: {{ font_color }};">{{ section_content }}</p>
+            {%- endif -%}
+        </div>
+        <div class="mt-8 sm:w-full sm:max-w-sm xl:mt-0 xl:ml-8">
+            {% render 'form-newsletter' %}
+            {%- if sub_text != blank -%}
+            <div class="mt-3 text-sm" style="color: {{ font_color }};">
+            {{ sub_text }}
+            </div>
+            {%- endif -%}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,167 @@
+<!doctype html>
+<html class="no-js" lang="{{ shop.locale }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="{{ settings.color_primary }}">
+
+    <!-- Preload Files -->
+    {% comment %} <link rel="preload" as="style" href="{{ 'tailwind.min.css' | asset_url }}"> {% endcomment %}
+
+    <!-- Preconnect Domains -->
+    <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <!-- <link rel="preconnect" href="https://v.shopify.com" crossorigin/> -->
+    <link rel="preconnect" href="https://cdn.shopifycloud.com" crossorigin>
+    <link rel="preconnect" href="https://monorail-edge.shopifysvc.com" crossorigin>
+
+    <!-- fallback for browsers that don't support preconnect -->
+    <link rel="dns-prefetch" href="https://fonts.shopifycdn.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.shopify.com" crossorigin>
+    <!-- <link rel="dns-prefetch" href="https://v.shopify.com" crossorigin/> -->
+    <link rel="dns-prefetch" href="https://cdn.shopifycloud.com" crossorigin>
+    <link rel="dns-prefetch" href="https://monorail-edge.shopifysvc.com" crossorigin>
+
+    {%- if canonical_url != blank -%}
+      <link rel="canonical" href="{{ canonical_url }}">
+    {%- endif -%}
+
+    {%- if settings.favicon != blank -%}
+      <link rel="shortcut icon" href="{{ settings.favicon | image_url: width: 32, height: 32 }}" type="image/png">
+    {%- endif -%}
+
+    <title>{{ page_title | strip }}</title>
+
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    {% render 'meta-tags' %}
+    {% render 'tracking-codes' %}
+    {%- render 'social-meta-tags' -%}
+
+    {%- if settings.development_mode -%}
+      <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    {%- else -%}
+      <script src="{{ 'global.min.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+    {{ content_for_header }}
+
+    <!-- Google Fonts -->
+    {%- render 'google-fonts' -%}
+
+    <!-- Critical CSS -->
+    {%- render 'critical-css-variables' -%}
+    {{ 'tailwind.min.css' | asset_url | stylesheet_tag }}
+    {{ 'theme.min.css' | asset_url | stylesheet_tag }}
+
+    {%- unless settings.body_font.system? -%}
+      <link rel="preload" as="font" href="{{ settings.body_font | font_url }}" type="font/woff2" crossorigin>
+    {%- endunless -%}
+    {%- unless settings.heading_font.system? -%}
+      <link rel="preload" as="font" href="{{ settings.heading_font | font_url }}" type="font/woff2" crossorigin>
+    {%- endunless -%}
+
+    {%- unless settings.development_mode -%}
+      <style>
+        #preview-bar-iframe {
+          display: none !important;
+        }
+      </style>
+    {%- endunless -%}
+
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    </script>
+  </head>
+
+  <body
+    id="{{ page_title | handle }}"
+    class="template-{{ template.name | handle }}"
+  >
+    <a class="sr-only" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+    {% section 'promo-bar' %}
+
+    <div class="sticky top-0 z-50">
+      {% section 'header' %}
+    </div>
+
+    {% section 'drawer-mini-cart' %}
+    {% section 'drawer-mobile-menu' %}
+    {% section 'animated-benefit-bar' %}
+    {% section 'benefits-bar' %}
+    {% section 'drawer-search' %}
+
+    <main role="main" id="MainContent">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'footer' %}
+    {% render 'personalisation-modal' %}
+
+    <!-- Theme CSS -->
+    <link async rel="stylesheet" href="{{ 'theme.min.css' | asset_url }}">
+
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+      window.slate = window.slate || {};
+      window.theme = {
+        strings: {
+          addToCart: {{ 'products.product.add_to_cart' | t | json }},
+          soldOut: {{ 'products.product.sold_out' | t | json }},
+          inStock: {{ 'products.product.in_stock' | t | json }},
+          unavailable: {{ 'products.product.unavailable' | t | json }},
+          subscription:{
+            savings_notice_html: {{ 'products.subscription.savings_notice_html' | t | json }},
+            one_time_notice_html: {{ 'products.subscription.one_time_notice_html' | t | json }},
+            one_time: {{ 'products.subscription.one_time' | t | json }},
+            subscription: {{ 'products.subscription.subscription' | t | json }}
+          }
+        },
+        currency: {
+          symbol: '{{ cart.currency.symbol }}'
+        },
+        cart: {{ cart | json }},
+        template: "{{ template }}",
+        moneyFormat: {{ shop.money_format | json }},
+        moneyFormatWithCurrency: {{ shop.money_with_currency_format | json }},
+        upsellModal:{
+          show: true
+        },
+        {%- if template contains 'product' -%}
+        product: {{ product | json }},
+        {%- endif -%}
+        useMiniCart: {{ settings.use_mini_cart }},
+        routes:{
+          cart_url: "{{ routes.cart_url }}",
+          cart_add_url: "{{ routes.cart_add_url }}",
+          cart_change_url: "{{ routes.cart_change_url }}"
+        },
+        events:{
+          itemAdded: "theme:itemAdded"
+        }
+      };
+    </script>
+
+    <!-- Shopify JS -->
+    {%- if template.directory == 'customers' -%}
+      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {%- if settings.development_mode -%}
+      <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+      <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+    {%- else -%}
+      <script src="{{ 'product-form.min.js' | asset_url }}" defer="defer"></script>
+      <script src="{{ 'quick-add.min.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    <!-- Libraries -->
+    <script async src="{{ 'vendor-instant-page.js' | asset_url }}"></script>
+    <script defer src="//unpkg.com/alpinejs@3.3.4/dist/cdn.min.js"></script>
+
+    {% section 'app-optimization' %}
+  </body>
+</html>

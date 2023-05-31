@@ -45,37 +45,11 @@
       },
       "header": {
         "type": "header",
-        "blocks": {
-          "cebba0c6-f3fd-4025-be25-98a9a067ece9": {
-            "type": "mega_menu_menu",
-            "settings": {
-              "menu_link": "shopify:\/\/collections\/all",
-              "column_width": 25,
-              "menu_heading": "SHOP BY GENERATION",
-              "heading_url": "",
-              "menu": "main-menu"
-            }
-          },
-          "6d83dd90-0846-42d4-88cc-44523e765933": {
-            "type": "mega_menu_image",
-            "settings": {
-              "menu_link": "shopify:\/\/collections\/all",
-              "column_width": 25,
-              "image_height": "250",
-              "image_link": "",
-              "image_heading": ""
-            }
-          }
-        },
-        "block_order": [
-          "cebba0c6-f3fd-4025-be25-98a9a067ece9",
-          "6d83dd90-0846-42d4-88cc-44523e765933"
-        ],
         "settings": {
-          "background_color": "#ffffff",
-          "border_color_bottom": "#c6c6c6",
+          "background_color": "#f3eee8",
+          "border_color_bottom": "#f3eee8",
           "menu_link_color": "#000000",
-          "menu_link_color_hover": "#2b6cb0",
+          "menu_link_color_hover": "#000",
           "font_size": 12,
           "contain": false,
           "desktop_header_style": "logo-left",
@@ -113,7 +87,7 @@
               "benefit": "FREE UK SHIPPING",
               "link": "",
               "trigger_newsletter": false,
-              "background_color": "#eeeeee",
+              "background_color": "#fffaf3",
               "font_color": "#000000"
             }
           }
@@ -125,8 +99,8 @@
           "show_benefit": true,
           "make_sticky": false,
           "home_page_only": false,
-          "background_color": "#eeeeee",
-          "border_color_bottom": "#c6c6c6",
+          "background_color": "#fffaf3",
+          "border_color_bottom": "#fffaf3",
           "animation_delay": "4",
           "bar_height_mobile": 25,
           "bar_height_desktop": 25,

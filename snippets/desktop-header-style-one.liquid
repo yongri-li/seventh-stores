@@ -1,4 +1,4 @@
-<header class="relative hidden lg:block border-t border-b border-solid">
+<header class="relative hidden lg:block py-6 px-10">
   <nav
     class="relative z-50"
     aria-label="Top"
@@ -7,7 +7,7 @@
     <div class="">
       <div class="flex items-center">
         <!-- Logo -->
-        <div class="flex justify-center lg:justify-start py-2">
+        <div class="flex justify-center lg:justify-start mr-14">
           {%- if section.settings.logo != blank -%}
             <a
               href="/"
@@ -36,7 +36,7 @@
 
         <!-- Flyout menus -->
         <div class="hidden lg:self-stretch lg:flex lg:flex-1">
-          <div class="flex items-stretch mx-auto">
+          <div class="flex items-stretch">
             {%- for link in linklists[section.settings.main_linklist].links -%}
               <div class="group flex items-center">
                 <a
@@ -130,27 +130,8 @@
               </div>
             {%- endif -%}
 
-            <!-- Search -->
-            <div class="self-stretch flex items-center justify-center">
-              <drawer-trigger
-                class="cursor-pointer self-stretch flex items-center justify-center px-3"
-                data-target="[data-search-drawer]"
-                data-open-class="active"
-                data-close-class=""
-              >
-                {% comment %} <search-trigger class="cursor-pointer self-stretch flex items-center justify-center px-3"> {% endcomment %}
-                <span class="block">
-                  <span class="sr-only">Search</span>
-                  <span data-open-icon class="header-font-color">
-                    {% render 'icon-search', height: 22 %}
-                  </span>
-                </span>
-                {% comment %} </search-trigger> {% endcomment %}
-              </drawer-trigger>
-            </div>
-
             <!-- customer links -->
-            <div class="hidden self-stretch lg:flex items-center justify-center px-3">
+            <div class="hidden self-stretch lg:flex items-center justify-center ml-9">
               {%- if section.settings.account_type == 'links' -%}
                 <a
                   href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}"
@@ -179,7 +160,7 @@
             </div>
 
             <!-- Cart -->
-            <div class="self-stretch flex items-center justify-center px-3">
+            <div class="self-stretch flex items-center justify-center ml-9">
               <drawer-trigger
                 class="relative"
                 data-target="[data-mini-cart]"
@@ -202,7 +183,26 @@
               </drawer-trigger>
             </div>
 
-            <div class="self-stretch flex items-center justify-center px-3">
+            <!-- Search -->
+            <div class="self-stretch flex items-center justify-center ml-9">
+              <drawer-trigger
+                class="cursor-pointer self-stretch flex items-center justify-center"
+                data-target="[data-search-drawer]"
+                data-open-class="active"
+                data-close-class=""
+              >
+                {% comment %} <search-trigger class="cursor-pointer self-stretch flex items-center justify-center px-3"> {% endcomment %}
+                <span class="block">
+                  <span class="sr-only">Search</span>
+                  <span data-open-icon class="header-font-color">
+                    {% render 'icon-search', height: 22 %}
+                  </span>
+                </span>
+                {% comment %} </search-trigger> {% endcomment %}
+              </drawer-trigger>
+            </div>
+
+            <div class="self-stretch flex items-center justify-center ml-9">
               <drawer-trigger
                 class="group"
                 data-target="[data-menu-drawer]"

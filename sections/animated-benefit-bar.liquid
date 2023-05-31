@@ -1,17 +1,16 @@
 {%- if section.settings.show_benefit -%}
+  {%- liquid
+    assign animation_delay = section.settings.animation_delay
+    assign animation_total = section.blocks.size | times: animation_delay
+    assign animation_percenatge = 100 | divided_by: section.blocks.size
+    assign animation_percenatge_plus_one = animation_percenatge | plus: 1
+    assign font_size_mobile = section.settings.font_size_mobile
+    assign bar_height_mobile = section.settings.bar_height_mobile
+    assign font_size_desktop = section.settings.font_size_desktop
+    assign bar_height_desktop = section.settings.bar_height_desktop
+  -%}
 
-{%- liquid
-assign animation_delay = section.settings.animation_delay
-assign animation_total = section.blocks.size | times: animation_delay
-assign animation_percenatge = 100 | divided_by: section.blocks.size
-assign animation_percenatge_plus_one = animation_percenatge | plus: 1
-assign font_size_mobile = section.settings.font_size_mobile
-assign bar_height_mobile = section.settings.bar_height_mobile
-assign font_size_desktop = section.settings.font_size_desktop
-assign bar_height_desktop = section.settings.bar_height_desktop -%}
-    
-{% style %}
-
+  {% style %}
     :root{
     --abb-background-color: {{ section.settings.background_color }};
     --abb-border-bottom: {{ section.settings.border_color_bottom }};
@@ -58,13 +57,13 @@ assign bar_height_desktop = section.settings.bar_height_desktop -%}
     }
 
     .benefit-bar > div {
-        position: absolute;
-        top: 100%;
-        left: 0;
         width: 100%;
         height: {{ bar_height_mobile }}px;
         opacity: 1;
-        {%- if section.blocks.size > 0 -%}
+        {%- if section.blocks.size > 1 -%}
+        position: absolute;
+        top: 100%;
+        left: 0;
         -webkit-animation: {{ animation_total }}s benefitRotate infinite ease-in-out;
         -moz-animation: {{ animation_total }}s benefitRotate infinite ease-in-out;
         -o-animation: {{ animation_total }}s benefitRotate infinite ease-in-out;
@@ -97,7 +96,7 @@ assign bar_height_desktop = section.settings.bar_height_desktop -%}
         }
     }
 
-    {%- if section.blocks.size > 0 -%}
+    {%- if section.blocks.size > 1 -%}
         @keyframes benefitRotate {
             0% {top: 100%}
             4% {top: 0%}
@@ -117,33 +116,33 @@ assign bar_height_desktop = section.settings.bar_height_desktop -%}
         {%- assign count = count | plus: 1 -%}
         {%- endfor -%}
     {%- endif -%}
-{%- endstyle -%}
+  {% endstyle %}
 
-{%- if section.settings.home_page_only == false or template.name == 'index' -%}
-{%- if section.settings.make_sticky -%}
-<div class="benefit-bar-sticky">
-{%- endif -%}
+  {%- if section.settings.home_page_only == false or template.name == 'index' -%}
+    {%- if section.settings.make_sticky -%}
+      <div class="benefit-bar-sticky">
+    {%- endif -%}
 
     <div class="benefit-bar border-b border-solid">
-    {%- for block in section.blocks -%}
+      {%- for block in section.blocks -%}
         {%- assign background_color = block.settings.background_color -%}
         {%- assign font_color = block.settings.font_color -%}
         <div class="benefit-bar__benefit" style="background-color: {{ background_color }};">
-        {%- unless block.settings.link == blank -%}
+          {%- unless block.settings.link == blank -%}
             <a href="{{ block.settings.link }}" style="color: {{ font_color }};">
-        {%- endunless -%}
-            <p style="color: {{ font_color }};">{{ block.settings.benefit | escape }}</p>
-        {%- unless block.settings.link == blank -%}
+          {%- endunless -%}
+          <p style="color: {{ font_color }};">{{ block.settings.benefit | escape }}</p>
+          {%- unless block.settings.link == blank -%}
             </a>
-        {%- endunless -%}
+          {%- endunless -%}
         </div>
-    {%- endfor -%}
+      {%- endfor -%}
     </div>
 
-{%- if section.settings.make_sticky -%}
-</div>
-{%- endif -%}
-{%- endif -%}
+    {%- if section.settings.make_sticky -%}
+      </div>
+    {%- endif -%}
+  {%- endif -%}
 {%- endif -%}
 
 {% schema %}

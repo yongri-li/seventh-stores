@@ -15,7 +15,11 @@
 
 <style type="text/css">
   #hero-{{ section.id }} {
+      {%- if section.settings.use_img_height_mobile -%}
+      padding-top: calc( {{ section.settings.mobile_image.height }} / {{ section.settings.mobile_image.width }} * 100% );
+      {%- else -%}
       height: {{ section.settings.max_height_mobile }}vh;
+      {%- endif -%}
       background-position: {{ mobile_image_focus }};
   }
 
@@ -32,8 +36,12 @@
   @media only screen and (min-width: 990px ){
 
       #hero-{{ section.id }}{
-          height: {{ section.settings.max_height_desktop }}vh;
-          background-position: {{ desktop_image_focus }};
+        {%- if section.settings.use_img_height_desktop -%}
+        padding-top: calc( {{ section.settings.desktop_image.height }} / {{ section.settings.desktop_image.width }} * 100% );
+        {%- else -%}
+        height: {{ section.settings.max_height_desktop }}vh;
+        {%- endif -%}
+        background-position: {{ desktop_image_focus }};
       }
 
       #hero-{{ section.id }} h2{
@@ -54,7 +62,7 @@
       <a href="{{ section.settings.cta_link }}" class="z-10 absolute top-0 left-0 right-0 bottom-0 "></a>
     {%- endif -%}
 
-    <div class="absolute inset-0 overflow-hidden">
+    <div class="{% unless section.settings.use_img_height_mobile %}absolute inset-0{% endunless %} overflow-hidden">
       <img
         srcset="
           {%- if section.settings.mobile_image.width >= 165 -%}{{ section.settings.mobile_image | image_url: width: 165 }} 165w,{%- endif -%}
@@ -94,7 +102,7 @@
         class="w-full h-full hidden lg:block {{ section.settings.desktop_image_focus }} object-cover"
       >
     </div>
-    <div aria-hidden="true" class="absolute inset-0 opacity-50"></div>
+    {% comment %} <div aria-hidden="true" class="absolute inset-0 opacity-50"></div> {% endcomment %}
 
     <div class="relative py-8 px-4 mx-auto h-full flex flex-col {{ mobile_content_focus }} {{ desktop_content_focus }} lg:py-8 lg:px-16">
       <div class="{{ mobile_content_alignment }} {{ desktop_content_alignment }}">
@@ -203,6 +211,13 @@
       "default": 90
     },
     {
+      "type": "checkbox",
+      "id": "use_img_height_mobile",
+      "label": "Ignore max height setting?",
+      "info": "Checking this box will use the natural height and width of the image and ignore the max height setting above.",
+      "default": false
+    },
+    {
       "type": "image_picker",
       "id": "mobile_image",
       "label": "Image - Mobile"
@@ -306,6 +321,13 @@
       "unit": "vh",
       "label": "Max Height - Desktop",
       "default": 90
+    },
+    {
+      "type": "checkbox",
+      "id": "use_img_height_desktop",
+      "label": "Ignore max height setting?",
+      "info": "Checking this box will use the natural height and width of the image and ignore the max height setting above.",
+      "default": false
     },
     {
       "type": "image_picker",

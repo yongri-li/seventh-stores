@@ -15,11 +15,9 @@
 
 <style type="text/css">
   #hero-{{ section.id }} {
-      {%- if section.settings.use_img_height_mobile -%}
-      padding-top: calc( {{ section.settings.mobile_image.height }} / {{ section.settings.mobile_image.width }} * 100% );
-      {%- else -%}
-      height: {{ section.settings.max_height_mobile }}vh;
-      {%- endif -%}
+    {%- unless section.settings.use_img_height_mobile -%}
+    height: {{ section.settings.max_height_mobile }}vh;
+    {%- endunless -%}
   }
 
   #hero-{{ section.id }} h2{
@@ -35,11 +33,9 @@
   @media only screen and (min-width: 990px ){
 
       #hero-{{ section.id }}{
-        {%- if section.settings.use_img_height_desktop -%}
-        padding-top: calc( {{ section.settings.desktop_image.height }} / {{ section.settings.desktop_image.width }} * 100% );
-        {%- else -%}
+        {%- unless section.settings.use_img_height_desktop -%}
         height: {{ section.settings.max_height_desktop }}vh;
-        {%- endif -%}
+        {%- endunless -%}
       }
 
       #hero-{{ section.id }} h2{
@@ -60,7 +56,14 @@
       <a href="{{ section.settings.cta_link }}" class="z-10 absolute top-0 left-0 right-0 bottom-0 "></a>
     {%- endif -%}
 
-    <div class="absolute inset-0 overflow-hidden">
+    {%- capture image_classes_mobile -%}
+      {%- if section.settings.use_img_height_mobile -%} relative {%- else -%} absolute inset-0 {%- endif -%} 
+    {%- endcapture -%}
+    {%- capture image_classes_desktop -%}
+      {%- if section.settings.use_img_height_desktop -%} lg:relative {%- else -%} lg:absolute lg:inset-0{%- endif -%}
+    {%- endcapture -%}
+
+    <div class="{{ image_classes_mobile }} {{ image_classes_desktop }} inset-0 overflow-hidden">
       <img
         srcset="
           {%- if section.settings.mobile_image.width >= 165 -%}{{ section.settings.mobile_image | image_url: width: 165 }} 165w,{%- endif -%}
@@ -78,8 +81,9 @@
         loading="lazy"
         width="{{ section.settings.mobile_image.width }}"
         height="{{ section.settings.mobile_image.height }}"
-        class="w-full h-full lg:hidden {{ section.settings.mobile_image_focus }} object-cover"
+        class="w-full lg:hidden {% if section.settings.use_img_height_mobile %}h-auto{% else %} h-full {{ section.settings.mobile_image_focus }} object-cover{% endif %}"
       >
+
       <img
         srcset="
           {%- if section.settings.desktop_image.width >= 165 -%}{{ section.settings.desktop_image | image_url: width: 165 }} 165w,{%- endif -%}
@@ -97,12 +101,18 @@
         loading="lazy"
         width="{{ section.settings.desktop_image.width }}"
         height="{{ section.settings.desktop_image.height }}"
-        class="w-full h-full hidden lg:block {{ section.settings.desktop_image_focus }} object-cover"
+        class="w-full hidden lg:block {% if section.settings.use_img_height_desktop %}h-auto{% else %} h-full {{ section.settings.desktop_image_focus }} object-cover{% endif %}"
       >
     </div>
     {% comment %} <div aria-hidden="true" class="absolute inset-0 opacity-50"></div> {% endcomment %}
+    {%- capture content_classes_mobile -%}
+      {%- if section.settings.use_img_height_mobile -%} absolute inset-0 {%- else -%} relative {%- endif -%}
+    {%- endcapture -%}
+    {%- capture content_classes_desktop -%}
+      {%- if section.settings.use_img_height_desktop -%} lg:absolute lg:inset-0 {%- else -%} lg:relative {%- endif -%}
+    {% endcapture %}
 
-    <div class="relative py-8 px-4 mx-auto h-full flex flex-col {{ mobile_content_focus }} {{ desktop_content_focus }} lg:py-8 lg:px-16">
+    <div class="{{ content_classes }} {{ content_classes_desktop }} py-8 px-4 mx-auto h-full flex flex-col {{ mobile_content_focus }} {{ desktop_content_focus }} lg:py-8 lg:px-16">
       <div class="{{ mobile_content_alignment }} {{ desktop_content_alignment }}">
         {%- for block in section.blocks -%}
           <div

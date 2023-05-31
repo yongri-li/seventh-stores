@@ -20,102 +20,94 @@
 <div
   data-drawer
   data-search-drawer
-  class="fixed z-50 inset-0 overflow-hidden hidden"
+  class="bg-white w-full transition-transform fixed right-0 top-0 bg-brand-four h-100v translate-x-full z-[49] ease-in duration-500 [&.active]:translate-x-0 max-w-md"
   aria-labelledby="slide-over-title"
   role="dialog"
   aria-modal="true"
 >
-  <div class="absolute inset-0 overflow-hidden">
-    <div data-blackout class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-    <div class="fixed inset-y-0 right-0 max-w-full flex">
-      <div class="w-screen lg:max-w-md bg-white">
-        <div class="flex flex-col min-h-full max-h-100v">
-          <div class="flex items-center justify-between py-4 px-4 sm:px-6 border-b border-solid border-color bg-white">
-            <h2 class="text-sm heading">
-              {{ 'general.search.drawer.title' | t }}
-            </h2>
-            <div class="ml-3 h-7 flex items-center">
-              <drawer-trigger
-                class="h-6 w-6"
-                data-target="[data-search-drawer]"
-                data-open-class="flex"
-                data-close-class="hidden"
-              >
-                <button type="button" class="-m-2 p-2 rounded-md inline-flex items-center justify-center">
-                  <span class="sr-only">Close menu</span>
-                  {%- render 'icon-close' -%}
+  <div class="flex flex-col min-h-full h-full overflow-y-auto max-h-100v pt-24 lg:pt-36">
+    <div class="flex flex-col min-h-full max-h-100v">
+      <div class="flex items-center justify-between py-4 px-4 sm:px-6 border-b border-solid border-color bg-white">
+        <div class="ml-3 h-7 flex items-center">
+          <drawer-trigger
+            class="h-6 w-6"
+            data-target="[data-search-drawer]"
+            data-open-class="active"
+            data-close-class=""
+          >
+            <button type="button" class="-m-2 p-2 rounded-md inline-flex items-center justify-center">
+              <span class="sr-only">Close menu</span>
+              {%- render 'icon-arrow-left' -%}
+            </button>
+          </drawer-trigger>
+        </div>
+      </div>
+
+      <div class="flex flex-col flex-grow overflow-y-auto">
+        <div class="border-b border-color py-4 px-4 sm:px-6">
+          <search-form id="search-form-{{ section.id }}">
+            <form
+              action="{{ routes.search_url }}"
+              class="border border-color border-solid overflow-hidden relative z-50"
+            >
+              <div class="relative flex items-center">
+                <input
+                  type="search"
+                  name="q"
+                  id="Search"
+                  placeholder="{{ 'general.search.placeholder' | t }}"
+                  class="[ block flex-grow border-none appearance-none rounded-none relative py-3 px-2 leading-tight focus:outline-none focus:shadow-outline-blue focus:z-10 bg-white ]"
+                >
+                <button class="btn py-3 px-2 text-center leading-tight" type="submit">
+                  {% render 'icon-search', classes: 'w-5 h-5 md:w-6 md:h-6' %}
                 </button>
-              </drawer-trigger>
+                <p data-clear class="cursor-pointer pr-4">clear</p>
+              </div>
+            </form>
+          </search-form>
+          <div
+            data-search-results="search-form-{{ section.id }}"
+            class="[ flex flex-wrap mt-4 ] scroll-bar"
+          ></div>
+
+          {%- if section.settings.show_recommended_searches -%}
+            {%- unless section.settings.recommended_searches == blank -%}
+              <div class="">
+                <h6 class="text-base">{{ 'general.search.drawer.suggestions' | t }}</h6>
+                <ul class="flex flex-wrap -mx-2">
+                  {%- for link in section.settings.recommended_searches.links -%}
+                    <li class="mx-2 mt-3">
+                      <a
+                        class="inline-block p-1 px-3 rounded-full border border-color text-xs whitespace-nowrap"
+                        href="{{ link.url }}"
+                      >
+                        {{- link.title -}}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- endunless -%}
+          {%- endif -%}
+        </div>
+
+        {%- if recommended_products == blank -%}
+          {%- assign recommended_products = collections.all -%}
+        {%- else -%}
+          {%- assign recommended_products = collections[recommended_products] -%}
+        {%- endif -%}
+        <div class="[ container mx-auto py-4 px-4 sm:px-6 ]">
+          <div class="[ flex flex-wrap overflow-hidden ]">
+            <div class="[ w-full mb-5 overflow-hidden ]">
+              <h2 class="[ text-sm md:text-base text-left ]">{{ 'cart.mini_cart.upsell_title' | t }}</h2>
             </div>
           </div>
-
-          <div class="flex flex-col flex-grow overflow-y-auto">
-            <div class="border-b border-color py-4 px-4 sm:px-6">
-              <search-form id="search-form-{{ section.id }}">
-                <form
-                  action="{{ routes.search_url }}"
-                  class="border border-color border-solid overflow-hidden relative z-50"
-                >
-                  <div class="relative flex items-center">
-                    <input
-                      type="search"
-                      name="q"
-                      id="Search"
-                      placeholder="{{ 'general.search.placeholder' | t }}"
-                      class="[ block flex-grow border-none appearance-none rounded-none relative py-3 px-2 leading-tight focus:outline-none focus:shadow-outline-blue focus:z-10 bg-white ]"
-                    >
-                    <button class="btn py-3 px-2 text-center leading-tight" type="submit">
-                      {% render 'icon-search', classes: 'w-5 h-5 md:w-6 md:h-6' %}
-                    </button>
-                    <p data-clear class="cursor-pointer pr-4">clear</p>
-                  </div>
-                </form>
-              </search-form>
-              <div
-                data-search-results="search-form-{{ section.id }}"
-                class="[ flex flex-wrap mt-4 ] scroll-bar"
-              ></div>
-
-              {%- if section.settings.show_recommended_searches -%}
-                {%- unless section.settings.recommended_searches == blank -%}
-                  <div class="">
-                    <h6 class="text-base">{{ 'general.search.drawer.suggestions' | t }}</h6>
-                    <ul class="flex flex-wrap -mx-2">
-                      {%- for link in section.settings.recommended_searches.links -%}
-                        <li class="mx-2 mt-3">
-                          <a
-                            class="inline-block p-1 px-3 rounded-full border border-color text-xs whitespace-nowrap"
-                            href="{{ link.url }}"
-                          >
-                            {{- link.title -}}
-                          </a>
-                        </li>
-                      {%- endfor -%}
-                    </ul>
-                  </div>
-                {%- endunless -%}
-              {%- endif -%}
-            </div>
-
-            {%- if recommended_products == blank -%}
-              {%- assign recommended_products = collections.all -%}
-            {%- else -%}
-              {%- assign recommended_products = collections[recommended_products] -%}
-            {%- endif -%}
-            <div class="[ container mx-auto py-4 px-4 sm:px-6 ]">
-              <div class="[ flex flex-wrap overflow-hidden ]">
-                <div class="[ w-full mb-5 overflow-hidden ]">
-                  <h2 class="[ text-sm md:text-base text-left ]">{{ 'cart.mini_cart.upsell_title' | t }}</h2>
-                </div>
+          <div class="[ flex flex-no-wrap flex-row overflow-y-hidden overflow-x-auto ] scroll-bar">
+            {%- for product in recommended_products.products limit: 8 -%}
+              <div class="[ bg-white p-4 ml-4 mb-2 lg:mb-5 overflow-hidden flex-shrink-0 w-1/2 ]">
+                {%- render 'product-grid-item' with product: product -%}
               </div>
-              <div class="[ flex flex-no-wrap flex-row overflow-y-hidden overflow-x-auto ] scroll-bar">
-                {%- for product in recommended_products.products limit: 8 -%}
-                  <div class="[ bg-white p-4 ml-4 mb-2 lg:mb-5 overflow-hidden flex-shrink-0 w-1/2 ]">
-                    {%- render 'product-grid-item' with product: product -%}
-                  </div>
-                {%- endfor -%}
-              </div>
-            </div>
+            {%- endfor -%}
           </div>
         </div>
       </div>

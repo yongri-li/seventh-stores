@@ -210,7 +210,7 @@ class DrawerTrigger extends HTMLElement {
     this.target = document.querySelector(this.dataset.target);
     this.blackout = this.target.querySelector('[data-blackout]') || false;
     this.openClass = this.dataset.openClass;
-    this.closeClass = this.dataset.closeClass;
+    this.closeClass = this.dataset.closeClass || false;
 
     this.addEventListener('click', this.toggleTarget.bind(this));
 
@@ -234,10 +234,14 @@ class DrawerTrigger extends HTMLElement {
 
     document.querySelector('body').classList.add('overflow-hidden');
 
-    if (this.blackout) this.blackout.classList.add(this.openClass);
+    if (this.blackout) {
+      this.blackout.classList.add(this.openClass);
+
+      if (this.closeClass) this.blackout.classList.remove(this.closeClass);
+    }
+
     this.target.classList.add(this.openClass);
-    this.target.classList.remove(this.closeClass);
-    this.blackout.classList.remove(this.closeClass);
+    if (this.closeClass) this.target.classList.remove(this.closeClass);
   }
 
   close() {
@@ -246,19 +250,19 @@ class DrawerTrigger extends HTMLElement {
 
     document.querySelector('body').classList.remove('overflow-hidden');
 
-    if (this.blackout) this.blackout.classList.remove(this.openClass);
+    if (this.blackout) {
+      this.blackout.classList.remove(this.openClass);
+      if (this.closeClass) this.blackout.classList.add(this.closeClass);
+    }
+
     this.target.classList.remove(this.openClass);
-    this.target.classList.add(this.closeClass);
-    this.blackout.classList.add(this.closeClass);
+    if (this.closeClass) this.target.classList.add(this.closeClass);
   }
 
   triggerStatus() {
 
     const triggers = document.querySelectorAll(`drawer-trigger[data-target="${this.dataset.target}"]`),
       _this = this;
-
-    // console.log('target classlist: ', _this.target.classList);
-    // console.log('target: ', _this.target);
 
     triggers.forEach((trigger) => {
 
@@ -267,8 +271,6 @@ class DrawerTrigger extends HTMLElement {
       } else {
         trigger.classList.remove('active');
       }
-
-      // console.log('trigger: ', trigger);
     });
   }
 

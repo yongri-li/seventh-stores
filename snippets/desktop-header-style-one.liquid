@@ -135,17 +135,14 @@
               <drawer-trigger
                 class="cursor-pointer self-stretch flex items-center justify-center px-3"
                 data-target="[data-search-drawer]"
-                data-open-class="flex"
-                data-close-class="hidden"
+                data-open-class="active"
+                data-close-class=""
               >
                 {% comment %} <search-trigger class="cursor-pointer self-stretch flex items-center justify-center px-3"> {% endcomment %}
                 <span class="block">
                   <span class="sr-only">Search</span>
                   <span data-open-icon class="header-font-color">
                     {% render 'icon-search', height: 22 %}
-                  </span>
-                  <span data-close-icon class="hidden header-font-color">
-                    {% render 'icon-close', height: 20 %}
                   </span>
                 </span>
                 {% comment %} </search-trigger> {% endcomment %}
@@ -186,8 +183,8 @@
               <drawer-trigger
                 class="relative"
                 data-target="[data-mini-cart]"
-                data-open-class="flex"
-                data-close-class="hidden"
+                data-open-class="active"
+                data-close-class=""
               >
                 <a href="/cart" class="group pr-2 pb-2 -mb-2 block relative items-center">
                   <span class="flex header-font-color">
@@ -206,11 +203,24 @@
             </div>
 
             <div class="self-stretch flex items-center justify-center px-3">
-              <drawer-trigger data-target="[data-menu-drawer]" data-open-class="flex" data-close-class="hidden">
-                <button type="button" class="px-1 py-2 rounded-md flex justify-center items-center">
+              <drawer-trigger
+                class="group"
+                data-target="[data-menu-drawer]"
+                data-open-class="active"
+                data-close-class=""
+              >
+                <button type="button" class="px-1 py-2 flex rounded-md justify-center items-center">
                   <span class="sr-only">Open menu</span>
                   <span class="mr-2">{{ 'layout.header.menu' | t }}</span>
-                  {%- render 'icon-hamburger', classes: 'h-6 w-6 header-font-color' -%}
+                  {% comment %} {%- render 'icon-hamburger', classes: 'h-6 w-6 header-font-color' -%} {% endcomment %}
+                  <div>
+                    <span
+                      class="block w-4 h-[1px] mb-1 bg-black transition-transform ease-in duration-300 group-[.active]:rotate-45 group-[.active]:translate-y-[2px]"
+                    ></span>
+                    <span
+                      class="block w-4 h-[1px] bg-black transition-transform ease-in duration-300 group-[.active]:-rotate-45 group-[.active]:translate-y-[-3px]"
+                    ></span>
+                  </div>
                 </button>
               </drawer-trigger>
             </div>

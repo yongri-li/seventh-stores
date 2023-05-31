@@ -9,6 +9,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      transitionProperty: {
+        'width': 'width',
+        'height': 'height',
+        'spacing': 'margin, padding',
+      },
       zIndex: {
         "60": "60",
         "70": "70",

@@ -247,6 +247,12 @@
         "info": "Used for accents"
       },
       {
+        "type": "color",
+        "id": "body_bg",
+        "label": "Body Background",
+        "default": "#f3eee8"
+      },
+      {
         "type": "header",
         "content": "Link colors"
       },

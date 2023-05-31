@@ -83,7 +83,7 @@
           "logo": "shopify:\/\/shop_images\/logo.png",
           "logo_max_width_mobile": 160,
           "logo_max_width_desktop": 230,
-          "main_linklist": "main-menu",
+          "main_linklist": "legal",
           "show_secondary_nav": false,
           "secondary_nav": "",
           "account_type": "icon",

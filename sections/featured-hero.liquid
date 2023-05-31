@@ -20,7 +20,6 @@
       {%- else -%}
       height: {{ section.settings.max_height_mobile }}vh;
       {%- endif -%}
-      background-position: {{ mobile_image_focus }};
   }
 
   #hero-{{ section.id }} h2{
@@ -41,7 +40,6 @@
         {%- else -%}
         height: {{ section.settings.max_height_desktop }}vh;
         {%- endif -%}
-        background-position: {{ desktop_image_focus }};
       }
 
       #hero-{{ section.id }} h2{
@@ -62,7 +60,7 @@
       <a href="{{ section.settings.cta_link }}" class="z-10 absolute top-0 left-0 right-0 bottom-0 "></a>
     {%- endif -%}
 
-    <div class="{% unless section.settings.use_img_height_mobile %}absolute inset-0{% endunless %} overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden">
       <img
         srcset="
           {%- if section.settings.mobile_image.width >= 165 -%}{{ section.settings.mobile_image | image_url: width: 165 }} 165w,{%- endif -%}

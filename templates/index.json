@@ -5,8 +5,8 @@
       "settings": {
         "contain_hero": false,
         "section_gutter": false,
-        "max_height_mobile": 100,
-        "use_img_height_mobile": true,
+        "max_height_mobile": 60,
+        "use_img_height_mobile": false,
         "mobile_image": "shopify:\/\/shop_images\/Homepage_Mobile-12_31bce112-e48b-4055-bb04-6e25e9b0f481.png",
         "mobile_image_focus": "object-top",
         "mobile_content_focus": "justify-start items-center",

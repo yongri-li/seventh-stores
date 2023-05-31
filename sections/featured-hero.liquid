@@ -14,13 +14,13 @@
 -%}
 
 <style type="text/css">
-  @media only screen and (min-width: 899px ){
+  {%- unless section.settings.use_img_height_mobile -%}
+  @media only screen and (max-width: 899px ){
     #hero-{{ section.id }} {
-      {%- unless section.settings.use_img_height_mobile -%}
       height: {{ section.settings.max_height_mobile }}vh;
-      {%- endunless -%}
     }
   }
+  {%- endunless -%}
 
   #hero-{{ section.id }} h2{
       font-size: {{ heading_size_mobile }}px;

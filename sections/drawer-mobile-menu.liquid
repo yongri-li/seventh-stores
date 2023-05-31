@@ -1,5 +1,15 @@
 {% assign tab_one_menu = section.settings.tab_one_menu %}
 {% assign tab_two_menu = section.settings.tab_two_menu %}
+<style>
+
+  :root{
+    --drawer-menu-bg: {{ section.settings.background_color }};
+  }
+
+  [data-menu-drawer]{
+    background-color: var(--drawer-menu-bg);
+  }
+</style>
 {% render 'drawer-menu', menu_one: tab_one_menu, menu_two: tab_two_menu %}
 
 {% schema %}
@@ -8,6 +18,16 @@
     "en": "Mobile Menu"
   },
   "settings": [
+    {
+      "type": "header",
+      "content": "Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f3eee8"
+    },
     {
       "type": "text",
       "id": "tab_one",

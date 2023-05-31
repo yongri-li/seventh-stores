@@ -32,7 +32,7 @@
       "promo-bar": {
         "type": "promo-bar",
         "settings": {
-          "show_promo_bar": true,
+          "show_promo_bar": false,
           "show_on_mobile": true,
           "show_on_desktop": true,
           "promo_link": "",

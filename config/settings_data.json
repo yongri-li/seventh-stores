@@ -49,8 +49,8 @@
         "settings": {
           "background_color": "#f3eee8",
           "border_color_bottom": "#f3eee8",
-          "menu_link_color": "#000000",
-          "menu_link_color_hover": "#000000",
+          "menu_link_color": "#212322",
+          "menu_link_color_hover": "#212322",
           "font_size": 12,
           "contain": false,
           "desktop_header_style": "logo-left",

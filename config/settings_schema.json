@@ -40,6 +40,12 @@
     "name": "Typography",
     "settings": [
       {
+        "type": "checkbox",
+        "label": "Use custom fonts?",
+        "id": "use_custom_fonts",
+        "default": false
+      },
+      {
         "type": "header",
         "content": "Navigation"
       },

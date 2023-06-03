@@ -323,7 +323,7 @@
       "drawer-search": {
         "type": "drawer-search",
         "settings": {
-          "background_color": "#fdf7ef",
+          "background_color": "#fffaf3",
           "show_recommended_searches": false,
           "recommended_searches": "main-menu",
           "show_recommended_products": false,

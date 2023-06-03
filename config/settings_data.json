@@ -323,7 +323,7 @@
       "drawer-search": {
         "type": "drawer-search",
         "settings": {
-          "show_recommended_searches": true,
+          "show_recommended_searches": false,
           "recommended_searches": "main-menu",
           "show_recommended_products": false,
           "recommended_products": ""

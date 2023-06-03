@@ -156,7 +156,7 @@
           "font_color": "#000000",
           "link_color": "#000000",
           "link_color_hover": "#666666",
-          "separator_color": "#000000",
+          "separator_color": "#fffaf3",
           "column_width_desktop": 4,
           "column_width_tablet": 3,
           "column_width_mobile": 1

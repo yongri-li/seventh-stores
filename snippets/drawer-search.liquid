@@ -20,14 +20,14 @@
 <div
   data-drawer
   data-search-drawer
-  class="bg-white w-full transition-transform fixed right-0 top-0 bg-brand-four h-100v translate-x-full z-[49] ease-in duration-500 [&.active]:translate-x-0 max-w-md"
+  class=" w-full transition-transform fixed right-0 top-0 bg-brand-four h-100v translate-x-full z-[49] ease-in duration-500 [&.active]:translate-x-0 max-w-md"
   aria-labelledby="slide-over-title"
   role="dialog"
   aria-modal="true"
 >
   <div class="flex flex-col min-h-full h-full overflow-y-auto max-h-100v pt-24 lg:pt-36">
     <div class="flex flex-col min-h-full max-h-100v">
-      <div class="flex items-center justify-between py-4 px-4 sm:px-6 border-b border-solid border-color bg-white">
+      <div class="flex items-center justify-between py-4 px-4 sm:px-6 border-b border-solid border-color ">
         <div class="ml-3 h-7 flex items-center">
           <drawer-trigger
             class="h-6 w-6"
@@ -56,7 +56,7 @@
                   name="q"
                   id="Search"
                   placeholder="{{ 'general.search.placeholder' | t }}"
-                  class="[ block flex-grow border-none appearance-none rounded-none relative py-3 px-2 leading-tight focus:outline-none focus:shadow-outline-blue focus:z-10 bg-white ]"
+                  class="[ block flex-grow border-none appearance-none rounded-none relative py-3 px-2 leading-tight focus:outline-none focus:shadow-outline-blue focus:z-10  ]"
                 >
                 <button class="btn py-3 px-2 text-center leading-tight" type="submit">
                   {% render 'icon-search', classes: 'w-5 h-5 md:w-6 md:h-6' %}
@@ -105,7 +105,7 @@
             </div>
             <div class="[ flex flex-no-wrap flex-row overflow-y-hidden overflow-x-auto ] scroll-bar">
               {%- for product in recommended_products.products limit: 8 -%}
-                <div class="[ bg-white p-4 ml-4 mb-2 lg:mb-5 overflow-hidden flex-shrink-0 w-1/2 ]">
+                <div class="[ p-4 ml-4 mb-2 lg:mb-5 overflow-hidden flex-shrink-0 w-1/2 ]">
                   {%- render 'product-grid-item' with product: product -%}
                 </div>
               {%- endfor -%}

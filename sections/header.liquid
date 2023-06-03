@@ -20,7 +20,7 @@
     border-bottom-color: var(--header-border-bottom);
   }
 
-  header .header__bg,
+  .header__bg,
   .mega-menu {
     background-color: var(--header-background-color);
   }
@@ -86,7 +86,7 @@
   });
 
   const root = document.querySelector(':root');
-  const header = document.getElementById('shopify-section-header');
+  const header = document.querySelector('header');
   const promoBar = document.getElementById('shopify-section-promo-bar') || false;
 
   let headerHeight = header.offsetHeight;
@@ -96,6 +96,16 @@
   }
 
   root.style.setProperty('--header-height', `${headerHeight}px`);
+
+  window.addEventListener('resize', () => {
+    let headerHeight = header.offsetHeight;
+
+    if (promoBar) {
+      headerHeight += promoBar.offsetHeight;
+    }
+
+    root.style.setProperty('--header-height', `${headerHeight}px`);
+  });
 {% endjavascript %}
 
 {%- if section.settings.show_lightning_nav -%}

@@ -150,7 +150,7 @@
           "show_newsletter": false,
           "show_social_icons": true,
           "show_shop_description": true,
-          "show_copyright": true,
+          "show_copyright": false,
           "show_currency_selector": false,
           "background_color": "#fffaf3",
           "font_color": "#000000",

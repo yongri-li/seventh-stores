@@ -1,9 +1,29 @@
+<style>
+  :root{
+    --drawer-search-bg: {{ section.settings.background_color }};
+  }
+
+  [data-search-drawer]{
+    background-color: var(--drawer-search-bg);
+  }
+</style>
+
 {% render 'drawer-search', recommended_products: section.settings.recommended_products %}
 
 {% schema %}
 {
   "name": "Predictive Search",
   "settings": [
+    {
+      "type": "header",
+      "content": "Styling"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#fffaf3"
+    },
     {
       "type": "checkbox",
       "id": "show_recommended_searches",

@@ -167,7 +167,7 @@
         "settings": {
           "show_section": true,
           "the_collection": "",
-          "show_countdown": true,
+          "show_countdown": false,
           "countdown_limit": "50.00",
           "countdown_copy": "You are [[ money ]] away from free shipping.",
           "countdown_success": ""

@@ -4,6 +4,11 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "1e03dee9-d860-461c-b0be-5568010aca1a": {
+          "type": "breadcrumbs",
+          "settings": {
+          }
+        },
         "79fd555e-8126-441c-bbb6-1af194709a47": {
           "type": "product_title",
           "settings": {
@@ -43,6 +48,7 @@
           "type": "buy_now_buttons",
           "settings": {
             "show_qty_label": true,
+            "show_price_in_button": true,
             "show_quantity_Selector": true
           }
         },
@@ -124,6 +130,7 @@
         }
       },
       "block_order": [
+        "1e03dee9-d860-461c-b0be-5568010aca1a",
         "79fd555e-8126-441c-bbb6-1af194709a47",
         "e5a5146d-8597-4a29-be78-3396ebfb8724",
         "5675c3f2-3a0c-479d-bcb2-b7bff6f6c00e",
@@ -140,7 +147,7 @@
         "80b98137-6193-4edc-945a-94bd2c6aad2c"
       ],
       "settings": {
-        "show_breadcrumbs": false,
+        "content_bg": "#fffaf4",
         "contain": false,
         "show_share_buttons": true,
         "use_image_gallery": false

@@ -6,6 +6,7 @@
       "blocks": {
         "7e2e2c16-d6ee-4393-9379-27fc943a6506": {
           "type": "breadcrumbs",
+          "disabled": true,
           "settings": {
           }
         },

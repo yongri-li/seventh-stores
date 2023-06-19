@@ -176,55 +176,6 @@
         "background_color": "#fefefe"
       }
     },
-    "reviews": {
-      "type": "product-reviews",
-      "disabled": true,
-      "settings": {
-        "section_heading": "",
-        "section_spacing_top": "mt-4",
-        "section_spacing_bottom": "mb-4",
-        "background_color": "#fefefe"
-      }
-    },
-    "tabbed-features": {
-      "type": "product-tabbed-features",
-      "disabled": true,
-      "settings": {
-        "section_heading": "",
-        "section_intro": ""
-      }
-    },
-    "alternating-content": {
-      "type": "product-alternating-content",
-      "disabled": true,
-      "blocks": {
-        "b56639df-043f-4a26-ba89-cc11c39bdf59": {
-          "type": "content_block",
-          "settings": {
-            "heading": "CONTENT BLOCK",
-            "content": "<p><\/p>"
-          }
-        },
-        "3f481a7b-18e0-42ad-b8bd-4a11d1d2a3a1": {
-          "type": "content_block",
-          "settings": {
-            "heading": "",
-            "content": "<p><\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "b56639df-043f-4a26-ba89-cc11c39bdf59",
-        "3f481a7b-18e0-42ad-b8bd-4a11d1d2a3a1"
-      ],
-      "settings": {
-        "background_color": "#fefefe",
-        "section_spacing_top": "mt-4",
-        "section_spacing_bottom": "mb-4",
-        "section_heading": "",
-        "section_description": ""
-      }
-    },
     "recommendations": {
       "type": "product-recommendations",
       "disabled": true,

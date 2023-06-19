@@ -1,15 +1,25 @@
+<style>
+  :root{
+    --mini-cart-background-color: {{ section.settings.background_color }};
+  }
+
+  [data-mini-cart]{
+    background-color: var(--mini-cart-background-color);
+  }
+</style>
+
 <div
   data-drawer
   data-mini-cart
   aria-labelledby="slide-over-title"
   role="dialog"
   aria-modal="true"
-  class="bg-white w-full transition-transform fixed right-0 top-0 bg-brand-four h-100v translate-x-full z-50 ease-in duration-500 [&.active]:translate-x-0 max-w-md"
+  class="w-full transition-transform fixed right-0 top-0 bg-brand-four h-100v translate-x-full z-50 ease-in duration-500 [&.active]:translate-x-0 max-w-md"
 >
   <div class="flex flex-col min-h-full h-full overflow-y-auto max-h-100v">
-    <div class="h-full flex flex-col bg-white shadow-xl overflow-y-scroll" data-cart-view="data-cart-view">
+    <div class="h-full flex flex-col shadow-xl overflow-y-scroll" data-cart-view="data-cart-view">
       <div class="flex-1 overflow-y-auto">
-        <div class="flex items-center justify-between pt-10 pb-4 px-4 sm:px-6 border-b border-solid border-color bg-white">
+        <div class="flex items-center justify-between pt-10 pb-4 px-4 sm:px-6 [ mini-cart__bg ]">
           <h2 class="text-sm heading" id="slide-over-title">
             {{ 'cart.general.title' | t }}
           </h2>
@@ -53,7 +63,7 @@
           </div>
         </div>
       </div>
-      <div class="border-t border-solid border-color py-6 px-4 sm:px-6">
+      <div class="py-6 px-4 sm:px-6">
         <div class="flex justify-between text-base">
           <p class="text-sm heading">{{ 'cart.general.subtotal' | t }}</p>
           <p class="heading text-sm" id="cart-prices">

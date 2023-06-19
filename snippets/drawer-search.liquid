@@ -27,7 +27,7 @@
 >
   <div class="flex flex-col min-h-full h-full overflow-y-auto max-h-100v pt-24 lg:pt-36">
     <div class="flex flex-col min-h-full max-h-100v">
-      <div class="flex items-center justify-between py-4 px-4 sm:px-6 border-b border-solid border-color ">
+      <div class="flex items-center justify-between py-4 px-4 sm:px-6">
         <div class="ml-3 h-7 flex items-center">
           <drawer-trigger
             class="h-6 w-6"
@@ -44,11 +44,11 @@
       </div>
 
       <div class="flex flex-col flex-grow overflow-y-auto">
-        <div class="border-b border-color py-4 px-4 sm:px-6">
+        <div class="py-4 px-4 sm:px-6">
           <search-form id="search-form-{{ section.id }}">
             <form
               action="{{ routes.search_url }}"
-              class="border border-color border-solid overflow-hidden relative z-50"
+              class="border-b border-color border-solid overflow-hidden relative z-50"
             >
               <div class="relative flex items-center">
                 <input
@@ -56,10 +56,10 @@
                   name="q"
                   id="Search"
                   placeholder="{{ 'general.search.placeholder' | t }}"
-                  class="[ block flex-grow border-none appearance-none rounded-none relative py-3 px-2 leading-tight focus:outline-none focus:shadow-outline-blue focus:z-10  ]"
+                  class="[ bg-transparent block flex-grow border-none appearance-none rounded-none relative py-1 px-2 leading-tight focus:outline-none focus:shadow-outline-blue focus:z-10 text-xs ]"
                 >
-                <button class="btn py-3 px-2 text-center leading-tight" type="submit">
-                  {% render 'icon-search', classes: 'w-5 h-5 md:w-6 md:h-6' %}
+                <button class="btn py-1 pl-2  text-center leading-tight" type="submit">
+                  {% render 'icon-search', classes: 'w-4 h-4' %}
                 </button>
                 <p data-clear class="cursor-pointer pr-4">clear</p>
               </div>
@@ -67,7 +67,7 @@
           </search-form>
           <div
             data-search-results="search-form-{{ section.id }}"
-            class="[ flex flex-wrap mt-4 ] scroll-bar"
+            class="[ flex flex-wrap ] scroll-bar"
           ></div>
 
           {%- if section.settings.show_recommended_searches -%}

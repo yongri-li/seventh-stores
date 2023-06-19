@@ -16,11 +16,29 @@
     --header-menu-link-color-hover: {{ section.settings.menu_link_color_hover }};
   }
 
+  #shopify-section-header{
+    position: sticky;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 50;
+    height: var(--header-height);
+  }
+
   header{
     border-bottom-color: var(--header-border-bottom);
   }
 
-  .header__bg,
+  .header-wrap__bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    background-color: var(--header-background-color);
+  }
+
+  .header-wrap .header-wrap__bg,
   .mega-menu {
     background-color: var(--header-background-color);
   }
@@ -58,7 +76,7 @@
   }
 {% endstyle %}
 
-<div data-section-id="{{ section.id }}" data-section-type="header-section">
+<div class="relative" data-section-id="{{ section.id }}" data-section-type="header-section">
   {%- liquid
     if section.settings.desktop_header_style == 'logo-left'
       render 'desktop-header-style-one'

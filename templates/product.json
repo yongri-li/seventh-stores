@@ -16,6 +16,7 @@
         },
         "e5a5146d-8597-4a29-be78-3396ebfb8724": {
           "type": "product_price",
+          "disabled": true,
           "settings": {
           }
         },

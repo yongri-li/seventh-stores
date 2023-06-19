@@ -10,7 +10,11 @@
     "heading_letter_spacing": 0.2,
     "body_font": "archivo_n4",
     "body_fs": 14,
+    "color_primary": "#212322",
+    "color_body_text": "#212322",
     "color_scrollbar": "#8a8a8a",
+    "color_border": "#212322",
+    "primary_link_color": "#212322",
     "primary_button_alternative": true,
     "btn_primary_bg": "#8a8985",
     "btn_primary_text": "#8a8985",
@@ -165,6 +169,7 @@
       "drawer-mini-cart": {
         "type": "drawer-mini-cart",
         "settings": {
+          "background_color": "#fffaf4",
           "show_section": true,
           "the_collection": "",
           "show_countdown": false,

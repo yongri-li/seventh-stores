@@ -227,6 +227,7 @@
     },
     "recommendations": {
       "type": "product-recommendations",
+      "disabled": true,
       "settings": {
         "contain": false,
         "total_products": 8,

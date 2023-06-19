@@ -235,20 +235,11 @@
         "products_tablet": "md:w-1\/3",
         "products_mobile": "w-1\/2"
       }
-    },
-    "product-json": {
-      "type": "product-json",
-      "settings": {
-      }
     }
   },
   "order": [
     "main",
     "accordions",
-    "reviews",
-    "tabbed-features",
-    "alternating-content",
-    "recommendations",
-    "product-json"
+    "recommendations"
   ]
 }

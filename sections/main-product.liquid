@@ -52,8 +52,8 @@
   <div class="[ {% if section.settings.contain %}container{% endif %} mx-auto ] product-single">
     {%- assign current_variant = product.selected_or_first_available_variant -%}
     {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
-    <div data-product-single-main class="[ lg:grid lg:grid-cols-12 lg:auto-rows-min lg:gap-x-8 ]">
-      <div class="[ lg:col-span-6 ]">
+    <div data-product-single-main class="[ lg:flex ]">
+      <div class="[ ]">
         {%- if section.settings.use_image_gallery -%}
           {% style %}
             .dot.active {
@@ -148,7 +148,10 @@
         {%- endif -%}
       </div>
 
-      <div data-sticky-column class="[ mt-8 lg:mt-0 lg:col-span-6 lg:sticky lg:top-4 lg:self-start ]">
+      <div
+        data-sticky-column
+        class="[ flex-shrink-0 px-4 py-6 lg:pt-10 lg:pl-10 lg:pr-5 md:w-[425px] lg:w-[595px] lg:sticky lg:top-4 lg:self-start ]"
+      >
         <product-form data-section="{{ section.id }}" data-product-id="{{ section.id }}-{{ product.id }}">
           {%- for block in section.blocks -%}
             {%- case block.type -%}

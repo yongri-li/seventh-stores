@@ -52,8 +52,8 @@
   <div class="[ {% if section.settings.contain %}container{% endif %} mx-auto ] product-single">
     {%- assign current_variant = product.selected_or_first_available_variant -%}
     {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
-    <div data-product-single-main class="[ lg:flex ]">
-      <div class="[ ]">
+    <div data-product-single-main class="[ lg:grid lg:grid-cols-12 ]">
+      <div class="[ lg:col-span-8 ]">
         {%- if section.settings.use_image_gallery -%}
           {% style %}
             .dot.active {
@@ -150,7 +150,7 @@
 
       <div
         data-sticky-column
-        class="[ flex-shrink-0 px-4 py-6 lg:pt-10 lg:pl-10 lg:pr-5 md:w-[425px] lg:w-[595px] lg:sticky lg:top-4 lg:self-start ]"
+        class="[ flex-shrink-0 px-4 py-6 lg:pt-10 lg:pl-10 lg:pr-5 lg:sticky lg:top-4 lg:col-span-4 lg:self-start ]"
       >
         <product-form data-section="{{ section.id }}" data-product-id="{{ section.id }}-{{ product.id }}">
           {%- for block in section.blocks -%}
@@ -454,9 +454,7 @@
                   {%- endif -%}
                 {%- endif -%}
               {%- when 'product_description' -%}
-                <div class="rte mt-3">
-                  {{ product.description }}
-                </div>
+                <div class="rte mt-3">{{ product.description }}</div>
               {%- when 'buy_now_buttons' -%}
                 {% form 'product', product, data-product-form: '', data-product-handle: product.handle %}
                   <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
@@ -515,7 +513,7 @@
                             </p>
                           {%- endunless -%}
                           <button
-                            class="[ w-full focus:shadow-outline focus:outline-none font-bold py-3 px-4 leading-tight disabled:opacity-50 ] heading btn add-to-cart-button group"
+                            class="[ w-full focus:shadow-outline focus:outline-none font-bold py-3 px-4 disabled:opacity-50 ] heading btn add-to-cart-button group"
                             type="submit"
                             name="add"
                             data-add-to-cart
@@ -541,6 +539,27 @@
                             </span>
                             <span class="hidden group-disabled:block">
                               {{ 'products.product.sold_out' | t }}
+                            </span>
+                            <span id="productPrice{{ product.id }}" class="product-price">
+                              {%- if settings.wholesale_enabled == false or is_approved -%}
+                                <span data-price-wrapper>
+                                  <span data-product-price> {{ offer.price | money }}</span>
+                                  <span
+                                    {% unless offer.compare_at_price_max > offer.price %}
+                                      style="display: none;"
+                                    {% endunless %}
+                                    class="visually-hidden"
+                                    data-compare-text
+                                  >
+                                    {{- 'products.product.regular_price' | t -}}
+                                  </span>
+                                  <s class="[ text-xs lg:text-sm text-red-600 ]" data-product-compare-price>
+                                    {% if offer.compare_at_price > offer.price %}
+                                      {{ offer.compare_at_price | money }}
+                                    {% endif %}
+                                  </s>
+                                </span>
+                              {%- endif -%}
                             </span>
                           </button>
                         </div>
@@ -986,6 +1005,12 @@
           "type": "checkbox",
           "id": "show_qty_label",
           "label": "Show label on Quantity Selectors?",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_price_in_button",
+          "label": "Show price in the Add to Cart button?",
           "default": true
         },
         {

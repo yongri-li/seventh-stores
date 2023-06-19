@@ -51,7 +51,7 @@
     {%- assign current_variant = product.selected_or_first_available_variant -%}
     {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
     <div data-product-single-main class="[ lg:grid lg:grid-cols-12 ]">
-      <div class="[ lg:col-span-8 ]">
+      <div class="[ md:col-span-6 lg:col-span-7 ]">
         {%- if section.settings.use_image_gallery -%}
           {% style %}
             .dot.active {
@@ -148,7 +148,7 @@
 
       <div
         data-sticky-column
-        class="[ flex-shrink-0 px-4 py-6 lg:pt-10 lg:pl-10 lg:pr-5 lg:sticky lg:top-4 lg:col-span-4 lg:self-start ]"
+        class="[ flex-shrink-0 px-4 py-6 lg:pt-10 lg:pl-10 lg:pr-5 lg:sticky lg:top-4 md:col-span-6 lg:col-span-5 lg:self-start ]"
       >
         <product-form data-section="{{ section.id }}" data-product-id="{{ section.id }}-{{ product.id }}">
           {%- for block in section.blocks -%}
@@ -209,7 +209,9 @@
                   {%- endif -%}
                 </div>
               {%- when 'breadcrumbs' -%}
-                {% render 'breadcrumb' %}
+                <div class="mb-4">
+                  {% render 'breadcrumb' %}
+                </div>
               {%- when 'variant_selectors' -%}
                 {%- if settings.wholesale_enabled == false or is_approved -%}
                   {%- unless product.has_only_default_variant -%}

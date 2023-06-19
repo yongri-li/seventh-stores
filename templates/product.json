@@ -35,12 +35,14 @@
         "20c06d95-7112-4b19-ba71-37a0d8cddcd2": {
           "type": "variant_selectors",
           "settings": {
+            "show_labels": true,
             "use_swatches": false
           }
         },
         "36bcb969-de7f-4622-8eee-50454b12a522": {
           "type": "buy_now_buttons",
           "settings": {
+            "show_qty_label": true,
             "show_quantity_Selector": true
           }
         },
@@ -65,7 +67,7 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "DESCRIPTION",
-            "content": "<p></p>",
+            "content": "<p><\/p>",
             "product_description": true,
             "page_content": "",
             "open_by_default": false
@@ -75,7 +77,7 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Delivery information",
-            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis velit eleifend, fermentum velit sed, dictum dui. Praesent in mollis nunc. Praesent condimentum eleifend odio et euismod. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris in velit imperdiet, dapibus dui vel, pulvinar nunc. Phasellus vitae arcu nec enim molestie aliquet vel ut augue. Ut ac sem ut diam tristique accumsan ac et turpi</p>",
+            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis velit eleifend, fermentum velit sed, dictum dui. Praesent in mollis nunc. Praesent condimentum eleifend odio et euismod. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris in velit imperdiet, dapibus dui vel, pulvinar nunc. Phasellus vitae arcu nec enim molestie aliquet vel ut augue. Ut ac sem ut diam tristique accumsan ac et turpi<\/p>",
             "product_description": false,
             "page_content": "",
             "open_by_default": false
@@ -103,7 +105,7 @@
             "saturday": false,
             "sunday": false,
             "heading": "DELIVERY",
-            "content": "<p>Order within {countdown} for same day dispatch.</p>",
+            "content": "<p>Order within {countdown} for same day dispatch.<\/p>",
             "show_days": false,
             "month": "Jan",
             "day": 1,
@@ -139,7 +141,7 @@
       ],
       "settings": {
         "show_breadcrumbs": false,
-        "contain": true,
+        "contain": false,
         "show_share_buttons": true,
         "use_image_gallery": true
       }
@@ -160,7 +162,7 @@
           "settings": {
             "open": false,
             "accordion_heading": "DELIVERY AND RETURNS",
-            "accordion_content": "<p>Default <em>richtext</em> <a href=\"https://example.com/\">content</a></p>"
+            "accordion_content": "<p>Default <em>richtext<\/em> <a href=\"https:\/\/example.com\/\">content<\/a><\/p>"
           }
         }
       },
@@ -200,14 +202,14 @@
           "type": "content_block",
           "settings": {
             "heading": "CONTENT BLOCK",
-            "content": "<p></p>"
+            "content": "<p><\/p>"
           }
         },
         "3f481a7b-18e0-42ad-b8bd-4a11d1d2a3a1": {
           "type": "content_block",
           "settings": {
             "heading": "",
-            "content": "<p></p>"
+            "content": "<p><\/p>"
           }
         }
       },
@@ -228,10 +230,10 @@
       "settings": {
         "contain": false,
         "total_products": 8,
-        "products_xl": "xl:w-1/5",
-        "products_desktop": "lg:w-1/5",
-        "products_tablet": "md:w-1/3",
-        "products_mobile": "w-1/2"
+        "products_xl": "xl:w-1\/5",
+        "products_desktop": "lg:w-1\/5",
+        "products_tablet": "md:w-1\/3",
+        "products_mobile": "w-1\/2"
       }
     },
     "product-json": {

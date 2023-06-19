@@ -25,6 +25,7 @@
   }
 
   #shopify-section-{{ section.id }} [data-sticky-column]{
+    top: var(--header-height);
     background-color: {{ section.settings.content_bg }};
   }
 {%- endstyle -%}
@@ -815,21 +816,6 @@
       gallery.init();
     });
   });
-</script>
-
-<script>
-  const stickyColumn = document.querySelector('[data-sticky-column]');
-  const els = ['#shopify-section-header'];
-  let height = 0;
-
-  els.forEach((ele) => {
-    const element = document.querySelector(ele);
-    height += element.offsetHeight;
-  });
-
-  stickyColumn.setAttribute('style', `top: ${height + 16}px`);
-
-  console.log('Height: ', height);
 </script>
 
 <script type="application/ld+json" data-creator-name="FeedArmy">

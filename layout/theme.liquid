@@ -150,10 +150,14 @@
 
     {%- if settings.development_mode -%}
       <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
-      <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+      {%- if settings.show_quick_view -%}
+        <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+      {%- endif -%}
     {%- else -%}
       <script src="{{ 'product-form.min.js' | asset_url }}" defer="defer"></script>
-      <script src="{{ 'quick-add.min.js' | asset_url }}" defer="defer"></script>
+      {%- if settings.show_quick_view -%}
+        <script src="{{ 'quick-add.min.js' | asset_url }}" defer="defer"></script>
+      {%- endif -%}
     {%- endif -%}
 
     <!-- Libraries -->

@@ -62,23 +62,48 @@
           {%- endcase -%}
         </div>
       {%- endfor -%}
+      <div class="mt-4 flex align-end">
+        <div class="relative inline-block">
+          <select
+            data-sorting
+            id="sorting"
+            name="sorting"
+            autocomplete="sorting"
+            class="[ w-1/2 md:w-auto block bg-white border border-color p-2 lg:px-4 lg:py-3 pr-8 leading-tight focus:outline-none focus:shadow-outline box-content min-w-min appearance-none rounded-none ]"
+          >
+            <option selected disabled value="default">{{ 'collections.general.sort_by' | t }}</option>
+            {%- for option in collection.sort_options -%}
+              <option
+                value="{{ option.value }}"
+                {% if option.value == collection.sort_by %}
+                  selected
+                {% endif %}
+              >
+                {{ option.name }}
+              </option>
+            {%- endfor -%}
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center">
+            {% render 'icon-chevron-down', classes: 'h-4 w-4' %}
+          </div>
+        </div>
+        <drawer-trigger data-target="[data-filters-drawer]" data-open-class="flex" data-close-class="hidden">
+          <button
+            type="button"
+            class="flex items-center heading bg-white border border-color p-2 lg:px-4 lg:py-3 pr-8 leading-tight text-sm"
+            aria-controls="disclosure-1"
+            aria-expanded="false"
+          >
+            <svg height="16" width="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+            </svg>
+            <span class="pl-4">{{ 'collections.general.filter' | t }}</span>
+            <p class="sr-only">Filters</p>
+          </button>
+        </drawer-trigger>
+      </div>
     </div>
   </header>
-
-  <drawer-trigger data-target="[data-filters-drawer]" data-open-class="flex" data-close-class="hidden">
-    <button
-      type="button"
-      class="flex items-center heading bg-white border border-color p-2 lg:px-4 lg:py-3 pr-8 leading-tight text-sm"
-      aria-controls="disclosure-1"
-      aria-expanded="false"
-    >
-      <svg height="16" width="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-      </svg>
-      <span class="pl-4">{{ 'collections.general.filter' | t }}</span>
-      <p class="sr-only">Filters</p>
-    </button>
-  </drawer-trigger>
 
   <section>
     <div id="CollectionProductGrid">

@@ -487,6 +487,13 @@
         "label": "Use Swatches?",
         "info": "Swatches will be used instead of select boxes.",
         "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_quick_view",
+        "label": "Show quick view trigger?",
+        "info": "Enabling this will show a trigger to enable the quick view for a product.",
+        "default": false
       }
     ]
   },

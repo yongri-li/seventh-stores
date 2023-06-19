@@ -31,30 +31,32 @@
 
           <div class="mt-4">
             <div>
-              <div class="relative inline-block">
-                <select
-                  data-sorting
-                  id="country"
-                  name="country"
-                  autocomplete="country"
-                  class="[ m-1 w-1/2 md:w-auto block bg-white border border-color p-2 lg:px-4 lg:py-3 pr-8 leading-tight focus:outline-none focus:shadow-outline box-content ml-auto min-w-min appearance-none rounded-none ]"
-                >
-                  <option selected disabled value="default">{{ 'collections.general.sort_by' | t }}</option>
-                  {%- for option in collection.sort_options -%}
-                    <option
-                      value="{{ option.value }}"
-                      {% if option.value == collection.sort_by %}
-                        selected
-                      {% endif %}
-                    >
-                      {{ option.name }}
-                    </option>
-                  {%- endfor -%}
-                </select>
-                <div class="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center">
-                  {% render 'icon-chevron-down', classes: 'h-4 w-4' %}
+              {% comment %}
+                <div class="relative inline-block">
+                  <select
+                    data-sorting
+                    id="sorting"
+                    name="sorting"
+                    autocomplete="sorting"
+                    class="[ m-1 w-1/2 md:w-auto block bg-white border border-color p-2 lg:px-4 lg:py-3 pr-8 leading-tight focus:outline-none focus:shadow-outline box-content ml-auto min-w-min appearance-none rounded-none ]"
+                  >
+                    <option selected disabled value="default">{{ 'collections.general.sort_by' | t }}</option>
+                    {%- for option in collection.sort_options -%}
+                      <option
+                        value="{{ option.value }}"
+                        {% if option.value == collection.sort_by %}
+                          selected
+                        {% endif %}
+                      >
+                        {{ option.name }}
+                      </option>
+                    {%- endfor -%}
+                  </select>
+                  <div class="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center">
+                    {% render 'icon-chevron-down', classes: 'h-4 w-4' %}
+                  </div>
                 </div>
-              </div>
+              {% endcomment %}
             </div>
             {%- assign total_active_values = 0 -%}
             <collection-filters-form class="facets small-hide">

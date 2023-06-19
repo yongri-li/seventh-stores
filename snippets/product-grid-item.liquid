@@ -14,19 +14,23 @@
     </div>
     {%- assign variant_type = 'select' -%}
     {%- if settings.pgi_use_swatches -%}{%- assign variant_type = 'swatches' -%}{%- endif -%}
-    {%- render 'quick-add' with product: product, variant_type: variant_type -%}
+    {%- if settings.show_quick_view -%}
+      {%- render 'quick-add' with product: product, variant_type: variant_type -%}
+    {%- endif -%}
   </div>
 
   <div class="mt-4 flex justify-between">
     <p class="text-xs leading-snug">
       <a class="leading-snug" href="{{ product.url }}">{{ product.title }}</a>
     </p>
-    <quick-add-trigger
-      data-target="quickAdd-{{ section.id }}-{{ product.id }}"
-      class="ml-4 border text-center p-1 leading-5 w-5 h-5 border-gray-200 cursor-pointer block bg-white rounded-full"
-    >
-      {%- render 'icon-plus' with height: 10, width: 10, classes: 'pointer-events-none cursor-pointer' -%}
-    </quick-add-trigger>
+    {%- if settings.show_quick_view -%}
+      <quick-add-trigger
+        data-target="quickAdd-{{ section.id }}-{{ product.id }}"
+        class="ml-4 border text-center p-1 leading-5 w-5 h-5 border-gray-200 cursor-pointer block bg-white rounded-full"
+      >
+        {%- render 'icon-plus' with height: 10, width: 10, classes: 'pointer-events-none cursor-pointer' -%}
+      </quick-add-trigger>
+    {%- endif -%}
   </div>
   <div class="mt-1 flex justify-between">
     <div>

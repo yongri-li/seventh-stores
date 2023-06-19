@@ -46,9 +46,6 @@
   itemscope
   itemtype="http://schema.org/Product"
 >
-  {%- if section.settings.show_breadcrumbs -%}
-    {% render 'breadcrumb' %}
-  {%- endif -%}
   <div class="[ {% if section.settings.contain %}container{% endif %} mx-auto ] product-single">
     {%- assign current_variant = product.selected_or_first_available_variant -%}
     {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
@@ -210,6 +207,8 @@
                     {%- endif -%}
                   {%- endif -%}
                 </div>
+              {%- when 'breadcrumbs' -%}
+                {% render 'breadcrumb' %}
               {%- when 'variant_selectors' -%}
                 {%- if settings.wholesale_enabled == false or is_approved -%}
                   {%- unless product.has_only_default_variant -%}
@@ -926,12 +925,6 @@
     },
     {
       "type": "checkbox",
-      "id": "show_breadcrumbs",
-      "label": "Show Breadcrumbs?",
-      "default": true
-    },
-    {
-      "type": "checkbox",
       "id": "contain",
       "label": "Contain the Page within a wrapper?",
       "default": false
@@ -1355,6 +1348,11 @@
     {
       "type": "related_products",
       "name": "Related Products",
+      "limit": 1
+    },
+    {
+      "type": "breadcrumbs",
+      "name": "Breadcrumbs",
       "limit": 1
     },
     {

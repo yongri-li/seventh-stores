@@ -14,30 +14,6 @@
           "settings": {
           }
         },
-        "e5a5146d-8597-4a29-be78-3396ebfb8724": {
-          "type": "product_price",
-          "disabled": true,
-          "settings": {
-          }
-        },
-        "5675c3f2-3a0c-479d-bcb2-b7bff6f6c00e": {
-          "type": "product_vendor",
-          "disabled": true,
-          "settings": {
-          }
-        },
-        "c049765a-2a61-4ee2-8575-fe12a1e32438": {
-          "type": "stock_notice",
-          "disabled": true,
-          "settings": {
-          }
-        },
-        "2d655e07-ec9a-4aef-91b7-511dad970ca1": {
-          "type": "product_description",
-          "disabled": true,
-          "settings": {
-          }
-        },
         "20c06d95-7112-4b19-ba71-37a0d8cddcd2": {
           "type": "variant_selectors",
           "settings": {
@@ -51,23 +27,6 @@
             "show_qty_label": false,
             "show_price_in_button": true,
             "show_quantity_Selector": true
-          }
-        },
-        "0f21358e-1a23-4544-84c6-ac9d7b40f357": {
-          "type": "estimated_shipping_date",
-          "settings": {
-          }
-        },
-        "36bba8a5-518e-4593-8f74-6aa0ef3f3bbd": {
-          "type": "product_usp",
-          "settings": {
-            "background_color": "#ccfc5b",
-            "font_color": "#000000",
-            "icon": "",
-            "heading": "FREE UK STANDARD DELIVERY",
-            "heading_size": 12,
-            "description": "",
-            "description_size": 10
           }
         },
         "aab585e2-1c17-449f-8788-bbe37a977394": {
@@ -90,39 +49,6 @@
             "open_by_default": false
           }
         },
-        "3fd18e5f-f5de-4bd2-845c-22f37fc6f9ff": {
-          "type": "separator",
-          "disabled": true,
-          "settings": {
-          }
-        },
-        "9100c264-e930-445f-9aea-579e47c407c7": {
-          "type": "product_countdown",
-          "disabled": true,
-          "settings": {
-            "show_when_expired": true,
-            "background_color": "#d9f6ef",
-            "expired_message": "FREE UK DELIVERY ON ORDERS OVER £50",
-            "count_to": "time",
-            "monday": true,
-            "tuesday": true,
-            "wednesday": true,
-            "thursday": true,
-            "friday": true,
-            "saturday": false,
-            "sunday": false,
-            "heading": "DELIVERY",
-            "content": "<p>Order within {countdown} for same day dispatch.<\/p>",
-            "show_days": false,
-            "month": "Jan",
-            "day": 1,
-            "year": "",
-            "show_time": true,
-            "second": 0,
-            "minute": 0,
-            "hour": 14
-          }
-        },
         "80b98137-6193-4edc-945a-94bd2c6aad2c": {
           "type": "data_related_products",
           "settings": {
@@ -133,18 +59,10 @@
       "block_order": [
         "1e03dee9-d860-461c-b0be-5568010aca1a",
         "79fd555e-8126-441c-bbb6-1af194709a47",
-        "e5a5146d-8597-4a29-be78-3396ebfb8724",
-        "5675c3f2-3a0c-479d-bcb2-b7bff6f6c00e",
-        "c049765a-2a61-4ee2-8575-fe12a1e32438",
-        "2d655e07-ec9a-4aef-91b7-511dad970ca1",
         "20c06d95-7112-4b19-ba71-37a0d8cddcd2",
         "36bcb969-de7f-4622-8eee-50454b12a522",
-        "0f21358e-1a23-4544-84c6-ac9d7b40f357",
-        "36bba8a5-518e-4593-8f74-6aa0ef3f3bbd",
         "aab585e2-1c17-449f-8788-bbe37a977394",
         "e64e89d1-ba73-47e4-a915-29089d77fd31",
-        "3fd18e5f-f5de-4bd2-845c-22f37fc6f9ff",
-        "9100c264-e930-445f-9aea-579e47c407c7",
         "80b98137-6193-4edc-945a-94bd2c6aad2c"
       ],
       "settings": {

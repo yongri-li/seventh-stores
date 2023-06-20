@@ -38,10 +38,11 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "DESCRIPTION",
-            "content": "<p><\/p>",
+            "content": "",
             "product_description": true,
+            "size_guide": false,
             "page_content": "",
-            "open_by_default": false
+            "open_by_default": true
           }
         },
         "e64e89d1-ba73-47e4-a915-29089d77fd31": {
@@ -50,6 +51,18 @@
             "heading": "Delivery information",
             "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis velit eleifend, fermentum velit sed, dictum dui. Praesent in mollis nunc. Praesent condimentum eleifend odio et euismod. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris in velit imperdiet, dapibus dui vel, pulvinar nunc. Phasellus vitae arcu nec enim molestie aliquet vel ut augue. Ut ac sem ut diam tristique accumsan ac et turpi<\/p>",
             "product_description": false,
+            "size_guide": false,
+            "page_content": "",
+            "open_by_default": false
+          }
+        },
+        "5c049b49-c6da-4174-9a28-8f7f58984f5e": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Size guide",
+            "content": "",
+            "product_description": false,
+            "size_guide": true,
             "page_content": "",
             "open_by_default": false
           }
@@ -69,6 +82,7 @@
         "36bcb969-de7f-4622-8eee-50454b12a522",
         "aab585e2-1c17-449f-8788-bbe37a977394",
         "e64e89d1-ba73-47e4-a915-29089d77fd31",
+        "5c049b49-c6da-4174-9a28-8f7f58984f5e",
         "80b98137-6193-4edc-945a-94bd2c6aad2c"
       ],
       "settings": {

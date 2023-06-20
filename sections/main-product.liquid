@@ -41,7 +41,9 @@
 
   product-form input,
   product-form select,
-  product-form textarea{
+  product-form .select,
+  product-form textarea,
+  product-form .quantity{
     border-color: var(--product-input-border-color);
   }
 {%- endstyle -%}
@@ -491,7 +493,7 @@
                               {{- 'products.product.quantity' | t -}}
                             </label>
                             <div class="inline-block relative w-full">
-                              <div x-data="{ count: 1 }" class="flex border border-solid border-gray-200">
+                              <div x-data="{ count: 1 }" class="[ flex border border-solid ] quantity">
                                 <button
                                   type="button"
                                   x-on:click="if( count > 1 ){ count-- }"

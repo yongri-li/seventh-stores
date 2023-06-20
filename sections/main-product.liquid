@@ -657,6 +657,9 @@
                     {%- if block.settings.product_description -%}
                       {{ product.description }}
                     {%- endif -%}
+                    {%- if block.settings.size_guide -%}
+                      {% render 'product-size-guide' %}
+                    {%- endif -%}
                     {%- unless block.settings.content == blank -%}
                       {{ block.settings.content | newline_to_br }}
                     {%- endunless -%}
@@ -1091,6 +1094,12 @@
           "type": "checkbox",
           "id": "product_description",
           "label": "Product Description",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "size_guide",
+          "label": "Size Guide",
           "default": false
         },
         {

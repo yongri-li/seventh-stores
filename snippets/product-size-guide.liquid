@@ -1,0 +1,44 @@
+{%- assign measurements = 'total_length,sleeve_length,back,chesthoulder,hem,inseam,rise,waist' | split: ',' -%}
+
+<size-guide>
+  <div>
+    {%- for variant in product.variants -%}
+      <button data-tab="{{ forloop.index }}">
+        {{ variant.title }}
+      </button>
+    {%- endfor -%}
+  </div>
+
+  {%- for variant in product.variants -%}
+    <div data-tab="{{ forloop.index }}">
+      {%- for measurement in measurements -%}
+        {%- unless variant.metafields.measurements[measurement] == blank -%}
+          <div>
+            <p>{{ measurement | replace: '_', ' ' | capitalize }}</p>
+            <p>{ variant.metafields.measurements[measurement] }}</p>
+          </div>
+        {%- endunless -%}
+      {%- endfor -%}
+    </div>
+  {%- endfor -%}
+</size-guide>
+
+<script>
+  class SizeGuide extends HTMLElement {
+    constructor() {
+      super();
+
+      const buttons = this.querySelectorAll('button');
+
+      buttons.forEach((button) => {
+        button.addEventListener('click', this.updateVariant(event));
+      });
+    }
+
+    updateVariant(event) {
+      console.log('Event: ', event.currentTarget);
+    }
+  }
+
+  customElements.define('size-guide', SizeGuide);
+</script>

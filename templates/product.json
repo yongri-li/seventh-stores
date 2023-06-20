@@ -14,6 +14,11 @@
           "settings": {
           }
         },
+        "a3796758-d1d2-41e8-bb2b-ddbd229e9efe": {
+          "type": "color_variants",
+          "settings": {
+          }
+        },
         "20c06d95-7112-4b19-ba71-37a0d8cddcd2": {
           "type": "variant_selectors",
           "settings": {
@@ -59,6 +64,7 @@
       "block_order": [
         "1e03dee9-d860-461c-b0be-5568010aca1a",
         "79fd555e-8126-441c-bbb6-1af194709a47",
+        "a3796758-d1d2-41e8-bb2b-ddbd229e9efe",
         "20c06d95-7112-4b19-ba71-37a0d8cddcd2",
         "36bcb969-de7f-4622-8eee-50454b12a522",
         "aab585e2-1c17-449f-8788-bbe37a977394",
@@ -67,6 +73,7 @@
       ],
       "settings": {
         "content_bg": "#fffaf4",
+        "input_border_color": "#f3eee8",
         "contain": false,
         "show_share_buttons": true,
         "use_image_gallery": false

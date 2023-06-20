@@ -24,7 +24,7 @@
     --product-input-border-color: {{ section.settings.input_border_color }};
   }
 
-  .main-product-image-gallery img:first-child {
+  .main-product-image-gallery img {
     grid-column: span 2;
   }
 
@@ -124,28 +124,30 @@
           </slider-component>
         {%- else -%}
           {%- if product.images.size > 1 -%}
-            <div
-              data-product-gallery="{{ section.id }}-{{ product.id }}"
-              class="-ml-4 flex flex-row flex-nowrap overflow-x-auto w-screen lg:ml-0 lg:w-auto lg:grid lg:grid-cols-2 lg:gap-4 snap-x snap-mandatory scroll-smooth lg:snap-none [ main-product-image-gallery ]"
-            >
-              {%- for media in product.media -%}
-                {%- if media.media_type == 'image' -%}
-                  {%- assign image = media.image -%}
-                  <img
-                    loading="lazy"
-                    r
-                    width="{{ image.width }}"
-                    height="{{ image.height }}"
-                    src="{{ image | image_url: width: 640 }}"
-                    srcset="{{ image | image_url: width: 1920 }} 2x, {{ image | image_url: width: 960 }} 960w"
-                    class="cursor-zoom-in max-w-80v lg:max-w-full w-full h-full lg:w-full flex-shrink-0 snap-start lg:"
-                    data-variant-image="{{ image | image_url: width: 100, height: 100 | replace: '_small', '' }}"
-                    data-gallery-image
-                    alt="{{ image.alt | escape }}"
-                    data-media-id="{{ section.id }}-{{ image.id }}"
-                  >
-                {%- endif -%}
-              {%- endfor -%}
+            <div class="px-20">
+              <div
+                data-product-gallery="{{ section.id }}-{{ product.id }}"
+                class="-ml-4 flex flex-row flex-nowrap overflow-x-auto w-screen lg:ml-0 lg:w-auto lg:grid lg:grid-cols-2 lg:gap-4 snap-x snap-mandatory scroll-smooth lg:snap-none [ main-product-image-gallery ]"
+              >
+                {%- for media in product.media -%}
+                  {%- if media.media_type == 'image' -%}
+                    {%- assign image = media.image -%}
+                    <img
+                      loading="lazy"
+                      r
+                      width="{{ image.width }}"
+                      height="{{ image.height }}"
+                      src="{{ image | image_url: width: 640 }}"
+                      srcset="{{ image | image_url: width: 1920 }} 2x, {{ image | image_url: width: 960 }} 960w"
+                      class="cursor-zoom-in max-w-80v lg:max-w-full w-full h-full lg:w-full flex-shrink-0 snap-start lg:col-span-2"
+                      data-variant-image="{{ image | image_url: width: 100, height: 100 | replace: '_small', '' }}"
+                      data-gallery-image
+                      alt="{{ image.alt | escape }}"
+                      data-media-id="{{ section.id }}-{{ image.id }}"
+                    >
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
             </div>
           {%- else -%}
             {% if featured_image != blank %}
@@ -291,7 +293,7 @@
                               {%- else -%}
                                 <div class="inline-block relative w-full selector-wrapper js">
                                   <select
-                                    class="[ block bg-transparent appearance-none w-full border border-color px-4 py-3 pr-8 leading-tight focus:outline-none focus:shadow-outline text-base ] select"
+                                    class="[ block bg-transparent appearance-none w-full border border-color px-4 py-3 pr-8 focus:outline-none focus:shadow-outline text-xs ] select"
                                     id="Option{{ option.position }}"
                                     name="options[{{ option.name | escape }}]"
                                     form="product_form_{{ product.id }}"
@@ -496,29 +498,25 @@
                               >
                                 {{- 'products.product.quantity' | t -}}
                               </label>
-                              <div class="inline-block relative w-full">
-                                <div x-data="{ count: 1 }" class="[ flex border border-solid ] quantity">
-                                  <button
-                                    type="button"
-                                    x-on:click="if( count > 1 ){ count-- }"
-                                    class="ajax-qty__btn btn btn--minus [ w-10 py-3 leading-tight ]"
+                              <div class="inline-block relative w-full selector-wrapper js">
+                                <select
+                                  class="[ block bg-transparent appearance-none w-full border border-color px-4 py-3 pr-8 focus:outline-none focus:shadow-outline text-xs ] select"
+                                  id="Quantity"
+                                  name="quantity"
+                                  form="product_form_{{ product.id }}"
+                                >
+                                  {%- for i in (1..5) -%}
+                                    <option value="{{ i }}">{{ i }}</option>
+                                  {%- endfor -%}
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                  <svg
+                                    class="fill-current h-4 w-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
                                   >
-                                    -
-                                  </button>
-                                  <input
-                                    x-model="count"
-                                    type="text"
-                                    id="Quantity"
-                                    name="quantity"
-                                    class="ajax-qty__input [ bg-transparent text-center w-10 py-3 leading-tight ]"
-                                  >
-                                  <button
-                                    type="button"
-                                    x-on:click="count++"
-                                    class="ajax-qty__btn btn btn--minus [ w-10 py-3 leading-tight ]"
-                                  >
-                                    +
-                                  </button>
+                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                                  </svg>
                                 </div>
                               </div>
                             </div>
@@ -537,7 +535,7 @@
                               </p>
                             {%- endunless -%}
                             <button
-                              class="[ w-full focus:shadow-outline focus:outline-none font-bold py-3 px-4 disabled:opacity-50 ] heading btn add-to-cart-button group"
+                              class="[ w-full focus:shadow-outline focus:outline-none py-3 px-4 disabled:opacity-50 overflow-hidden group text-xs ] heading btn add-to-cart-button"
                               type="submit"
                               name="add"
                               data-add-to-cart
@@ -548,7 +546,6 @@
                               <span class="loading mx-auto items-center w-full justify-center">
                                 <svg
                                   height="17"
-                                  aria-hidden="true"
                                   focusable="false"
                                   role="presentation"
                                   class="spinner"
@@ -558,13 +555,17 @@
                                   <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
                                 </svg>
                               </span>
-                              <span class="group-disabled:hidden">
+                              <span class="[ group-disabled:hidden inline-block transition-transform group-hover:translate-x-9 ]">
+                                {% render 'icon-bag', classes: 'align-middle inline-block mr-1' %}
                                 {{ 'products.product.add_to_cart' | t }}
                               </span>
-                              <span class="hidden group-disabled:block">
+                              <span class="[ hidden group-disabled:inline-block transition-transform group-hover:translate-x-52 ]">
                                 {{ 'products.product.sold_out' | t }}
                               </span>
-                              <span id="productPrice{{ product.id }}" class="product-price">
+                              <span
+                                id="productPrice{{ product.id }}"
+                                class="product-price [ transition-transform group-hover:translate-x-52 inline-block ml-5 ]"
+                              >
                                 {%- if settings.wholesale_enabled == false or is_approved -%}
                                   <span data-price-wrapper>
                                     <span data-product-price> {{ offer.price | money }}</span>
@@ -577,7 +578,7 @@
                                     >
                                       {{- 'products.product.regular_price' | t -}}
                                     </span>
-                                    <s class="[ text-xs lg:text-sm text-red-600 ]" data-product-compare-price>
+                                    <s class="[ text-red-600 ]" data-product-compare-price>
                                       {% if offer.compare_at_price > offer.price %}
                                         {{ offer.compare_at_price | money }}
                                       {% endif %}
@@ -647,8 +648,8 @@
                     <summary class="cursor-pointer py-3 flex">
                       <p class="heading">{{ block.settings.heading }}</p>
                       <div class="ml-auto">
-                        <span class="group-open:hidden">{% render 'icon-plus', height: 15, width: 15 %}</span>
-                        <span class="hidden group-open:block">{% render 'icon-minus', height: 15, width: 15 %}</span>
+                        <span class="group-open:hidden">{% render 'icon-plus', height: 11, width: 11 %}</span>
+                        <span class="hidden group-open:block">{% render 'icon-minus', height: 11, width: 11 %}</span>
                       </div>
                     </summary>
                   {%- endunless -%}
@@ -704,22 +705,27 @@
                   the_limit: block.settings.limit
                 %}
               {%- when 'color_variants' -%}
-                {%- if product.metafields.color.variants.value -%}
-                  <div class="mt-2">
-                    <ul class="flex">
-                      {%- for product in product.metafields.color.variants.value -%}
-                        <li>
-                          <a class="block" href="{{ product.url }}">
-                            <span class="h-4 w-4 block border border-black p-px rounded-full m- ">
-                              <span
-                                class="h-3 w-3 block rounded-full"
-                                style="background-color: {{ product.metafields.color.swatch }}"
-                              ></span>
-                            </span>
-                          </a>
-                        </li>
-                      {%- endfor -%}
-                    </ul>
+                {%- if product.metafields.filters.colour or product.metafields.color.variants.value -%}
+                  <div class="my-4">
+                    {%- if product.metafields.filters.colour -%}
+                      <p class="product-single__color-swatch">{{ product.metafields.filters.colour }}</p>
+                    {%- endif -%}
+                    {%- if product.metafields.color.variants.value -%}
+                      <ul class="flex">
+                        {%- for product in product.metafields.color.variants.value -%}
+                          <li>
+                            <a class="block" href="{{ product.url }}">
+                              <span class="h-4 w-4 block border border-black p-px rounded-full m- ">
+                                <span
+                                  class="h-3 w-3 block rounded-full"
+                                  style="background-color: {{ product.metafields.color.swatch }}"
+                                ></span>
+                              </span>
+                            </a>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    {%- endif -%}
                   </div>
                 {%- endif -%}
             {%- endcase -%}

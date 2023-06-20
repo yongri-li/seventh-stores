@@ -20,14 +20,29 @@
 -%}
 
 {%- style -%}
+  ::root{
+    --product-input-border-color: {{ section.settings.input_border_color }};
+  }
+
   .main-product-image-gallery img:first-child {
     grid-column: span 2;
   }
 
   #shopify-section-{{ section.id }} [data-sticky-column]{
     top: var(--header-height);
-    min-height: calc (100vh - var(--header-height));
     background-color: {{ section.settings.content_bg }};
+  }
+
+  @media only screen and (min-width: 1024px){
+    #shopify-section-{{ section.id }} [data-sticky-column]{
+      min-height: calc(100vh - var(--header-height));
+    }
+  }
+
+  product-form input,
+  product-form select,
+  product-form textarea{
+    border-color: var(--product-input-border-color);
   }
 {%- endstyle -%}
 
@@ -272,7 +287,7 @@
                             {%- else -%}
                               <div class="inline-block relative w-full selector-wrapper js">
                                 <select
-                                  class="block appearance-none w-full bg-white border border-color px-4 py-3 pr-8 leading-tight focus:outline-none focus:shadow-outline text-base"
+                                  class="block bg-transparent appearance-none w-full border border-color px-4 py-3 pr-8 leading-tight focus:outline-none focus:shadow-outline text-base"
                                   id="Option{{ option.position }}"
                                   name="options[{{ option.name | escape }}]"
                                   form="product_form_{{ product.id }}"
@@ -384,7 +399,7 @@
                             {%- endunless -%}
                             <select
                               :class="{ 'border-indigo-200 z-10': purchaseType === 'subscription' }"
-                              class="appearance-none mt-2 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md bg-white"
+                              class="appearance-none mt-2 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                               data-single-plan-selector
                               data-group-id="{{ group.id }}"
                               name="selling_plan"
@@ -408,7 +423,7 @@
                           </div>
                         </label>
                       {% endfor %}
-                      <div class="bg-white rounded-md -space-y-px">
+                      <div class="rounded-md -space-y-px">
                         {% unless product.requires_selling_plan %}
                           <!-- Checked: "bg-indigo-50 border-indigo-200 z-10", Not Checked: "border-gray-200" -->
                           <label
@@ -489,7 +504,7 @@
                                   type="text"
                                   id="Quantity"
                                   name="quantity"
-                                  class="ajax-qty__input [ text-center w-10 py-3 leading-tight ]"
+                                  class="ajax-qty__input [ bg-transparent text-center w-10 py-3 leading-tight ]"
                                 >
                                 <button
                                   type="button"
@@ -712,7 +727,7 @@
       <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
       <div
         x-transition
-        class="bg-white inline-block align-bottom px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6"
+        class="inline-block align-bottom px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6"
       >
         <div>
           <div class="mt-3 text-center sm:mt-5">
@@ -907,6 +922,12 @@
       "default": "#fffaf4",
       "label": "Content Background Color",
       "id": "content_bg"
+    },
+    {
+      "type": "color",
+      "default": "#f3eee8",
+      "label": "Input Border Color",
+      "id": "input_border_color"
     },
     {
       "type": "header",

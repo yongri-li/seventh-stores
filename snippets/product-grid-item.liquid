@@ -101,8 +101,20 @@
   {%- if product.metafields.color.variants.value -%}
     <div class="mt-2">
       <ul class="flex">
+        {%- unless product.metafields.color.swatch == blank -%}
+          <li class="px-1">
+            <a class="block" href="{{ product.url }}">
+              <span class="h-4 w-4 block border border-black p-px rounded-full m- ">
+                <span
+                  class="h-3 w-3 block rounded-full"
+                  style="background-color: {{ product.metafields.color.swatch }}"
+                ></span>
+              </span>
+            </a>
+          </li>
+        {%- endunless -%}
         {%- for product in product.metafields.color.variants.value -%}
-          <li>
+          <li class="px-1">
             <a class="block" href="{{ product.url }}">
               <span class="h-4 w-4 block border border-black p-px rounded-full m- ">
                 <span

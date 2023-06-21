@@ -336,7 +336,8 @@
       "product_upsell": "Customers also bought",
       "add_success": "Product successfully added!",
       "product_variants": "TODO",
-      "no_measurements": "Sorry, but no meaurements have been set for this product."
+      "no_measurements": "Sorry, but no meaurements have been set for this product.",
+      "styled_with": "Styled With"
     },
     "subscription": {
       "savings_notice_html": "You're saving <span data-subscription-percentage-savings><\/span> by subscribing + free UK delivery!",

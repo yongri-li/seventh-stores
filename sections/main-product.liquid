@@ -700,6 +700,23 @@
                     </div>
                   </div>
                 </div>
+              {%- when 'styled_with' -%}
+                <!-- Styled With -->
+                {%- assign styled_with_products = product.metafields.cross_sell.styled_with.value -%}
+                <div class="mb-4">
+                  {%- unless styled_with_products == blank -%}
+                    <h2 class="my-4 text-base">{{ 'products.product.styled_with' | t }}</h2>
+                    <div class="overflow-hidden">
+                      <div class="flex flex-row no-wrap w-full pb-4 overflow-x-scroll scroll-bar">
+                        {%- for styled_product in styled_with_products -%}
+                          <div class="w-2/3 flex-shrink-0 pr-4">
+                            {% render 'product-grid-item', product: styled_product %}
+                          </div>
+                        {%- endfor -%}
+                      </div>
+                    </div>
+                  {%- endunless -%}
+                </div>
               {%- when 'product_reviews' -%}
                 <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
               {%- when 'data_related_products' -%}
@@ -711,12 +728,22 @@
                 {%- if product.metafields.filters.colour or product.metafields.color.variants.value -%}
                   <div class="my-4">
                     {%- if product.metafields.filters.colour -%}
-                      <p class="product-single__color-swatch">{{ product.metafields.filters.colour }}</p>
+                      <p class="product-single__color-swatch pb-2">{{ product.metafields.filters.colour }}</p>
                     {%- endif -%}
                     {%- if product.metafields.color.variants.value -%}
                       <ul class="flex">
+                        {%- unless product.metafields.color.swatch == blank -%}
+                          <li class="px-1">
+                            <span class="h-4 w-4 block border border-black p-px rounded-full m- ">
+                              <span
+                                class="h-3 w-3 block rounded-full"
+                                style="background-color: {{ product.metafields.color.swatch }}"
+                              ></span>
+                            </span>
+                          </li>
+                        {%- endunless -%}
                         {%- for product in product.metafields.color.variants.value -%}
-                          <li>
+                          <li class="px-1">
                             <a class="block" href="{{ product.url }}">
                               <span class="h-4 w-4 block border border-black p-px rounded-full m- ">
                                 <span
@@ -1399,6 +1426,11 @@
     {
       "type": "social_sharing",
       "name": "Social Sharing",
+      "limit": 1
+    },
+    {
+      "type": "styled_with",
+      "name": "Styled With",
       "limit": 1
     },
     {

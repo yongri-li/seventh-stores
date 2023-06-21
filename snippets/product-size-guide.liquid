@@ -15,11 +15,10 @@
 {%- assign measurements = 'total_length,sleeve_length,back,chesthoulder,hem,inseam,rise,waist' | split: ',' -%}
 
 <div class="flex flex-wrap items-center justify-center">
-  {%- assign size_guide_image = product.metafields.measurements.size_guide_image.value.url -%}
-  {{ size_guide_image }}
+  {%- assign size_guide_image = product.metafields.measurements.size_guide_image -%}
   {%- unless size_guide_image == blank -%}
     <div class="px-4 max-w-xs mx-auto mb-4 flex-1">
-      <img loading="lazy" height="" width="" src="{{ size_guide_image }}">
+      <img loading="lazy" height="" width="" src="{{ size_guide_image | file_url }}">
     </div>
   {%- endunless -%}
 
@@ -39,15 +38,14 @@
       </div>
 
       {%- for variant in product.variants -%}
-        {%- assign has_measurements = true -%}
+        {%- assign has_measurements = false -%}
         <div
           data-tab="{{ forloop.index }}"
           class="{% if forloop.first %}active{% endif %} [ flex flex-wrap items-center justify-center w-full ]"
         >
           {%- for measurement in measurements -%}
-            {%- if variant.metafields.measurements[measurement] == blank -%}
-              {%- assign has_measurements = false -%}
-            {%- else -%}
+            {%- if variant.metafields.measurements[measurement] != blank -%}
+              {%- assign has_measurements = true -%}
               <div class="px-2 text-center">
                 <p>{{ measurement | replace: '_', ' ' | capitalize }}</p>
                 <p>

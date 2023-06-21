@@ -67,6 +67,11 @@
             "open_by_default": false
           }
         },
+        "5d32dcbc-3d40-4e23-94cd-03f48bfe78ae": {
+          "type": "styled_with",
+          "settings": {
+          }
+        },
         "80b98137-6193-4edc-945a-94bd2c6aad2c": {
           "type": "data_related_products",
           "settings": {
@@ -83,6 +88,7 @@
         "aab585e2-1c17-449f-8788-bbe37a977394",
         "e64e89d1-ba73-47e4-a915-29089d77fd31",
         "5c049b49-c6da-4174-9a28-8f7f58984f5e",
+        "5d32dcbc-3d40-4e23-94cd-03f48bfe78ae",
         "80b98137-6193-4edc-945a-94bd2c6aad2c"
       ],
       "settings": {

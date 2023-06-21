@@ -75,7 +75,7 @@
         "settings": {
           "background_color": "#fffaf3",
           "tab_one": "",
-          "tab_one_menu": "shop-men",
+          "tab_one_menu": "main-menu",
           "tab_two": "",
           "tab_two_menu": "",
           "show_footer_menu": true,

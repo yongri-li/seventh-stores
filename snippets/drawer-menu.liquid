@@ -4,11 +4,11 @@
   aria-labelledby="slide-over-title"
   role="dialog"
   aria-modal="true"
-  class="bg-white w-full transition-transform fixed right-0 top-0 bg-brand-four h-100v translate-x-full z-[49] ease-in duration-500 [&.active]:translate-x-0 max-w-md"
+  class="w-full transition-transform fixed right-0 top-0 bg-brand-four h-100v translate-x-full z-[49] ease-in duration-500 [&.active]:translate-x-0 max-w-md"
 >
   <div class="flex flex-col min-h-full h-full overflow-y-auto max-h-100v pt-24 lg:pt-36">
     {% comment %}
-      <div class="flex items-center justify-between py-4 px-4 sm:px-6 border-b border-solid border-color bg-white">
+      <div class="flex items-center justify-between py-4 px-4 sm:px-6  bg-white">
           <h2 class="text-sm heading">
           {{ 'general.mobile_menu.heading' | t }}
           </h2>
@@ -140,13 +140,13 @@
               {%- endif -%}
             {%- endfor -%}
 
-            <nav class="mobile-navigation [ px-4 ]">
+            <nav class="mobile-navigation [ px-4 lg:px-8 ]">
               {%- if menu_one != blank -%}
-                <ul class="mobile-menu">
+                <ul class="mobile-menu max-w-xs mr-auto">
                   {%- for link in linklists[menu_one].links -%}
                     {%- if link.links != blank -%}
                       <li
-                        class="border-b border-solid border-color "
+                        class=""
                         x-data="{ childOpen: false, grandchildOpen: false }"
                       >
                         <div class="flex flex-row items-center">
@@ -156,24 +156,24 @@
                             @click="( childOpen == false ? childOpen = {{ forloop.index }} : childOpen = false )"
                           >
                             <span x-show="childOpen != {{ forloop.index }}" class="">
-                              {%- render 'icon-plus' with height: 15, width: 15 -%}
+                              {%- render 'icon-chevron-down' with height: 15, width: 15 -%}
                             </span>
                             <span x-show="childOpen == {{ forloop.index }}" class="">
-                              {%- render 'icon-minus' with height: 15, width: 15 -%}
+                              {%- render 'icon-chevron-up' with height: 15, width: 15 -%}
                             </span>
                           </button>
                         </div>
 
-                        <ul class="mobile-menu__dropdown" x-show="childOpen == {{ forloop.index }}">
+                        <ul class="mobile-menu__dropdown pl-4" x-show="childOpen == {{ forloop.index }}">
                           {%- for childlink in link.links -%}
                             {%- if childlink.links != blank -%}
                               <li
                                 {% unless forloop.last %}
-                                  class="border-b border-solid border-color"
+                                  class=""
                                 {% endunless %}
                               >
                                 <div class="flex flex-row items-center">
-                                  <a class="py-3 block text-sm" href="{{ childlink.url }}">
+                                  <a class="py-1 block text-sm" href="{{ childlink.url }}">
                                     {{- childlink.title | escape -}}
                                   </a>
                                   <button
@@ -181,22 +181,22 @@
                                     class="ml-auto"
                                   >
                                     <span x-show="grandchildOpen != {{ forloop.index }}" class="">
-                                      {%- render 'icon-plus' with height: 15, width: 15 -%}
+                                      {%- render 'icon-chevron-down' with height: 15, width: 15 -%}
                                     </span>
                                     <span x-show="grandchildOpen == {{ forloop.index }}" class="">
-                                      {%- render 'icon-minus' with height: 15, width: 15 -%}
+                                      {%- render 'icon-chevron-up' with height: 15, width: 15 -%}
                                     </span>
                                   </button>
                                 </div>
 
-                                <ul class="mobile-menu__dropdown" x-show="grandchildOpen == {{ forloop.index }}">
+                                <ul class="mobile-menu__dropdown pl-4" x-show="grandchildOpen == {{ forloop.index }}">
                                   {%- for grandchildlink in childlink.links -%}
                                     <li
                                       {% unless forloop.last %}
-                                        class="border-b border-solid border-color"
+                                        class=""
                                       {% endunless %}
                                     >
-                                      <a class="py-3 block text-sm" href="{{ grandchildlink.url }}">
+                                      <a class="py-1 block text-sm" href="{{ grandchildlink.url }}">
                                         {{- grandchildlink.title | escape -}}
                                       </a>
                                     </li>
@@ -204,8 +204,8 @@
                                 </ul>
                               </li>
                             {%- else -%}
-                              <li class="border-b border-solid border-color">
-                                <a class="py-3 block text-sm" href="{{ childlink.url }}">
+                              <li class="">
+                                <a class="py-2 block text-sm" href="{{ childlink.url }}">
                                   {{- childlink.title | escape -}}
                                 </a>
                               </li>
@@ -214,8 +214,8 @@
                         </ul>
                       </li>
                     {%- else -%}
-                      <li class="border-b border-solid border-color">
-                        <a class="py-3 block heading text-sm" href="{{ link.url }}">{{ link.title | escape }}</a>
+                      <li class="">
+                        <a class="py-2 block heading text-sm" href="{{ link.url }}">{{ link.title | escape }}</a>
                       </li>
                     {%- endif -%}
                   {%- endfor -%}
@@ -269,13 +269,13 @@
               {%- endif -%}
             {%- endfor -%}
 
-            <nav class="mobile-navigation [ px-4 ]">
+            <nav class="mobile-navigation [ px-4 lg:x-8 ]">
               {%- if menu_two != blank -%}
-                <ul class="mobile-menu">
+                <ul class="mobile-menu max-w-xs mr-auto">
                   {%- for link in linklists[menu_two].links -%}
                     {%- if link.links != blank -%}
                       <li
-                        class="border-b border-solid border-color "
+                        class=" "
                         x-data="{ childOpen: false, grandchildOpen: false }"
                       >
                         <div class="flex flex-row items-center">
@@ -285,24 +285,24 @@
                             @click="( childOpen == false ? childOpen = {{ forloop.index }} : childOpen = false )"
                           >
                             <span x-show="childOpen != {{ forloop.index }}" class="">
-                              {%- render 'icon-plus' with height: 15, width: 15 -%}
+                              {%- render 'icon-chevron-down' with height: 15, width: 15 -%}
                             </span>
                             <span x-show="childOpen == {{ forloop.index }}" class="">
-                              {%- render 'icon-minus' with height: 15, width: 15 -%}
+                              {%- render 'icon-chevron-up' with height: 15, width: 15 -%}
                             </span>
                           </button>
                         </div>
 
-                        <ul class="mobile-menu__dropdown" x-show="childOpen == {{ forloop.index }}">
+                        <ul class="mobile-menu__dropdown pl-4" x-show="childOpen == {{ forloop.index }}">
                           {%- for childlink in link.links -%}
                             {%- if childlink.links != blank -%}
                               <li
                                 {% unless forloop.last %}
-                                  class="border-b border-solid border-color"
+                                  class=""
                                 {% endunless %}
                               >
                                 <div class="flex flex-row items-center">
-                                  <a class="py-3 block text-sm" href="{{ childlink.url }}">
+                                  <a class="py-1 block text-sm" href="{{ childlink.url }}">
                                     {{- childlink.title | escape -}}
                                   </a>
                                   <button
@@ -310,22 +310,22 @@
                                     class="ml-auto"
                                   >
                                     <span x-show="grandchildOpen != {{ forloop.index }}" class="">
-                                      {%- render 'icon-plus' with height: 15, width: 15 -%}
+                                      {%- render 'icon-chevron-down' with height: 15, width: 15 -%}
                                     </span>
                                     <span x-show="grandchildOpen == {{ forloop.index }}" class="">
-                                      {%- render 'icon-minus' with height: 15, width: 15 -%}
+                                      {%- render 'icon-chevron-up' with height: 15, width: 15 -%}
                                     </span>
                                   </button>
                                 </div>
 
-                                <ul class="mobile-menu__dropdown" x-show="grandchildOpen == {{ forloop.index }}">
+                                <ul class="mobile-menu__dropdown pl-4" x-show="grandchildOpen == {{ forloop.index }}">
                                   {%- for grandchildlink in childlink.links -%}
                                     <li
                                       {% unless forloop.last %}
-                                        class="border-b border-solid border-color"
+                                        class=""
                                       {% endunless %}
                                     >
-                                      <a class="py-3 block text-sm" href="{{ grandchildlink.url }}">
+                                      <a class="py-1 block text-sm" href="{{ grandchildlink.url }}">
                                         {{- grandchildlink.title | escape -}}
                                       </a>
                                     </li>
@@ -333,8 +333,8 @@
                                 </ul>
                               </li>
                             {%- else -%}
-                              <li class="border-b border-solid border-color">
-                                <a class="py-3 block text-sm" href="{{ childlink.url }}">
+                              <li class="">
+                                <a class="py-1 block text-sm" href="{{ childlink.url }}">
                                   {{- childlink.title | escape -}}
                                 </a>
                               </li>
@@ -343,7 +343,7 @@
                         </ul>
                       </li>
                     {%- else -%}
-                      <li class="border-b border-solid border-color">
+                      <li class="">
                         <a class="py-3 block heading text-sm" href="{{ link.url }}">{{ link.title | escape }}</a>
                       </li>
                     {%- endif -%}
@@ -354,13 +354,13 @@
           </div>
         </div>
       {%- else -%}
-        <nav class="mobile-navigation [ px-4 ]">
+        <nav class="mobile-navigation [ px-4 lg:px-8 ]">
           {%- if menu_one != blank -%}
-            <ul class="mobile-menu">
+            <ul class="mobile-menu max-w-xs mr-auto">
               {%- for link in linklists[menu_one].links -%}
                 {%- if link.links != blank -%}
                   <li
-                    class="border-b border-solid border-color "
+                    class=" "
                     x-data="{ childOpen: false, grandchildOpen: false }"
                   >
                     <div class="flex flex-row items-center">
@@ -370,24 +370,24 @@
                         @click="( childOpen == false ? childOpen = {{ forloop.index }} : childOpen = false )"
                       >
                         <span x-show="childOpen != {{ forloop.index }}" class="">
-                          {%- render 'icon-plus' with height: 15, width: 15 -%}
+                          {%- render 'icon-chevron-down' with height: 15, width: 15 -%}
                         </span>
                         <span x-show="childOpen == {{ forloop.index }}" class="">
-                          {%- render 'icon-minus' with height: 15, width: 15 -%}
+                          {%- render 'icon-chevron-up' with height: 15, width: 15 -%}
                         </span>
                       </button>
                     </div>
 
-                    <ul class="mobile-menu__dropdown" x-show="childOpen == {{ forloop.index }}">
+                    <ul class="mobile-menu__dropdown pl-4" x-show="childOpen == {{ forloop.index }}">
                       {%- for childlink in link.links -%}
                         {%- if childlink.links != blank -%}
                           <li
                             {% unless forloop.last %}
-                              class="border-b border-solid border-color"
+                              class=""
                             {% endunless %}
                           >
                             <div class="flex flex-row items-center">
-                              <a class="py-3 block text-sm" href="{{ childlink.url }}">
+                              <a class="py-1 block text-xs" href="{{ childlink.url }}">
                                 {{- childlink.title | escape -}}
                               </a>
                               <button
@@ -395,22 +395,22 @@
                                 class="ml-auto"
                               >
                                 <span x-show="grandchildOpen != {{ forloop.index }}" class="">
-                                  {%- render 'icon-plus' with height: 15, width: 15 -%}
+                                  {%- render 'icon-chevron-down' with height: 15, width: 15 -%}
                                 </span>
                                 <span x-show="grandchildOpen == {{ forloop.index }}" class="">
-                                  {%- render 'icon-minus' with height: 15, width: 15 -%}
+                                  {%- render 'icon-chevron-up' with height: 15, width: 15 -%}
                                 </span>
                               </button>
                             </div>
 
-                            <ul class="mobile-menu__dropdown" x-show="grandchildOpen == {{ forloop.index }}">
+                            <ul class="mobile-menu__dropdown pl-4" x-show="grandchildOpen == {{ forloop.index }}">
                               {%- for grandchildlink in childlink.links -%}
                                 <li
                                   {% unless forloop.last %}
-                                    class="border-b border-solid border-color"
+                                    class=""
                                   {% endunless %}
                                 >
-                                  <a class="py-3 block text-sm" href="{{ grandchildlink.url }}">
+                                  <a class="py-1 block text-sm" href="{{ grandchildlink.url }}">
                                     {{- grandchildlink.title | escape -}}
                                   </a>
                                 </li>
@@ -418,8 +418,8 @@
                             </ul>
                           </li>
                         {%- else -%}
-                          <li class="border-b border-solid border-color">
-                            <a class="py-3 block text-sm" href="{{ childlink.url }}">
+                          <li class="">
+                            <a class="py-1 block text-xs" href="{{ childlink.url }}">
                               {{- childlink.title | escape -}}
                             </a>
                           </li>
@@ -428,7 +428,7 @@
                     </ul>
                   </li>
                 {%- else -%}
-                  <li class="border-b border-solid border-color">
+                  <li class="">
                     <a class="py-3 block heading text-sm" href="{{ link.url }}">{{ link.title | escape }}</a>
                   </li>
                 {%- endif -%}

@@ -646,7 +646,7 @@
                 <details class="border-t border-b border-solid border-color group accordion accordion--product">
                   {%- unless block.settings.heading == blank -%}
                     <summary class="cursor-pointer py-3 flex">
-                      <p class="heading">{{ block.settings.heading }}</p>
+                      <p class="heading leading-none">{{ block.settings.heading }}</p>
                       <div class="ml-auto">
                         <span class="group-open:hidden">{% render 'icon-plus', height: 11, width: 11 %}</span>
                         <span class="hidden group-open:block">{% render 'icon-minus', height: 11, width: 11 %}</span>

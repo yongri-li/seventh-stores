@@ -209,16 +209,16 @@
                 data-open-class="active"
                 data-close-class=""
               >
-                <button type="button" class="px-1 py-2 flex rounded-md justify-center items-center">
+                <button type="button" class="px-1 py-2 flex rounded-md justify-center items-center header-font-color">
                   <span class="sr-only">Open menu</span>
                   <span class="mr-3">{{ 'layout.header.menu' | t }}</span>
                   {% comment %} {%- render 'icon-hamburger', classes: 'h-6 w-6 header-font-color' -%} {% endcomment %}
                   <div>
                     <span
-                      class="block w-4 h-[1px] mb-1 bg-black transition-transform ease-in duration-300 group-[.active]:rotate-45 group-[.active]:translate-y-[2px]"
+                      class="[ block w-4 h-[1px] mb-1 transition-transform ease-in duration-300 group-[.active]:rotate-45 group-[.active]:translate-y-[2px] ] menu__bars"
                     ></span>
                     <span
-                      class="block w-4 h-[1px] bg-black transition-transform ease-in duration-300 group-[.active]:-rotate-45 group-[.active]:translate-y-[-3px]"
+                      class="[ block w-4 h-[1px] transition-transform ease-in duration-300 group-[.active]:-rotate-45 group-[.active]:translate-y-[-3px] ] menu__bars"
                     ></span>
                   </div>
                 </button>

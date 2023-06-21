@@ -88,7 +88,11 @@
               {% render 'icon-chevron-down', classes: 'h-4 w-4' %}
             </div>
           </div>
-          <drawer-trigger data-target="[data-filters-drawer]" data-open-class="flex" data-close-class="hidden">
+          <drawer-trigger
+            data-target="[data-filters-drawer]"
+            data-open-class="active"
+            data-close-class=""
+          >
             <button
               type="button"
               class="flex items-center heading border border-color py-2 px-3 leading-tight"

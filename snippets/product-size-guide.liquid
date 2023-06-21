@@ -1,44 +1,109 @@
-{%- assign measurements = 'total_length,sleeve_length,back,chesthoulder,hem,inseam,rise,waist' | split: ',' -%}
-
-<size-guide>
-  <div>
-    {%- for variant in product.variants -%}
-      <button data-tab="{{ forloop.index }}">
-        {{ variant.title }}
-      </button>
-    {%- endfor -%}
-  </div>
-
-  {%- for variant in product.variants -%}
-    <div data-tab="{{ forloop.index }}">
-      {%- for measurement in measurements -%}
-        {%- unless variant.metafields.measurements[measurement] == blank -%}
-          <div>
-            <p>{{ measurement | replace: '_', ' ' | capitalize }}</p>
-            <p>{ variant.metafields.measurements[measurement] }}</p>
-          </div>
-        {%- endunless -%}
-      {%- endfor -%}
-    </div>
-  {%- endfor -%}
-</size-guide>
-
-<script>
-  class SizeGuide extends HTMLElement {
-    constructor() {
-      super();
-
-      const buttons = this.querySelectorAll('button');
-
-      buttons.forEach((button) => {
-        button.addEventListener('click', this.updateVariant(event));
-      });
-    }
-
-    updateVariant(event) {
-      console.log('Event: ', event.currentTarget);
-    }
+{% style %}
+  size-guide div[data-tab] {
+    display: none;
   }
 
-  customElements.define('size-guide', SizeGuide);
+  size-guide div[data-tab].active {
+    display: flex;
+  }
+
+  size-guide button.active {
+    text-decoration: underline;
+  }
+{% endstyle %}
+
+{%- assign measurements = 'total_length,sleeve_length,back,chesthoulder,hem,inseam,rise,waist' | split: ',' -%}
+
+<div class="flex flex-wrap items-center justify-center">
+  {%- assign size_guide_image = product.metafields.measurements.size_guide_image.value.url -%}
+  {{ size_guide_image }}
+  {%- unless size_guide_image == blank -%}
+    <div class="px-4 max-w-xs mx-auto mb-4 flex-1">
+      <img loading="lazy" height="" width="" src="{{ size_guide_image }}">
+    </div>
+  {%- endunless -%}
+
+  <div class="flex-1">
+    <p class="text-base text-center pb-5">{{ 'products.product.select_size' | t }}</p>
+    <size-guide class="flex items-center flex-col">
+      <div class="flex items-center justify-center pb-5">
+        {%- for variant in product.variants -%}
+          <button
+            type="button"
+            data-tab="{{ forloop.index }}"
+            class="{% if forloop.first %}active{% endif %} [ px-3 text-xs ]"
+          >
+            {{ variant.title }}
+          </button>
+        {%- endfor -%}
+      </div>
+
+      {%- for variant in product.variants -%}
+        {%- assign has_measurements = true -%}
+        <div
+          data-tab="{{ forloop.index }}"
+          class="{% if forloop.first %}active{% endif %} [ flex flex-wrap items-center justify-center w-full ]"
+        >
+          {%- for measurement in measurements -%}
+            {%- if variant.metafields.measurements[measurement] == blank -%}
+              {%- assign has_measurements = false -%}
+            {%- else -%}
+              <div class="px-2 text-center">
+                <p>{{ measurement | replace: '_', ' ' | capitalize }}</p>
+                <p>
+                  <strong>
+                    {{ variant.metafields.measurements[measurement].value }}
+                    {{ variant.metafields.measurements[measurement].unit }}
+                  </strong>
+                </p>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+
+          {%- if has_measurements == false -%}
+            <div class="px-2 text-center">
+              <p>
+                <strong>{{ 'products.product.no_measurements' | t }}</strong>
+              </p>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </size-guide>
+  </div>
+</div>
+
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    class SizeGuide extends HTMLElement {
+      constructor() {
+        super();
+
+        const _this = this;
+
+        this.buttons = this.querySelectorAll('button');
+        this.tabs = this.querySelectorAll('div[data-tab]');
+
+        this.buttons.forEach((button) => {
+          button.addEventListener('click', (event) => {
+            this.updateVariant(event);
+          });
+        });
+      }
+
+      updateVariant(event) {
+        const newTab = Array.from(this.tabs).find((tab) => tab.dataset.tab == event.currentTarget.dataset.tab);
+        const active = Array.from(this.tabs).find((tab) => tab.classList.contains('active'));
+        const activeButton = Array.from(this.buttons).find((button) => button.classList.contains('active'));
+
+        if (active) active.classList.remove('active');
+        if (activeButton) activeButton.classList.remove('active');
+        if (newTab) newTab.classList.add('active');
+
+        event.currentTarget.classList.add('active');
+      }
+    }
+
+    customElements.define('size-guide', SizeGuide);
+  });
 </script>

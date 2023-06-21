@@ -331,10 +331,12 @@
       "tab_heading": "Useful Information",
       "shop_the_look": "Shop the look",
       "size_guide": "Size Guide",
+      "select_size": "Select a Size",
       "product_recommendations": "People also bought",
       "product_upsell": "Customers also bought",
       "add_success": "Product successfully added!",
-      "product_variants": "TODO"
+      "product_variants": "TODO",
+      "no_measurements": "Sorry, but no meaurements have been set for this product."
     },
     "subscription": {
       "savings_notice_html": "You're saving <span data-subscription-percentage-savings><\/span> by subscribing + free UK delivery!",

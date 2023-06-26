@@ -160,8 +160,10 @@
   },
   "customer": {
     "account": {
-      "title": "My Account",
-      "details": "Account Details",
+      "title": "Account",
+      "details_title": "01/03 Personal Information",
+      "shipping_title": "02/03 Shipping Details",
+      "orders_title": "03/03 Orders",
       "view_addresses": "View Addresses",
       "return": "Return to Account Details"
     },

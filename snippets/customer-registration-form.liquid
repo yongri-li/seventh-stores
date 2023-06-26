@@ -1,106 +1,117 @@
 {% form 'create_customer', return_to: 'back' %}
-
-{% if form.posted_successfully? %}
-<div class="block w-100">
-    {% capture success_message %}{{ 'customer.register.success' | t }}{% endcapture %}
-    {% render 'alert-success' with message: success_message %}
-</div>
-{%- endif -%}
-
-{%- if form.errors -%}
-{% capture error_heading %}{{ 'customer.register.error' | t }}{% endcapture %}
-{% capture error_messages %}{{ form.errors | default_errors }}{% endcapture %}
-<div class="block w-100">
-    {% render 'alert-error' with error: error_messages %}
-</div>
-{% endif %}
-
-<div class="rounded-md shadow-sm">
-<div class="mb-4">
-    <label for="FirstName" class="visually-hidden">
-    {{ 'customer.register.first_name' | t }}
-    </label>
-    <input id="FirstName"
-    class="appearance-none rounded-none relative block w-full py-3 px-4 border leading-tight border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10"
-    placeholder="{{ 'customer.register.first_name' | t }}"
-    {% if form.first_name %}value="{{ form.first_name }}"{% endif %}
-    aria-label="First name"
-    name="customer[first_name]"
-    type="text"
-    spellcheck="false"
-    autocomplete="off"
-    autocapitalize="off"
-    autofocus>
-</div>
-<div class="mb-4">
-    <label for="lastName" class="visually-hidden">
-    {{ 'customer.register.last_name' | t }}
-    </label>
-    <input id="lastName"
-    class="appearance-none rounded-none relative block w-full py-3 px-4 border leading-tight border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10"
-    placeholder="{{ 'customer.register.last_name' | t }}"
-    {% if form.last_name %}value="{{ form.last_name }}"{% endif %}
-    aria-label="Last name"
-    name="customer[last_name]"
-    type="text"
-    spellcheck="false"
-    autocomplete="off"
-    autocapitalize="off"
-    autofocus>
-</div>
-<div class="mb-4">
-    <label for="CustomerEmail" class="visually-hidden">
-    {{ 'customer.register.email' | t }}
-    </label>
-    <input id="CustomerEmail"
-    class="appearance-none rounded-none relative block w-full py-3 px-4 border leading-tight border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 {% if form.errors contains 'email' %}input-error{% endif %}"
-    placeholder="{{ 'customer.login.email' | t }}"
-    aria-label="Email address"
-    name="customer[email]"
-    type="email"
-    value="{% if form.email %}{{ form.email }}{% endif %}"
-    required
-    spellcheck="false"
-    autocomplete="off"
-    autocapitalize="off"
-    autofocus>
-</div>
-<div class="mb-4">
-    <label for="CustomerPassword" class="visually-hidden">
-    {{ 'customer.register.password' | t }}
-    </label>
-    <input id="CustomerPassword"
-    class="appearance-none rounded-none relative block w-full py-3 px-4 border leading-tight border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5 {% if form.errors contains 'password' %}input-error{% endif %}" 
-    aria-label="Password"
-    name="customer[password]"
-    type="password"
-    required
-    placeholder="{{ 'customer.register.password' | t }}">
-</div>
-</div>
-
-{%- unless hide_helpful_links -%}
-<div class="mt-6 flex items-center justify-center">
-    <div class="text-sm leading-5">
-        <a href="{{ shop.url }}" class="block underline text-center font-medium focus:outline-none focus:underline transition ease-in-out duration-150">
-        {{ 'customer.register.cancel' | t }}
-        </a>
-
-        <a href="/account/login" class="block underline mt-2 text-center font-medium focus:outline-none focus:underline transition ease-in-out duration-150">
-        {{ 'customer.login.sign_in' | t }}
-        </a>
+  {% if form.posted_successfully? %}
+    <div class="block w-100">
+      {% capture success_message %}{{ 'customer.register.success' | t }}{% endcapture %}
+      {% render 'alert-success' with message: success_message %}
     </div>
-</div>
-{%- endunless -%}
+  {%- endif -%}
 
-<div class="mt-6">
-<button type="submit" class="[ group relative w-full focus:shadow-outline focus:outline-none font-bold py-3 px-4 border leading-tight ] btn primary-button">
-    <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-    <svg class="h-5 w-5 transition ease-in-out duration-150" fill="currentColor" viewBox="0 0 20 20">
-        <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
-    </svg>
-    </span>
-    {{ 'customer.register.submit' | t }}
-</button>
-</div>
+  {%- if form.errors -%}
+    {% capture error_heading %}{{ 'customer.register.error' | t }}{% endcapture %}
+    {% capture error_messages %}{{ form.errors | default_errors }}{% endcapture %}
+    <div class="block w-100">
+      {% render 'alert-error' with error: error_messages %}
+    </div>
+  {% endif %}
+
+  <div class="mb-6">
+    <label for="FirstName" class="visually-hidden">
+      {{ 'customer.register.first_name' | t }}
+    </label>
+    <input
+      id="FirstName"
+      class="appearance-none bg-transparent text-sm rounded-none relative block w-full py-1 border-b border-color leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10"
+      placeholder="{{ 'customer.register.first_name' | t }}"
+      {% if form.first_name %}
+        value="{{ form.first_name }}"
+      {% endif %}
+      aria-label="First name"
+      name="customer[first_name]"
+      type="text"
+      spellcheck="false"
+      autocomplete="off"
+      autocapitalize="off"
+      autofocus
+    >
+  </div>
+  <div class="mb-6">
+    <label for="lastName" class="visually-hidden">
+      {{ 'customer.register.last_name' | t }}
+    </label>
+    <input
+      id="lastName"
+      class="appearance-none bg-transparent text-sm rounded-none relative block w-full py-1 border-b border-color leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10"
+      placeholder="{{ 'customer.register.last_name' | t }}"
+      {% if form.last_name %}
+        value="{{ form.last_name }}"
+      {% endif %}
+      aria-label="Last name"
+      name="customer[last_name]"
+      type="text"
+      spellcheck="false"
+      autocomplete="off"
+      autocapitalize="off"
+      autofocus
+    >
+  </div>
+  <div class="mb-6">
+    <label for="CustomerEmail" class="visually-hidden">
+      {{ 'customer.register.email' | t }}
+    </label>
+    <input
+      id="CustomerEmail"
+      class="appearance-none bg-transparent text-sm rounded-none relative block w-full py-1 border-b border-color leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 {% if form.errors contains 'email' %}input-error{% endif %}"
+      placeholder="{{ 'customer.login.email' | t }}"
+      aria-label="Email address"
+      name="customer[email]"
+      type="email"
+      value="{% if form.email %}{{ form.email }}{% endif %}"
+      required
+      spellcheck="false"
+      autocomplete="off"
+      autocapitalize="off"
+      autofocus
+    >
+  </div>
+  <div>
+    <label for="CustomerPassword" class="visually-hidden">
+      {{ 'customer.register.password' | t }}
+    </label>
+    <input
+      id="CustomerPassword"
+      class="appearance-none bg-transparent text-sm rounded-none relative block w-full py-1 border-b border-color leading-tight focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5 {% if form.errors contains 'password' %}input-error{% endif %}"
+      aria-label="Password"
+      name="customer[password]"
+      type="password"
+      required
+      placeholder="{{ 'customer.register.password' | t }}"
+    >
+  </div>
+
+  {%- unless hide_helpful_links -%}
+    <div class="mt-1">
+      <div class="text-sm">
+        <a
+          href="{{ shop.url }}"
+          class="block underline text-left font-medium focus:outline-none focus:underline transition ease-in-out duration-150"
+        >
+          {{ 'customer.register.cancel' | t }}
+        </a>
+      </div>
+    </div>
+  {%- endunless -%}
+
+  <div class="mt-6">
+    <button
+      type="submit"
+      class="[ group relative w-full focus:shadow-outline focus:outline-none py-3 leading-tight text-left ]"
+    >
+      <span class="inline-block align-middle pr-2">
+        {%- render 'icon-arrow-right' -%}
+      </span>
+      <span class="inline-block ">
+        {{ 'customer.register.submit' | t }}
+      </span>
+    </button>
+  </div>
 {% endform %}

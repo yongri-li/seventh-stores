@@ -28,32 +28,32 @@
         <dl>
           {%- unless customer.name == blank -%}
             <div class="">
-              <dt class="ttext-xs  leading-5 heading mb-2">Name</dt>
-              <dd class="text-xs leading-5 mb-4">
+              <dt class="text-xs heading mb-2 sr-only">Name</dt>
+              <dd class="text-xs mb-4">
                 {{ customer.first_name }}
               </dd>
             </div>
           {%- endunless -%}
           {%- unless customer.default_address.phone == blank -%}
             <div class="py-2">
-              <dt class="text-xs leading-5 heading mb-2">Phone</dt>
-              <dd class="text-xs leading-5 mb-4">
+              <dt class="text-xs heading mb-2 sr-only">Phone</dt>
+              <dd class="text-xs mb-4">
                 {{ customer.default_address.phone }}
               </dd>
             </div>
           {%- endunless -%}
           {%- unless customer.email == blank -%}
             <div class="py-2">
-              <dt class="text-xs leading-5 heading mb-2">Email</dt>
-              <dd class="text-xs leading-5 mb-4">
+              <dt class="text-xs heading mb-2 sr-only">Email</dt>
+              <dd class="text-xs mb-4">
                 {{ customer.email }}
               </dd>
             </div>
           {%- endunless -%}
           {%- unless customer.default_address == blank -%}
             <div class="py-2">
-              <dt class="text-xs leading-5 heading mb-2">Address</dt>
-              <dd class="text-xs leading-5 mb-4">
+              <dt class="text-xs heading mb-2">Address</dt>
+              <dd class="text-xs mb-4">
                 {{ customer.default_address | format_address }}
               </dd>
             </div>

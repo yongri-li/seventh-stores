@@ -7,9 +7,6 @@
             {{ 'customer.account.title' | t }}
           </h1>
           <div class="mt-4">
-            <a class="font-medium transition duration-150 ease-in-out underline" href="/account/addresses">
-              {{- 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a
-            >
             <p class="pt-4 font-medium transition duration-150 ease-in-out underline">
               {{ 'Log out' | customer_logout_link }}
             </p>
@@ -21,10 +18,12 @@
 
   <div class="mx-auto mt-4 lg:mt-8 flex flex-wrap">
     <div class="overflow-hidden lg:w-1/3 mb-4">
-      <h3 class="text-lg leading-6 heading">
+      <h3 class="text-base">
         {{ 'customer.account.details' | t }}
       </h3>
-      <p class="mt-1 max-w-2xl text-sm leading-5">Personal details and application.</p>
+      <a class="font-medium transition duration-150 ease-in-out underline" href="/account/addresses">
+        {{- 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})
+      </a>
       <div class="mt-4">
         <dl>
           {%- unless customer.name == blank -%}

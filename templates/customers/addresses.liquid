@@ -1,136 +1,129 @@
 <section class="cls-fix">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    <header role="banner" x-data="addNewHelper()">
-      <div class="">
-        <div class="lg:flex lg:items-center lg:justify-between">
-          <div class="flex flex-col">
-            <h1 class="text-xs">
-              {{ 'customer.addresses.title' | t }}
-            </h1>
-            <div class="mt-4">
-              <a class="font-medium transition duration-150 ease-in-out underline" href="/account">
-                {{- 'customer.account.return' | t -}}
-              </a>
-            </div>
-          </div>
-          <div class="flex">
-            <div class="inline-flex rounded-md shadow">
-              <modal-trigger data-target="new-address">
-                <button
-                  type="button"
-                  class="[ inline-flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6  text-white focus:outline-none focus:shadow-outline transition duration-150 ease-in-out ] btn primary-button address-new-toggle"
-                >
-                  {{ 'customer.addresses.add_new' | t }}
-                </button>
-              </modal-trigger>
-            </div>
-          </div>
+    <div class="mx-auto flex flex-wrap">
+      <div class="overflow-hidden lg:w-1/3 mb-4">
+        <h1 class="text-xs">
+          {{ 'customer.addresses.title' | t }}
+        </h1>
+        <div class="mt-4">
+          <a class="font-medium transition duration-150 ease-in-out underline" href="/account">
+            {{- 'customer.account.return' | t -}}
+          </a>
         </div>
       </div>
-      {% render 'customer-new-address-modal' %}
-    </header>
+      <div class="overflow-hidden lg:w-2/3 mb-4">
+        <modal-trigger data-target="new-address">
+          <button
+            type="button"
+            class="[ text-left focus:outline-none focus:shadow-outline transition underline ]"
+          >
+            {{ 'customer.addresses.add_new' | t }}
+          </button>
+        </modal-trigger>
 
-    <div class="my-10">
-      {%- paginate customer.addresses by 5 -%}
-        <div class="my-4">
-          <h2 class="font-bold text-2xl">{{ 'customer.addresses.title' | t }}</h2>
-        </div>
-
-        {%- if customer.addresses.size > 0 -%}
-          <div class="mt-4">
-            {%- for address in customer.addresses -%}
-              <div class="flex flex-wrap -mx-4 mb-2" x-data="{ formEdit{{ forloop.index }}: false }">
-                <div class="w-full md:w-1/2 px-4">
-                  <div class="w-full pb-4 mb-4 border-solid border-b border-gray-300">
-                    <div class="my-2">
-                      {%- if address == customer.default_address -%}
-                        <p>
-                          <strong>{{ 'customer.addresses.default' | t }}</strong>
-                        </p>
-                      {%- endif -%}
-                    </div>
-                    <div class="flex flex-wrap -mx-4 mb-4">
-                      <div class="w-full md:w-1/2 px-4">
-                        <button
-                          type="button"
-                          class="[ w-full shadow focus:shadow-outline focus:outline-none font-bold py-2 px-4 ] btn tertiary-button"
-                          @click="formEdit{{ forloop.index }} = true"
-                        >
-                          {{ 'customer.addresses.edit' | t }}
-                        </button>
-                      </div>
-                      <div class="w-full md:w-1/2 px-4">
-                        <button
-                          type="button"
-                          class="[ address-delete w-full shadow focus:shadow-outline focus:outline-none font-bold py-2 px-4 ] btn tertiary-button"
-                          data-form-id="{{ address.id }}"
-                          data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}"
-                        >
-                          {{ 'customer.addresses.delete' | t }}
-                        </button>
-                        <script type="text/javascript">
-                          const button = document.querySelector('[data-form-id="{{ address.id }}"]');
-                          button.addEventListener('click', function () {
-                            var answer = window.confirm("{{ 'customer.addresses.delete_confirm' | t }}");
-                            if (answer) {
-                              Shopify.postLink('{{ address.url }}', {
-                                parameters: { _method: 'DELETE' },
-                              });
-                            }
-                          });
-                        </script>
-                      </div>
-                    </div>
-                    <div class="leading-6">
-                      {{ address | format_address }}
-                    </div>
-                  </div>
-                </div>
-                <div x-cloak class="w-full md:w-1/2 px-4" x-show="formEdit{{ forloop.index }}">
-                  <div class="w-full">
-                    <div id="EditAddress_{{ address.id }}" class="hide">
-                      {% render 'customer-edit-address-form' with address: address, index: forloop.index %}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            {%- endfor -%}
-          </div>
-        {%- else -%}
-          <div class="my-4">
-            <div
-              class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md"
-              role="alert"
-            >
-              <div class="flex">
-                <div class="py-1">
-                  <svg
-                    class="fill-current h-6 w-6 text-teal-500 mr-4"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/>
-                  </svg>
-                </div>
-                <div>
-                  <p class="font-bold pb-2">{{ 'alert.customer_notice' | t }}</p>
-                  <p class="text-sm">{{ 'customer.addresses.no_addresses' | t }}</p>
-                </div>
-              </div>
+        <div class="my-10">
+          {%- paginate customer.addresses by 5 -%}
+            <div class="my-4">
+              <h2 class="font-bold text-2xl">{{ 'customer.addresses.title' | t }}</h2>
             </div>
-          </div>
-        {%- endif -%}
 
-        {%- if paginate.pages > 1 -%}
-          {%- render 'pagination' -%}
-        {%- endif -%}
+            {%- if customer.addresses.size > 0 -%}
+              <div class="mt-4">
+                {%- for address in customer.addresses -%}
+                  <div class="flex flex-wrap -mx-4 mb-2" x-data="{ formEdit{{ forloop.index }}: false }">
+                    <div class="w-full md:w-1/2 px-4">
+                      <div class="w-full pb-4 mb-4 border-solid border-b border-gray-300">
+                        <div class="my-2">
+                          {%- if address == customer.default_address -%}
+                            <p>
+                              <strong>{{ 'customer.addresses.default' | t }}</strong>
+                            </p>
+                          {%- endif -%}
+                        </div>
+                        <div class="flex flex-wrap -mx-4 mb-4">
+                          <div class="w-full md:w-1/2 px-4">
+                            <button
+                              type="button"
+                              class="[ w-full shadow focus:shadow-outline focus:outline-none font-bold py-2 px-4 ] btn tertiary-button"
+                              @click="formEdit{{ forloop.index }} = true"
+                            >
+                              {{ 'customer.addresses.edit' | t }}
+                            </button>
+                          </div>
+                          <div class="w-full md:w-1/2 px-4">
+                            <button
+                              type="button"
+                              class="[ address-delete w-full shadow focus:shadow-outline focus:outline-none font-bold py-2 px-4 ] btn tertiary-button"
+                              data-form-id="{{ address.id }}"
+                              data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}"
+                            >
+                              {{ 'customer.addresses.delete' | t }}
+                            </button>
+                            <script type="text/javascript">
+                              const button = document.querySelector('[data-form-id="{{ address.id }}"]');
+                              button.addEventListener('click', function () {
+                                var answer = window.confirm("{{ 'customer.addresses.delete_confirm' | t }}");
+                                if (answer) {
+                                  Shopify.postLink('{{ address.url }}', {
+                                    parameters: { _method: 'DELETE' },
+                                  });
+                                }
+                              });
+                            </script>
+                          </div>
+                        </div>
+                        <div class="leading-6">
+                          {{ address | format_address }}
+                        </div>
+                      </div>
+                    </div>
+                    <div x-cloak class="w-full md:w-1/2 px-4" x-show="formEdit{{ forloop.index }}">
+                      <div class="w-full">
+                        <div id="EditAddress_{{ address.id }}" class="hide">
+                          {% render 'customer-edit-address-form' with address: address, index: forloop.index %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {%- endfor -%}
+              </div>
+            {%- else -%}
+              <div class="my-4">
+                <div
+                  class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md"
+                  role="alert"
+                >
+                  <div class="flex">
+                    <div class="py-1">
+                      <svg
+                        class="fill-current h-6 w-6 text-teal-500 mr-4"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <p class="font-bold pb-2">{{ 'alert.customer_notice' | t }}</p>
+                      <p class="text-sm">{{ 'customer.addresses.no_addresses' | t }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {%- endif -%}
 
-        {% comment %}
-          <div id="AddressNewForm">
-            {%- render 'customer-new-address-form' -%}
-          </div>
-        {% endcomment %}
-      {%- endpaginate -%}
+            {%- if paginate.pages > 1 -%}
+              {%- render 'pagination' -%}
+            {%- endif -%}
+
+            {% comment %}
+              <div id="AddressNewForm">
+                {%- render 'customer-new-address-form' -%}
+              </div>
+            {% endcomment %}
+          {%- endpaginate -%}
+        </div>
+      </div>
     </div>
   </div>
 </section>

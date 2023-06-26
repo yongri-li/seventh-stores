@@ -41,6 +41,8 @@ class ModalTrigger extends HTMLElement {
 
     this.target = document.querySelector(`[data-modal="${this.dataset.target}"]`) || false;
 
+    console.log("this.target: ", this.target);
+
     this.querySelector('button').addEventListener('click', (e) => {
 
       console.log("this: ", this);

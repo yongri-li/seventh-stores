@@ -315,14 +315,14 @@ class SearchTrigger extends HTMLElement {
 
     document.querySelector('body').classList.add('overflow-hidden');
 
-    this.search.classList.add('block');
-    this.search.classList.remove('hidden');
+    this.search?.classList.add('block');
+    this.search?.classList.remove('hidden');
 
-    this.openIcon.classList.remove('block');
-    this.openIcon.classList.add('hidden');
+    this.openIcon?.classList.remove('block');
+    this.openIcon?.classList.add('hidden');
 
-    this.closeIcon.classList.add('block');
-    this.closeIcon.classList.remove('hidden');
+    this.closeIcon?.classList.add('block');
+    this.closeIcon?.classList.remove('hidden');
   }
 
   close() {
@@ -331,14 +331,14 @@ class SearchTrigger extends HTMLElement {
 
     document.querySelector('body').classList.remove('overflow-hidden');
 
-    this.search.classList.remove('block');
-    this.search.classList.add('hidden');
+    this.search?.classList.remove('block');
+    this.search?.classList.add('hidden');
 
-    this.openIcon.classList.add('block');
-    this.openIcon.classList.remove('hidden');
+    this.openIcon?.classList.add('block');
+    this.openIcon?.classList.remove('hidden');
 
-    this.closeIcon.classList.remove('block');
-    this.closeIcon.classList.add('hidden');
+    this.closeIcon?.classList.remove('block');
+    this.closeIcon?.classList.add('hidden');
   }
 
   toggleSearch() {

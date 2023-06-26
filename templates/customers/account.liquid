@@ -1,13 +1,15 @@
 <div class="[ container mx-auto px-4 sm:px-6 lg:px-8 py-10 ] cls-fix">
   <header role="banner">
-    <div class="bg-gray-100">
+    <div class="">
       <div class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
         <div class="flex flex-col">
           <h1 class="text-3xl leading-9 tracking-tight sm:text-4xl sm:leading-10">
             {{ 'customer.account.title' | t }}
           </h1>
           <div class="mt-4">
-            <a class="font-medium transition duration-150 ease-in-out underline" href="/account/addresses">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a>
+            <a class="font-medium transition duration-150 ease-in-out underline" href="/account/addresses">
+              {{- 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a
+            >
             <p class="pt-4 font-medium transition duration-150 ease-in-out underline">
               {{ 'Log out' | customer_logout_link }}
             </p>
@@ -16,7 +18,13 @@
         <div class="mt-8 flex lg:flex-shrink-0 lg:mt-0">
           <div class="inline-flex">
             <!-- Begin ReCharge code -->
-            <div class="mt-8 block"><a class="[ group relative w-full focus:shadow-outline focus:outline-none font-bold py-3 px-4 border leading-tight ] btn primary-button" href="/tools/recurring/login/">Manage Subscriptions</a></div>
+            <div class="mt-8 block">
+              <a
+                class="[ group relative w-full focus:shadow-outline focus:outline-none font-bold py-3 px-4 border leading-tight ] btn primary-button"
+                href="/tools/recurring/login/"
+                >Manage Subscriptions</a
+              >
+            </div>
             <!-- End ReCharge code -->
           </div>
         </div>
@@ -29,50 +37,40 @@
       <h3 class="text-lg leading-6 heading">
         {{ 'customer.account.details' | t }}
       </h3>
-      <p class="mt-1 max-w-2xl text-sm leading-5">
-        Personal details and application.
-      </p>
+      <p class="mt-1 max-w-2xl text-sm leading-5">Personal details and application.</p>
       <div class="mt-4">
         <dl>
           {%- unless customer.name == blank -%}
-          <div class="">
-            <dt class="text-sm leading-5 heading mb-2">
-              Name
-            </dt>
-            <dd class="text-sm leading-5 mb-4">
-              {{ customer.first_name }}
-            </dd>
-          </div>
+            <div class="">
+              <dt class="text-sm leading-5 heading mb-2">Name</dt>
+              <dd class="text-sm leading-5 mb-4">
+                {{ customer.first_name }}
+              </dd>
+            </div>
           {%- endunless -%}
           {%- unless customer.default_address.phone == blank -%}
-          <div class="bg-white py-2">
-            <dt class="text-sm leading-5 heading mb-2">
-              Phone
-            </dt>
-            <dd class="text-sm leading-5 mb-4">
-              {{ customer.default_address.phone }}
-            </dd>
-          </div>
+            <div class="bg-white py-2">
+              <dt class="text-sm leading-5 heading mb-2">Phone</dt>
+              <dd class="text-sm leading-5 mb-4">
+                {{ customer.default_address.phone }}
+              </dd>
+            </div>
           {%- endunless -%}
           {%- unless customer.email == blank -%}
-          <div class="bg-white py-2">
-            <dt class="text-sm leading-5 heading mb-2">
-              Email
-            </dt>
-            <dd class="text-sm leading-5 mb-4">
-              {{ customer.email }}
-            </dd>
-          </div>
+            <div class="bg-white py-2">
+              <dt class="text-sm leading-5 heading mb-2">Email</dt>
+              <dd class="text-sm leading-5 mb-4">
+                {{ customer.email }}
+              </dd>
+            </div>
           {%- endunless -%}
           {%- unless customer.default_address == blank -%}
-          <div class="py-2">
-            <dt class="text-sm leading-5 heading mb-2">
-              Address
-            </dt>
-            <dd class="text-sm leading-5 mb-4">
-              {{ customer.default_address | format_address }}
-            </dd>
-          </div>
+            <div class="py-2">
+              <dt class="text-sm leading-5 heading mb-2">Address</dt>
+              <dd class="text-sm leading-5 mb-4">
+                {{ customer.default_address | format_address }}
+              </dd>
+            </div>
           {%- endunless -%}
         </dl>
       </div>
@@ -106,15 +104,23 @@
                     </thead>
                     <tbody>
                       {% for order in customer.orders %}
-                      <tr class="responsive-table-row">
-                        <td data-label="{{ 'customer.orders.order_number' | t }}" class="border p-4">
-                          <span class="underline">{{ order.name | link_to: order.customer_url }}</span>
-                        </td>
-                        <td data-label="{{ 'customer.orders.date' | t }}" class="border p-4">{{ order.created_at | date: format: 'month_day_year' }}</td>
-                        <td data-label="{{ 'customer.orders.payment_status' | t }}" class="border p-4">{{ order.financial_status_label }}</td>
-                        <td data-label="{{ 'customer.orders.fulfillment_status' | t }}" class="border p-4">{{ order.fulfillment_status_label }}</td>
-                        <td data-label="{{ 'customer.orders.total' | t }}" class="border p-4 md:text-right">{{ order.total_price | money }}</td>
-                      </tr>
+                        <tr class="responsive-table-row">
+                          <td data-label="{{ 'customer.orders.order_number' | t }}" class="border p-4">
+                            <span class="underline">{{ order.name | link_to: order.customer_url }}</span>
+                          </td>
+                          <td data-label="{{ 'customer.orders.date' | t }}" class="border p-4">
+                            {{ order.created_at | date: format: 'month_day_year' }}
+                          </td>
+                          <td data-label="{{ 'customer.orders.payment_status' | t }}" class="border p-4">
+                            {{ order.financial_status_label }}
+                          </td>
+                          <td data-label="{{ 'customer.orders.fulfillment_status' | t }}" class="border p-4">
+                            {{ order.fulfillment_status_label }}
+                          </td>
+                          <td data-label="{{ 'customer.orders.total' | t }}" class="border p-4 md:text-right">
+                            {{ order.total_price | money }}
+                          </td>
+                        </tr>
                       {% endfor %}
                     </tbody>
                   </table>
@@ -123,19 +129,27 @@
             </div>
           </div>
         {% else %}
-        <div class="mb-4">
-          <div class="bg-blue-50 border-t-4 border-blue-500 rounded-b text-blue-900 px-4 py-3 shadow-md" role="alert">
-            <div class="flex">
-              <div class="py-1"><svg class="fill-current h-6 w-6 text-blue-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
-              <div>
-                <p class="font-bold pb-2">{{ 'alert.customer_notice' | t }}</p>
-                <p class="text-sm">{{ 'customer.orders.none' | t }}</p>
+          <div class="mb-4">
+            <div class="bg-blue-50 border-t-4 border-blue-500 rounded-b text-blue-900 px-4 py-3 shadow-md" role="alert">
+              <div class="flex">
+                <div class="py-1">
+                  <svg
+                    class="fill-current h-6 w-6 text-blue-500 mr-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-bold pb-2">{{ 'alert.customer_notice' | t }}</p>
+                  <p class="text-sm">{{ 'customer.orders.none' | t }}</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
         {% endif %}
-    
+
         {% if paginate.pages > 1 %}
           {% render 'pagination' %}
         {% endif %}

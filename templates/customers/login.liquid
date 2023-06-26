@@ -8,8 +8,8 @@
   }
 {% endstyle %}
 <section class="cls-fix">
-  <div class="[ flex items-center justify-center bg-gray-50 py-20 md:py-40 px-4 sm:px-6 lg:px-8 ]">
-    <div class="max-w-lg w-full bg-white p-4 lg:p-16">
+  <div class="[ flex items-center justify-center py-20 md:py-40 px-4 sm:px-6 lg:px-8 ]">
+    <div class="max-w-lg w-full p-4 lg:p-16">
       <!-- password reset success -->
       <div
         class="[ bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md ] form-success hidden"
@@ -27,15 +27,6 @@
             <p class="[ text-sm ]">{{ 'customer.recover_password.success' | t }}</p>
           </div>
         </div>
-      </div>
-
-      <div class="flex divide-x divide-gray-200">
-        <h1 class="mb-6 text-center text-xs lg:text-base leading-relaxed w-1/2">
-          {{ 'customer.login.title' | t }}
-        </h1>
-        <h2 class="mb-6 text-center text-xs lg:text-base leading-relaxed w-1/2">
-          <a href="/account/register" class="opacity-50">{{ 'customer.register.title' | t }}</a>
-        </h2>
       </div>
 
       <div id="recover">
@@ -112,6 +103,15 @@
         </div>
       </div>
 
+      <div class="mb-4">
+        <a
+          href="/account/register"
+          class="mt-2 block underline text-left focus:outline-none focus:underline transition ease-in-out duration-150"
+        >
+          {{ 'layout.customer.create_account' | t }}
+        </a>
+      </div>
+
       <div id="login">
         {%- liquid
           if recover_success
@@ -140,10 +140,10 @@
             </div>
           {%- endif -%}
           <div class="rounded-md shadow-sm">
-            <div class="mb-4">
+            <div class="mb-6">
               <input
                 id="CustomerEmail"
-                class="appearance-none rounded-none relative block w-full py-3 px-4 border leading-tight placeholder-gray-500 text-gray-900 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 {% if form.errors contains 'email' %}input-error{% endif %}"
+                class="appearance-none rounded-none relative block text-sm w-full py-1 border-b border-color leading-tight focus:outline-none focus:shadow-outline-blue bg-transparent focus:border-blue-300 focus:z-10 {% if form.errors contains 'email' %}input-error{% endif %}"
                 placeholder="{{ 'customer.login.email' | t }}"
                 aria-label="Email address"
                 name="customer[email]"
@@ -158,7 +158,7 @@
             <div class="-mt-px">
               <input
                 id="CustomerPassword"
-                class="appearance-none rounded-none relative block w-full py-3 px-4 border leading-tight placeholder-gray-500 text-gray-900 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 {% if form.errors contains 'password' %}input-error{% endif %}"
+                class="appearance-none rounded-none relative block text-sm w-full py-1 border-b border-color leading-tight focus:outline-none focus:shadow-outline-blue bg-transparent focus:border-blue-300 focus:z-10 {% if form.errors contains 'password' %}input-error{% endif %}"
                 aria-label="Password"
                 name="customer[password]"
                 type="password"
@@ -168,32 +168,28 @@
             </div>
           </div>
 
+          <div class="mt-4">
+            <p class="block text-left focus:outline-none underline focus:underline transition ease-in-out duration-150 cursor-pointer">
+              <a href="#recover">{{ 'customer.login.forgot_password' | t }}</a>
+            </p>
+          </div>
+
           <div class="mt-6">
             <button
               type="submit"
-              class="[ group relative w-full focus:shadow-outline focus:outline-none font-bold py-3 px-4 border leading-tight ] btn primary-button"
+              class="[ group relative w-full focus:shadow-outline focus:outline-none py-3 leading-tight text-xs text-left ] btn"
             >
-              <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-                <svg class="h-5 w-5 transition ease-in-out duration-150" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
-                </svg>
+              <span class="mr-2 inline-block align-middle">
+                {%- render 'icon-arrow-right' -%}
               </span>
-              {{ 'customer.login.sign_in' | t }}
+              <span class="inline-block">
+                {{ 'customer.login.sign_in' | t }}
+              </span>
             </button>
           </div>
         {% endform %}
         <div class="mt-6 flex items-center justify-center">
-          <div class="text-sm leading-5">
-            <p class="block text-center focus:outline-none underline focus:underline transition ease-in-out duration-150 cursor-pointer">
-              <a href="#recover">{{ 'customer.login.forgot_password' | t }}</a>
-            </p>
-            <a
-              href="/account/register"
-              class="mt-2 block underline text-center focus:outline-none focus:underline transition ease-in-out duration-150"
-            >
-              {{ 'layout.customer.create_account' | t }}
-            </a>
-          </div>
+          <div class="text-sm leading-5"></div>
         </div>
       </div>
     </div>

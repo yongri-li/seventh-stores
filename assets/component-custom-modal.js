@@ -1,4 +1,4 @@
-class CustomModal {
+class CustomModal extends HTMLElement {
 
   constructor() {
 
@@ -33,7 +33,7 @@ class CustomModal {
 
 customElements.define('custom-modal', CustomModal);
 
-class ModalTrigger {
+class ModalTrigger extends HTMLElement {
 
   constructor() {
 

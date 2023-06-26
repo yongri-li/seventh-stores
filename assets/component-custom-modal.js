@@ -43,6 +43,8 @@ class ModalTrigger extends HTMLElement {
 
     this.querySelector('button').addEventListener('click', (e) => {
 
+      console.log("this: ", this);
+
       if (!this.target) return;
 
       console.log(this.target);

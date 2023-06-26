@@ -18,46 +18,38 @@
 
   <div class="mx-auto mt-4 lg:mt-8 flex flex-wrap">
     <div class="overflow-hidden lg:w-1/3 mb-4">
-      <h3 class="text-base">
+      <h3 class="text-xs">
         {{ 'customer.account.details' | t }}
       </h3>
       <div class="mt-8">
         <dl>
           {%- unless customer.name == blank -%}
             <div class="">
-              <dt class="text-xs heading mb-2 sr-only">Name</dt>
-              <dd class="text-xs mb-4">
+              <dt class="sr-only">Name</dt>
+              <dd class="text-xs">
                 {{ customer.first_name }}
               </dd>
             </div>
           {%- endunless -%}
           {%- unless customer.default_address.phone == blank -%}
             <div class="py-2">
-              <dt class="text-xs heading mb-2 sr-only">Phone</dt>
-              <dd class="text-xs mb-4">
+              <dt class="sr-only">Phone</dt>
+              <dd class="text-xs">
                 {{ customer.default_address.phone }}
               </dd>
             </div>
           {%- endunless -%}
           {%- unless customer.email == blank -%}
             <div class="py-2">
-              <dt class="text-xs heading mb-2 sr-only">Email</dt>
-              <dd class="text-xs mb-4">
+              <dt class="sr-only">Email</dt>
+              <dd class="text-xs">
                 {{ customer.email }}
-              </dd>
-            </div>
-          {%- endunless -%}
-          {%- unless customer.default_address == blank -%}
-            <div class="py-2">
-              <dt class="text-xs heading mb-2">Address</dt>
-              <dd class="text-xs mb-4">
-                {{ customer.default_address | format_address }}
               </dd>
             </div>
           {%- endunless -%}
         </dl>
       </div>
-      <h3 class="text-base">
+      <h3 class="text-xs">
         {{ 'customer.account.details' | t }}
       </h3>
       <a class="text-xs underline" href="/account/addresses">
@@ -67,24 +59,24 @@
         <dl>
           {%- unless customer.name == blank -%}
             <div class="">
-              <dt class="text-xs heading mb-2 sr-only">Name</dt>
-              <dd class="text-xs mb-4">
+              <dt class="sr-only">Name</dt>
+              <dd class="text-xs">
                 {{ customer.first_name }}
               </dd>
             </div>
           {%- endunless -%}
           {%- unless customer.default_address.phone == blank -%}
             <div class="py-2">
-              <dt class="text-xs heading mb-2 sr-only">Phone</dt>
-              <dd class="text-xs mb-4">
+              <dt class="sr-only">Phone</dt>
+              <dd class="mb-4">
                 {{ customer.default_address.phone }}
               </dd>
             </div>
           {%- endunless -%}
           {%- unless customer.default_address == blank -%}
             <div class="py-2">
-              <dt class="text-xs heading mb-2">Address</dt>
-              <dd class="text-xs mb-4">
+              <dt class="sr-only">Address</dt>
+              <dd class="text-xs">
                 {{ customer.default_address | format_address }}
               </dd>
             </div>

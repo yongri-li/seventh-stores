@@ -466,6 +466,14 @@
   [aria-busy="true"] .loading{ display: flex; }
 
   [aria-busy="true"] .loading ~ * { display: none; }
+
+  custom-modal{
+    display: none;
+  }
+
+  custom-modal.active{
+    display: block;
+  }
 {% endstyle %}
 
 <script>

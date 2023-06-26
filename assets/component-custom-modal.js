@@ -16,11 +16,15 @@ class CustomModal {
 
   open() {
 
+    console.log("Modal Open");
+
     this.classList.add('active');
     document.querySelector('body')?.classList.add('overflow-hidden');
   }
 
   close() {
+
+    console.log("Modal Close");
 
     this.classList.remove('active');
     document.querySelector('body')?.classList.remove('overflow-hidden');
@@ -40,6 +44,8 @@ class ModalTrigger {
     this.querySelector('button').addEventListener('click', (e) => {
 
       if (!this.target) return;
+
+      console.log(this.target);
 
       if (this.target.classList.contains('active')) {
         this.target.close();

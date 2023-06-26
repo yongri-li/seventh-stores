@@ -32,7 +32,7 @@
             </div>
           {%- endunless -%}
           {%- unless customer.default_address.phone == blank -%}
-            <div class="py-2">
+            <div class="">
               <dt class="sr-only">Phone</dt>
               <dd class="text-xs">
                 {{ customer.default_address.phone }}
@@ -40,7 +40,7 @@
             </div>
           {%- endunless -%}
           {%- unless customer.email == blank -%}
-            <div class="py-2">
+            <div class="">
               <dt class="sr-only">Email</dt>
               <dd class="text-xs">
                 {{ customer.email }}
@@ -63,7 +63,7 @@
             </div>
           {%- endunless -%}
           {%- unless customer.default_address.phone == blank -%}
-            <div class="py-2">
+            <div class="">
               <dt class="sr-only">Phone</dt>
               <dd class="mb-4">
                 {{ customer.default_address.phone }}
@@ -71,7 +71,7 @@
             </div>
           {%- endunless -%}
           {%- unless customer.default_address == blank -%}
-            <div class="py-2">
+            <div class="">
               <dt class="sr-only">Address</dt>
               <dd class="text-xs">
                 {{ customer.default_address | format_address }}

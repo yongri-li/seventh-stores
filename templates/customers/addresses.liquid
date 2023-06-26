@@ -21,6 +21,8 @@
           </button>
         </modal-trigger>
 
+        {%- render 'customer-new-address-form' -%}
+
         <div class="my-10">
           {%- paginate customer.addresses by 5 -%}
             <div class="my-4">
@@ -115,12 +117,6 @@
             {%- if paginate.pages > 1 -%}
               {%- render 'pagination' -%}
             {%- endif -%}
-
-            {% comment %}
-              <div id="AddressNewForm">
-                {%- render 'customer-new-address-form' -%}
-              </div>
-            {% endcomment %}
           {%- endpaginate -%}
         </div>
       </div>

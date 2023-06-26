@@ -214,7 +214,7 @@ class DrawerTrigger extends HTMLElement {
 
     this.addEventListener('click', this.toggleTarget.bind(this));
 
-    document.addEventListener('keyup', function (e) {
+    document.addEventListener('keyup', (e) => {
 
       if (e.key === "Escape") {
         self.close();
@@ -302,7 +302,7 @@ class SearchTrigger extends HTMLElement {
 
     this.addEventListener('click', this.toggleSearch.bind(this));
 
-    document.addEventListener('keyup', function (e) {
+    document.addEventListener('keyup', (e) => {
       if (e.key === "Escape") {
         self.close();
       }

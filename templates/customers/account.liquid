@@ -52,9 +52,6 @@
       <h3 class="text-xs mt-8">
         {{ 'customer.account.details' | t }}
       </h3>
-      <a class="text-xs underline" href="/account/addresses">
-        {{- 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})
-      </a>
       <div class="mt-6">
         <dl>
           {%- unless customer.name == blank -%}
@@ -82,6 +79,11 @@
             </div>
           {%- endunless -%}
         </dl>
+        <div class="">
+          <a class="text-xs underline" href="/account/addresses">
+            {{- 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})
+          </a>
+        </div>
       </div>
     </div>
     <div class="lg:w-2/3">

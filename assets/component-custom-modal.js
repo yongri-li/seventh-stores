@@ -16,15 +16,11 @@ class CustomModal extends HTMLElement {
 
   open() {
 
-    console.log("Modal Open");
-
     this.classList.add('active');
     document.querySelector('body')?.classList.add('overflow-hidden');
   }
 
   close() {
-
-    console.log("Modal Close");
 
     this.classList.remove('active');
     document.querySelector('body')?.classList.remove('overflow-hidden');
@@ -41,15 +37,9 @@ class ModalTrigger extends HTMLElement {
 
     this.target = document.querySelector(`[data-modal="${this.dataset.target}"]`) || false;
 
-    console.log("this.target: ", this.target);
-
     this.querySelector('button').addEventListener('click', (e) => {
 
-      console.log("this: ", this);
-
       if (!this.target) return;
-
-      console.log(this.target);
 
       if (this.target.classList.contains('active')) {
         this.target.close();

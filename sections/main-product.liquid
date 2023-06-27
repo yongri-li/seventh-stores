@@ -482,7 +482,7 @@
                 {%- assign unisex_link = product.metafields.gender.variant.value -%}
                 {%- unless unisex_link == blank -%}
                   {%- assign unisex_type = unisex_link.metafields.gender.type.value | first -%}
-                  <div class="my-4">
+                  <div class="my-8">
                     <a class="p-2 border border-color text-xs" href="{{ unisex_link.url }}">
                       {{- 'products.product.gender.variant' | t: alternative: unisex_type -}}
                     </a>

@@ -105,11 +105,16 @@
           <!-- Cart -->
           <div class="flex ml-2 h-8 items-center">
             <drawer-trigger data-target="[data-mini-cart]" data-open-class="flex" data-close-class="hidden">
-              <a href="/cart" class="group px-1 py-2 block items-center">
+              <a href="/cart" class="group px-1 py-2 block items-center relative">
                 <span class="flex header-font-color">
                   <!-- Heroicon name: outline/shopping-bag -->
                   {%- render 'icon-bag' -%}
-                  <span data-cart-count class="text-xs">{{ cart.item_count }}</span>
+                  <span
+                    data-cart-count
+                    class="bg-black rounded-full h-[14px] w-[14px] text-center leading-[14px] text-white text-[8px] absolute right-0 -top-2"
+                  >
+                    {{- cart.item_count -}}
+                  </span>
                   <span class="sr-only">items in cart, view bag</span>
                 </span>
               </a>

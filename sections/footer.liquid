@@ -38,7 +38,7 @@
 {%- if column_width_mobile == 1 -%}w-full{%- else -%}w-1/{{column_width_mobile}}{%- endif -%}
 {%- endcapture -%}
 
-<footer class="footer border-t border-solid" aria-labelledby="footerHeading">
+<footer class="footer" aria-labelledby="footerHeading">
   <h2 id="footerHeading" class="sr-only">Footer</h2>
   <div class="{% if section.settings.contain %}container max-w-md{% endif %} mx-auto py-6 px-4 sm:px-6 lg:px-12">
     <div class="lg:flex justify-between">

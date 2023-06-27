@@ -1,59 +1,65 @@
 <div>
-    {%- unless block.settings.column_header == blank -%}
-    <h6 class="text-sm">{{ block.settings.column_header }}</h6>
-    {%- endunless -%}
+  {%- unless block.settings.column_header == blank -%}
+    <h6 class="text-xs">{{ block.settings.column_header }}</h6>
+  {%- endunless -%}
 
-    {%- assign icon_one = block.settings.icon_one -%}
-    {%- assign icon_one_size = block.settings.icon_one_size -%}
-    {%- assign heading_one = block.settings.heading_one -%}
-    {%- assign content_one = block.settings.content_one -%}
+  {%- assign icon_one = block.settings.icon_one -%}
+  {%- assign icon_one_size = block.settings.icon_one_size -%}
+  {%- assign heading_one = block.settings.heading_one -%}
+  {%- assign content_one = block.settings.content_one -%}
+  <div>
+    {%- if icon_one != blank -%}
+      <div>
+        <p style="font-size: {{ icon_one_size }}px;">{{ icon_one }}</p>
+      </div>
+    {%- endif -%}
     <div>
-        {%- if icon_one != blank -%}
-        <div><p style="font-size: {{ icon_one_size }}px;">{{ icon_one }}</p></div>
-        {%- endif -%}
-        <div>
-        {%- if heading_one != blank -%}
-            <h6>{{ heading_one }}</h6>
-        {%- endif -%}
-        {%- if content_one != blank -%}
-            <p>{{ content_one }}</p>
-        {%- endif -%}
-        </div>
+      {%- if heading_one != blank -%}
+        <h6>{{ heading_one }}</h6>
+      {%- endif -%}
+      {%- if content_one != blank -%}
+        <p>{{ content_one }}</p>
+      {%- endif -%}
     </div>
+  </div>
 
-    {%- assign icon_two = block.settings.icon_two -%}
-    {%- assign icon_two_size = block.settings.icon_two_size -%}
-    {%- assign heading_two = block.settings.heading_two -%}
-    {%- assign content_two = block.settings.content_two -%}
+  {%- assign icon_two = block.settings.icon_two -%}
+  {%- assign icon_two_size = block.settings.icon_two_size -%}
+  {%- assign heading_two = block.settings.heading_two -%}
+  {%- assign content_two = block.settings.content_two -%}
+  <div>
+    {%- if icon_two != blank -%}
+      <div>
+        <p style="font-size: {{ icon_two_size }}px;">{{ icon_two }}</p>
+      </div>
+    {%- endif -%}
     <div>
-        {%- if icon_two != blank -%}
-        <div><p style="font-size: {{ icon_two_size }}px;">{{ icon_two }}</p></div>
-        {%- endif -%}
-        <div>
-        {%- if heading_two != blank -%}
-            <h6>{{ heading_two }}</h6>
-        {%- endif -%}
-        {%- if content_two != blank -%}
-            <p>{{ content_two }}</p>
-        {%- endif -%}
-        </div>
+      {%- if heading_two != blank -%}
+        <h6>{{ heading_two }}</h6>
+      {%- endif -%}
+      {%- if content_two != blank -%}
+        <p>{{ content_two }}</p>
+      {%- endif -%}
     </div>
+  </div>
 
-    {%- assign icon_three = block.settings.icon_three -%}
-    {%- assign icon_three_size = block.settings.icon_three_size -%}
-    {%- assign heading_three = block.settings.heading_three -%}
-    {%- assign content_three = block.settings.content_three -%}
+  {%- assign icon_three = block.settings.icon_three -%}
+  {%- assign icon_three_size = block.settings.icon_three_size -%}
+  {%- assign heading_three = block.settings.heading_three -%}
+  {%- assign content_three = block.settings.content_three -%}
+  <div>
+    {%- if icon_three != blank -%}
+      <div>
+        <p style="font-size: {{ icon_three_size }}px;">{{ icon_three }}</p>
+      </div>
+    {%- endif -%}
     <div>
-        {%- if icon_three != blank -%}
-        <div><p style="font-size: {{ icon_three_size }}px;">{{ icon_three }}</p></div>
-        {%- endif -%}
-        <div>
-        {%- if heading_three != blank -%}
-            <h6 class="block text-sm">{{ heading_three }}</h6>
-        {%- endif -%}
-        {%- if content_three != blank -%}
-            <p class="block text-sm">{{ content_three }}</p>
-        {%- endif -%}
-        </div>
+      {%- if heading_three != blank -%}
+        <h6 class="block text-sm">{{ heading_three }}</h6>
+      {%- endif -%}
+      {%- if content_three != blank -%}
+        <p class="block text-sm">{{ content_three }}</p>
+      {%- endif -%}
     </div>
+  </div>
 </div>

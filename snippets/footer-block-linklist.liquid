@@ -1,13 +1,13 @@
 {%- assign footer_linklist = block.settings.footer_linklist -%}
 {%- if block.settings.column_header != blank -%}
-<h3 class="pb-2 text-sm">{{ block.settings.column_header }}</h3>
+  <h3 class="pb-2 text-xs">{{ block.settings.column_header }}</h3>
 {%- endif -%}
 {%- unless footer_linklist == blank -%}
-<ul>
+  <ul>
     {%- for link in linklists[footer_linklist].links -%}
-    <li>
+      <li>
         <a class="inline-block pb-1" href="{{ link.url }}">{{ link.title }}</a>
-    </li>
+      </li>
     {%- endfor -%}
-</ul>
+  </ul>
 {%- endunless -%}

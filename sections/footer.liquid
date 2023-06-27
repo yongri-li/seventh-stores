@@ -40,10 +40,10 @@
 
 <footer class="footer border-t border-solid border-color" aria-labelledby="footerHeading">
   <h2 id="footerHeading" class="sr-only">Footer</h2>
-  <div class="{% if section.settings.contain %}container{% endif %} mx-auto py-6 px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-wrap items-center flex-row -mx-4 pt-4">
+  <div class="{% if section.settings.contain %}container max-w-md{% endif %} mx-auto py-6 px-4 sm:px-6 lg:px-8">
+    <div class="lg:flex justify-between">
       {%- if section.settings.show_first_column -%}
-        <div class="{{ cw_m }} {{ cw_t }} {{ cw_d }} lg:flex-1 px-4 mb-5">
+        <div class="px-4 mb-5">
           <div class="space-y-8 xl:col-span-1">
             {%- if footer_logo != blank -%}
               <img
@@ -64,7 +64,7 @@
         </div>
       {%- endif -%}
       {%- for block in section.blocks -%}
-        <div class="{{ cw_m }} {{ cw_t }} {{ cw_d }} mb-5 lg:flex-1 px-4">
+        <div class="px-4 mb-5">
           {%- if block.type == 'footer_linklist' -%}
             {% render 'footer-block-linklist' with block: block %}
           {%- elsif block.type == 'footer_image' -%}
@@ -75,7 +75,7 @@
         </div>
       {%- endfor -%}
       {%- if show_currency_selector -%}
-        <div class="{{ cw_m }} {{ cw_t }} {{ cw_d }} lg:flex-1 px-4">
+        <div class="px-4 mb-5">
           <h3 class="text-sm">{{ 'layout.footer.currency' | t }}</h3>
           {% form 'currency', id: 'footerCurrencyForm', class: 'mt-4 sm:max-w-xs' %}
             <fieldset class="mt-4 w-full">

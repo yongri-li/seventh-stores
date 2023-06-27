@@ -58,7 +58,7 @@
 
           <!-- customer links -->
           {%- if shop.customer_accounts_enabled -%}
-            <div class="ml-2 h-8 items-center">
+            <div class="ml-3 h-8 items-center">
               {%- if section.settings.account_type == 'links' -%}
                 <a
                   href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}"
@@ -88,7 +88,7 @@
           {%- endif -%}
 
           <!-- Search -->
-          <div class="flex ml-2 h-8 items-center">
+          <div class="flex ml-3 h-8 items-center">
             <search-trigger>
               <span class="px-1 py-2 block cursor-pointer">
                 <span class="sr-only">Search</span>
@@ -103,7 +103,7 @@
           </div>
 
           <!-- Cart -->
-          <div class="flex ml-2 h-8 items-center">
+          <div class="flex ml-3 h-8 items-center">
             <drawer-trigger data-target="[data-mini-cart]" data-open-class="flex" data-close-class="hidden">
               <a href="/cart" class="group pl-1 pr-3 py-2 block items-center relative">
                 <span class="flex header-font-color">
@@ -122,7 +122,7 @@
           </div>
 
           <!-- Mobile Menu -->
-          <div class="flex ml-2 h-8 items-center">
+          <div class="flex ml-3 h-8 items-center">
             <drawer-trigger
               class="group"
               data-target="[data-menu-drawer]"

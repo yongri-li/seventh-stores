@@ -151,7 +151,8 @@
           "a19f6e3b-5ae2-4eae-9dfd-b714d594f5dc"
         ],
         "settings": {
-          "contain": false,
+          "show_first_column": false,
+          "contain": true,
           "show_newsletter": false,
           "show_social_icons": true,
           "show_shop_description": true,

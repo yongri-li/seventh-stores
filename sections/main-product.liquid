@@ -478,6 +478,12 @@
                     {%- endif -%}
                   {%- endif -%}
                 </div>
+              {%- when 'unisex_link' -%}
+                {%- assign unisex_link = product.metafields.gender.variant.value -%}
+                {%- unless unisex_link == blank -%}
+                  {%- assign unisex_type = unisex_link.metafields.gender.type -%}
+                  <a>{{ 'products.product.gender.variant' | t: type: unisex_type }}</a>
+                {%- endunless -%}
               {%- when 'product_description' -%}
                 <div class="rte mt-3">{{ product.description }}</div>
               {%- when 'buy_now_buttons' -%}
@@ -1446,6 +1452,11 @@
     {
       "type": "estimated_shipping_date",
       "name": "Estimated Shipping Date",
+      "limit": 1
+    },
+    {
+      "type": "unisex_link",
+      "name": "Unisex Link",
       "limit": 1
     },
     {

@@ -339,7 +339,10 @@
       "add_success": "Product successfully added!",
       "product_variants": "TODO",
       "no_measurements": "Sorry, but no meaurements have been set for this product.",
-      "styled_with": "Styled With"
+      "styled_with": "Styled With",
+      "gender": {
+        "variant": "It's unisex - check the {{ alternative }}"
+      }
     },
     "subscription": {
       "savings_notice_html": "You're saving <span data-subscription-percentage-savings><\/span> by subscribing + free UK delivery!",

@@ -45,14 +45,14 @@
                         <div class="flex flex-wrap -mx-4 mb-4">
                           <button
                             type="button"
-                            class="[ focus:outline-none text-xs underline ]"
+                            class="[ focus:outline-none text-xs underline inline-block ]"
                             @click="formEdit{{ forloop.index }} = true"
                           >
                             {{ 'customer.addresses.edit' | t }}
                           </button>
                           <button
                             type="button"
-                            class="[ address-delete focus:outline-none text-xs underline ] "
+                            class="[ address-delete focus:outline-none text-xs underline inline-block ml-4 ] "
                             data-form-id="{{ address.id }}"
                             data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}"
                           >

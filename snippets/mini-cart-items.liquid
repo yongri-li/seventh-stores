@@ -19,13 +19,13 @@
         {%- if cart.items.size == 0 -%}
           <p colspan="5">{{ 'cart.general.empty' | t }}</p>
         {%- else -%}
-          <ul class="p-4 bg-white space-y-4 ">
+          <ul class="">
             {%- for item in cart.items -%}
               <li class="flex">
                 <div class="flex-shrink-0 w-24 lg:w-32 overflow-hidden">
                   <a href="{{ item.url }}">
                     <img
-                      src="{{ item.image | image_url: width: 75 }}"
+                      src="{{ item.image | image_url: width: 150 }}"
                       width="{{ item.image.width }}"
                       height="{{ item.image.height }}"
                       loading="lazy"
@@ -35,38 +35,56 @@
                 </div>
 
                 <div class="ml-4 flex-1 flex flex-col">
-                  <div>
-                    <p class="heading mb-2 text-sm flex-shrink-0">{{ item.price | money_with_currency }}</p>
-                    {%- unless item.selling_plan_allocation.selling_plan.name == blank -%}
-                      <p class="font-bold mb-2">{{ item.selling_plan_allocation.selling_plan.name }}</p>
-                    {%- endunless -%}
-                    {%- if item.original_price > item.price -%}
-                      <span class="text-xs strike-through">{{ item.original_price | money_with_currency }}</span>
-                    {%- endif -%}
-                    <p class="text-xs mb-2">
-                      <a href="{{ item.url }}" class="text-xs">{{ item.title | escape }}</a>
+                  <div class="flex mb-8">
+                    <p class="flex-grow">
+                      <a href="{{ item.url }}" class="text-xs">{{ item.product.title }}</a>
                     </p>
-                    {%- for selling_plan in item.selling_plan_allocation -%}
-                      {{ selling_plan.name }}
-                    {%- endfor -%}
-                    {%- unless item.properties.size == 0 -%}
-                      <div class="mt-1 flex">
-                        {% for property in line_item.properties %}
-                          <p class="text-xs">{{ property.first }}: {{ property.last }}</p>
-                        {% endfor %}
-                      </div>
-                    {%- endunless -%}
-                    <div class="flex flex-row">
-                      <p class="text-xs pr-4">QTY x {{ item.quantity }}</p>
-                      <cart-remove-button
-                        data-item-key="{{ item.key }}"
-                        type="button"
-                        class="appearance-none cursor-pointer -m-2 ml-auto p-2 inline-flex"
-                      >
-                        <span class="text-xs underline">Remove</span>
-                      </cart-remove-button>
+
+                    <!-- {{ item | json }} -->
+                    <cart-remove-button
+                      data-item-key="{{ item.key }}"
+                      type="button"
+                      class="appearance-none cursor-pointer"
+                    >
+                      <span class="text-xs underline text-secondary">Remove</span>
+                    </cart-remove-button>
+                  </div>
+                  <div class="flex">
+                    <div class="flex-1">
+                      <p class="text-xs">{{ item.variant.title | escape }}</p>
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs">Qty {{ item.quantity }}</p>
+                    </div>
+                    <div class="flex-1">
+                      <p class="text-xs">{{ item.price | money_with_currency }}</p>
                     </div>
                   </div>
+                  {%- comment -%}
+                    <div>
+                      <p class="heading mb-2 text-sm flex-shrink-0">{{ item.price | money_with_currency }}</p>
+                      {%- unless item.selling_plan_allocation.selling_plan.name == blank -%}
+                        <p class="font-bold mb-2">{{ item.selling_plan_allocation.selling_plan.name }}</p>
+                      {%- endunless -%}
+                      {%- if item.original_price > item.price -%}
+                        <span class="text-xs strike-through">{{ item.original_price | money_with_currency }}</span>
+                      {%- endif -%}
+
+                      {%- for selling_plan in item.selling_plan_allocation -%}
+                        {{ selling_plan.name }}
+                      {%- endfor -%}
+                      {%- unless item.properties.size == 0 -%}
+                        <div class="mt-1 flex">
+                          {% for property in line_item.properties %}
+                            <p class="text-xs">{{ property.first }}: {{ property.last }}</p>
+                          {% endfor %}
+                        </div>
+                      {%- endunless -%}
+                      <div class="flex flex-row">
+                        <p class="text-xs pr-4">QTY x {{ item.quantity }}</p>
+                      </div>
+                    </div>
+                  {%- endcomment -%}
                 </div>
               </li>
             {%- endfor -%}

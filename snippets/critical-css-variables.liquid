@@ -145,6 +145,11 @@
       --svg-select-icon: url("{{ 'ico-select.svg' | asset_url }}");
       --svg-icon-color: #bfbfbf;
 
+      --checkout-btn-bg: {{ settings.btn_checkout_bg }};
+      --checkout-btn-text: {{ settings.btn_checkout_text }};
+      --checkout-btn-bg-hover: {{ settings.btn_checkout_bg_hover }};
+      --checkout-btn-text-hover: {{ settings.btn_checkout_text_hover }};
+
       --primary-btn-bg: {{ settings.btn_primary_bg }};
       --primary-btn-text: {{ settings.btn_primary_text }};
       --primary-btn-bg-hover: {{ settings.btn_primary_bg_hover }};
@@ -298,6 +303,32 @@
     border-width: 2px;
     border-style: solid;
   }
+
+  {%- if settings.checkout_button_alternative -%}
+  .checkout-button{
+    background-color: transparent;
+    border-color: var(--checkout-btn-bg);
+    color: var(--checkout-btn-text);
+  }
+
+  .checkout-button:hover{
+    background-color: var(--checkout-btn-bg-hover);
+    border-color: var(--checkout-btn-bg-hover);
+    color: var(--checkout-btn-text-hover);
+  }
+  {%- else -%}
+  .checkout-button{
+    background-color: var(--checkout-btn-bg);
+    border-color: var(--checkout-btn-bg);
+    color: var(--checkout-btn-text);
+  }
+
+  .checkout-button:hover{
+    background-color: var(--checkout-btn-bg-hover);
+    border-color: var(--checkout-btn-bg-hover);
+    color: var(--checkout-btn-text-hover);
+  }
+  {%- endif -%}
 
   {%- if settings.primary_button_alternative -%}
   .primary-button{
@@ -466,6 +497,14 @@
   [aria-busy="true"] .loading{ display: flex; }
 
   [aria-busy="true"] .loading ~ * { display: none; }
+
+  .text-primary{
+    color: #212322cc;
+  }
+
+  .text-secondary{
+    color: #21232266;
+  }
 
   custom-modal{
     display: none;

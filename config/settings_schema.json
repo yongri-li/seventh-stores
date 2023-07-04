@@ -250,7 +250,7 @@
         "id": "color_border",
         "label": "Border color",
         "default": "#EEEEEE",
-        "info": "Used for accents"
+        "info": "Used for Borders"
       },
       {
         "type": "color",
@@ -397,6 +397,43 @@
       {
         "type": "color",
         "id": "btn_tertiary_text_hover",
+        "label": "Text color",
+        "default": "#8a8a8a",
+        "info": "Hover state"
+      },
+      {
+        "type": "header",
+        "content": "Checkout Button"
+      },
+      {
+        "type": "checkbox",
+        "id": "checkout_button_alternative",
+        "label": "Use alternative styling?",
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "btn_checkout_bg",
+        "label": "Background color",
+        "default": "#000000",
+        "info": "Used for Add to Cart Buttons"
+      },
+      {
+        "type": "color",
+        "id": "btn_checkout_text",
+        "label": "Text color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "btn_checkout_bg_hover",
+        "label": "Background color",
+        "default": "#EEEEEE",
+        "info": "Hover state"
+      },
+      {
+        "type": "color",
+        "id": "btn_checkout_text_hover",
         "label": "Text color",
         "default": "#8a8a8a",
         "info": "Hover state"

@@ -124,22 +124,21 @@
           </slider-component>
         {%- else -%}
           {%- if product.images.size > 1 -%}
-            <div class="px-20">
+            <div class="px-6 lg:px-20">
               <div
                 data-product-gallery="{{ section.id }}-{{ product.id }}"
-                class="-ml-4 flex flex-row flex-nowrap overflow-x-auto w-screen lg:ml-0 lg:w-auto lg:grid lg:grid-cols-2 lg:gap-4 snap-x snap-mandatory scroll-smooth lg:snap-none [ main-product-image-gallery ]"
+                class="flex flex-row flex-nowrap overflow-x-auto w-screen lg:ml-0 lg:w-auto lg:grid lg:grid-cols-2 lg:gap-4 snap-x snap-mandatory scroll-smooth lg:snap-none [ main-product-image-gallery ]"
               >
                 {%- for media in product.media -%}
                   {%- if media.media_type == 'image' -%}
                     {%- assign image = media.image -%}
                     <img
                       loading="lazy"
-                      r
                       width="{{ image.width }}"
                       height="{{ image.height }}"
                       src="{{ image | image_url: width: 640 }}"
                       srcset="{{ image | image_url: width: 1920 }} 2x, {{ image | image_url: width: 960 }} 960w"
-                      class="cursor-zoom-in max-w-80v lg:max-w-full w-full h-full lg:w-full flex-shrink-0 snap-start lg:col-span-2"
+                      class="cursor-zoom-in w-full h-auto flex-shrink-0 snap-start lg:col-span-2"
                       data-variant-image="{{ image | image_url: width: 100, height: 100 | replace: '_small', '' }}"
                       data-gallery-image
                       alt="{{ image.alt | escape }}"
@@ -736,9 +735,9 @@
                 %}
               {%- when 'color_variants' -%}
                 {%- if product.metafields.filters.colour or product.metafields.color.variants.value -%}
-                  <div class="my-4">
+                  <div class="my-2 lg:my-4 flex lg:block items-center">
                     {%- if product.metafields.filters.colour -%}
-                      <p class="product-single__color-swatch pb-2">{{ product.metafields.filters.colour }}</p>
+                      <p class="product-single__color-swatch lg:pb-2">{{ product.metafields.filters.colour }}</p>
                     {%- endif -%}
                     {%- if product.metafields.color.variants.value -%}
                       <ul class="flex">

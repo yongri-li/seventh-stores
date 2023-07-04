@@ -1,13 +1,20 @@
 {%- assign footer_linklist = block.settings.footer_linklist -%}
-{%- if block.settings.column_header != blank -%}
-  <h3 class="pb-2 text-xs">{{ block.settings.column_header }}</h3>
-{%- endif -%}
-{%- unless footer_linklist == blank -%}
-  <ul>
-    {%- for link in linklists[footer_linklist].links -%}
-      <li>
-        <a class="inline-block pb-1" href="{{ link.url }}">{{ link.title }}</a>
-      </li>
-    {%- endfor -%}
-  </ul>
-{%- endunless -%}
+<details class="group">
+  {%- if block.settings.column_header != blank -%}
+    <summary class="cursor-pointer flex pb-3">
+      <h3 class="text-xs flex-grow">{{ block.settings.column_header }}</h3>
+      <span class="lg:hidden group-open:rotate-180">
+        {%- render 'icon-chevron-down' -%}
+      </span>
+    </summary>
+  {%- endif -%}
+  {%- unless footer_linklist == blank -%}
+    <ul class="lg:block">
+      {%- for link in linklists[footer_linklist].links -%}
+        <li>
+          <a class="inline-block pb-2" href="{{ link.url }}">{{ link.title }}</a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  {%- endunless -%}
+</details>

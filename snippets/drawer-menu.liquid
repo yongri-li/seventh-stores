@@ -442,7 +442,7 @@
         <div class="mt-8 pb-4">
           <ul class="mobile-menu">
             {%- if section.settings.show_account_link -%}
-              <li class="px-4">
+              <li class="px-4 lg:px-8">
                 {%- if shop.customer_accounts_enabled -%}
                   <a class="pb-4 flex items-center heading text-xs" href="/account">
                     {{- 'layout.customer.account' | t -}}
@@ -452,7 +452,7 @@
             {%- endif -%}
 
             {%- if section.settings.show_search_link -%}
-              <li class="px-4">
+              <li class="px-4 lg:px-8">
                 <a class="pb-4 flex items-center heading text-xs" href="/search">
                   {{- 'general.search.placeholder' | t -}}
                 </a>
@@ -460,13 +460,13 @@
             {%- endif -%}
 
             {%- if section.settings.show_phone_number -%}
-              <li class="px-4">
+              <li class="px-4 lg:px-8">
                 <a class="pb-4 flex items-center heading text-xs" href="tel:{{ shop.phone }}">{{ shop.phone }}</a>
               </li>
             {%- endif -%}
 
             {%- if section.settings.show_email -%}
-              <li class="px-4">
+              <li class="px-4 lg:px-8">
                 <a class="pb-4 flex items-center heading text-xs" href="mailto:{{ shop.email }}">
                   {{- shop.email -}}
                 </a>

@@ -95,7 +95,11 @@
 
           <!-- Search -->
           <div class="flex ml-3 h-8 items-center">
-            <search-trigger>
+            <drawer-trigger
+              data-target="[data-search-drawer]"
+              data-open-class="active"
+              data-close-class=""
+            >
               <span class="px-1 py-2 block cursor-pointer">
                 <span class="sr-only">Search</span>
                 <span data-open-icon class="header-font-color">
@@ -105,12 +109,17 @@
                   {% render 'icon-close' %}
                 </span>
               </span>
-            </search-trigger>
+            </drawer-trigger>
           </div>
 
           <!-- Cart -->
           <div class="flex ml-3 h-8 items-center">
-            <drawer-trigger data-target="[data-mini-cart]" data-open-class="flex" data-close-class="hidden">
+            <drawer-trigger
+              class="relative"
+              data-target="[data-mini-cart]"
+              data-open-class="active"
+              data-close-class=""
+            >
               <a href="/cart" class="group pl-1 pr-3 py-2 block items-center relative">
                 <span class="flex header-font-color">
                   <!-- Heroicon name: outline/shopping-bag -->

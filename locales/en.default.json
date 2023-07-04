@@ -91,7 +91,7 @@
       "shipping_at_checkout": "Shipping & taxes calculated at checkout",
       "update": "Update Bag",
       "checkout": "Check Out",
-      "secure_checkout_html": "<i class=\"fal fa-lock\"><\/i> Go to Secure Checkout",
+      "secure_checkout_html": "Go to Secure Checkout",
       "empty": "Your bag is currently empty.",
       "cookies_required": "Enable cookies to use the shopping bag",
       "continue_browsing_html": "Continue browsing <a class=\"underline\" href=\"\/collections\/all\">here<\/a>.",

@@ -535,17 +535,6 @@
     ]
   },
   {
-    "name": "App Bar",
-    "settings": [
-      {
-        "type": "checkbox",
-        "id": "app_bar_enabled",
-        "label": "Enable App Bar?",
-        "default": true
-      }
-    ]
-  },
-  {
     "name": "Social media",
     "settings": [
       {

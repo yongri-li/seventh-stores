@@ -78,7 +78,7 @@
                       {% when 'list' %}
                         <div
                           x-data="{ open: false }"
-                          class="py-4 disclosure-has-popup facets__disclosure js-filter"
+                          class="py-2 disclosure-has-popup facets__disclosure js-filter"
                           data-index="{{ forloop.index }}"
                         >
                           <div @click="open = ! open" class="facets__summary">
@@ -111,7 +111,7 @@
                               </div>
                             {% endcomment %}
 
-                            <ul class="facets__list list-unstyled ml-4" role="list">
+                            <ul class="facets__list list-unstyled ml-4 mt-4" role="list">
                               {%- for value in filter.values -%}
                                 <li class="list-menu__item facets__item pb-4">
                                   <div class="flex items-center text-base sm:text-sm">

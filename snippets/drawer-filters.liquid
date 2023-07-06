@@ -128,7 +128,7 @@
                                     >
                                     <label
                                       for="Filter-{{ filter.label | escape }}-{{ forloop.index }}"
-                                      class="facet-checkbox{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %} [ ml-3 min-w-0 flex-1 text-gray-600 ]"
+                                      class="facet-checkbox{% if value.count == 0 and value.active == false %} facet-checkbox--disabled{% endif %} [ ml-3 min-w-0 flex-1 text-xs ]"
                                     >
                                       {{ value.label | escape }} ({{ value.count }})
                                     </label>

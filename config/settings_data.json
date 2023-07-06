@@ -109,8 +109,8 @@
           "background_color": "#fffaf3",
           "border_color_bottom": "#fffaf3",
           "animation_delay": "4",
-          "bar_height_mobile": 25,
-          "bar_height_desktop": 25,
+          "bar_height_mobile": 34,
+          "bar_height_desktop": 34,
           "font_color": "#000000",
           "font_size_mobile": 10,
           "font_size_desktop": 12

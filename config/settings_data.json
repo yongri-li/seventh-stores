@@ -23,7 +23,6 @@
     "btn_primary_text_hover": "#ffffff",
     "btn_atc_bg": "#262626",
     "btn_atc_text_hover": "#262626",
-    "app_bar_enabled": false,
     "social_twitter_link": "",
     "social_facebook_link": "",
     "social_pinterest_link": "",
@@ -34,6 +33,7 @@
     "title_default_bg_opacity": 1,
     "show_vendor": false,
     "development_mode": true,
+    "app_bar_enabled": false,
     "sections": {
       "promo-bar": {
         "type": "promo-bar",
@@ -105,7 +105,7 @@
         "settings": {
           "show_benefit": true,
           "make_sticky": false,
-          "home_page_only": true,
+          "home_page_only": false,
           "background_color": "#fffaf3",
           "border_color_bottom": "#fffaf3",
           "animation_delay": "4",

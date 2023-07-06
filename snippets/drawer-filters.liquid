@@ -100,18 +100,20 @@
                             </div>
                           </div>
                           <div x-show="open" class="facets__display">
-                            <div class="facets__header">
-                              <a
-                                href="{{ filter.url_to_remove }}"
-                                class="facets__reset js-facet-remove [ underline text-xs pb-4 pt-1 font-bold inline-block ]"
-                              >
-                                {{- 'collections.filter.reset' | t -}}
-                              </a>
-                            </div>
+                            {% comment %}
+                              <div class="facets__header">
+                                <a
+                                  href="{{ filter.url_to_remove }}"
+                                  class="facets__reset js-facet-remove [ underline text-xs pb-4 pt-1 font-bold inline-block ]"
+                                >
+                                  {{- 'collections.filter.reset' | t -}}
+                                </a>
+                              </div>
+                            {% endcomment %}
 
-                            <ul class="facets__list list-unstyled" role="list">
+                            <ul class="facets__list list-unstyled ml-4" role="list">
                               {%- for value in filter.values -%}
-                                <li class="list-menu__item facets__item pb-2">
+                                <li class="list-menu__item facets__item pb-4">
                                   <div class="flex items-center text-base sm:text-sm">
                                     <input
                                       type="checkbox"

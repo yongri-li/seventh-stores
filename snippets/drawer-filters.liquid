@@ -78,13 +78,13 @@
                       {% when 'list' %}
                         <div
                           x-data="{ open: false }"
-                          class="py-4 border-b border-solid border-color disclosure-has-popup facets__disclosure js-filter"
+                          class="py-4 disclosure-has-popup facets__disclosure js-filter"
                           data-index="{{ forloop.index }}"
                         >
                           <div @click="open = ! open" class="facets__summary">
                             <div class="flex items-center cursor-pointer">
                               <p class="heading">{{ filter.label | escape }}</p>
-                              <span class="count-bubble ml-1.5 rounded py-0.5 px-1.5 bg-gray-200 text-xs font-semibold text-gray-700 tabular-nums">
+                              <span class="count-bubble ml-1.5 rounded-full py-0.5 px-1.5 border border-color text-xs tabular-nums">
                                 {%- if filter.active_values.size > 0 -%}
                                   {{ filter.active_values.size }}
                                 {%- else -%}
@@ -124,7 +124,7 @@
                                       {% if value.count == 0 and value.active == false %}
                                         disabled
                                       {% endif %}
-                                      class="flex-shrink-0 h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500"
+                                      class="flex-shrink-0 h-4 w-4 border border-color bg-transparent rounded-none text-indigo-600 focus:ring-indigo-500"
                                     >
                                     <label
                                       for="Filter-{{ filter.label | escape }}-{{ forloop.index }}"

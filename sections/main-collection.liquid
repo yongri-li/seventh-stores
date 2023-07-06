@@ -62,15 +62,15 @@
           {%- endcase -%}
         </div>
       {%- endfor -%}
-      <div class="mt-4 flex align-end">
-        <div class="flex">
-          <div class="relative inline-block mr-4">
+      <div class="mt-4 flex w-full lg:align-end">
+        <div class="flex w-full">
+          <div class="relative inline-block w-1/2 lg:w-auto lg:mr-4">
             <select
               data-sorting
               id="sorting"
               name="sorting"
               autocomplete="sorting"
-              class="[ text-xs bg-transparent block border border-color py-2 px-3  pr-8 focus:outline-none focus:shadow-outline box-content appearance-none rounded-none ]"
+              class="[ w-full text-xs bg-transparent block border-r lg:border border-color py-2 px-3 pr-8 focus:outline-none focus:shadow-outline appearance-none rounded-none ]"
             >
               <option selected disabled value="default">{{ 'collections.general.sort_by' | t }}</option>
               {%- for option in collection.sort_options -%}
@@ -91,11 +91,11 @@
           <drawer-trigger
             data-target="[data-filters-drawer]"
             data-open-class="active"
-            data-close-class=""
+            data-close-class="w-1/2 lg:w-auto"
           >
             <button
               type="button"
-              class="flex items-center heading border border-color py-2 px-3 text-xs"
+              class="flex w-full items-center heading lg:border lg:border-color py-2 px-3 text-xs"
               aria-controls="disclosure-1"
               aria-expanded="false"
             >

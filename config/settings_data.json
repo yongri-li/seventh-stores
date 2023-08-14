@@ -23,7 +23,6 @@
     "btn_primary_text_hover": "#ffffff",
     "btn_atc_bg": "#262626",
     "btn_atc_text_hover": "#262626",
-    "app_bar_enabled": false,
     "social_twitter_link": "",
     "social_facebook_link": "",
     "social_pinterest_link": "",
@@ -33,7 +32,8 @@
     "title_overlay": false,
     "title_default_bg_opacity": 1,
     "show_vendor": false,
-    "development_mode": true,
+    "development_mode": false,
+    "app_bar_enabled": false,
     "sections": {
       "promo-bar": {
         "type": "promo-bar",
@@ -91,7 +91,7 @@
           "0adfb7d8-91e7-4c12-b6b4-9a530d95a3f2": {
             "type": "benefit",
             "settings": {
-              "benefit": "FREE UK SHIPPING",
+              "benefit": "Explore The Art of Layering",
               "link": "",
               "trigger_newsletter": false,
               "background_color": "#fffaf3",
@@ -105,12 +105,12 @@
         "settings": {
           "show_benefit": true,
           "make_sticky": false,
-          "home_page_only": true,
+          "home_page_only": false,
           "background_color": "#fffaf3",
           "border_color_bottom": "#fffaf3",
           "animation_delay": "4",
-          "bar_height_mobile": 25,
-          "bar_height_desktop": 25,
+          "bar_height_mobile": 34,
+          "bar_height_desktop": 34,
           "font_color": "#000000",
           "font_size_mobile": 10,
           "font_size_desktop": 12

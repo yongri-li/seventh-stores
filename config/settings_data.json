@@ -1,5 +1,7 @@
 {
   "current": {
+    "show_client_services": true,
+    "show_subscribe": true,
     "wholesale_enabled": false,
     "use_custom_fonts": true,
     "navigation_font": "archivo_n4",
@@ -67,7 +69,8 @@
           "show_secondary_nav": false,
           "secondary_nav": "",
           "account_type": "icon",
-          "show_currency_selector": false
+          "show_currency_selector": false,
+          "show_localisation_form": false
         }
       },
       "drawer-mobile-menu": {
@@ -105,7 +108,7 @@
         "settings": {
           "show_benefit": true,
           "make_sticky": false,
-          "home_page_only": false,
+          "pdp_hidden": true,
           "background_color": "#fffaf3",
           "border_color_bottom": "#fffaf3",
           "animation_delay": "4",

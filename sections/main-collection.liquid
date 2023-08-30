@@ -125,7 +125,29 @@
           </div>
         </div>
 
-        {% render 'pagination' with paginate: paginate %}
+        {%- if paginate.pages > 1 -%}
+          <div class="flex justify-center mt-4 mb-10">
+            <infinite-scrolling
+              class="infinite-scrolling"
+              data-autoload="false"
+              data-item-grid="#main-blog-grid"
+              data-section="main-blog"
+            >
+              {%- if paginate.next -%}
+                <button
+                  aria-label="{{ 'pagination.next' | t }}"
+                  aria-hidden="false"
+                  aria-busy="false"
+                  data-url="{{ page.url }}{{ paginate.next.url }}"
+                  class="leading-none py-4 px-4 lg:px-10 uppercase primary-button"
+                >
+                  <span class="default">{{ 'pagination.load_more' | t }}</span>
+                  <span class="loading">{{ 'pagination.loading' | t }}</span>
+                </button>
+              {%- endif -%}
+            </infinite-scrolling>
+          </div>
+        {%- endif -%}
       {%- endpaginate -%}
     </div>
   </section>

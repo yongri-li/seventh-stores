@@ -398,5 +398,9 @@
     "previous_slide": "TODO",
     "of": "TODO",
     "next_slide": "TODO"
+  },
+  "pagination": {
+    "load_more": "Load More",
+    "loading": "Loading"
   }
 }

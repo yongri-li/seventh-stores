@@ -137,21 +137,37 @@
           "b8187b5c-07b6-4b1f-b326-9bc327928ca8": {
             "type": "footer_linklist",
             "settings": {
-              "column_header": "HELPFUL LINKS",
-              "footer_linklist": "footer"
+              "column_header": "Legal",
+              "footer_linklist": "legal"
             }
           },
           "a19f6e3b-5ae2-4eae-9dfd-b714d594f5dc": {
             "type": "footer_linklist",
             "settings": {
-              "column_header": "NAVIGATION",
-              "footer_linklist": "main-menu"
+              "column_header": "Company",
+              "footer_linklist": "company"
+            }
+          },
+          "5b0d3c87-6b4c-4e97-b917-dd23f502b05f": {
+            "type": "footer_linklist",
+            "settings": {
+              "column_header": "Support",
+              "footer_linklist": "support"
+            }
+          },
+          "a67e7af7-a20a-4e45-a37c-f6358715d304": {
+            "type": "footer_linklist",
+            "settings": {
+              "column_header": "Social",
+              "footer_linklist": "sevenths-space"
             }
           }
         },
         "block_order": [
           "b8187b5c-07b6-4b1f-b326-9bc327928ca8",
-          "a19f6e3b-5ae2-4eae-9dfd-b714d594f5dc"
+          "a19f6e3b-5ae2-4eae-9dfd-b714d594f5dc",
+          "5b0d3c87-6b4c-4e97-b917-dd23f502b05f",
+          "a67e7af7-a20a-4e45-a37c-f6358715d304"
         ],
         "settings": {
           "show_first_column": false,

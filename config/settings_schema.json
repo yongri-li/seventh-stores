@@ -12,6 +12,18 @@
     "settings": [
       {
         "type": "checkbox",
+        "id": "show_client_services",
+        "label": "Show Client Services?",
+        "info": "Checking this box will show the Client Services toggle in the Main Nav"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_subscribe",
+        "label": "Show Subscribe?",
+        "info": "Checking this box will show the Subscribe toggle in the Main Nav"
+      },
+      {
+        "type": "checkbox",
         "id": "use_mini_cart",
         "label": "Use Mini Cart?",
         "default": true

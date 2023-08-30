@@ -92,6 +92,9 @@
     {% section 'benefits-bar' %}
     {% section 'drawer-search' %}
     {% render 'drawer-subscribe' %}
+    {%- if settings.show_client_services -%}
+      {% section 'drawer-subscribe' %}
+    {%- endif -%}
 
     <main role="main" id="MainContent">
       {{ content_for_layout }}

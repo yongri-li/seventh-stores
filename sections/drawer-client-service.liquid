@@ -1,0 +1,62 @@
+<style>
+  :root {
+    --drawer-filters-bg: #fffaf3;
+  }
+
+  [data-client-services] {
+    background-color: var(--drawer-filters-bg);
+  }
+</style>
+
+<div
+  data-client-services
+  class="block w-full transition-transform fixed left-0 top-0 bg-brand-four h-100v -translate-x-full z-50 ease-in duration-500 aria-[hidden=false]:translate-x-0 max-w-md"
+  aria-labelledby="slide-over-title"
+  role="dialog"
+  aria-modal="true"
+  aria-hidden="true"
+>
+  <div class="flex flex-col min-h-full h-full overflow-y-auto max-h-100v">
+    <div class="flex flex-col flex-grow overflow-y-auto">
+      <div class="pt-6 px-4 sm:px-6 h-full overflow-y-auto">
+        <div class="flex items-start justify-between">
+          <h2 class="text-sm heading">
+            {{ 'drawers.subscribe.heading' | t }}
+          </h2>
+          <div class="ml-3 h-7 flex items-center">
+            <drawer-trigger
+              class="h-6 w-6 group"
+              data-target="[data-client-services]"
+            >
+              <button class="-m-2 p-2 cursor-pointer rotate-180 group-[.active]:rotate-0 transition-transform ease-in duration-200 delay-500">
+                <span class="sr-only">Close panel</span>
+                {%- render 'icon-arrow-left' -%}
+              </button>
+            </drawer-trigger>
+          </div>
+        </div>
+
+        <div class="mt-12">
+          {%- unless section.settings.content_area == blank -%}
+            <div class="rte">{{ section.settings.content_area }}</div>
+          {%- endunless -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": {
+    "en": "Client Services"
+  },
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "content_area",
+      "label": "Content Area"
+    }
+  ]
+}
+{% endschema %}

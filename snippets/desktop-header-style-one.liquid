@@ -37,14 +37,31 @@
         <!-- Flyout menus -->
         <div class="hidden lg:self-stretch lg:flex lg:flex-1">
           <div class="flex items-stretch">
-            <div class="flex items-center">
-              <drawer-trigger
-                class="relative block px-4 cursor-pointer"
-                data-target="[data-subscribe]"
-              >
-                <span class="leading-relaxed navigation-link header-font-color">Subscribe</span>
-              </drawer-trigger>
-            </div>
+            {%- if settings.show_client_services -%}
+              <div class="flex items-center">
+                <drawer-trigger
+                  class="relative block px-4 cursor-pointer"
+                  data-target="[data-subscribe]"
+                >
+                  <span class="leading-relaxed navigation-link header-font-color">
+                    {{- 'drawers.subscribe.menu_item' | t -}}
+                  </span>
+                </drawer-trigger>
+              </div>
+            {%- endif -%}
+
+            {%- if settings.show_subscribe -%}
+              <div class="flex items-center">
+                <drawer-trigger
+                  class="relative block px-4 cursor-pointer"
+                  data-target="[data-client-services]"
+                >
+                  <span class="leading-relaxed navigation-link header-font-color">
+                    {{- 'drawers.client_services.menu_item' | t -}}
+                  </span>
+                </drawer-trigger>
+              </div>
+            {%- endif -%}
             {%- for link in linklists[section.settings.main_linklist].links -%}
               <div class="group flex items-center">
                 <a

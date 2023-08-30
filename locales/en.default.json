@@ -405,9 +405,13 @@
   },
   "drawers": {
     "subscribe": {
+      "menu_item": "Subscribe",
       "heading": "Subscribe",
       "submit_button": "Subscribe",
       "placeholder": "Enter your email address"
+    },
+    "client_services": {
+      "menu_item": "Client Services"
     }
   }
 }

@@ -119,7 +119,7 @@
           <div id="main-collection-product-grid" data-id="{{ section.id }}" class="collection">
             <div
               id="infiniteLoadGrid"
-              class="[ grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 ]"
+              class="[ grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-8 ]"
             >
               {%- for product in collection.products -%}
                 {%- render 'product-grid-item' with product: product -%}

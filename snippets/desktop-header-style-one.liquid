@@ -103,7 +103,7 @@
                 {% form 'localization' %}
                   <div class="inline-block relative w-full selector-wrapper js">
                     <select
-                      class="[ block bg-transparent appearance-none w-full border border-color px-4 py-3 pr-8 focus:outline-none focus:shadow-outline text-xs ] select"
+                      class="[ block bg-transparent appearance-none w-full border border-color px-1 py-0 pr-8 focus:outline-none focus:shadow-outline text-xs ] select"
                       name="country_code"
                     >
                       {%- for country in localization.available_countries -%}
@@ -119,7 +119,7 @@
                       {%- endfor -%}
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                      {% render 'icon-chevron-down' %}
+                      {% render 'icon-chevron-down', height: 14, width: 14 %}
                     </div>
                   </div>
                   {% comment %} <input type="hidden" name="country_code" value="{{ localization.country.iso_code }}"> {% endcomment %}

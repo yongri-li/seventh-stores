@@ -6,7 +6,9 @@
       <a class="block overflow-hidden" href="{{ product.url | within: collection }}">
         {%- if product.images.size > 1 -%}
           {%- render 'responsive-image' with image: featured_image -%}
-          {%- render 'responsive-image' with image: product.images[1], image_class: "hidden md:group-hover:block md:transform z-10 md:translate-x-full md:group-hover:translate-x-0 md:absolute md:top-0 md:left-0" -%}
+          <div class="[ product-grid-item__hover-img-bg ] hidden md:group-hover:block md:transform z-10 md:translate-x-full md:group-hover:translate-x-0 md:absolute md:top-0 md:left-0">
+            {%- render 'responsive-image' with image: product.images[1], image_class: "object-cover object-center h-full w-full" -%}
+          </div>
         {%- else -%}
           {%- render 'responsive-image' with image: featured_image -%}
         {%- endif -%}

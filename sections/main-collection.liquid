@@ -144,8 +144,8 @@
                   data-url="{{ page.url }}{{ paginate.next.url }}"
                   class="leading-none py-4 px-4 lg:px-10 uppercase primary-button"
                 >
-                  <span class="loading">{{ 'pagination.loading' | t }}</span>
-                  <span class="default">{{ 'pagination.load_more' | t }}</span>
+                  <span class="leading-none loading">{{ 'pagination.loading' | t }}</span>
+                  <span class="leading-none default">{{ 'pagination.load_more' | t }}</span>
                 </button>
               {%- endif -%}
             </infinite-scrolling>

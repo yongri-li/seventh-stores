@@ -379,8 +379,8 @@
     "customer_notice": "Customer Notice"
   },
   "pagination": {
-    "previous": "Previous",
-    "next": "Next"
+    "load_more": "Load More",
+    "loading": "Loading"
   },
   "wholesale": {
     "log_in_notice": "You must be logged in to view prices.",
@@ -398,10 +398,6 @@
     "previous_slide": "TODO",
     "of": "TODO",
     "next_slide": "TODO"
-  },
-  "pagination": {
-    "load_more": "Load More",
-    "loading": "Loading"
   },
   "drawers": {
     "subscribe": {

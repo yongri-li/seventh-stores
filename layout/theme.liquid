@@ -51,10 +51,9 @@
     <!-- Google Fonts -->
     {%- render 'google-fonts' -%}
 
-    <!-- Critical CSS -->
-    {%- render 'critical-css-variables' -%}
     {{ 'tailwind.min.css' | asset_url | stylesheet_tag }}
     {{ 'theme.min.css' | asset_url | stylesheet_tag }}
+    {%- render 'critical-css-variables' -%}
 
     {%- unless settings.body_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.body_font | font_url }}" type="font/woff2" crossorigin>

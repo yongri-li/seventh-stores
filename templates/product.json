@@ -80,7 +80,7 @@
         "80b98137-6193-4edc-945a-94bd2c6aad2c": {
           "type": "data_related_products",
           "settings": {
-            "limit": 2
+            "limit": 4
           }
         }
       },
@@ -107,7 +107,6 @@
     },
     "accordions": {
       "type": "product-accordions",
-      "disabled": true,
       "blocks": {
         "c5876cd5-a7f4-466d-a4c8-7f799a39c481": {
           "type": "description",
@@ -129,6 +128,7 @@
         "c5876cd5-a7f4-466d-a4c8-7f799a39c481",
         "e9e2b6a8-5d8b-4cde-a06a-95cf63f71813"
       ],
+      "disabled": true,
       "settings": {
         "section_spacing_top": "mt-4",
         "section_spacing_bottom": "mb-4",

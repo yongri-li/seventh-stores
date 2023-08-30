@@ -42,7 +42,7 @@
         "aab585e2-1c17-449f-8788-bbe37a977394": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "DESCRIPTION",
+            "heading": "Details",
             "content": "",
             "product_description": true,
             "size_guide": false,
@@ -54,7 +54,7 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Delivery information",
-            "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis velit eleifend, fermentum velit sed, dictum dui. Praesent in mollis nunc. Praesent condimentum eleifend odio et euismod. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris in velit imperdiet, dapibus dui vel, pulvinar nunc. Phasellus vitae arcu nec enim molestie aliquet vel ut augue. Ut ac sem ut diam tristique accumsan ac et turpi<\/p>",
+            "content": "<p>To see the delivery options we have for you or for general shipping info click <a href=\"https:\/\/seventhstores.com\/pages\/shipping\"><span style=\"text-decoration:underline\">here<\/span><\/a>.<\/p><p>We aim to pack and dispatch your order within 1-2 working days. Shipping costs are calculated at checkout. <\/p><p>We ship worldwide - once dispatched, we offer Standard, Priority and Urgent shipping options for multiple locations. Free shipping for orders over £200 (UK only).<\/p>",
             "product_description": false,
             "size_guide": false,
             "page_content": "",

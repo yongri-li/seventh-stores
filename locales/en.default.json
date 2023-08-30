@@ -407,7 +407,8 @@
       "placeholder": "Enter your email address"
     },
     "client_services": {
-      "menu_item": "Client Services"
+      "menu_item": "Client Services",
+      "heading": "Client Services"
     }
   }
 }

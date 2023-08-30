@@ -118,7 +118,7 @@
     {%- endif -%}
   {% endstyle %}
 
-  {%- if section.settings.home_page_only == false or template.name == 'index' -%}
+  {%- unless section.settings.pdp_hidden and template.name == 'product' -%}
     {%- if section.settings.make_sticky -%}
       <div class="benefit-bar-sticky">
     {%- endif -%}
@@ -142,7 +142,7 @@
     {%- if section.settings.make_sticky -%}
       </div>
     {%- endif -%}
-  {%- endif -%}
+  {%- endunless -%}
 {%- endif -%}
 
 {% schema %}
@@ -163,8 +163,8 @@
     },
     {
       "type": "checkbox",
-      "id": "home_page_only",
-      "label": "Home page only",
+      "id": "pdp_hidden",
+      "label": "Hide on Product template?",
       "default": true
     },
     {

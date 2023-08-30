@@ -348,7 +348,7 @@ class LocalizationForm extends HTMLElement {
 
     console.log(this.select);
 
-    this.select.addEventListener('change', () => { this.submitHandler.bind(this) });
+    this.select.addEventListener('change', this.submitHandler.bind(this));
   }
 
   submitHandler() {

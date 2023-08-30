@@ -32,7 +32,7 @@
     "title_overlay": false,
     "title_default_bg_opacity": 1,
     "show_vendor": false,
-    "development_mode": false,
+    "development_mode": true,
     "app_bar_enabled": false,
     "sections": {
       "promo-bar": {

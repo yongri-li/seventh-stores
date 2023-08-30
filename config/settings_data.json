@@ -339,6 +339,12 @@
           "show_recommended_products": false,
           "recommended_products": ""
         }
+      },
+      "drawer-client-services": {
+        "type": "drawer-client-services",
+        "settings": {
+          "content_area": "<p>Call<br\/><a href=\"tel:+447927651265\" title=\"tel:+447927651265\">+447927651265<\/a><\/p><p>Text<br\/><a href=\"https:\/\/wa.me\/+447927651265\" title=\"https:\/\/wa.me\/+447927651265\">Message us on Whatsapp<\/a><\/p><p>General enquiry<br\/><a href=\"mailto:info@seventhstores.com\" title=\"mailto:info@seventhstores.com\">info@seventhstores.com<\/a><\/p><p>Orders enquiries (Returns and exchanges)<br\/><a href=\"mailto:orders@seventhstores.com\" title=\"mailto:orders@seventhstores.com\">orders@seventhstores.com<\/a><\/p><p>Hours of operation<br\/>Mon-Fri: 9am-5pm GMT<\/p>"
+        }
       }
     },
     "content_for_index": [

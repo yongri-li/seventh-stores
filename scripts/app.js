@@ -221,11 +221,6 @@ class DrawerTrigger extends HTMLElement {
         this.triggerStatus();
       }
     });
-
-    // if (this.blackout) {
-    //   this.blackout.addEventListener('click', this.close.bind(this));
-    //   this.triggerStatus();
-    // }
   }
 
   open() {
@@ -233,12 +228,6 @@ class DrawerTrigger extends HTMLElement {
     event.preventDefault();
 
     document.querySelector('body').classList.add('overflow-hidden');
-
-    // if (this.blackout) {
-    //   this.blackout.classList.add(this.openClass);
-
-    //   if (this.closeClass) this.blackout.classList.remove(this.closeClass);
-    // }
 
     this.target.classList.add(this.openClass);
     if (this.closeClass) this.target.classList.remove(this.closeClass);
@@ -249,11 +238,6 @@ class DrawerTrigger extends HTMLElement {
     event.preventDefault();
 
     document.querySelector('body').classList.remove('overflow-hidden');
-
-    // if (this.blackout) {
-    //   this.blackout.classList.remove(this.openClass);
-    //   if (this.closeClass) this.blackout.classList.add(this.closeClass);
-    // }
 
     this.target.classList.remove(this.openClass);
     if (this.closeClass) this.target.classList.add(this.closeClass);
@@ -353,3 +337,6 @@ class SearchTrigger extends HTMLElement {
 }
 
 customElements.define('search-trigger', SearchTrigger);
+
+customElements.define('localization-form', LocalizationForm);
+

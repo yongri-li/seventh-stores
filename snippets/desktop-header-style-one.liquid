@@ -102,7 +102,10 @@
               <localization-form>
                 {% form 'localization' %}
                   <div class="inline-block relative w-full selector-wrapper js">
-                    <select name="country_code">
+                    <select
+                      class="[ block bg-transparent appearance-none w-full border border-color px-4 py-3 pr-8 focus:outline-none focus:shadow-outline text-xs ] select"
+                      name="country_code"
+                    >
                       {%- for country in localization.available_countries -%}
                         <option
                           value="country.iso_code"

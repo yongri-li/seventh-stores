@@ -402,5 +402,10 @@
   "pagination": {
     "load_more": "Load More",
     "loading": "Loading"
+  },
+  "drawers": {
+    "subscribe": {
+      "heading": "subscribe"
+    }
   }
 }

@@ -21,18 +21,16 @@
       <div class="pt-6 px-4 sm:px-6 h-full overflow-y-auto">
         <div class="flex items-start justify-between">
           <h2 class="text-sm heading">
-            {{ 'collections.filter.filter_button' | t }}
+            {{ 'drawers.subscribe.heading' | t }}
           </h2>
           <div class="ml-3 h-7 flex items-center">
             <drawer-trigger
-              class="ml-auto"
+              class="h-6 w-6 group"
               data-target="[data-subscribe]"
-              data-open-class="active"
-              data-close-class=""
             >
-              <button type="button" class="-m-2 p-2 rounded-md inline-flex items-center justify-center">
-                <span class="sr-only">Close menu</span>
-                {% render 'icon-close' %}
+              <button class="-m-2 p-2 cursor-pointer rotate-180 group-[.active]:rotate-0 transition-transform ease-in duration-200 delay-500">
+                <span class="sr-only">Close panel</span>
+                {%- render 'icon-arrow-left' -%}
               </button>
             </drawer-trigger>
           </div>

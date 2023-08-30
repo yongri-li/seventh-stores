@@ -346,12 +346,14 @@ class LocalizationForm extends HTMLElement {
     this.select = this.querySelector('select');
     this.form = this.querySelector('form');
 
+    console.log(this.form);
+    console.log(this.select);
+
     this.select.addEventListener('change', () => this.submitHandler.bind(this));
   }
 
   submitHandler() {
-
-    this.form().submit();
+    this.form.submit();
   }
 
 }

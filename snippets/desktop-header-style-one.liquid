@@ -97,36 +97,38 @@
         </div>
 
         <div class="ml-auto self-stretch flex flex-1 justify-end items-center">
-          <div class="flex self-stretch">
-            {% if localization.available_countries.size > 1 %}
-              <localization-form>
-                {% form 'localization' %}
-                  <div class="inline-block relative w-full selector-wrapper js">
-                    <select
-                      class="[ block bg-transparent appearance-none w-full border border-color px-1 py-0 pr-8 focus:outline-none focus:shadow-outline text-xs ] select"
-                      name="country_code"
-                    >
-                      {%- for country in localization.available_countries -%}
-                        <option
-                          value="country.iso_code"
-                          {% if country.iso_code == localization.country.iso_code %}
-                            selected
-                          {% endif %}
-                        >
-                          {{ country.name }} ({{ country.currency.iso_code }}
-                          {{ country.currency.symbol }})
-                        </option>
-                      {%- endfor -%}
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                      {% render 'icon-chevron-down', height: 14, width: 14 %}
+          {%- if section.settings.show_localisation_form -%}
+            <div class="flex self-stretch items-center">
+              {% if localization.available_countries.size > 1 %}
+                <localization-form>
+                  {% form 'localization' %}
+                    <div class="inline-block relative w-full selector-wrapper js">
+                      <select
+                        class="[ block bg-transparent appearance-none w-full border border-color px-1 py-0 pr-8 focus:outline-none focus:shadow-outline text-xs ] select"
+                        name="country_code"
+                      >
+                        {%- for country in localization.available_countries -%}
+                          <option
+                            value="country.iso_code"
+                            {% if country.iso_code == localization.country.iso_code %}
+                              selected
+                            {% endif %}
+                          >
+                            {{ country.name }} ({{ country.currency.iso_code }}
+                            {{ country.currency.symbol }})
+                          </option>
+                        {%- endfor -%}
+                      </select>
+                      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        {% render 'icon-chevron-down', height: 14, width: 14 %}
+                      </div>
                     </div>
-                  </div>
-                  {% comment %} <input type="hidden" name="country_code" value="{{ localization.country.iso_code }}"> {% endcomment %}
-                {% endform %}
-              </localization-form>
-            {% endif %}
-          </div>
+                    {% comment %} <input type="hidden" name="country_code" value="{{ localization.country.iso_code }}"> {% endcomment %}
+                  {% endform %}
+                </localization-form>
+              {% endif %}
+            </div>
+          {%- endif -%}
 
           <div class="flex self-stretch">
             <!-- currency selector -->

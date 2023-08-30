@@ -208,17 +208,16 @@ class DrawerTrigger extends HTMLElement {
     const self = this;
 
     this.target = document.querySelector(this.dataset.target);
-    // this.blackout = this.target.querySelector('[data-blackout]') || false;
     this.openClass = this.dataset.openClass;
-    this.closeClass = this.dataset.closeClass || false;
+    this.closeClass = this.dataset.closeClass;
 
     this.addEventListener('click', this.toggleTarget.bind(this));
 
-    document.addEventListener('keyup', (e) => {
+    document.addEventListener('keyup', function (e) {
 
       if (e.key === "Escape") {
         self.close();
-        this.triggerStatus();
+        self.triggerStatus();
       }
     });
   }
@@ -229,8 +228,7 @@ class DrawerTrigger extends HTMLElement {
 
     document.querySelector('body').classList.add('overflow-hidden');
 
-    this.target.classList.add(this.openClass);
-    if (this.closeClass) this.target.classList.remove(this.closeClass);
+    this.target.setAttribute("aria-hidden", "false");
   }
 
   close() {
@@ -239,8 +237,7 @@ class DrawerTrigger extends HTMLElement {
 
     document.querySelector('body').classList.remove('overflow-hidden');
 
-    this.target.classList.remove(this.openClass);
-    if (this.closeClass) this.target.classList.add(this.closeClass);
+    this.target.setAttribute("aria-hidden", "true");
   }
 
   triggerStatus() {
@@ -250,24 +247,36 @@ class DrawerTrigger extends HTMLElement {
 
     triggers.forEach((trigger) => {
 
-      if (_this.target.classList.contains(_this.openClass)) {
+      if (_this.target.getAttribute("aria-hidden") == "false") {
         trigger.classList.add('active');
       } else {
         trigger.classList.remove('active');
       }
+
     });
   }
 
   toggleTarget() {
 
+    // this.closeAllOpenDrawers();
+
     // Target is open
-    if (this.target.classList.contains(this.openClass)) {
-      this.close();
-    } else {
+    if (this.target.getAttribute("aria-hidden") == "true") {
       this.open();
+    } else {
+      this.close();
     }
 
     this.triggerStatus();
+  }
+
+  closeAllOpenDrawers() {
+
+    const drawers = Array.from(document.querySelectorAll('[data-drawer]')).filter((drawer) => drawer.getAttribute('aria-hidden') == "false");
+
+    drawers.forEach((drawer) => {
+      drawer.setAttribute("aria-hidden", "true");
+    });
   }
 }
 

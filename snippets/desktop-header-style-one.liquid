@@ -37,6 +37,14 @@
         <!-- Flyout menus -->
         <div class="hidden lg:self-stretch lg:flex lg:flex-1">
           <div class="flex items-stretch">
+            <div class="flex items-center">
+              <drawer-trigger
+                class="relative block px-4"
+                data-target="[data-subscribe]"
+              >
+                <span class="leading-relaxed navigation-link header-font-color">Subscribe</span>
+              </drawer-trigger>
+            </div>
             {%- for link in linklists[section.settings.main_linklist].links -%}
               <div class="group flex items-center">
                 <a

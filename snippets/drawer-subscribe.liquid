@@ -1,0 +1,47 @@
+<style>
+  :root {
+    --drawer-filters-bg: #fffaf3;
+  }
+
+  [data-subscribe] {
+    background-color: var(--drawer-filters-bg);
+  }
+</style>
+
+<div
+  data-subscribe
+  class="block w-full transition-transform fixed left-0 top-0 bg-brand-four h-100v -translate-x-full z-50 ease-in duration-500 aria-[hidden=false]:translate-x-0 max-w-md"
+  aria-labelledby="slide-over-title"
+  role="dialog"
+  aria-modal="true"
+  aria-hidden="true"
+>
+  <div class="flex flex-col min-h-full h-full overflow-y-auto max-h-100v">
+    <div class="flex flex-col flex-grow overflow-y-auto">
+      <div class="pt-6 px-4 sm:px-6 h-full overflow-y-auto">
+        <div class="flex items-start justify-between">
+          <h2 class="text-sm heading">
+            {{ 'collections.filter.filter_button' | t }}
+          </h2>
+          <div class="ml-3 h-7 flex items-center">
+            <drawer-trigger
+              class="ml-auto"
+              data-target="[data-subscribe]"
+              data-open-class="active"
+              data-close-class=""
+            >
+              <button type="button" class="-m-2 p-2 rounded-md inline-flex items-center justify-center">
+                <span class="sr-only">Close menu</span>
+                {% render 'icon-close' %}
+              </button>
+            </drawer-trigger>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          {% render 'form-newsletter' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

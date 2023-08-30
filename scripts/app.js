@@ -338,5 +338,23 @@ class SearchTrigger extends HTMLElement {
 
 customElements.define('search-trigger', SearchTrigger);
 
+class LocalizationForm extends HTMLElement {
+
+  constructor() {
+    super();
+
+    this.select = this.querySelector('select');
+    this.form = this.querySelector('form');
+
+    this.select.addEventListener('change', () => this.submitHandler.bind(this));
+  }
+
+  submitHandler() {
+
+    this.form().submit();
+  }
+
+}
+
 customElements.define('localization-form', LocalizationForm);
 

@@ -19,28 +19,28 @@
       {%- if search.performed and search.results.size > 0 -%}
         {% paginate search.results by 16 %}
           {%- capture product_search_results -%}
-                        {%- for item in search.results -%}
-                            {%- if item.object_type == 'product' -%}
-                                {%- assign the_product = item -%}
-                                <div class="py-4">
-                                    {% render 'product-grid-item' with product: the_product %}
-                                </div>
-                            {%- endif -%}
-                        {%- endfor -%}
-                    {%- endcapture -%}
+							{%- for item in search.results -%}
+								{%- if item.object_type == 'product' -%}
+									{%- assign the_product = item -%}
+									<div class="py-4">
+										{% render 'product-grid-item' with product: the_product %}
+									</div>
+								{%- endif -%}
+							{%- endfor -%}
+					{%- endcapture -%}
 
           {%- capture article_search_results -%}
-                        {%- for item in search.results -%}
-                            {%- if item.object_type == 'article' -%}
-                                {%- assign the_article = item -%}
-                                <div>{% render 'article-grid-item' with article: the_article %}</div>
-                            {%- endif -%}
-                        {%- endfor -%}
-                    {%- endcapture -%}
+						{%- for item in search.results -%}
+							{%- if item.object_type == 'article' -%}
+								{%- assign the_article = item -%}
+								<div>{% render 'article-grid-item' with article: the_article %}</div>
+							{%- endif -%}
+						{%- endfor -%}
+					{%- endcapture -%}
 
           {%- if product_search_results != blank -%}
             <div class="container mx-auto py-8 px-4 lg:px-8 overflow-hidden">
-              <h3>Product Search Results</h3>
+              <h3 class="text-lg pb-4">{{ 'general.search.product_results' | t }}</h3>
               <div class="[ grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 ]">
                 {{ product_search_results }}
               </div>
@@ -49,7 +49,7 @@
 
           {%- if article_search_results != blank -%}
             <div class="container mx-auto py-8 px-4 lg:px-8 overflow-hidden">
-              <h3>Article Search Results</h3>
+              <h3 class="text-lg pb-4">{{ 'general.search.article_results' | t }}</h3>
               <div class="[ grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 ]">
                 {{ article_search_results }}
               </div>

@@ -55,7 +55,9 @@
       "title": "Search for products on our site",
       "subtitle": "Lorem ipsum dolor si amet.",
       "placeholder": "Search hundreds of styles",
-      "submit": "Search"
+      "submit": "Search",
+      "product_results": "Product Search Results",
+      "article_results": "Article Search Results"
     }
   },
   "blogs": {

@@ -1,35 +1,22 @@
 {
   "wrapper": "div#div_id.div_class[attribute-one=value]",
   "sections": {
-    "16309583640c6125ab": {
-      "type": "featured-hero",
+    "75746119-457a-4555-abe2-d8303379cbd4": {
+      "type": "content-section",
       "settings": {
-        "max_height_mobile": 55,
-        "max_height_desktop": 70,
-        "mobile_image": "shopify://shop_images/PICKS-02.jpg",
-        "mobile_image_focus": "top left",
-        "desktop_image": "shopify://shop_images/Untitled-4-01_36df7043-7397-462a-afa2-a0512698cad6.jpg",
-        "desktop_image_focus": "top left",
-        "mobile_content_focus": "justify-start items-start",
-        "mobile_content_alignment": "text-left",
-        "desktop_content_focus": "lg:justify-start lg:items-start",
-        "desktop_content_alignment": "lg:text-left",
-        "heading": "",
-        "content": "",
-        "show_cta_one": true,
+        "section_spacing": "my-8",
+        "background_color": "#f3eee8",
+        "font_color": "#4b4c4a",
+        "heading_type": "h1",
+        "heading": "404",
+        "heading_size_mobile": 16,
+        "heading_size_desktop": 22,
+        "content": "Sorry, it looks like the page you were looking for can't be found.",
+        "content_size_mobile": 14,
+        "content_size_desktop": 14,
         "cta_text": "",
         "cta_link": "",
-        "cta_style": "primary-button",
-        "show_cta_two": true,
-        "cta_text_two": "",
-        "cta_link_two": "",
-        "cta_style_two": "primary-button",
-        "heading_size_mobile": 28,
-        "content_size_mobile": 16,
-        "content_color_mobile": "#FFFFFF",
-        "heading_size_desktop": 34,
-        "content_size_desktop": 16,
-        "content_color_desktop": "#FFFFFF"
+        "cta_style": "primary-button"
       }
     },
     "main": {
@@ -42,19 +29,19 @@
       "type": "404-collection",
       "settings": {
         "show_section": true,
-        "section_background": "#FFFFFF",
-        "section_spacing": "py-8",
-        "title": "Featured collection",
-        "collection": "menswear",
+        "section_background": "#f3eee8",
+        "section_spacing": "py-0",
+        "title": "Just Dropped",
+        "collection": "germany-edit",
         "total_products": 8,
-        "products_desktop": "lg:w-1/4",
-        "products_tablet": "md:w-1/3",
-        "products_mobile": "w-1/2"
+        "products_desktop": "lg:w-1\/4",
+        "products_tablet": "md:w-1\/3",
+        "products_mobile": "w-1\/2"
       }
     }
   },
   "order": [
-    "16309583640c6125ab",
+    "75746119-457a-4555-abe2-d8303379cbd4",
     "main",
     "collection"
   ]

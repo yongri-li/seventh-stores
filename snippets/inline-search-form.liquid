@@ -1,14 +1,16 @@
 <form action="{{ routes.search_url }}" method="get" role="search">
-    <label for="search" class="block text-sm font-medium">Quick search</label>
-    <div class="mt-1 relative flex items-center">
-      <input type="search"
-        name="q"
-        id="Search"
-        value="{{ search.terms | escape }}"
-        placeholder="{{ 'general.search.placeholder' | t }}"
-        class="[ block flex-grow appearance-none rounded-none relative py-3 px-4 border leading-tight focus:outline-none focus:shadow-outline-blue focus:z-10 ]">
-      <button class="btn py-3 px-4 text-center leading-tight" type="submit">
-        {% render 'icon-search' %}
-      </button>
-    </div>
+  <label for="search" class="sr-only block text-sm font-medium">Search</label>
+  <div class="mt-1 relative flex items-center border-b border-color">
+    <input
+      type="search"
+      name="q"
+      id="Search"
+      value="{{ search.terms | escape }}"
+      placeholder="{{ 'general.search.placeholder' | t }}"
+      class="[ block flex-grow appearance-none bg-transparent rounded-none relative py-3 px-4 leading-tight focus:outline-none focus:shadow-outline-blue focus:z-10 ]"
+    >
+    <button class="btn py-3 px-4 text-center leading-tight" type="submit">
+      {% render 'icon-search' %}
+    </button>
+  </div>
 </form>

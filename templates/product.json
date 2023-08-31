@@ -72,6 +72,17 @@
             "open_by_default": false
           }
         },
+        "0f58b66b-4c99-4bce-aeb3-48e3810c2c83": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Size Guide",
+            "content": "<p>For more information on sizing and how our products may fit you <a href=\"https:\/\/seventhstores.com\/blogs\/news\/how-to-find-your-seventh-fit\"><span style=\"text-decoration:underline\">please refer to our sizing page<\/span><\/a><span style=\"text-decoration:underline\">.<\/span><\/p><p><br\/><\/p>",
+            "product_description": false,
+            "size_guide": false,
+            "page_content": "",
+            "open_by_default": true
+          }
+        },
         "eb0bbe54-8754-4743-be27-bdea7b0d3171": {
           "type": "collapsible_tab",
           "settings": {
@@ -122,6 +133,7 @@
         "aab585e2-1c17-449f-8788-bbe37a977394",
         "e64e89d1-ba73-47e4-a915-29089d77fd31",
         "5c049b49-c6da-4174-9a28-8f7f58984f5e",
+        "0f58b66b-4c99-4bce-aeb3-48e3810c2c83",
         "eb0bbe54-8754-4743-be27-bdea7b0d3171",
         "5890bca4-422e-4e8a-b82e-3a13f207d0bd",
         "5d32dcbc-3d40-4e23-94cd-03f48bfe78ae",

@@ -90,7 +90,8 @@ search-trigger {
 details summary::-webkit-details-marker,
 details summary::marker,
 details summary:marker {
-  display: none;
+  display: none !important;
+  content: "" !important;
 }
 
 details summary {

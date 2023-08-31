@@ -265,38 +265,45 @@ slider-component {
   color: var(--pgi-sale-badge-font);
 }
 
-.rte h1,
-.rte h2,
-.rte h3,
-.rte h4,
-.rte h5,
-.rte h6 {
-  line-height: 1.25;
-  margin-bottom: 0.75rem;
+.rte *:empty {
+  display: none;
 }
 
 .rte p {
-  margin-bottom: 1rem;
+  margin-bottom: 1em;
+  line-height: 1.5;
 }
 
-.rte ul {
-  margin-left: 1rem;
+.rte h6,
+.rte h5,
+.rte h4,
+.rte h3,
+.rte h2,
+.rte h1 {
+  margin-top: 0.75em;
+  margin-bottom: 0.5em;
+  line-height: 1.5;
+}
+
+.rte ul,
+.rte ol {
+  margin-left: 1.5rem;
+}
+
+.rte li {
+  line-height: 1.5;
+  margin-bottom: 0.25em;
+}
+
+.rte ul li {
   list-style-type: disc;
 }
 
-.rte ol {
-  margin-left: 1rem;
+.rte ol li {
   list-style-type: decimal;
 }
 
-.rte li {
-  margin-bottom: 0.5rem;
-}
-
-.rte p,
-.rte a,
-.rte span,
-.rte li {
-  font-size: 14px;
-  line-height: 1.5;
+.rte a {
+  color: var(--primary-color);
+  text-decoration: underline;
 }

@@ -252,3 +252,12 @@ and also iPads specifically.
 slider-component {
   display: block;
 }
+
+.product-grid-item-sticker--sale {
+  background-color: var(--pgi-sale-badge-bg);
+  color: var(--pgi-sale-badge-font);
+}
+
+.product-grid-item-sticker--sale>* {
+  color: var(--pgi-sale-badge-font);
+}

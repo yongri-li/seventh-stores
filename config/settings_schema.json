@@ -543,6 +543,20 @@
         "label": "Show quick view trigger?",
         "info": "Enabling this will show a trigger to enable the quick view for a product.",
         "default": false
+      },
+      {
+        "type": "header",
+        "content": "Styling"
+      },
+      {
+        "type": "color",
+        "id": "pgi_sale_badge_bg",
+        "label": "Sale badge background colour"
+      },
+      {
+        "type": "color",
+        "id": "pgi_sale_badge_font",
+        "label": "Sale badge font colour"
       }
     ]
   },

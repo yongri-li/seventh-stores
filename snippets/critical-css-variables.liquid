@@ -192,6 +192,9 @@
       --subscription-product-active-block-text-color: {{ settings.subscription_product_active_block_text_color }};
 
       --mega-menu-background: #FFFFFF;
+
+      --pgi-sale-badge-bg: {{ settings.pgi_sale_badge_bg }};
+      --pgi-sale-badge-font: {{ settings.pgi_sale_badge_font }};
   }
 
   html, body, div, span, applet, object, iframe,
@@ -540,6 +543,13 @@
 
   .product-grid-item__hover-img-bg{
     background-color: var(--body-bg);
+  }
+
+  .locale-selectors__selector{
+    padding: 0.25rem !important;
+    font-size: 12px !important;
+    background-color: transparent !important;
+    border: 1px solid var(--border-color) !important;
   }
 {% endstyle %}
 

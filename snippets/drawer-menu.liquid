@@ -445,7 +445,7 @@
             {%- if section.settings.show_account_link -%}
               <li class="px-4 lg:px-8">
                 {%- if shop.customer_accounts_enabled -%}
-                  <a class="pb-4 flex items-center heading text-xs" href="/account">
+                  <a class="pb-4 flex items-center heading text-sm" href="/account">
                     {{- 'layout.customer.account' | t -}}
                   </a>
                 {%- endif -%}
@@ -454,7 +454,7 @@
 
             {%- if section.settings.show_search_link -%}
               <li class="px-4 lg:px-8">
-                <a class="pb-4 flex items-center heading text-xs" href="/search">
+                <a class="pb-4 flex items-center heading text-sm" href="/search">
                   {{- 'general.search.placeholder' | t -}}
                 </a>
               </li>

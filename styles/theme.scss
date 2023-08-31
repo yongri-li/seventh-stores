@@ -264,3 +264,39 @@ slider-component {
 .product-grid-item-sticker--sale>* {
   color: var(--pgi-sale-badge-font);
 }
+
+.rte h1,
+.rte h2,
+.rte h3,
+.rte h4,
+.rte h5,
+.rte h6 {
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+.rte p {
+  margin-bottom: 1rem;
+}
+
+.rte ul {
+  margin-left: 1rem;
+  list-style-type: disc;
+}
+
+.rte ol {
+  margin-left: 1rem;
+  list-style-type: decimal;
+}
+
+.rte li {
+  margin-bottom: 0.5rem;
+}
+
+.rte p,
+.rte a,
+.rte span,
+.rte li {
+  font-size: 14px;
+  line-height: 1.5;
+}

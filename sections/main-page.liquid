@@ -1,19 +1,21 @@
-{%- for block in section.blocks -%}
+<section class="container mx-auto py-8 px-4">
+  {%- for block in section.blocks -%}
     {%- case block.type -%}
-        {%- when '@app' -%}
-            {% render block %}
-        {%- when 'breadcrumbs' -%}
-            {% render 'breadcrumb' %}
-        {%- when 'header' -%}
-            {% render 'page-header' %}
-        {%- when 'content' -%}
-            <div class="container mx-auto py-8 px-4 overflow-hidden">
-                <div class="rte">
-                    {{ page.content }}
-                </div>
-            </div>
+      {%- when '@app' -%}
+        {% render block %}
+      {%- when 'breadcrumbs' -%}
+        {% render 'breadcrumb' %}
+      {%- when 'header' -%}
+        {% render 'page-header' %}
+      {%- when 'content' -%}
+        <div class="overflow-hidden">
+          <div class="rte">
+            {{ page.content }}
+          </div>
+        </div>
     {%- endcase -%}
-{%- endfor -%}
+  {%- endfor -%}
+</section>
 
 {% schema %}
 {
@@ -40,4 +42,3 @@
   ]
 }
 {% endschema %}
-  

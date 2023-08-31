@@ -462,13 +462,13 @@
 
             {%- if section.settings.show_phone_number -%}
               <li class="px-4 lg:px-8">
-                <a class="pb-4 flex items-center heading text-xs" href="tel:{{ shop.phone }}">{{ shop.phone }}</a>
+                <a class="pb-4 flex items-center heading text-sm" href="tel:{{ shop.phone }}">{{ shop.phone }}</a>
               </li>
             {%- endif -%}
 
             {%- if section.settings.show_email -%}
               <li class="px-4 lg:px-8">
-                <a class="pb-4 flex items-center heading text-xs" href="mailto:{{ shop.email }}">
+                <a class="pb-4 flex items-center heading text-sm" href="mailto:{{ shop.email }}">
                   {{- shop.email -}}
                 </a>
               </li>

@@ -10,6 +10,7 @@
         },
         "53585924-d449-4abe-8a44-3604ce9225e7": {
           "type": "breadcrumbs",
+          "disabled": true,
           "settings": {
           }
         },

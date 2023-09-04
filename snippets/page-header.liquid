@@ -8,7 +8,7 @@
   endunless
 
   assign title_default_bg_image = settings.title_default_bg_image | image_url: width: 1280, height: 640
-  assign title_default_bg_color = settings.title_default_bg_color
+  assign title_default_bg_color = settings.title_default_bg_color | default: false
   assign title_default_bg_opacity = settings.title_default_bg_opacity
   if template == 'collection'
     assign the_title = collection.title
@@ -56,12 +56,12 @@
   {% endunless %}
 >
   <div
-    class="header__inner"
+    class="header__inner [ px-4 -mx-4 ]"
     {% unless title_default_bg_color == blank %}
       style="background-color: {{ title_default_bg_color | color_modify: 'alpha', title_default_bg_opacity }}"
     {% endunless %}
   >
-    <div class="{{ content_alignment }} py-6 {% unless title_default_bg_color == blank %}px-4 sm:px-6 lg:px-8 lg:py-8{% endunless %}">
+    <div class="{{ content_alignment }} py-4">
       {%- unless the_title == blank or the_title == '' -%}
         <h1 class="[ text-base ] header__heading" style="color: {{ settings.title_default_text_color }};">
           {{ the_title }}

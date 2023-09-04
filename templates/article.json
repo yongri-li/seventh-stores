@@ -3,6 +3,34 @@
   "sections": {
     "main": {
       "type": "main-article",
+      "blocks": {
+        "524c3869-8923-409e-9353-5e1f7df3597b": {
+          "type": "header",
+          "settings": {
+          }
+        },
+        "c82620d6-0fdd-4913-8c5e-2797b49948f8": {
+          "type": "breadcrumbs",
+          "settings": {
+          }
+        },
+        "4caf64d0-6876-4f83-8fff-57c5d198fa94": {
+          "type": "featured_image",
+          "settings": {
+          }
+        },
+        "2def5afe-72f3-4053-89ba-49025c4ca234": {
+          "type": "article",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "524c3869-8923-409e-9353-5e1f7df3597b",
+        "c82620d6-0fdd-4913-8c5e-2797b49948f8",
+        "4caf64d0-6876-4f83-8fff-57c5d198fa94",
+        "2def5afe-72f3-4053-89ba-49025c4ca234"
+      ],
       "settings": {
       }
     }

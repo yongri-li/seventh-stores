@@ -153,8 +153,11 @@
   "contact": {
     "form": {
       "name": "Name",
+      "first_name": "First Name",
+      "last_name": "Last Name",
       "email": "Email",
       "phone": "Phone Number",
+      "order_number": "Order Number",
       "message": "Message",
       "send": "Send",
       "post_success": "Thanks for contacting us. We'll get back to you as soon as possible."

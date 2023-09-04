@@ -35,7 +35,7 @@
     "social_facebook_link": "",
     "social_pinterest_link": "",
     "social_instagram_link": "",
-    "title_default_bg_color": "rgba(0,0,0,0)",
+    "title_default_bg_color": "#f3eee8",
     "title_default_text_color": "#000000",
     "title_overlay": false,
     "title_default_bg_opacity": 1,

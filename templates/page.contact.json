@@ -43,7 +43,7 @@
         "57d04156-22d9-49f6-9acd-e0119f2a8656"
       ],
       "settings": {
-        "contain": false
+        "contain": true
       }
     },
     "b1842890-69ed-4ead-962e-4c382c1fe897": {
@@ -96,7 +96,8 @@
         "b7bf4df5-4b6e-42d4-b032-c1e5f49f32da"
       ],
       "settings": {
-        "contain": false,
+        "contain": true,
+        "form_alignment": "mr-auto",
         "section_background": "#f3eee8",
         "section_spacing": "py-0",
         "section_background_desktop": "#f3eee8",

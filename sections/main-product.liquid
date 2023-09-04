@@ -603,11 +603,13 @@
                           </div>
                         </div>
 
-                        {% if additional_checkout_buttons %}
-                          <div class="additional-checkout-buttons mt-3">
-                            {{ content_for_additional_checkout_buttons }}
-                          </div>
-                        {% endif %}
+                        {%- if block.settings.show_additional_checkout_buttons -%}
+                          {%- if additional_checkout_buttons -%}
+                            <div class="additional-checkout-buttons mt-3">
+                              {{ content_for_additional_checkout_buttons }}
+                            </div>
+                          {%- endif -%}
+                        {%- endif -%}
                       {%- else -%}
                         {%- if customer -%}
                           {%- if is_approved == false -%}
@@ -1095,6 +1097,12 @@
           "id": "show_qty_label",
           "label": "Show label on Quantity Selectors?",
           "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_additional_checkout_buttons",
+          "label": "Show additional checkout buttons?",
+          "default": false
         },
         {
           "type": "checkbox",

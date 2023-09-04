@@ -23,6 +23,7 @@
         "711ee7d1-225a-4582-b7e0-269360dd87de": {
           "type": "header",
           "settings": {
+            "content_alignment": "text-left"
           }
         },
         "4c9e6e40-0a78-48d4-8c78-06f627872584": {
@@ -99,9 +100,11 @@
         "contain": true,
         "form_alignment": "mr-auto",
         "section_background": "#f3eee8",
-        "section_spacing": "py-0",
+        "spacing_top": "pt-0",
+        "spacing_bottom": "pb-32",
         "section_background_desktop": "#f3eee8",
-        "section_spacing_desktop": "py-0"
+        "spacing_top_desktop": "lg:pt-0",
+        "spacing_bottom_desktop": "lg:pb-32"
       }
     }
   },

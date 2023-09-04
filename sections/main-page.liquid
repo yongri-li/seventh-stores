@@ -1,4 +1,4 @@
-<section class="container mx-auto py-8 px-4">
+<section class="[ {% if section.settings.contain %}container{% endif %} mt-8 mb-12 mx-auto px-4 sm:px-6 lg:px-8 ]">
   {%- for block in section.blocks -%}
     {%- case block.type -%}
       {%- when '@app' -%}
@@ -20,6 +20,18 @@
 {% schema %}
 {
   "name": "Page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "contain",
+      "label": "Contain the Section within a wrapper?",
+      "default": false
+    }
+  ],
   "blocks": [
     {
       "type": "@app"
@@ -27,7 +39,29 @@
     {
       "type": "breadcrumbs",
       "name": "Breadcrumbs",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "breadcrumb_alignment",
+          "label": "Breadcrumb Alignment",
+          "options": [
+            {
+              "label": "Left",
+              "value": "justify-start"
+            },
+            {
+              "label": "Center",
+              "value": "justify-center"
+            },
+            {
+              "label": "Right",
+              "value": "justify-end"
+            }
+          ],
+          "default": "justify-start"
+        }
+      ]
     },
     {
       "type": "header",

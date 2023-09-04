@@ -18,83 +18,90 @@
     {%- if section.blocks.size > 0 -%}
       <div class="max-w-xl {{ section.settings.form_alignment }}">
         {% form 'contact' %}
-          {%- for block in section.blocks -%}
-            <div class="{% unless forloop.first %}pt-10{% endunless %}">
-              {% case block.type %}
-                {%- when '@app' -%}
-                  {% render block %}
-                {% when 'first_name' %}
-                  <div class="first-name">
-                    <label class="sr-only" for="first-name">{{ 'contact.form.first_name' | t }}</label>
-                    <input
-                      class="w-full max-w-sm bg-transparent appearance focus:border-blue-300 border-b border-solid border-color leading-none px-0 py-2 text-sm"
-                      type="text"
-                      name="contact[first_name]"
-                      placeholder="{{ block.settings.placeholder }}"
-                      id="first-name"
-                    >
-                  </div>
-                {% when 'last_name' %}
-                  <div class="last-name">
-                    <label class="sr-only" for="last-name">{{ 'contact.form.last_name' | t }}</label>
-                    <input
-                      class="w-full max-w-sm bg-transparent appearance focus:border-blue-300 border-b border-solid border-color leading-none px-0 py-2 text-sm"
-                      type="text"
-                      name="contact[last_name]"
-                      placeholder="{{ block.settings.placeholder }}"
-                      id="last-name"
-                    >
-                  </div>
-                {% when 'email' %}
-                  <div class="email">
-                    <label class="sr-only" for="email">{{ 'contact.form.email' | t }}</label>
-                    <input
-                      class="w-full max-w-sm bg-transparent appearance focus:border-blue-300 border-b border-solid border-color leading-none px-0 py-2 text-sm"
-                      type="text"
-                      name="contact[email]"
-                      placeholder="{{ block.settings.placeholder }}"
-                      id="email"
-                    >
-                  </div>
-                {% when 'phone' %}
-                  <div class="phone">
-                    <label class="sr-only" for="phone">{{ 'contact.form.phone' | t }}</label>
-                    <input
-                      class="w-full max-w-sm bg-transparent appearance focus:border-blue-300 border-b border-solid border-color leading-none px-0 py-2 text-sm"
-                      type="text"
-                      name="contact[phone]"
-                      placeholder="{{ block.settings.placeholder }}"
-                      id="phone"
-                    >
-                  </div>
-                {% when 'order_number' %}
-                  <div class="order_number">
-                    <label class="sr-only" for="order_number">{{ 'contact.form.order_number' | t }}</label>
-                    <input
-                      class="w-full max-w-sm bg-transparent appearance focus:border-blue-300 border-b border-solid border-color leading-none px-0 py-2 text-sm"
-                      type="text"
-                      name="contact[order_number]"
-                      placeholder="{{ block.settings.placeholder }}"
-                      id="order_number"
-                    >
-                  </div>
-                {% when 'message' %}
-                  <div class="message">
-                    <label class="sr-only" for="message">{{ 'contact.form.message' | t }}</label>
-                    <textarea
-                      class="w-full py-4 px-4 border-none appearance focus:border-blue-300 border-color leading-relaxed text-sm"
-                      style="background-color: {{ block.settings.background_color }}"
-                      rows="8"
-                      type="text"
-                      name="contact[body]"
-                      id="message"
-                      class=""
-                      placeholder="{{ block.settings.placeholder }}"
-                    ></textarea>
-                  </div>
-              {% endcase %}
+          {%- if form.posted_successfully? -%}
+            <div class="py-6">
+              <p>{{ 'contact.form.post_success' | t }}</p>
             </div>
-          {%- endfor -%}
+          {%- endif -%}
+          <div class="{% if form.posted_successfully? %}hidden{% endif %}">
+            {%- for block in section.blocks -%}
+              <div class="{% unless forloop.first %}pt-10{% endunless %}">
+                {% case block.type %}
+                  {%- when '@app' -%}
+                    {% render block %}
+                  {% when 'first_name' %}
+                    <div class="first-name">
+                      <label class="sr-only" for="first-name">{{ 'contact.form.first_name' | t }}</label>
+                      <input
+                        class="w-full max-w-sm bg-transparent appearance focus:border-blue-300 border-b border-solid border-color leading-none px-0 py-2 text-sm"
+                        type="text"
+                        name="contact[first_name]"
+                        placeholder="{{ block.settings.placeholder }}"
+                        id="first-name"
+                      >
+                    </div>
+                  {% when 'last_name' %}
+                    <div class="last-name">
+                      <label class="sr-only" for="last-name">{{ 'contact.form.last_name' | t }}</label>
+                      <input
+                        class="w-full max-w-sm bg-transparent appearance focus:border-blue-300 border-b border-solid border-color leading-none px-0 py-2 text-sm"
+                        type="text"
+                        name="contact[last_name]"
+                        placeholder="{{ block.settings.placeholder }}"
+                        id="last-name"
+                      >
+                    </div>
+                  {% when 'email' %}
+                    <div class="email">
+                      <label class="sr-only" for="email">{{ 'contact.form.email' | t }}</label>
+                      <input
+                        class="w-full max-w-sm bg-transparent appearance focus:border-blue-300 border-b border-solid border-color leading-none px-0 py-2 text-sm"
+                        type="text"
+                        name="contact[email]"
+                        placeholder="{{ block.settings.placeholder }}"
+                        id="email"
+                      >
+                    </div>
+                  {% when 'phone' %}
+                    <div class="phone">
+                      <label class="sr-only" for="phone">{{ 'contact.form.phone' | t }}</label>
+                      <input
+                        class="w-full max-w-sm bg-transparent appearance focus:border-blue-300 border-b border-solid border-color leading-none px-0 py-2 text-sm"
+                        type="text"
+                        name="contact[phone]"
+                        placeholder="{{ block.settings.placeholder }}"
+                        id="phone"
+                      >
+                    </div>
+                  {% when 'order_number' %}
+                    <div class="order_number">
+                      <label class="sr-only" for="order_number">{{ 'contact.form.order_number' | t }}</label>
+                      <input
+                        class="w-full max-w-sm bg-transparent appearance focus:border-blue-300 border-b border-solid border-color leading-none px-0 py-2 text-sm"
+                        type="text"
+                        name="contact[order_number]"
+                        placeholder="{{ block.settings.placeholder }}"
+                        id="order_number"
+                      >
+                    </div>
+                  {% when 'message' %}
+                    <div class="message">
+                      <label class="sr-only" for="message">{{ 'contact.form.message' | t }}</label>
+                      <textarea
+                        class="w-full py-4 px-4 border-none appearance focus:border-blue-300 border-color leading-relaxed text-sm"
+                        style="background-color: {{ block.settings.background_color }}"
+                        rows="8"
+                        type="text"
+                        name="contact[body]"
+                        id="message"
+                        class=""
+                        placeholder="{{ block.settings.placeholder }}"
+                      ></textarea>
+                    </div>
+                {% endcase %}
+              </div>
+            {%- endfor -%}
+          </div>
         {%- endform -%}
       </div>
     {%- endif -%}

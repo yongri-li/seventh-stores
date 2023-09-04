@@ -35,7 +35,7 @@
 					<p class="[ mt-8 text-xs leading-relaxed {{ block.settings.content_alignment }} ]">{{ article.excerpt }}</p>
 				</div>
 			{%- when 'featured_image' -%}
-				<div class="[ mb-8 mx-auto ]">
+				<div class="[ mb-8 mx-auto max-w-lg ]">
 						{% render 'responsive-image' with image: article.image, image_class: 'w-full' %}
 				</div>
 			{%- when 'article' -%}

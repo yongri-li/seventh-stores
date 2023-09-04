@@ -3,6 +3,31 @@
   "sections": {
     "main": {
       "type": "main-blog",
+      "blocks": {
+        "b6b166a9-d8c5-4d15-8699-8da45d099efd": {
+          "type": "header",
+          "settings": {
+          }
+        },
+        "e8e489ff-79c7-45a1-9a17-22e00385ef51": {
+          "type": "breadcrumbs",
+          "settings": {
+          }
+        },
+        "07dd9f45-7f56-4f9e-9283-5085c611a2bf": {
+          "type": "article_grid",
+          "settings": {
+            "articles_per_row_mobile": "grid-cols-1",
+            "articles_per_row_tablet": "md:grid-cols-2",
+            "articles_per_row_desktop": "lg:grid-cols-3"
+          }
+        }
+      },
+      "block_order": [
+        "b6b166a9-d8c5-4d15-8699-8da45d099efd",
+        "e8e489ff-79c7-45a1-9a17-22e00385ef51",
+        "07dd9f45-7f56-4f9e-9283-5085c611a2bf"
+      ],
       "settings": {
       }
     }

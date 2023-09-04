@@ -1,4 +1,4 @@
-{%- paginate blog.articles by 5 -%}
+{%- paginate blog.articles by 6 -%}
   {%- if current_tags -%}
     {%- capture blog_title -%}{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}{%- endcapture -%}
   {%- endif -%}
@@ -46,6 +46,7 @@
           {%- endif -%}
         </infinite-scrolling>
       </div>
+      <script defer="defer" src="{{ 'component-infinite-scrolling.js' | asset_url }}"></script>
     {%- endif -%}
   </section>
 {%- endpaginate -%}

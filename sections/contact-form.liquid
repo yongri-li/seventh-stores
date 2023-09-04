@@ -12,7 +12,7 @@
 
 <section
   id="contactForm-{{ section.id }}"
-  class="{{ section.settings.section_spacing }} {{ section.settings.section_spacing_desktop }}"
+  class="{{ section.settings.spacing_top }} {{ section.settings.spacing_bottom }} {{ section.settings.spacing_top_desktop }} {{ section.settings.spacing_bottom_desktop }}"
 >
   <div class="[ {% if section.settings.contain %}container{% endif %} mx-auto px-4 sm:px-6 lg:px-8 ]">
     {%- if section.blocks.size > 0 -%}
@@ -147,31 +147,59 @@
     },
     {
       "type": "select",
-      "id": "section_spacing",
-      "label": "Section Spacing",
+      "id": "spacing_top",
+      "label": "Spacing Top",
       "options": [
         {
-          "value": "py-0",
+          "value": "pt-0",
           "label": "None"
         },
         {
-          "value": "py-8",
+          "value": "pt-8",
           "label": "Small"
         },
         {
-          "value": "py-26",
+          "value": "pt-26",
           "label": "Medium"
         },
         {
-          "value": "py-32",
+          "value": "pt-32",
           "label": "Large"
         },
         {
-          "value": "py-64",
+          "value": "pt-64",
           "label": "x-Large"
         }
       ],
-      "default": "py-8"
+      "default": "pt-8"
+    },
+    {
+      "type": "select",
+      "id": "spacing_bottom",
+      "label": "Spacing Bottom",
+      "options": [
+        {
+          "value": "pb-0",
+          "label": "None"
+        },
+        {
+          "value": "pb-8",
+          "label": "Small"
+        },
+        {
+          "value": "pb-26",
+          "label": "Medium"
+        },
+        {
+          "value": "pb-32",
+          "label": "Large"
+        },
+        {
+          "value": "pb-64",
+          "label": "x-Large"
+        }
+      ],
+      "default": "pb-8"
     },
     {
       "type": "header",
@@ -185,31 +213,59 @@
     },
     {
       "type": "select",
-      "id": "section_spacing_desktop",
-      "label": "Section Spacing",
+      "id": "spacing_top_desktop",
+      "label": "Spacing Top",
       "options": [
         {
-          "value": "py-0",
+          "value": "lg:pt-0",
           "label": "None"
         },
         {
-          "value": "py-8",
+          "value": "lg:pt-8",
           "label": "Small"
         },
         {
-          "value": "py-26",
+          "value": "lg:pt-26",
           "label": "Medium"
         },
         {
-          "value": "py-32",
+          "value": "lg:pt-32",
           "label": "Large"
         },
         {
-          "value": "py-64",
+          "value": "lg:pt-64",
           "label": "x-Large"
         }
       ],
-      "default": "py-8"
+      "default": "lg:pt-8"
+    },
+    {
+      "type": "select",
+      "id": "spacing_bottom_desktop",
+      "label": "Spacing Bottom",
+      "options": [
+        {
+          "value": "lg:pb-0",
+          "label": "None"
+        },
+        {
+          "value": "lg:pb-8",
+          "label": "Small"
+        },
+        {
+          "value": "lg:pb-26",
+          "label": "Medium"
+        },
+        {
+          "value": "lg:pb-32",
+          "label": "Large"
+        },
+        {
+          "value": "lg:pb-64",
+          "label": "x-Large"
+        }
+      ],
+      "default": "lg:pb-8"
     }
   ],
   "blocks": [

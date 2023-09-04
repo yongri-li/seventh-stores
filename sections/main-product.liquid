@@ -548,7 +548,7 @@
                               </p>
                             {%- endunless -%}
                             <button
-                              class="[ w-full focus:shadow-outline focus:outline-none py-3 px-4 disabled:opacity-50 overflow-hidden group text-xs ] heading btn add-to-cart-button"
+                              class="[ w-full focus:shadow-outline focus:outline-none py-3 px-4 disabled:opacity-50 overflow-hidden group text-xs leading-tight ] heading btn add-to-cart-button"
                               type="submit"
                               name="add"
                               data-add-to-cart
@@ -556,7 +556,7 @@
                                 disabled="disabled"
                               {% endunless %}
                             >
-                              <span class="loading mx-auto items-center w-full justify-center">
+                              <span class="loading mx-auto items-center w-full justify-center leading-tight">
                                 <svg
                                   height="17"
                                   focusable="false"
@@ -568,16 +568,16 @@
                                   <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
                                 </svg>
                               </span>
-                              <span class="[ group-disabled:hidden inline-block transition-transform group-hover:translate-x-9 ]">
+                              <span class="[ group-disabled:hidden inline-block transition-transform group-hover:translate-x-9 leading-tight ]">
                                 {% render 'icon-bag', classes: 'align-middle inline-block mr-1' %}
                                 {{ 'products.product.add_to_cart' | t }}
                               </span>
-                              <span class="[ hidden group-disabled:inline-block transition-transform group-hover:translate-x-52 ]">
+                              <span class="[ hidden group-disabled:inline-block transition-transform group-hover:translate-x-52 leading-tight ]">
                                 {{ 'products.product.sold_out' | t }}
                               </span>
                               <span
                                 id="productPrice{{ product.id }}"
-                                class="product-price [ transition-transform group-hover:translate-x-52 inline-block ml-5 ]"
+                                class="product-price [ transition-transform group-hover:translate-x-52 inline-block ml-5 leading-tight ]"
                               >
                                 {%- if settings.wholesale_enabled == false or is_approved -%}
                                   <span data-price-wrapper>

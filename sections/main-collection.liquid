@@ -25,7 +25,7 @@
               {% render block %}
 
             {%- when 'breadcrumbs' -%}
-              {% render 'breadcrumb' %}
+              {% render 'breadcrumb', list_classes: block.settings.breadcrumb_alignment %}
 
             {%- when 'header' -%}
               {%- assign collection_nav = linklists[collection.handle] -%}
@@ -138,7 +138,7 @@
             >
               {%- if paginate.next -%}
                 <button
-                  aria-label="{{ 'pagination.next' | t }}"
+                  aria-label="{{ 'pagination.load_more' | t }}"
                   aria-hidden="false"
                   aria-busy="false"
                   data-url="{{ page.url }}{{ paginate.next.url }}"
@@ -202,7 +202,29 @@
     {
       "type": "breadcrumbs",
       "name": "Breadcrumbs",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "breadcrumb_alignment",
+          "label": "Breadcrumb Alignment",
+          "options": [
+            {
+              "label": "Left",
+              "value": "justify-left"
+            },
+            {
+              "label": "Centre",
+              "value": "justify-centre"
+            },
+            {
+              "label": "Right",
+              "value": "justify-right"
+            }
+          ],
+          "default": "justify-left"
+        }
+      ]
     },
     {
       "type": "header",

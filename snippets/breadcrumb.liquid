@@ -1,7 +1,7 @@
 {%- assign t = template | split: '.' | first -%}
 <div class="mx-auto">
   <nav class="flex" aria-label="Breadcrumb">
-    <ol class="flex space-x-1">
+    <ol class="flex w-full space-x-1 {{ list_classes }}">
       <li class="flex">
         <div class="flex items-center">
           <a href="/" class="text-gray-400 hover:text-gray-500">

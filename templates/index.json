@@ -7,12 +7,12 @@
         "section_gutter": false,
         "max_height_mobile": 60,
         "use_img_height_mobile": true,
-        "mobile_image": "shopify:\/\/shop_images\/Homepage_Mobile-12_31bce112-e48b-4055-bb04-6e25e9b0f481.png",
+        "mobile_image": "shopify:\/\/shop_images\/Copy_of_Homepage_Mobile_1_8056779b-3b5b-4dc7-a974-231f46a59d53.png",
         "mobile_image_focus": "object-top",
         "mobile_content_focus": "justify-start items-center",
         "max_height_desktop": 80,
         "use_img_height_desktop": true,
-        "desktop_image": "shopify:\/\/shop_images\/1_5f0687be-0c4b-41bc-b827-a1e5a1bc1b78.png",
+        "desktop_image": "shopify:\/\/shop_images\/Desktop_Hompage_4470_x_3171px_-2_b6484276-cd05-4888-9ab5-d67352891890.png",
         "desktop_image_focus": "lg:object-top",
         "desktop_content_focus": "lg:justify-center lg:items-start"
       }

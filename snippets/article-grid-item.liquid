@@ -2,23 +2,32 @@
 <div class="overflow-hidden">
   <div class="h-64 overflow-hidden">
     <a class="block h-full" href="{{ article.url }}">
-        {% render 'responsive-image' with image: article.image, image_class: 'w-full h-full object-cover object-center' %}
+      {% render 'responsive-image' with image: article.image, image_class: 'w-full h-full object-cover object-center' %}
     </a>
   </div>
   <div class="pt-2">
-    <h4 class="text-sm lg:text-base mb-3">{{ article.title }}</h4>
-    <p class="text-gray-700 text-sm leading-6">
-      {%- if article.excerpt.size > 0 -%}{{ article.excerpt | truncatewords: 15 }}{% else %}{{ article.content | strip_html | truncatewords: 15 }}{%- endif -%}
+    <h4 class="text-sm mb-2">{{ article.title }}</h4>
+    <p class="text-xs leading-6 mb-2">
+      {%- if article.excerpt != blank -%}
+        {{ article.excerpt | truncatewords: 15 -}}
+      {%- else -%}
+        {{- article.content | strip_html | truncatewords: 15 }}
+      {%- endif -%}
     </p>
   </div>
-  <div class="pt-2 flex flex-row">
+  <div class="mb-2 flex flex-row">
     <p class="text-gray-600 text-sm leading-relaxed">{{ article.author }}</p>
     <p class="text-gray-600 text-sm leading-relaxed ml-auto">{{ date }}</p>
   </div>
   {%- if article.tags.size > 0 -%}
-    <div class="pt-2 pb-2">
+    <div class="pb-2">
       {%- for tag in article.tags -%}
-        <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{ tag }}</a>
+        <a
+          href="{{ blog.url }}/tagged/{{ tag | handle }}"
+          class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+        >
+          {{- tag -}}
+        </a>
       {%- endfor -%}
     </div>
   {%- endif -%}

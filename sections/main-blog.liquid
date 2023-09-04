@@ -3,7 +3,7 @@
     {%- capture blog_title -%}{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}{%- endcapture -%}
   {%- endif -%}
 
-  <section class="[ mt-8 mb-12 max-w-2xl mx-auto px-4 sm:px-6 lg:container lg:px-8 ]">
+  <section class="[ container mt-8 mb-12 mx-auto px-4 sm:px-6 lg:px-8 ]">
     {%- for block in section.blocks -%}
       {%- case block.type -%}
         {%- when '@app' -%}

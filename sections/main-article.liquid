@@ -10,154 +10,156 @@
 {%- if comment and comment.status != 'published' -%}
   {%- assign number_of_comments = article.comments_count | plus: 1 -%}
 {%- endif -%}
+
 {% capture date %}{{ article.published_at | time_tag: format: 'month_day_year' }}{% endcapture %}
 <article role="article" itemscope itemtype="http://schema.org/Article">
-
-{%- for block in section.blocks -%}
-    {%- case block.type -%}
-        {%- when '@app' -%}
-            {% render block %}
-        {%- when 'breadcrumbs' -%}
-            {% render 'breadcrumb' %}
-        {%- when 'header' -%}
-            <div class="[ text-lg max-w-prose mx-auto mb-8 ]">
-                <p class="[ block text-base text-center font-semibold uppercase ]">{{ blog.title }}</p>
-                <h1 class="[ mt-2 block text-3xl text-center leading-relaxed sm:text-4xl ]">{{ article.title }}</h1>
-                <p class="text-center text-xs">{{ 'blogs.article.author_on_date_html' | t: author: article.author, date: date }}</p>
-                {%- if article.tags.size > 0 -%}
-                <div class="pt-4 text-center">
-                    {%- for tag in article.tags -%}
-                    <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{ tag }}</a>
-                    {%- endfor -%}
-                </div>
-                {%- endif -%}
-                <p class="[ mt-8 text-xl text-gray-500 leading-8 text-center ]">{{ article.excerpt }}</p>
-            </div>
-        {%- when 'featured_image' -%}
-            <div class="[ mb-8 max-w-2xl mx-auto px-4 sm:px-6 lg:container lg:px-8 ]">
-                {% render 'responsive-image' with image: article.image, image_class: 'w-full' %}
-              </div>
-        {%- when 'article' -%}
-            <div class="[ mb-8 max-w-2xl mx-auto px-4 sm:px-6 lg:container lg:px-8 ]">
-                <div class="[ leading-8 ]" itemprop="articleBody">
-                  {{ article.content }}
-                </div>
-            </div>
-        {%- when 'comments' -%}
-        {%- if blog.comments_enabled? -%}
-            <div class="[ mb-8 max-w-2xl mx-auto px-4 sm:px-6 lg:container lg:px-8 ]">
-                <h3 class="pb-5">{{ 'blogs.comments.with_count' | t: count: number_of_comments }}</h3>
-                {%- paginate article.comments by 5 -%}
-                <div id="comments">
-                {%- if comment and comment.status and paginate.current_page == 1 -%}
-                <div class="rounded-md bg-green-200 p-4 my-5">
-                    <div class="flex">
-                        <div class="flex-shrink-0">
-                            <!-- Heroicon name: check-circle -->
-                            <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                            </svg>
-                        </div>
-                        <div class="ml-3">
-                            <p class="text-sm font-medium text-green-800">
-                            {%- if blog.moderated? and comment.status != 'published' -%}
-                                {{ 'blogs.comments.success_moderated' | t }}
-                            {%- else -%}
-                                {{ 'blogs.comments.success' | t }}
-                            {%- endif -%}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                {%- endif -%}
-            
-                <div>
-                {%- if number_of_comments > 0 -%}
-                    {%- comment -%}
-                    Display comment from URL parameters if it is waiting moderation
-                    {%- endcomment -%}
-                    {%- if comment and comment.status != 'published' -%}
-                    <div id="{{ comment.id }}" class="rounded overflow-hidden shadow-md mb-5 px-4 py-5">
-                        <div class="rte leading-8 pb-4">
-                        {{ comment.content }}
-                        </div>
-                        {% capture date %}{{ comment.created_at | time_tag: format: 'month_day_year' }}{% endcapture %}
-                        <p class="text-xs text-gray-700">{{ 'blogs.article.comment_meta_html' | t: author: comment.author, date: date }}</p>
-                    </div>
-                    {%- endif -%}
-            
-                    {%- for comment in article.comments -%}
-                    <div id="{{ comment.id }}" class="rounded overflow-hidden shadow-md mb-5 px-4 py-5">
-                        <div class="rte leading-8 pb-4">
-                        {{ comment.content }}
-                        </div>
-                        {% capture date %}{{ comment.created_at | time_tag: format: 'month_day_year' }}{% endcapture %}
-                        <p class="text-xs text-gray-700">{{ 'blogs.article.comment_meta_html' | t: author: comment.author, date: date }}</p>
-                    </div>
-                    {%- endfor -%}
-                    {%- if paginate.pages > 1 -%}
-                        {% render 'pagination' %}
-                    {%- endif -%}
-                {%- endif -%}
-                </div>
-                {%- endpaginate -%}
-            </div>
-            
-            <div class="[ mb-8 container mx-auto px-4 pb-16 ]">
-                <div class="[ flex flex-wrap overflow-hidden -mx-4 ]">
-                    <div class="[ w-full px overflow-hidden lg:w-3/5 mx-auto ]">
-                        {% form 'new_comment', article %}
-                            <h3 class="[ pb-4 ]">{{ 'blogs.comments.title' | t }}</h3>
-                            {{ form.errors | default_errors }}
-                            <label for="CommentAuthor" class="label-hidden">
-                                {{ 'blogs.comments.name' | t }}
-                            </label>
-                            <input type="text"
-                                name="comment[author]"
-                                id="CommentAuthor"
-                                class="{% if form.errors contains 'author' %}input-error{% endif %} [ block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-3 pr-8 leading-tight focus:outline-none focus:shadow-outline mb-5 ]"
-                                placeholder="{{ 'blogs.comments.name' | t }}"
-                                value="{{ form.author }}"
-                                autocapitalize="words">
-            
-                            <label for="CommentEmail" class="label-hidden">
-                            {{ 'blogs.comments.email' | t }}
-                            </label>
-            
-                            <input type="email"
-                                name="comment[email]"
-                                id="CommentEmail"
-                                class="{% if form.errors contains 'email' %}input-error{% endif %} [ block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-3 pr-8 leading-tight focus:outline-none focus:shadow-outline mb-5 ]"
-                                placeholder="{{ 'blogs.comments.email' | t }}"
-                                value="{{ form.email }}"
-                                spellcheck="false"
-                                autocomplete="off"
-                                autocapitalize="off">
-            
-                            <label for="CommentBody" class="label-hidden">
-                                {{ 'blogs.comments.message' | t }}
-                            </label>
-            
-                            <textarea
-                            name="comment[body]"
-                            id="CommentBody"
-                            class="{% if form.errors contains 'body' %}input-error{% endif %} [ block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-3 pr-8 leading-tight focus:outline-none focus:shadow-outline mb-5 ]"
-                            placeholder="{{ 'blogs.comments.message' | t }}">
-                            {{ form.body }}
-                            </textarea>
-            
-                            {% if blog.moderated? %}
-                            <p class="[ pb-4 text-xs text-gray-600 ]">{{ 'blogs.comments.moderated' | t }}</p>
-                            {% endif %}
-            
-                            <input type="submit" class="[ w-full focus:shadow-outline focus:outline-none font-bold py-3 px-4 border-none leading-tight ] primary-button" value="{{ 'blogs.comments.post' | t }}">
-                        {% endform %}
-                    </div>
-                </div>
-            </div>
-        {% endif %}
-    {%- endcase -%}
-{%- endfor -%}
+	<section class="[ container mt-8 mb-12 mx-auto px-4 sm:px-6 lg:px-8 ]">
+	{%- for block in section.blocks -%}
+		{%- case block.type -%}
+			{%- when '@app' -%}
+				{% render block %}
+			{%- when 'breadcrumbs' -%}
+					{% render 'breadcrumb', list_classes: block.settings.breadcrumb_alignment %}
+			{%- when 'header' -%}
+				<div class="[ mx-auto mb-8 ]">
+					<p class="[ block text-xs mb-4 ] {{ block.settings.content_alignment }}">{{ blog.title }}</p>
+					<h1 class="[ mb-4 block text-lg leading-relaxed ] {{ block.settings.content_alignment }}">{{ article.title }}</h1>
+					<p class="text-xs {{ block.settings.content_alignment }}">{{ 'blogs.article.author_on_date_html' | t: author: article.author, date: date }}</p>
+					{%- if article.tags.size > 0 -%}
+					<div class="{{ block.settings.content_alignment }}">
+							{%- for tag in article.tags -%}
+							<a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{ tag }}</a>
+							{%- endfor -%}
+					</div>
+					{%- endif -%}
+					<p class="[ mt-8 text-xs leading-relaxed {{ block.settings.content_alignment }} ]">{{ article.excerpt }}</p>
+				</div>
+			{%- when 'featured_image' -%}
+				<div class="[ mb-8 mx-auto ]">
+						{% render 'responsive-image' with image: article.image, image_class: 'w-full' %}
+				</div>
+			{%- when 'article' -%}
+				<div class="[ mb-8 mx-auto ]">
+					<div class="[ leading-8 ]" itemprop="articleBody">
+						{{ article.content }}
+					</div>
+				</div>
+			{%- when 'comments' -%}
+				{%- if blog.comments_enabled? -%}
+					<div class="[ mb-8 mx-auto ]">
+						<h3 class="pb-5">{{ 'blogs.comments.with_count' | t: count: number_of_comments }}</h3>
+						{%- paginate article.comments by 5 -%}
+						<div id="comments">
+							{%- if comment and comment.status and paginate.current_page == 1 -%}
+							<div class="rounded-md bg-green-200 p-4 my-5">
+								<div class="flex">
+									<div class="flex-shrink-0">
+											<!-- Heroicon name: check-circle -->
+											<svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+											<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+											</svg>
+									</div>
+									<div class="ml-3">
+											<p class="text-sm font-medium text-green-800">
+											{%- if blog.moderated? and comment.status != 'published' -%}
+													{{ 'blogs.comments.success_moderated' | t }}
+											{%- else -%}
+													{{ 'blogs.comments.success' | t }}
+											{%- endif -%}
+											</p>
+									</div>
+								</div>
+							</div>
+							{%- endif -%}
+					
+							<div>
+							{%- if number_of_comments > 0 -%}
+									{%- comment -%}
+									Display comment from URL parameters if it is waiting moderation
+									{%- endcomment -%}
+									{%- if comment and comment.status != 'published' -%}
+									<div id="{{ comment.id }}" class="rounded overflow-hidden shadow-md mb-5 px-4 py-5">
+											<div class="rte leading-8 pb-4">
+											{{ comment.content }}
+											</div>
+											{% capture date %}{{ comment.created_at | time_tag: format: 'month_day_year' }}{% endcapture %}
+											<p class="text-xs text-gray-700">{{ 'blogs.article.comment_meta_html' | t: author: comment.author, date: date }}</p>
+									</div>
+									{%- endif -%}
+					
+									{%- for comment in article.comments -%}
+									<div id="{{ comment.id }}" class="rounded overflow-hidden shadow-md mb-5 px-4 py-5">
+											<div class="rte leading-8 pb-4">
+											{{ comment.content }}
+											</div>
+											{% capture date %}{{ comment.created_at | time_tag: format: 'month_day_year' }}{% endcapture %}
+											<p class="text-xs text-gray-700">{{ 'blogs.article.comment_meta_html' | t: author: comment.author, date: date }}</p>
+									</div>
+									{%- endfor -%}
+									{%- if paginate.pages > 1 -%}
+											{% render 'pagination' %}
+									{%- endif -%}
+							{%- endif -%}
+						</div>
+						{%- endpaginate -%}
+					</div>
+						
+					<div class="[ mb-8 container mx-auto px-4 pb-16 ]">
+						<div class="[ flex flex-wrap overflow-hidden -mx-4 ]">
+							<div class="[ w-full px overflow-hidden lg:w-3/5 mx-auto ]">
+								{% form 'new_comment', article %}
+									<h3 class="[ pb-4 ]">{{ 'blogs.comments.title' | t }}</h3>
+									{{ form.errors | default_errors }}
+									<label for="CommentAuthor" class="label-hidden">
+											{{ 'blogs.comments.name' | t }}
+									</label>
+									<input type="text"
+											name="comment[author]"
+											id="CommentAuthor"
+											class="{% if form.errors contains 'author' %}input-error{% endif %} [ block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-3 pr-8 leading-tight focus:outline-none focus:shadow-outline mb-5 ]"
+											placeholder="{{ 'blogs.comments.name' | t }}"
+											value="{{ form.author }}"
+											autocapitalize="words">
+		
+									<label for="CommentEmail" class="label-hidden">
+									{{ 'blogs.comments.email' | t }}
+									</label>
+		
+									<input type="email"
+										name="comment[email]"
+										id="CommentEmail"
+										class="{% if form.errors contains 'email' %}input-error{% endif %} [ block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-3 pr-8 leading-tight focus:outline-none focus:shadow-outline mb-5 ]"
+										placeholder="{{ 'blogs.comments.email' | t }}"
+										value="{{ form.email }}"
+										spellcheck="false"
+										autocomplete="off"
+										autocapitalize="off">
+		
+									<label for="CommentBody" class="label-hidden">
+										{{ 'blogs.comments.message' | t }}
+									</label>
+		
+									<textarea
+									name="comment[body]"
+									id="CommentBody"
+									class="{% if form.errors contains 'body' %}input-error{% endif %} [ block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-3 pr-8 leading-tight focus:outline-none focus:shadow-outline mb-5 ]"
+									placeholder="{{ 'blogs.comments.message' | t }}">
+									{{ form.body }}
+									</textarea>
+		
+									{% if blog.moderated? %}
+									<p class="[ pb-4 text-xs text-gray-600 ]">{{ 'blogs.comments.moderated' | t }}</p>
+									{% endif %}
+		
+									<input type="submit" class="[ w-full focus:shadow-outline focus:outline-none font-bold py-3 px-4 border-none leading-tight ] primary-button" value="{{ 'blogs.comments.post' | t }}">
+								{% endform %}
+							</div>
+						</div>
+					</div>
+				{% endif %}
+			{%- endcase -%}
+	{%- endfor -%}
+	</section>
 </article>
 
 {% schema %}
@@ -173,12 +175,56 @@
     {
       "type": "breadcrumbs",
       "name": "Breadcrumbs",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "breadcrumb_alignment",
+          "label": "Breadcrumb Alignment",
+          "options": [
+            {
+              "label": "Left",
+              "value": "justify-left"
+            },
+            {
+              "label": "Center",
+              "value": "justify-center"
+            },
+            {
+              "label": "Right",
+              "value": "justify-right"
+            }
+          ],
+          "default": "justify-left"
+        }
+      ]
     },
     {
       "type": "header",
       "name": "Header",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "content_alignment",
+          "label": "Content Alignment",
+          "options": [
+            {
+              "label": "Left",
+              "value": "justify-left"
+            },
+            {
+              "label": "Center",
+              "value": "justify-center"
+            },
+            {
+              "label": "Right",
+              "value": "justify-right"
+            }
+          ],
+          "default": "justify-left"
+        }
+      ]
     },
     {
       "type": "featured_image",

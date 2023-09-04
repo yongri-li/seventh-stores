@@ -129,7 +129,7 @@
             <div class="px-6 lg:px-20">
               <div
                 data-product-gallery="{{ section.id }}-{{ product.id }}"
-                class="flex flex-row flex-nowrap overflow-x-auto w-screen lg:ml-0 lg:w-auto lg:grid lg:grid-cols-2 lg:gap-4 snap-x snap-mandatory scroll-smooth lg:snap-none [ main-product-image-gallery ]"
+                class="flex flex-row flex-nowrap overflow-x-auto w-full lg:ml-0 lg:w-auto lg:grid lg:grid-cols-2 lg:gap-4 snap-x snap-mandatory scroll-smooth lg:snap-none [ main-product-image-gallery ]"
               >
                 {%- for media in product.media -%}
                   {%- if media.media_type == 'image' -%}

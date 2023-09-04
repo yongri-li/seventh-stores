@@ -28,6 +28,7 @@
         "4c9e6e40-0a78-48d4-8c78-06f627872584": {
           "type": "breadcrumbs",
           "settings": {
+            "breadcrumb_alignment": "justify-start"
           }
         },
         "57d04156-22d9-49f6-9acd-e0119f2a8656": {
@@ -42,6 +43,7 @@
         "57d04156-22d9-49f6-9acd-e0119f2a8656"
       ],
       "settings": {
+        "contain": false
       }
     },
     "b1842890-69ed-4ead-962e-4c382c1fe897": {
@@ -96,9 +98,9 @@
       "settings": {
         "contain": false,
         "section_background": "#f3eee8",
-        "section_spacing": "py-8",
+        "section_spacing": "py-0",
         "section_background_desktop": "#f3eee8",
-        "section_spacing_desktop": "py-8"
+        "section_spacing_desktop": "py-0"
       }
     }
   },

@@ -43,10 +43,68 @@
       ],
       "settings": {
       }
+    },
+    "b1842890-69ed-4ead-962e-4c382c1fe897": {
+      "type": "contact-form",
+      "blocks": {
+        "ebd9aaa4-d948-4f67-87ef-2b3c3b601510": {
+          "type": "first_name",
+          "settings": {
+            "placeholder": "First Name"
+          }
+        },
+        "2c130b12-c59b-4d6f-b025-c1dfac7301c2": {
+          "type": "last_name",
+          "settings": {
+            "placeholder": "Last name"
+          }
+        },
+        "b59a3b2b-5c67-4afb-9a08-34d090ef5321": {
+          "type": "email",
+          "settings": {
+            "placeholder": "Email"
+          }
+        },
+        "42643a20-bfc3-4c47-be1c-8ea954146d4a": {
+          "type": "phone",
+          "settings": {
+            "placeholder": "Phone"
+          }
+        },
+        "4babf94e-b7b5-4962-ac88-f590a812b15b": {
+          "type": "order_number",
+          "settings": {
+            "placeholder": "Order Number"
+          }
+        },
+        "b7bf4df5-4b6e-42d4-b032-c1e5f49f32da": {
+          "type": "message",
+          "settings": {
+            "placeholder": "Type here (if your enquiry is about an order, do not forget to include your order number).",
+            "background_color": "#fffaf3"
+          }
+        }
+      },
+      "block_order": [
+        "ebd9aaa4-d948-4f67-87ef-2b3c3b601510",
+        "2c130b12-c59b-4d6f-b025-c1dfac7301c2",
+        "b59a3b2b-5c67-4afb-9a08-34d090ef5321",
+        "42643a20-bfc3-4c47-be1c-8ea954146d4a",
+        "4babf94e-b7b5-4962-ac88-f590a812b15b",
+        "b7bf4df5-4b6e-42d4-b032-c1e5f49f32da"
+      ],
+      "settings": {
+        "contain": false,
+        "section_background": "#f3eee8",
+        "section_spacing": "py-8",
+        "section_background_desktop": "#f3eee8",
+        "section_spacing_desktop": "py-8"
+      }
     }
   },
   "order": [
     "hero",
-    "main"
+    "main",
+    "b1842890-69ed-4ead-962e-4c382c1fe897"
   ]
 }

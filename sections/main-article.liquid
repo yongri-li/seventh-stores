@@ -19,7 +19,9 @@
 			{%- when '@app' -%}
 				{% render block %}
 			{%- when 'breadcrumbs' -%}
+				<div class="mb-8">
 					{% render 'breadcrumb', list_classes: block.settings.breadcrumb_alignment %}
+				</div>
 			{%- when 'header' -%}
 				<div class="[ mx-auto mb-8 ]">
 					<p class="[ block text-xs mb-4 ] {{ block.settings.content_alignment }}">{{ blog.title }}</p>

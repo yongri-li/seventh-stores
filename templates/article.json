@@ -7,11 +7,13 @@
         "524c3869-8923-409e-9353-5e1f7df3597b": {
           "type": "header",
           "settings": {
+            "content_alignment": "justify-center"
           }
         },
         "c82620d6-0fdd-4913-8c5e-2797b49948f8": {
           "type": "breadcrumbs",
           "settings": {
+            "breadcrumb_alignment": "justify-center"
           }
         },
         "4caf64d0-6876-4f83-8fff-57c5d198fa94": {

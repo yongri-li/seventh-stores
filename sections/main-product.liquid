@@ -771,6 +771,12 @@
                     {%- endif -%}
                   </div>
                 {%- endif -%}
+              {%- when 'custom_text' -%}
+                {%- if block.settings.custom_text != blank -%}
+                  <div class="rte">
+                    {{ block.settings.custom_text }}
+                  </div>
+                {%- endif -%}
             {%- endcase -%}
           {%- endfor -%}
         </product-form>
@@ -1465,6 +1471,18 @@
       "type": "unisex_link",
       "name": "Unisex Link",
       "limit": 1
+    },
+    {
+      "type": "custom_text",
+      "name": "Custom Text",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "custom_text",
+          "label": "Custom Text"
+        }
+      ]
     },
     {
       "type": "data_related_products",

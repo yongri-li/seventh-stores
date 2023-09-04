@@ -101,6 +101,17 @@
                 {% endcase %}
               </div>
             {%- endfor -%}
+            <div class="pt-10">
+              <button
+                type="submit"
+                class="flex items-center group appearance-none text-base border-none bg-transparent leading-none p-0"
+              >
+                {% render 'icon-arrow-right' %}
+                <span class="inline-block ml-4 group-hover:ml-8 transition-all ease-in duration-500 text-base leading-none">
+                  {{- 'contact.form.send' | t -}}
+                </span>
+              </button>
+            </div>
           </div>
         {%- endform -%}
       </div>

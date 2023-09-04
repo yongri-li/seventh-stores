@@ -40,7 +40,7 @@
     "title_overlay": false,
     "title_default_bg_opacity": 1,
     "show_vendor": false,
-    "development_mode": true,
+    "development_mode": false,
     "checkout_logo_image": "shopify:\/\/shop_images\/logo.png",
     "checkout_accent_color": "#8a8985",
     "checkout_button_color": "#4b4c4a",

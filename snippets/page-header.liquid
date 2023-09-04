@@ -56,7 +56,7 @@
   {% endunless %}
 >
   <div
-    class="header__inner [ px-4 -mx-4 ]"
+    class="header__inner [ px-4 sm:px-6 lg:px-8 -mx-4 sm:-mx-6 lg:-mx-8 ]"
     {% unless title_default_bg_color == blank %}
       style="background-color: {{ title_default_bg_color | color_modify: 'alpha', title_default_bg_opacity }}"
     {% endunless %}

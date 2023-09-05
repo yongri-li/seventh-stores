@@ -53,7 +53,7 @@
 <section class="{% if section.settings.contain_hero %}container{% endif %} {% if section.settings.section_gutter %}px-4{% endif %} mx-auto">
   <div id="hero-{{ section.id }}" class="relative">
     {%- if section.settings.hero_link != blank -%}
-      <a href="{{ section.settings.cta_link }}" class="z-10 absolute top-0 left-0 right-0 bottom-0 "></a>
+      <a href="{{ section.settings.hero_link }}" class="z-10 absolute top-0 left-0 right-0 bottom-0 "></a>
     {%- endif -%}
 
     {%- capture image_classes_mobile -%}

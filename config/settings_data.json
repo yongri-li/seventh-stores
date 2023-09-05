@@ -43,6 +43,8 @@
     "favicon": "shopify:\/\/shop_images\/favicon.png",
     "development_mode": false,
     "checkout_logo_image": "shopify:\/\/shop_images\/logo.png",
+    "checkout_body_background_color": "#f3eee8",
+    "checkout_sidebar_background_color": "#fffaf4",
     "checkout_accent_color": "#8a8985",
     "checkout_button_color": "#4b4c4a",
     "app_bar_enabled": false,

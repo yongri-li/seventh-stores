@@ -52,7 +52,7 @@
 
 <section class="{% if section.settings.contain_hero %}container{% endif %} {% if section.settings.section_gutter %}px-4{% endif %} mx-auto">
   <div id="hero-{{ section.id }}" class="relative">
-    {%- if section.settings.cta_link != blank and section.settings.cta_link_two == blank -%}
+    {%- if section.settings.hero_link != blank -%}
       <a href="{{ section.settings.cta_link }}" class="z-10 absolute top-0 left-0 right-0 bottom-0 "></a>
     {%- endif -%}
 
@@ -203,6 +203,12 @@
       "id": "section_gutter",
       "label": "Add a gutter to the edges?",
       "default": false
+    },
+    {
+      "type": "url",
+      "id": "hero_link",
+      "label": "Link",
+      "info": "Add a link here to make the whole Hero image clickable."
     },
     {
       "type": "header",

@@ -184,8 +184,8 @@
               {%- when 'product_price' -%}
                 <div id="productPrice{{ product.id }}" class="product-price">
                   {%- if settings.wholesale_enabled == false or is_approved -%}
-                    <p class="heading mt-3 text-sm lg:text-base" data-price-wrapper>
-                      <span data-product-price> {{ offer.price | money }}</span>
+                    <p class="heading mt-3" data-price-wrapper>
+                      <span data-product-price class="text-sm lg:text-base"> {{ offer.price | money }}</span>
                       <span
                         {% unless offer.compare_at_price_max > offer.price %}
                           style="display: none;"

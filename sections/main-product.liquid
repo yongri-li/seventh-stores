@@ -185,7 +185,7 @@
                 <div id="productPrice{{ product.id }}" class="product-price">
                   {%- if settings.wholesale_enabled == false or is_approved -%}
                     <p class="heading mt-3" data-price-wrapper>
-                      <span data-product-price class="text-sm lg:text-base"> {{ offer.price | money }}</span>
+                      <span data-product-price class="text-sm"> {{ offer.price | money }}</span>
                       <span
                         {% unless offer.compare_at_price_max > offer.price %}
                           style="display: none;"
@@ -195,7 +195,7 @@
                       >
                         {{- 'products.product.regular_price' | t -}}
                       </span>
-                      <s class="[ text-xs lg:text-sm text-red-600 ]" data-product-compare-price>
+                      <s class="[ text-xs text-red-600 ]" data-product-compare-price>
                         {% if offer.compare_at_price > offer.price %}
                           {{ offer.compare_at_price | money }}
                         {% endif %}

@@ -65,9 +65,11 @@
 
     <div class="{{ image_classes_mobile }} {{ image_classes_desktop }} inset-0 overflow-hidden">
       <img
-        {% if section.settings.dynamic_loading %}
+        {%- if section.settings.dynamic_loading -%}
           fetchpriority="high"
-        {% endif %}
+        {%- else -%}
+          loading="lazy"
+        {%- endif -%}
         srcset="
           {%- if section.settings.mobile_image.width >= 165 -%}{{ section.settings.mobile_image | image_url: width: 165 }} 165w,{%- endif -%}
           {%- if section.settings.mobile_image.width >= 360 -%}{{ section.settings.mobile_image | image_url: width: 360 }} 360w,{%- endif -%}
@@ -88,9 +90,11 @@
       >
 
       <img
-        {% if section.settings.dynamic_loading %}
+        {%- if section.settings.dynamic_loading -%}
           fetchpriority="high"
-        {% endif %}
+        {%- else -%}
+          loading="lazy"
+        {%- endif -%}
         srcset="
           {%- if section.settings.desktop_image.width >= 165 -%}{{ section.settings.desktop_image | image_url: width: 165 }} 165w,{%- endif -%}
           {%- if section.settings.desktop_image.width >= 360 -%}{{ section.settings.desktop_image | image_url: width: 360 }} 360w,{%- endif -%}
@@ -104,7 +108,6 @@
         src="{{ section.settings.desktop_image | image_url: width: 533 }}"
         {% comment %} sizes="(min-width: 1100px) 535px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)" {% endcomment %}
         alt="{{ section.settings.image.alt | escape }}"
-        loading="lazy"
         width="{{ section.settings.desktop_image.width }}"
         height="{{ section.settings.desktop_image.height }}"
         class="w-full hidden lg:block {% if section.settings.use_img_height_desktop %}h-auto{% else %} h-full {{ section.settings.desktop_image_focus }} object-cover{% endif %}"
@@ -206,7 +209,7 @@
     },
     {
       "type": "checkbox",
-      "default": false,
+      "default": true,
       "label": "Dynamically Load Images?",
       "id": "dynamic_loading",
       "info": "Enable this setting to use the browsers dynamic loading to improve LCP. You should only check this box if the Hero banner is the first section on the page and appears above the fold."

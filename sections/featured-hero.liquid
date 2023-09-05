@@ -65,6 +65,9 @@
 
     <div class="{{ image_classes_mobile }} {{ image_classes_desktop }} inset-0 overflow-hidden">
       <img
+        {% if section.settings.dynamic_loading %}
+          fetchpriority="high"
+        {% endif %}
         srcset="
           {%- if section.settings.mobile_image.width >= 165 -%}{{ section.settings.mobile_image | image_url: width: 165 }} 165w,{%- endif -%}
           {%- if section.settings.mobile_image.width >= 360 -%}{{ section.settings.mobile_image | image_url: width: 360 }} 360w,{%- endif -%}
@@ -85,6 +88,9 @@
       >
 
       <img
+        {% if section.settings.dynamic_loading %}
+          fetchpriority="high"
+        {% endif %}
         srcset="
           {%- if section.settings.desktop_image.width >= 165 -%}{{ section.settings.desktop_image | image_url: width: 165 }} 165w,{%- endif -%}
           {%- if section.settings.desktop_image.width >= 360 -%}{{ section.settings.desktop_image | image_url: width: 360 }} 360w,{%- endif -%}
@@ -197,6 +203,13 @@
       "default": false,
       "label": "Contain Hero image?",
       "id": "contain_hero"
+    },
+    {
+      "type": "checkbox",
+      "default": false,
+      "label": "Dynamically Load Images?",
+      "id": "dynamic_loading",
+      "info": "Enable this setting to use the browsers dynamic loading to improve LCP. You should only check this box if the Hero banner is the first section on the page and appears above the fold."
     },
     {
       "type": "checkbox",

@@ -269,7 +269,7 @@ slider-component {
   color: var(--pgi-sale-badge-font);
 }
 
-.rte *:empty:not(br) {
+.rte *:empty:not(br):not(img) {
   display: none;
 }
 

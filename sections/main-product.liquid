@@ -668,7 +668,7 @@
                       </div>
                     </summary>
                   {%- endunless -%}
-                  <div class="rte pb-3">
+                  <div class="{% unless block.settings.size_guide %}rte{% endunless %} pb-3">
                     {%- if block.settings.product_description -%}
                       {{ product.description }}
                     {%- endif -%}

@@ -73,7 +73,9 @@
     <script>
       document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
     </script>
-  </head>
+  
+  {% include "globale-js.liquid" %}
+</head>
 
   <body
     id="{{ page_title | handle }}"
@@ -178,5 +180,7 @@
         border: 1px solid var(--border-color) !important;
       }
     {%- endstyle -%}
-  </body>
+   {% include 'smile-initializer' %}
+
+</body>
 </html>

@@ -4,6 +4,7 @@
       "type": "featured-hero",
       "settings": {
         "contain_hero": false,
+        "dynamic_loading": true,
         "section_gutter": false,
         "hero_link": "shopify:\/\/collections\/v2-hoodies-collection",
         "max_height_mobile": 60,
@@ -13,7 +14,7 @@
         "mobile_content_focus": "justify-start items-center",
         "max_height_desktop": 80,
         "use_img_height_desktop": true,
-        "desktop_image": "shopify:\/\/shop_images\/Desktop_Hompage_4470_x_3171px_-2_b6484276-cd05-4888-9ab5-d67352891890.png",
+        "desktop_image": "shopify:\/\/shop_images\/Desktop_Hompage_4470_x_3171px.png",
         "desktop_image_focus": "lg:object-top",
         "desktop_content_focus": "lg:justify-center lg:items-start"
       }

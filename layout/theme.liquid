@@ -73,7 +73,9 @@
     <script>
       document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
     </script>
-  </head>
+  
+  {% include "globale-js.liquid" %}
+</head>
 
   <body
     id="{{ page_title | handle }}"

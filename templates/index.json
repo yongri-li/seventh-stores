@@ -5,6 +5,7 @@
       "settings": {
         "contain_hero": false,
         "section_gutter": false,
+        "hero_link": "shopify:\/\/collections\/space-coats",
         "max_height_mobile": 60,
         "use_img_height_mobile": true,
         "mobile_image": "shopify:\/\/shop_images\/Copy_of_Homepage_Mobile_1_8056779b-3b5b-4dc7-a974-231f46a59d53.png",

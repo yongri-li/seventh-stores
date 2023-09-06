@@ -78,9 +78,9 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Garment Measurements",
-            "content": "",
+            "content": "<p><strong>One Size<\/strong><\/p><p>Body Height: 28cm<\/p><p>Width: 46cm<\/p><p>Depth: 22cm<\/p><p>Opening Height: 38cm<\/p><p>Strap Length: 55 - 93cm<\/p>",
             "product_description": false,
-            "size_guide": true,
+            "size_guide": false,
             "page_content": "",
             "open_by_default": false
           }

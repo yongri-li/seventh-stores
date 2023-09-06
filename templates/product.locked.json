@@ -24,6 +24,12 @@
           "settings": {
           }
         },
+        "7874ff1b-52c4-414f-9d4b-041a62dbafac": {
+          "type": "custom_text",
+          "settings": {
+            "custom_text": "<p>Subscribe for early access.<\/p><p>Launching<strong> 14.09.23 <\/strong><\/p><p>UK & Europe <strong>6PM BST<\/strong><\/p><p>North America <strong>1PM EST<\/strong><\/p><p>If you want early access, don’t forget to <a href=\"\/pages\/subscribe\" target=\"_blank\" title=\"Subscribe\"><strong>join the family.<\/strong><\/a><\/p>"
+          }
+        },
         "20c06d95-7112-4b19-ba71-37a0d8cddcd2": {
           "type": "variant_selectors",
           "settings": {
@@ -33,8 +39,10 @@
         },
         "36bcb969-de7f-4622-8eee-50454b12a522": {
           "type": "buy_now_buttons",
+          "disabled": true,
           "settings": {
             "show_qty_label": false,
+            "show_additional_checkout_buttons": false,
             "show_price_in_button": false,
             "show_quantity_Selector": true
           }
@@ -94,6 +102,7 @@
         "79fd555e-8126-441c-bbb6-1af194709a47",
         "433e87a7-71b4-4549-bc9c-43c0c37044c6",
         "a3796758-d1d2-41e8-bb2b-ddbd229e9efe",
+        "7874ff1b-52c4-414f-9d4b-041a62dbafac",
         "20c06d95-7112-4b19-ba71-37a0d8cddcd2",
         "36bcb969-de7f-4622-8eee-50454b12a522",
         "bd3274c6-41b9-4021-a413-5c75bc3846fa",
@@ -113,7 +122,6 @@
     },
     "accordions": {
       "type": "product-accordions",
-      "disabled": true,
       "blocks": {
         "c5876cd5-a7f4-466d-a4c8-7f799a39c481": {
           "type": "description",
@@ -135,6 +143,7 @@
         "c5876cd5-a7f4-466d-a4c8-7f799a39c481",
         "e9e2b6a8-5d8b-4cde-a06a-95cf63f71813"
       ],
+      "disabled": true,
       "settings": {
         "section_spacing_top": "mt-4",
         "section_spacing_bottom": "mb-4",

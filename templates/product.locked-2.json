@@ -96,17 +96,6 @@
             "open_by_default": false
           }
         },
-        "5d32dcbc-3d40-4e23-94cd-03f48bfe78ae": {
-          "type": "styled_with",
-          "settings": {
-          }
-        },
-        "80b98137-6193-4edc-945a-94bd2c6aad2c": {
-          "type": "data_related_products",
-          "settings": {
-            "limit": 2
-          }
-        },
         "a9a615a2-3bed-43f6-80d3-4e4cdb1bf88e": {
           "type": "collapsible_tab",
           "settings": {
@@ -116,6 +105,28 @@
             "size_guide": false,
             "page_content": "",
             "open_by_default": true
+          }
+        },
+        "3c04ec5e-1d45-4f97-915f-e597ffceb9aa": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Need Help?",
+            "content": "<p>Text us <a href=\"https:\/\/wa.me\/+447927651265\"><span style=\"text-decoration:underline\">on Whatsapp<\/span><\/a> or drop us an email - info@seventhstores.com<\/p><p>Check us out on Tik Tok (<a href=\"https:\/\/www.tiktok.com\/@seventhstores?lang=en\" target=\"_blank\"><span style=\"text-decoration:underline\">@Seventhstores<\/span><\/a>) where you can see our pieces on different heights and body types.<\/p>",
+            "product_description": false,
+            "size_guide": false,
+            "page_content": "",
+            "open_by_default": true
+          }
+        },
+        "5d32dcbc-3d40-4e23-94cd-03f48bfe78ae": {
+          "type": "styled_with",
+          "settings": {
+          }
+        },
+        "80b98137-6193-4edc-945a-94bd2c6aad2c": {
+          "type": "data_related_products",
+          "settings": {
+            "limit": 2
           }
         }
       },
@@ -132,9 +143,10 @@
         "e64e89d1-ba73-47e4-a915-29089d77fd31",
         "893dce1e-df11-4c9e-9652-e769846efe70",
         "5c049b49-c6da-4174-9a28-8f7f58984f5e",
+        "a9a615a2-3bed-43f6-80d3-4e4cdb1bf88e",
+        "3c04ec5e-1d45-4f97-915f-e597ffceb9aa",
         "5d32dcbc-3d40-4e23-94cd-03f48bfe78ae",
-        "80b98137-6193-4edc-945a-94bd2c6aad2c",
-        "a9a615a2-3bed-43f6-80d3-4e4cdb1bf88e"
+        "80b98137-6193-4edc-945a-94bd2c6aad2c"
       ],
       "settings": {
         "content_bg": "#fffaf4",

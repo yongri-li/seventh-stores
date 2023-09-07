@@ -370,17 +370,21 @@
                   </div>
                 {%- endif -%}
               {%- when 'custom_text' -%}
-                {%- if block.settings.logged_in_only and customer != blank -%}
-                  {%- if block.settings.custom_text != blank -%}
-                    <div class="rte">
-                      {{ block.settings.custom_text }}
-                    </div>
+                {%- if block.settings.logged_in_only -%}
+                  {%- if customer != blank -%}
+                    {%- if block.settings.custom_text != blank -%}
+                      <div class="rte">
+                        {{ block.settings.custom_text }}
+                      </div>
+                    {%- endif -%}
                   {%- endif -%}
-                {%- elsif block.settings.logged_out_only and customer == blank -%}
-                  {%- if block.settings.custom_text != blank -%}
-                    <div class="rte">
-                      {{ block.settings.custom_text }}
-                    </div>
+                {%- elsif block.settings.logged_out_only -%}
+                  {%- if customer == blank -%}
+                    {%- if block.settings.custom_text != blank -%}
+                      <div class="rte">
+                        {{ block.settings.custom_text }}
+                      </div>
+                    {%- endif -%}
                   {%- endif -%}
                 {%- else -%}
                   {%- if block.settings.custom_text != blank -%}

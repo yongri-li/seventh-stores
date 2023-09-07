@@ -12,8 +12,6 @@
   }
 {% endstyle %}
 
-{%- assign measurements = 'total_length,sleeve_length,back,chest,shoulder,hem,inseam,rise,waist' | split: ',' -%}
-
 <div class="flex flex-wrap items-center justify-center">
   {%- assign size_guide_image = product.metafields.measurements.size_guide_image -%}
   {%- unless size_guide_image == blank -%}
@@ -43,15 +41,16 @@
           data-tab="{{ forloop.index }}"
           class="{% if forloop.first %}active{% endif %} [ flex flex-wrap items-center justify-center w-full ]"
         >
+          {%- assign measurements = variant.metafields.measurements -%}
           {%- for measurement in measurements -%}
-            {%- if variant.metafields.measurements[measurement] != blank -%}
+            {%- if measurement[0] != blank -%}
               {%- assign has_measurements = true -%}
               <div class="px-2 text-center">
-                <p>{{ measurement | replace: '_', ' ' | capitalize }}</p>
+                <p>{{ measurement[0] | replace: '_', ' ' | capitalize }}</p>
                 <p>
                   <strong>
-                    {{ variant.metafields.measurements[measurement].value }}
-                    {{ variant.metafields.measurements[measurement].unit }}
+                    {{ measurement[1].value }}
+                    {{ measurement[1].unit }}
                   </strong>
                 </p>
               </div>

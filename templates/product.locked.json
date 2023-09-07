@@ -27,12 +27,15 @@
         "7874ff1b-52c4-414f-9d4b-041a62dbafac": {
           "type": "custom_text",
           "settings": {
+            "logged_in_only": true,
+            "logged_out_only": false,
             "custom_text": "<p>Subscribe for early access.<\/p><p>Launching<strong> 14.09.23 <\/strong><\/p><ul><li>UK & Europe <strong>6PM BST<\/strong><\/li><li>North America <strong>1PM EST<\/strong><\/li><\/ul><p><\/p><p>If you want early access, don’t forget to <a href=\"https:\/\/seventhstores.com\/account\/register\" target=\"_blank\" title=\"https:\/\/seventhstores.com\/account\/register\"><strong>join the family.<\/strong><\/a><\/p>"
           }
         },
         "20c06d95-7112-4b19-ba71-37a0d8cddcd2": {
           "type": "variant_selectors",
           "settings": {
+            "logged_in_only": false,
             "show_labels": false,
             "use_swatches": false
           }
@@ -41,6 +44,7 @@
           "type": "buy_now_buttons",
           "disabled": true,
           "settings": {
+            "logged_in_only": false,
             "show_qty_label": false,
             "show_additional_checkout_buttons": false,
             "show_price_in_button": false,

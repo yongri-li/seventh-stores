@@ -2,7 +2,6 @@
   "current": {
     "show_client_services": true,
     "show_subscribe": true,
-    "wholesale_enabled": false,
     "use_custom_fonts": true,
     "navigation_font": "archivo_n4",
     "navigation_transform": "uppercase",
@@ -49,6 +48,7 @@
     "checkout_sidebar_background_color": "#fffaf4",
     "checkout_accent_color": "#8a8985",
     "checkout_button_color": "#4b4c4a",
+    "wholesale_enabled": false,
     "app_bar_enabled": false,
     "sections": {
       "promo-bar": {

@@ -6,17 +6,6 @@
     assign current_selling_plan_allocation = current_variant.selling_plan_allocations | first
   endif
   assign offer = current_selling_plan_allocation | default: current_variant
-
-  assign is_approved = false
-  if settings.wholesale_enabled
-    if customer
-      for tag in customer.tags
-        if tag == settings.wholesale_tag
-          assign is_approved = true
-        endif
-      endfor
-    endif
-  endif
 -%}
 
 {%- style -%}
@@ -183,25 +172,23 @@
                 <h1 class="[ mt-3 lg:mt-0 text-sm leading-snug lg:text-lg ]">{{ product.title }}</h1>
               {%- when 'product_price' -%}
                 <div id="productPrice{{ product.id }}" class="product-price">
-                  {%- if settings.wholesale_enabled == false or is_approved -%}
-                    <p class="heading mt-3" data-price-wrapper>
-                      <span data-product-price class="text-sm"> {{ offer.price | money }}</span>
-                      <span
-                        {% unless offer.compare_at_price_max > offer.price %}
-                          style="display: none;"
-                        {% endunless %}
-                        class="visually-hidden"
-                        data-compare-text
-                      >
-                        {{- 'products.product.regular_price' | t -}}
-                      </span>
-                      <s class="[ text-xs text-red-600 ]" data-product-compare-price>
-                        {% if offer.compare_at_price > offer.price %}
-                          {{ offer.compare_at_price | money }}
-                        {% endif %}
-                      </s>
-                    </p>
-                  {%- endif -%}
+                  <p class="heading mt-3" data-price-wrapper>
+                    <span data-product-price class="text-sm"> {{ offer.price | money }}</span>
+                    <span
+                      {% unless offer.compare_at_price_max > offer.price %}
+                        style="display: none;"
+                      {% endunless %}
+                      class="visually-hidden"
+                      data-compare-text
+                    >
+                      {{- 'products.product.regular_price' | t -}}
+                    </span>
+                    <s class="[ text-xs text-red-600 ]" data-product-compare-price>
+                      {% if offer.compare_at_price > offer.price %}
+                        {{ offer.compare_at_price | money }}
+                      {% endif %}
+                    </s>
+                  </p>
                 </div>
               {%- when 'product_vendor' -%}
                 {% if product.vendor != blank %}
@@ -235,250 +222,13 @@
                   {% render 'breadcrumb' %}
                 </div>
               {%- when 'variant_selectors' -%}
-                <div class="max-w-md">
-                  {%- if settings.wholesale_enabled == false or is_approved -%}
-                    {%- unless product.has_only_default_variant -%}
-                      {%- if block.settings.use_swatches -%}
-                        <variant-radios>
-                      {%- else -%}
-                        <variant-selectors>
-                      {%- endif -%}
-                      <div class="variant-selectors" id="variantSelectors{{ product.id }}">
-                        <div class="flex flex-wrap items-end -mx-3">
-                          {%- for option in product.options_with_values -%}
-                            <fieldset class="mt-3 px-3 flex-grow {% if option.values.size <= 1 %}hidden{% endif %} {% if block.settings.use_swatches %}w-full{% else %}min-w-5/10{% endif %}">
-                              <label
-                                class="block text-xs mb-2 heading {% if block.settings.show_labels == false %}sr-only{% endif %}"
-                                for="Option{{ option.position }}"
-                              >
-                                {{- option.name -}}
-                              </label>
-                              {%- liquid
-                                assign option_name = option.name | downcase
-                                assign is_color = false
-                                if option_name == 'color' or option_name == 'colour'
-                                  assign is_color = true
-                                endif
-                              -%}
-                              {%- if block.settings.use_swatches -%}
-                                <div class="flex flex-wrap {% unless is_color %}border-t border-l border-color{% endunless %}">
-                                  {%- for value in option.values -%}
-                                    <label
-                                      {% if is_color %}
-                                        style="background-color: {{ value }};"
-                                      {% endif %}
-                                      for="Option-{{ section.id }}-{{ product.id }}-{{ value }}"
-                                      class="cursor-pointer swatch-{{ value }} {% if is_color %}w-8 h-8 rounded-full {% else %} flex-grow {% endif %} border-b border-r border-color flex items-center justify-center text-xs cursor-pointer focus:outline-none"
-                                    >
-                                      <input
-                                        data-option-selector
-                                        id="Option-{{ section.id }}-{{ product.id }}-{{ value }}"
-                                        data-option-selector
-                                        type="radio"
-                                        name="options[{{ option.name | escape }}]"
-                                        value="{{ value }}"
-                                        class="sr-only peer"
-                                        aria-labelledby="{{ value | escape }}"
-                                        {% if option.selected_value == value %}
-                                          checked
-                                        {% endif %}
-                                      >
-                                      {%- unless is_color -%}
-                                        <p class="block p-3 lg:p-5 w-full text-center pointer-events-none cursor-pointer hover:bg-slate-100 peer-checked:bg-slate-100">
-                                          {{ value | escape }}
-                                        </p>
-                                      {%- endunless -%}
-                                    </label>
-                                  {%- endfor -%}
-                                </div>
-                              {%- else -%}
-                                <div class="inline-block relative w-full selector-wrapper js">
-                                  <select
-                                    class="[ block bg-transparent appearance-none w-full border border-color px-4 py-3 pr-8 focus:outline-none focus:shadow-outline text-xs ] select"
-                                    id="Option{{ option.position }}"
-                                    name="options[{{ option.name | escape }}]"
-                                    form="product_form_{{ product.id }}"
-                                    data-option-selector
-                                  >
-                                    {% for value in option.values %}
-                                      <option
-                                        value="{{ value | escape }}"
-                                        {% if option.selected_value == value %}
-                                          selected="selected"
-                                        {% endif %}
-                                      >
-                                        {{ value }}
-                                      </option>
-                                    {% endfor %}
-                                  </select>
-                                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                    <svg
-                                      class="fill-current h-4 w-4"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      viewBox="0 0 20 20"
-                                    >
-                                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
-                                    </svg>
-                                  </div>
-                                </div>
-                              {%- endif -%}
-                            </fieldset>
-                          {%- endfor -%}
-                        </div>
-                      </div>
-                      <script type="application/json">
-                        {{ product.variants | json }}
-                      </script>
-                      {%- if block.settings.use_swatches -%}
-                        </variant-radios>
-                      {%- else -%}
-                        </variant-selectors>
-                      {%- endif -%}
-                    {%- endunless -%}
-
-                    <noscript class="product-form__noscript-wrapper-{{ section.id }}">
-                      <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
-                        <label class="form__label" for="Variants-{{ section.id }}">
-                          {{- 'products.product.product_variants' | t -}}
-                        </label>
-                        <select
-                          form="product_form_{{ product.id }}"
-                          name="id"
-                          data-product-id="{{ product.id }}"
-                          class="no-js hidden"
-                          data-product-select
-                        >
-                          {% for variant in product.variants %}
-                            <option
-                              {% if variant == current_variant %}
-                                selected="selected"
-                              {% endif %}
-                              {% unless variant.available %}
-                                disabled="disabled"
-                              {% endunless %}
-                              value="{{ variant.id }}"
-                            >
-                              {{ variant.title }}
-                            </option>
-                          {% endfor %}
-                        </select>
-                      </div>
-                    </noscript>
-
-                    {%- if product.selling_plan_groups.size > 0 -%}
-                      <selling-plan
-                        style="display: block;"
-                        data-selling-plans
-                        class="block mt-3"
-                        x-data="{ showSizeGuide: false, purchaseType: 'subscription'}"
-                      >
-                        <legend class="sr-only">Purchase options</legend>
-                        {% for group in product.selling_plan_groups %}
-                          <!-- Checked: "bg-indigo-50 border-indigo-200 z-10", Not Checked: "border-gray-200" -->
-                          <label
-                            for="{{ product.id }}-subscription"
-                            :class="{ 'bg-gray-100 border-indigo-200 z-10': purchaseType === 'subscription' }"
-                            @click="purchaseType = 'subscription'"
-                            class="border-gray-200 relative border border-solid p-4 flex cursor-pointer rounded-tl-md rounded-tr-md"
-                          >
-                            <input
-                              data-purchase-option-selector
-                              checked
-                              value="subscription"
-                              id="{{ product.id }}-subscription"
-                              type="radio"
-                              name="purchase_option"
-                              form="product_form_{{ product.id }}"
-                              class="h-4 w-4 mt-0.5 cursor-pointer text-indigo-600 border-gray-300 focus:ring-indigo-500"
-                              aria-labelledby="privacy-setting-1-label"
-                              aria-describedby="privacy-setting-1-description"
-                            >
-                            <div class="ml-3 flex flex-col">
-                              <!-- Checked: "text-indigo-900", Not Checked: "text-gray-900" -->
-                              <span class="text-gray-900 block text-sm font-medium">
-                                {{- 'products.subscription.subscription' | t -}}
-                              </span>
-                              {%- assign product_onetime_subscription = product.metafields.accentuate.product_subscription_subtitle -%}
-                              {%- unless product_onetime_subscription == blank -%}
-                                <span x-show="purchaseType == 'subscription'" class="text-gray-700 block text-sm pt-2">
-                                  {{- product_onetime_subscription -}}
-                                </span>
-                              {%- endunless -%}
-                              <select
-                                :class="{ 'border-indigo-200 z-10': purchaseType === 'subscription' }"
-                                class="appearance-none mt-2 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-                                data-single-plan-selector
-                                data-group-id="{{ group.id }}"
-                                name="selling_plan"
-                                form="product_form_{{ product.id }}"
-                              >
-                                {% for plan in group.selling_plans %}
-                                  <!-- {{ plan | json }} -->
-                                  <option
-                                    value="{{ plan.id }}"
-                                    {% if product.selected_selling_plan.id == plan.id %}
-                                      selected="selected"
-                                    {% endif %}
-                                  >
-                                    {{ plan.name }} - Save {{ plan.price_adjustments[0].value }}%
-                                  </option>
-                                {% endfor %}
-                              </select>
-                              <span class="text-gray-700 block text-sm pt-2 font-bold">
-                                {{- 'products.subscription.subscription_sub' | t -}}
-                              </span>
-                            </div>
-                          </label>
-                        {% endfor %}
-                        <div class="rounded-md -space-y-px">
-                          {% unless product.requires_selling_plan %}
-                            <!-- Checked: "bg-indigo-50 border-indigo-200 z-10", Not Checked: "border-gray-200" -->
-                            <label
-                              :class="{ 'bg-gray-100 border-indigo-200 z-10': purchaseType === 'one_time' }"
-                              @click="purchaseType = 'one_time'"
-                              class="border-gray-200 border-solid rounded-bl-md rounded-br-md relative border p-4 flex cursor-pointer"
-                              for="{{ product.id }}-oneTime"
-                            >
-                              <input
-                                data-purchase-option-selector
-                                value="one_time"
-                                type="radio"
-                                name="purchase_option"
-                                id="{{ product.id }}-oneTime"
-                                form="product_form_{{ product.id }}"
-                                class="h-4 w-4 mt-0.5 cursor-pointer text-indigo-600 border-gray-300 focus:ring-indigo-500"
-                                aria-labelledby="privacy-setting-0-label"
-                                aria-describedby="privacy-setting-0-description"
-                              >
-                              <div class="ml-3 flex flex-col">
-                                <!-- Checked: "text-indigo-900", Not Checked: "text-gray-900" -->
-                                <span class="text-gray-900 block text-sm font-medium">
-                                  {{- 'products.subscription.one_time' | t -}}
-                                </span>
-                                <!-- Checked: "text-indigo-700", Not Checked: "text-gray-500" -->
-                                {%- assign product_onetime_subtitle = product.metafields.accentuate.product_onetime_subtitle -%}
-                                {%- assign one_time_sub = 'products.subscription.one_time_sub' | t -%}
-                                {%- unless product_onetime_subtitle == blank -%}
-                                  <span x-show="purchaseType == 'one_time'" class="text-gray-700 block text-sm pt-2">
-                                    {{- product_onetime_subtitle -}}
-                                  </span>
-                                {%- endunless -%}
-                                {%- unless one_time_sub == blank -%}
-                                  <span class="text-gray-700 block text-sm pt-2 font-bold">
-                                    {{- 'products.subscription.one_time_sub' | t -}}
-                                  </span>
-                                {%- endunless -%}
-                              </div>
-                            </label>
-                          {% endunless %}
-                        </div>
-                        <script type="application/json">
-                          {{ product.variants | json }}
-                        </script>
-                      </selling-plan>
-                    {%- endif -%}
+                {%- if block.settings.logged_in_only -%}
+                  {%- if customer != blank -%}
+                    {%- render 'main-product-variant-selectors' -%}
                   {%- endif -%}
-                </div>
+                {%- else -%}
+                  {%- render 'main-product-variant-selectors' -%}
+                {%- endif -%}
               {%- when 'unisex_link' -%}
                 <!-- Unisex Link -->
                 {%- assign unisex_link = product.metafields.gender.variant.value -%}
@@ -494,169 +244,15 @@
               {%- when 'product_description' -%}
                 <div class="rte mt-3">{{ product.description }}</div>
               {%- when 'buy_now_buttons' -%}
-                <div class="max-w-md">
-                  {% form 'product', product, data-product-form: '', data-product-handle: product.handle %}
-                    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-                    {%- if product.selling_plan_groups.size > 0 -%}
-                      <input type="hidden" name="selling_plan" value="{{ offer.selected_selling_plan.id }}">
-                    {%- endif -%}
-                    <div class="product-form-cta" id="addToCart{{ product.id }}">
-                      {%- if settings.wholesale_enabled == false or is_approved -%}
-                        <div class="flex flex-wrap items-end -mx-3 mt-3">
-                          {%- if block.settings.show_quantity_Selector -%}
-                            <div class="px-3 flex-none">
-                              <label
-                                class="block text-xs mb-2 heading {% unless block.settings.show_qty_label %}sr-only{% endunless %}"
-                                for="quantity"
-                              >
-                                {{- 'products.product.quantity' | t -}}
-                              </label>
-                              <div class="inline-block relative w-full selector-wrapper js">
-                                <select
-                                  class="[ block bg-transparent appearance-none w-full border border-color px-4 py-3 pr-8 focus:outline-none focus:shadow-outline text-xs ] select"
-                                  id="Quantity"
-                                  name="quantity"
-                                  form="product_form_{{ product.id }}"
-                                >
-                                  {%- for i in (1..5) -%}
-                                    <option value="{{ i }}">{{ i }}</option>
-                                  {%- endfor -%}
-                                </select>
-                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                  <svg
-                                    class="fill-current h-4 w-4"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                  >
-                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
-                                  </svg>
-                                </div>
-                              </div>
-                            </div>
-                          {%- else -%}
-                            <input type="hidden" id="Quantity" name="quantity" value="1">
-                          {%- endif -%}
-
-                          <div class="px-3 flex-grow">
-                            {%- unless size_guide == blank -%}
-                              <p
-                                x-data
-                                @click="$dispatch('size-guide-trigger')"
-                                class="[ cursor-pointer heading block tracking-wide text-gray-700 text-xs mb-2 text-right ]"
-                              >
-                                {{ 'products.product.size_guide' | t }}
-                              </p>
-                            {%- endunless -%}
-                            <button
-                              class="[ w-full focus:shadow-outline focus:outline-none py-3 px-4 disabled:opacity-50 overflow-hidden group text-xs leading-tight ] heading btn add-to-cart-button"
-                              type="submit"
-                              name="add"
-                              data-add-to-cart
-                              {% unless current_variant.available %}
-                                disabled="disabled"
-                              {% endunless %}
-                            >
-                              <span class="loading mx-auto items-center w-full justify-center leading-tight">
-                                <svg
-                                  height="14"
-                                  focusable="false"
-                                  role="presentation"
-                                  class="spinner [ mx-auto ]"
-                                  viewBox="0 0 66 66"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                                </svg>
-                              </span>
-                              <span class="[ group-disabled:hidden inline-block transition-transform group-hover:translate-x-9 leading-tight ]">
-                                {% render 'icon-bag', classes: 'align-middle inline-block mr-1' %}
-                                {{ 'products.product.add_to_cart' | t }}
-                              </span>
-                              <span class="[ hidden group-disabled:inline-block transition-transform group-hover:translate-x-52 leading-tight ]">
-                                {{ 'products.product.sold_out' | t }}
-                              </span>
-                              <span
-                                id="productPrice{{ product.id }}"
-                                class="product-price [ transition-transform group-hover:translate-x-52 inline-block ml-5 leading-tight ]"
-                              >
-                                {%- if settings.wholesale_enabled == false or is_approved -%}
-                                  <span data-price-wrapper>
-                                    <span data-product-price> {{ offer.price | money }}</span>
-                                    <span
-                                      {% unless offer.compare_at_price_max > offer.price %}
-                                        style="display: none;"
-                                      {% endunless %}
-                                      class="visually-hidden"
-                                      data-compare-text
-                                    >
-                                      {{- 'products.product.regular_price' | t -}}
-                                    </span>
-                                    <s class="[ text-red-600 ]" data-product-compare-price>
-                                      {% if offer.compare_at_price > offer.price %}
-                                        {{ offer.compare_at_price | money }}
-                                      {% endif %}
-                                    </s>
-                                  </span>
-                                {%- endif -%}
-                              </span>
-                            </button>
-                          </div>
-                        </div>
-
-                        {%- if block.settings.show_additional_checkout_buttons -%}
-                          {%- if additional_checkout_buttons -%}
-                            <div class="additional-checkout-buttons mt-3">
-                              {{ content_for_additional_checkout_buttons }}
-                            </div>
-                          {%- endif -%}
-                        {%- endif -%}
-                      {%- else -%}
-                        {%- if customer -%}
-                          {%- if is_approved == false -%}
-                            {%- render 'alert-error',
-                              heading: 'You do not yet have permission',
-                              error: 'Your account has not yet been approved by our admins.'
-                            -%}
-                          {%- endif -%}
-                        {%- else -%}
-                          {%- render 'alert-error',
-                            heading: 'Log in or create an account',
-                            error: 'You must be logged to purchase a product.'
-                          -%}
-                          <div x-data="{ activeTab: 'login' }" class="my-5">
-                            <div class="border-b border-color border-solid">
-                              <nav class="-mb-px flex pb-4 space-x-8" aria-label="Tabs">
-                                <!--
-                                  Current: "border-indigo-500 text-indigo-600", Default: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
-                                -->
-                                <p
-                                  @click="activeTab = 'login'"
-                                  :class="{ 'bg-gray-100' : activeTab === 'login' }"
-                                  class="heading px-3 py-2 font-medium text-xs cursor-pointer rounded-md"
-                                >
-                                  {{ 'layout.customer.log_in' | t }}
-                                </p>
-                                <p
-                                  @click="activeTab = 'register'"
-                                  :class="{ 'bg-gray-100' : activeTab === 'register' }"
-                                  class="heading px-3 py-2 font-medium text-xs cursor-pointer rounded-md"
-                                >
-                                  {{ 'layout.customer.create_account' | t }}
-                                </p>
-                              </nav>
-                            </div>
-                            <div x-show="activeTab == 'login' ">
-                              {%- render 'customer-login-form' -%}
-                            </div>
-                            <div x-show="activeTab == 'register' ">
-                              {%- render 'customer-registration-form' -%}
-                            </div>
-                          </div>
-                        {%- endif -%}
-                      {%- endif -%}
+                {%- if block.settings.logged_in_only -%}
+                  {%- if customer != blank -%}
+                    <div class="max-w-md">
+                      {%- render 'main-product-buy-buttons' -%}
                     </div>
-                  {%- endform -%}
-                </div>
+                  {%- endif -%}
+                {%- else -%}
+                  {%- render 'main-product-buy-buttons' -%}
+                {%- endif -%}
               {%- when 'collapsible_tab' -%}
                 <details class="border-t border-b border-solid border-color group accordion accordion--product">
                   {%- unless block.settings.heading == blank -%}
@@ -774,10 +370,28 @@
                   </div>
                 {%- endif -%}
               {%- when 'custom_text' -%}
-                {%- if block.settings.custom_text != blank -%}
-                  <div class="rte">
-                    {{ block.settings.custom_text }}
-                  </div>
+                {%- if block.settings.logged_in_only -%}
+                  {%- if customer != blank -%}
+                    {%- if block.settings.custom_text != blank -%}
+                      <div class="rte">
+                        {{ block.settings.custom_text }}
+                      </div>
+                    {%- endif -%}
+                  {%- endif -%}
+                {%- elsif block.settings.logged_out_only -%}
+                  {%- if customer == blank -%}
+                    {%- if block.settings.custom_text != blank -%}
+                      <div class="rte">
+                        {{ block.settings.custom_text }}
+                      </div>
+                    {%- endif -%}
+                  {%- endif -%}
+                {%- else -%}
+                  {%- if block.settings.custom_text != blank -%}
+                    <div class="rte">
+                      {{ block.settings.custom_text }}
+                    </div>
+                  {%- endif -%}
                 {%- endif -%}
             {%- endcase -%}
           {%- endfor -%}
@@ -1059,6 +673,20 @@
       "limit": 1,
       "settings": [
         {
+          "type": "header",
+          "content": "Locked Settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "logged_in_only",
+          "label": "Show only to logged in customers?",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Variant Selector Settings"
+        },
+        {
           "type": "checkbox",
           "id": "show_labels",
           "label": "Show labels above Variant selectors?",
@@ -1092,6 +720,20 @@
       "name": "Buy Now Buttons",
       "limit": 1,
       "settings": [
+        {
+          "type": "header",
+          "content": "Locked Settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "logged_in_only",
+          "label": "Show only to logged in customers?",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Button Settings"
+        },
         {
           "type": "checkbox",
           "id": "show_qty_label",
@@ -1483,8 +1125,23 @@
     {
       "type": "custom_text",
       "name": "Custom Text",
-      "limit": 1,
       "settings": [
+        {
+          "type": "header",
+          "content": "Locked Settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "logged_in_only",
+          "label": "Show only to logged in customers?",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "logged_out_only",
+          "label": "Show only to logged out customers?",
+          "default": false
+        },
         {
           "type": "richtext",
           "id": "custom_text",

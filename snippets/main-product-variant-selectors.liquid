@@ -1,0 +1,242 @@
+<div class="max-w-md">
+  {%- unless product.has_only_default_variant -%}
+    {%- if block.settings.use_swatches -%}
+      <variant-radios>
+    {%- else -%}
+      <variant-selectors>
+    {%- endif -%}
+    <div class="variant-selectors" id="variantSelectors{{ product.id }}">
+      <div class="flex flex-wrap items-end -mx-3">
+        {%- for option in product.options_with_values -%}
+          <fieldset class="mt-3 px-3 flex-grow {% if option.values.size <= 1 %}hidden{% endif %} {% if block.settings.use_swatches %}w-full{% else %}min-w-5/10{% endif %}">
+            <label
+              class="block text-xs mb-2 heading {% if block.settings.show_labels == false %}sr-only{% endif %}"
+              for="Option{{ option.position }}"
+            >
+              {{- option.name -}}
+            </label>
+            {%- liquid
+              assign option_name = option.name | downcase
+              assign is_color = false
+              if option_name == 'color' or option_name == 'colour'
+                assign is_color = true
+              endif
+            -%}
+            {%- if block.settings.use_swatches -%}
+              <div class="flex flex-wrap {% unless is_color %}border-t border-l border-color{% endunless %}">
+                {%- for value in option.values -%}
+                  <label
+                    {% if is_color %}
+                      style="background-color: {{ value }};"
+                    {% endif %}
+                    for="Option-{{ section.id }}-{{ product.id }}-{{ value }}"
+                    class="cursor-pointer swatch-{{ value }} {% if is_color %}w-8 h-8 rounded-full {% else %} flex-grow {% endif %} border-b border-r border-color flex items-center justify-center text-xs cursor-pointer focus:outline-none"
+                  >
+                    <input
+                      data-option-selector
+                      id="Option-{{ section.id }}-{{ product.id }}-{{ value }}"
+                      data-option-selector
+                      type="radio"
+                      name="options[{{ option.name | escape }}]"
+                      value="{{ value }}"
+                      class="sr-only peer"
+                      aria-labelledby="{{ value | escape }}"
+                      {% if option.selected_value == value %}
+                        checked
+                      {% endif %}
+                    >
+                    {%- unless is_color -%}
+                      <p class="block p-3 lg:p-5 w-full text-center pointer-events-none cursor-pointer hover:bg-slate-100 peer-checked:bg-slate-100">
+                        {{ value | escape }}
+                      </p>
+                    {%- endunless -%}
+                  </label>
+                {%- endfor -%}
+              </div>
+            {%- else -%}
+              <div class="inline-block relative w-full selector-wrapper js">
+                <select
+                  class="[ block bg-transparent appearance-none w-full border border-color px-4 py-3 pr-8 focus:outline-none focus:shadow-outline text-xs ] select"
+                  id="Option{{ option.position }}"
+                  name="options[{{ option.name | escape }}]"
+                  form="product_form_{{ product.id }}"
+                  data-option-selector
+                >
+                  {% for value in option.values %}
+                    <option
+                      value="{{ value | escape }}"
+                      {% if option.selected_value == value %}
+                        selected="selected"
+                      {% endif %}
+                    >
+                      {{ value }}
+                    </option>
+                  {% endfor %}
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                  <svg
+                    class="fill-current h-4 w-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                  </svg>
+                </div>
+              </div>
+            {%- endif -%}
+          </fieldset>
+        {%- endfor -%}
+      </div>
+    </div>
+    <script type="application/json">
+      {{ product.variants | json }}
+    </script>
+    {%- if block.settings.use_swatches -%}
+      </variant-radios>
+    {%- else -%}
+      </variant-selectors>
+    {%- endif -%}
+  {%- endunless -%}
+
+  <noscript class="product-form__noscript-wrapper-{{ section.id }}">
+    <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
+      <label class="form__label" for="Variants-{{ section.id }}">
+        {{- 'products.product.product_variants' | t -}}
+      </label>
+      <select
+        form="product_form_{{ product.id }}"
+        name="id"
+        data-product-id="{{ product.id }}"
+        class="no-js hidden"
+        data-product-select
+      >
+        {% for variant in product.variants %}
+          <option
+            {% if variant == current_variant %}
+              selected="selected"
+            {% endif %}
+            {% unless variant.available %}
+              disabled="disabled"
+            {% endunless %}
+            value="{{ variant.id }}"
+          >
+            {{ variant.title }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+  </noscript>
+
+  {%- if product.selling_plan_groups.size > 0 -%}
+    <selling-plan
+      style="display: block;"
+      data-selling-plans
+      class="block mt-3"
+      x-data="{ showSizeGuide: false, purchaseType: 'subscription'}"
+    >
+      <legend class="sr-only">Purchase options</legend>
+      {% for group in product.selling_plan_groups %}
+        <!-- Checked: "bg-indigo-50 border-indigo-200 z-10", Not Checked: "border-gray-200" -->
+        <label
+          for="{{ product.id }}-subscription"
+          :class="{ 'bg-gray-100 border-indigo-200 z-10': purchaseType === 'subscription' }"
+          @click="purchaseType = 'subscription'"
+          class="border-gray-200 relative border border-solid p-4 flex cursor-pointer rounded-tl-md rounded-tr-md"
+        >
+          <input
+            data-purchase-option-selector
+            checked
+            value="subscription"
+            id="{{ product.id }}-subscription"
+            type="radio"
+            name="purchase_option"
+            form="product_form_{{ product.id }}"
+            class="h-4 w-4 mt-0.5 cursor-pointer text-indigo-600 border-gray-300 focus:ring-indigo-500"
+            aria-labelledby="privacy-setting-1-label"
+            aria-describedby="privacy-setting-1-description"
+          >
+          <div class="ml-3 flex flex-col">
+            <!-- Checked: "text-indigo-900", Not Checked: "text-gray-900" -->
+            <span class="text-gray-900 block text-sm font-medium">
+              {{- 'products.subscription.subscription' | t -}}
+            </span>
+            {%- assign product_onetime_subscription = product.metafields.accentuate.product_subscription_subtitle -%}
+            {%- unless product_onetime_subscription == blank -%}
+              <span x-show="purchaseType == 'subscription'" class="text-gray-700 block text-sm pt-2">
+                {{- product_onetime_subscription -}}
+              </span>
+            {%- endunless -%}
+            <select
+              :class="{ 'border-indigo-200 z-10': purchaseType === 'subscription' }"
+              class="appearance-none mt-2 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+              data-single-plan-selector
+              data-group-id="{{ group.id }}"
+              name="selling_plan"
+              form="product_form_{{ product.id }}"
+            >
+              {% for plan in group.selling_plans %}
+                <!-- {{ plan | json }} -->
+                <option
+                  value="{{ plan.id }}"
+                  {% if product.selected_selling_plan.id == plan.id %}
+                    selected="selected"
+                  {% endif %}
+                >
+                  {{ plan.name }} - Save {{ plan.price_adjustments[0].value }}%
+                </option>
+              {% endfor %}
+            </select>
+            <span class="text-gray-700 block text-sm pt-2 font-bold">
+              {{- 'products.subscription.subscription_sub' | t -}}
+            </span>
+          </div>
+        </label>
+      {% endfor %}
+      <div class="rounded-md -space-y-px">
+        {% unless product.requires_selling_plan %}
+          <!-- Checked: "bg-indigo-50 border-indigo-200 z-10", Not Checked: "border-gray-200" -->
+          <label
+            :class="{ 'bg-gray-100 border-indigo-200 z-10': purchaseType === 'one_time' }"
+            @click="purchaseType = 'one_time'"
+            class="border-gray-200 border-solid rounded-bl-md rounded-br-md relative border p-4 flex cursor-pointer"
+            for="{{ product.id }}-oneTime"
+          >
+            <input
+              data-purchase-option-selector
+              value="one_time"
+              type="radio"
+              name="purchase_option"
+              id="{{ product.id }}-oneTime"
+              form="product_form_{{ product.id }}"
+              class="h-4 w-4 mt-0.5 cursor-pointer text-indigo-600 border-gray-300 focus:ring-indigo-500"
+              aria-labelledby="privacy-setting-0-label"
+              aria-describedby="privacy-setting-0-description"
+            >
+            <div class="ml-3 flex flex-col">
+              <!-- Checked: "text-indigo-900", Not Checked: "text-gray-900" -->
+              <span class="text-gray-900 block text-sm font-medium">
+                {{- 'products.subscription.one_time' | t -}}
+              </span>
+              <!-- Checked: "text-indigo-700", Not Checked: "text-gray-500" -->
+              {%- assign product_onetime_subtitle = product.metafields.accentuate.product_onetime_subtitle -%}
+              {%- assign one_time_sub = 'products.subscription.one_time_sub' | t -%}
+              {%- unless product_onetime_subtitle == blank -%}
+                <span x-show="purchaseType == 'one_time'" class="text-gray-700 block text-sm pt-2">
+                  {{- product_onetime_subtitle -}}
+                </span>
+              {%- endunless -%}
+              {%- unless one_time_sub == blank -%}
+                <span class="text-gray-700 block text-sm pt-2 font-bold">
+                  {{- 'products.subscription.one_time_sub' | t -}}
+                </span>
+              {%- endunless -%}
+            </div>
+          </label>
+        {% endunless %}
+      </div>
+      <script type="application/json">
+        {{ product.variants | json }}
+      </script>
+    </selling-plan>
+  {%- endif -%}
+</div>

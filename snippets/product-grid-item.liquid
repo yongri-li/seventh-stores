@@ -36,68 +36,27 @@
   </div>
   <div class="mt-1 flex justify-between">
     <div>
-      {%- if settings.wholesale_enabled -%}
-        {%- assign is_approved = false -%}
-        {%- if customer -%}
-          {%- for tag in customer.tags -%}
-            {%- if tag == settings.wholesale_tag -%}
-              {%- assign is_approved = true -%}
-            {%- endif -%}
-          {%- endfor -%}
-        {%- endif -%}
-        {%- if customer -%}
-          {%- if is_approved -%}
-            <p class="text-xs leading-snug">
-              {%- if product.compare_at_price > product.price -%}
-                {%- assign sale_price = product.price | money -%}
-                {%- assign original_price = product.compare_at_price | money -%}
-                {%- if product.price_varies -%}
-                  {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
-                {%- else -%}
-                  <span class="text-red-700">{{ product.price | money }}</span>
-                  <small
-                    ><s>{{ original_price }}</s></small
-                  >
-                {%- endif -%}
-              {%- else -%}
-                {%- if product.price_varies -%}
-                  {%- assign price = product.price | money -%}
-                  {{ 'products.product.from_text_html' | t: price: price }}
-                {%- else -%}
-                  <span>{{ product.price | money }}</span>
-                {%- endif -%}
-              {%- endif -%}
-              -
-            </p>
+      <p class="text-xs">
+        {%- if product.compare_at_price > product.price -%}
+          {%- assign sale_price = product.price | money -%}
+          {%- assign original_price = product.compare_at_price | money -%}
+          {%- if product.price_varies -%}
+            {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
           {%- else -%}
-            <p class="text-xs text-red-700 leading-snug">{{ 'wholesale.approval_needed' | t }}</p>
+            <span class="text-red-700">{{ product.price | money }}</span>
+            <small
+              ><s>{{ original_price }}</s></small
+            >
           {%- endif -%}
         {%- else -%}
-          <p class="text-xs text-red-700 leading-snug">{{ 'wholesale.log_in_notice' | t }}</p>
-        {%- endif -%}
-      {%- else -%}
-        <p class="text-xs">
-          {%- if product.compare_at_price > product.price -%}
-            {%- assign sale_price = product.price | money -%}
-            {%- assign original_price = product.compare_at_price | money -%}
-            {%- if product.price_varies -%}
-              {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
-            {%- else -%}
-              <span class="text-red-700">{{ product.price | money }}</span>
-              <small
-                ><s>{{ original_price }}</s></small
-              >
-            {%- endif -%}
+          {%- if product.price_varies -%}
+            {%- assign price = product.price | money -%}
+            {{ 'products.product.from_text_html' | t: price: price }}
           {%- else -%}
-            {%- if product.price_varies -%}
-              {%- assign price = product.price | money -%}
-              {{ 'products.product.from_text_html' | t: price: price }}
-            {%- else -%}
-              <span>{{ product.price | money }}</span>
-            {%- endif -%}
-          {%- endif %}
-        </p>
-      {%- endif -%}
+            <span>{{ product.price | money }}</span>
+          {%- endif -%}
+        {%- endif %}
+      </p>
     </div>
   </div>
   {%- if product.metafields.color.variants.value -%}

@@ -78,8 +78,8 @@
           {%- if section.settings.mobile_image.width >= 940 -%}{{ section.settings.mobile_image | image_url: width: 940 }} 940w,{%- endif -%}
           {%- if section.settings.mobile_image.width >= 1070 -%}{{ section.settings.mobile_image | image_url: width: 1070 }} 1070w,{%- endif -%}
           {%- if section.settings.mobile_image.width >= 1240 -%}{{ section.settings.mobile_image | image_url: width: 1240 }} 1240w,{%- endif -%}
-          {%- if section.settings.mobile_image.width >= 1480 -%}{{ section.settings.mobile_image | image_url: width: 1480 }} 1480w{%- endif -%}
-          {%- if section.settings.desktop_image.width >= 1720 -%}{{ section.settings.desktop_image | image_url: width: 1720 }} 1720w{%- endif -%}
+          {%- if section.settings.mobile_image.width >= 1480 -%}{{ section.settings.mobile_image | image_url: width: 1480 }} 1480w,{%- endif -%}
+          {%- if section.settings.desktop_image.width >= 1720 -%}{{ section.settings.desktop_image | image_url: width: 1720 }} 1720w,{%- endif -%}
           {%- if section.settings.desktop_image.width >= 1960 -%}{{ section.settings.desktop_image | image_url: width: 1960 }} 1960w{%- endif -%}
         "
         src="{{ section.settings.mobile_image | image_url: width: 533 }}"
@@ -105,8 +105,8 @@
           {%- if section.settings.desktop_image.width >= 940 -%}{{ section.settings.desktop_image | image_url: width: 940 }} 940w,{%- endif -%}
           {%- if section.settings.desktop_image.width >= 1070 -%}{{ section.settings.desktop_image | image_url: width: 1070 }} 1070w,{%- endif -%}
           {%- if section.settings.desktop_image.width >= 1240 -%}{{ section.settings.desktop_image | image_url: width: 1240 }} 1240w,{%- endif -%}
-          {%- if section.settings.desktop_image.width >= 1480 -%}{{ section.settings.desktop_image | image_url: width: 1480 }} 1480w{%- endif -%}
-          {%- if section.settings.desktop_image.width >= 1720 -%}{{ section.settings.desktop_image | image_url: width: 1720 }} 1720w{%- endif -%}
+          {%- if section.settings.desktop_image.width >= 1480 -%}{{ section.settings.desktop_image | image_url: width: 1480 }} 1480w,{%- endif -%}
+          {%- if section.settings.desktop_image.width >= 1720 -%}{{ section.settings.desktop_image | image_url: width: 1720 }} 1720w,{%- endif -%}
           {%- if section.settings.desktop_image.width >= 1960 -%}{{ section.settings.desktop_image | image_url: width: 1960 }} 1960w{%- endif -%}
         "
         src="{{ section.settings.desktop_image | image_url: width: 533 }}"

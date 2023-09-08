@@ -19,10 +19,10 @@
               <img
                 class="header-logo"
                 loading="lazy"
-                src="{{ section.settings.logo | image_url: width: image_size }}"
+                src="{{ section.settings.logo | image_url: width: 460 }}"
                 width="{{ section.settings.logo.width }}"
                 height="{{ section.settings.logo.height }}"
-                srcset="{{ section.settings.logo | image_url: width: image_size }} 1x, {{ section.settings.logo | image_url: width: image_size, scale: 2 }} 2x"
+                srcset="{{ section.settings.logo | image_url: width: 460 }} 1x, {{ section.settings.logo | image_url: width: 460, scale: 2 }} 2x"
                 alt="{{ section.settings.logo.alt | default: shop.name }}"
                 itemprop="logo"
               >

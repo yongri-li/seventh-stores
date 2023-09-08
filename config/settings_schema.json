@@ -2,7 +2,7 @@
   {
     "name": "theme_info",
     "theme_name": "Seventh Stores",
-    "theme_version": "1.1.1",
+    "theme_version": "1.1.2",
     "theme_author": "Shopify",
     "theme_documentation_url": "https:\/\/github.com\/Block-Digital\/seventh-stores-2.1",
     "theme_support_email": "studio@blockdigital.co.uk"
@@ -27,24 +27,6 @@
         "id": "use_mini_cart",
         "label": "Use Mini Cart?",
         "default": true
-      }
-    ]
-  },
-  {
-    "name": "Wholesale Settings",
-    "settings": [
-      {
-        "type": "checkbox",
-        "id": "wholesale_enabled",
-        "label": "Enable Wholesale?",
-        "info": "Enabling this means customers need to be logged in to see prices."
-      },
-      {
-        "type": "text",
-        "id": "wholesale_tag",
-        "label": "Wholesale tag",
-        "info": "The tag we should check for to see if a customer is approved.",
-        "default": "approved"
       }
     ]
   },

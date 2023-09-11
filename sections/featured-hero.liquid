@@ -112,6 +112,7 @@
           {%- if section.settings.desktop_image.width >= 3840 -%}{{ section.settings.desktop_image | image_url: width: 3840 }} 3840w,{%- endif -%}
           {%- if section.settings.desktop_image.width >= 4040 -%}{{ section.settings.desktop_image | image_url: width: 4040 }} 4040w,{%- endif -%}
           {%- if section.settings.desktop_image.width >= 4280 -%}{{ section.settings.desktop_image | image_url: width: 4280 }} 4280w,{%- endif -%}
+          {%- if section.settings.desktop_image.width >= 4720 -%}{{ section.settings.desktop_image | image_url: width: 4720 }} 4535w{%- endif -%}
           {%- if section.settings.desktop_image.width >= 4720 -%}{{ section.settings.desktop_image | image_url: width: 4720 }} 4720w{%- endif -%}
         "
         src="{{ section.settings.desktop_image | image_url: width: 533 }}"

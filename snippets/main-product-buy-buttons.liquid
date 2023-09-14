@@ -1,3 +1,4 @@
+{% assign assign current_variant = product.selected_or_first_available_variant %}
 {% form 'product', product, data-product-form: '', data-product-handle: product.handle %}
   <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
   {%- if product.selling_plan_groups.size > 0 -%}

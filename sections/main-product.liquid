@@ -224,6 +224,7 @@
               {%- when 'variant_selectors' -%}
                 {%- if block.settings.logged_in_only -%}
                   {%- if customer -%}
+                    <!-- block.settings.logged_in_only -->
                     {%- render 'main-product-variant-selectors', product: product -%}
                   {%- endif -%}
                 {%- else -%}
@@ -247,6 +248,7 @@
                 {%- if block.settings.logged_in_only -%}
                   {%- if customer -%}
                     <div class="max-w-md">
+                      <!-- block.settings.logged_in_only -->
                       {%- render 'main-product-buy-buttons', product: product -%}
                     </div>
                   {%- endif -%}

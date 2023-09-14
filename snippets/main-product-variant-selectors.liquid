@@ -65,7 +65,7 @@
                   {% for value in option.values %}
                     <option
                       value="{{ value | escape }}"
-                      {% if option.selected_value == value or if option.values.size <= 1 %}
+                      {% if option.selected_value == value %}
                         selected="selected"
                       {% endif %}
                     >

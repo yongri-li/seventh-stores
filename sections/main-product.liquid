@@ -223,7 +223,7 @@
                 </div>
               {%- when 'variant_selectors' -%}
                 {%- if block.settings.logged_in_only -%}
-                  {%- if customer != blank -%}
+                  {%- if customer -%}
                     {%- render 'main-product-variant-selectors' -%}
                   {%- endif -%}
                 {%- else -%}
@@ -245,7 +245,7 @@
                 <div class="rte mt-3">{{ product.description }}</div>
               {%- when 'buy_now_buttons' -%}
                 {%- if block.settings.logged_in_only -%}
-                  {%- if customer != blank -%}
+                  {%- if customer -%}
                     <div class="max-w-md">
                       {%- render 'main-product-buy-buttons' -%}
                     </div>

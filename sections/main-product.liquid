@@ -224,10 +224,10 @@
               {%- when 'variant_selectors' -%}
                 {%- if block.settings.logged_in_only -%}
                   {%- if customer -%}
-                    {%- render 'main-product-variant-selectors' -%}
+                    {%- render 'main-product-variant-selectors', product: product -%}
                   {%- endif -%}
                 {%- else -%}
-                  {%- render 'main-product-variant-selectors' -%}
+                  {%- render 'main-product-variant-selectors', product: product -%}
                 {%- endif -%}
               {%- when 'unisex_link' -%}
                 <!-- Unisex Link -->
@@ -247,11 +247,11 @@
                 {%- if block.settings.logged_in_only -%}
                   {%- if customer -%}
                     <div class="max-w-md">
-                      {%- render 'main-product-buy-buttons' -%}
+                      {%- render 'main-product-buy-buttons', product: product -%}
                     </div>
                   {%- endif -%}
                 {%- else -%}
-                  {%- render 'main-product-buy-buttons' -%}
+                  {%- render 'main-product-buy-buttons', product: product -%}
                 {%- endif -%}
               {%- when 'collapsible_tab' -%}
                 <details class="border-t border-b border-solid border-color group accordion accordion--product">

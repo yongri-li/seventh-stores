@@ -9,12 +9,12 @@
         "hero_link": "shopify:\/\/collections\/bags",
         "max_height_mobile": 60,
         "use_img_height_mobile": true,
-        "mobile_image": "shopify:\/\/shop_images\/7_4e5b5719-1404-4bab-90b5-1520c181ebcc.png",
+        "mobile_image": "shopify:\/\/shop_images\/6_1.png",
         "mobile_image_focus": "object-top",
         "mobile_content_focus": "justify-start items-center",
         "max_height_desktop": 80,
         "use_img_height_desktop": true,
-        "desktop_image": "shopify:\/\/shop_images\/Desktop_Hompage_4470_x_3171px_1_c27bdcbb-6564-4148-bc1e-7b3f8f93172c.png",
+        "desktop_image": "shopify:\/\/shop_images\/7_f21cfe9c-4ef0-4073-80e6-79e7a3447ace.png",
         "desktop_image_focus": "lg:object-top",
         "desktop_content_focus": "lg:justify-center lg:items-start"
       }

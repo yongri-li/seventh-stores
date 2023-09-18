@@ -1,0 +1,210 @@
+{
+  "wrapper": "div#div_id.div_class[attribute-one=value]",
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "1e03dee9-d860-461c-b0be-5568010aca1a": {
+          "type": "breadcrumbs",
+          "settings": {
+          }
+        },
+        "79fd555e-8126-441c-bbb6-1af194709a47": {
+          "type": "product_title",
+          "settings": {
+          }
+        },
+        "433e87a7-71b4-4549-bc9c-43c0c37044c6": {
+          "type": "product_price",
+          "settings": {
+          }
+        },
+        "a3796758-d1d2-41e8-bb2b-ddbd229e9efe": {
+          "type": "color_variants",
+          "settings": {
+          }
+        },
+        "7874ff1b-52c4-414f-9d4b-041a62dbafac": {
+          "type": "custom_text",
+          "settings": {
+            "logged_in_only": false,
+            "logged_out_only": false,
+            "custom_text": "<p>Subscribe for early access.<\/p><p>Restocking<strong> 14.09.23 <\/strong><\/p><p><\/p><ul><li>UK & Europe <strong>6PM BST<\/strong><\/li><li>North America <strong>1PM EST<\/strong><\/li><\/ul><p><\/p><p>If you want early access, don’t forget to <a href=\"https:\/\/seventhstores.com\/account\/register\" target=\"_blank\" title=\"https:\/\/seventhstores.com\/account\/register\"><strong>join the family.<\/strong><\/a><\/p>"
+          }
+        },
+        "20c06d95-7112-4b19-ba71-37a0d8cddcd2": {
+          "type": "variant_selectors",
+          "settings": {
+            "logged_in_only": true,
+            "show_labels": false,
+            "use_swatches": false
+          }
+        },
+        "36bcb969-de7f-4622-8eee-50454b12a522": {
+          "type": "buy_now_buttons",
+          "settings": {
+            "logged_in_only": true,
+            "show_qty_label": false,
+            "show_additional_checkout_buttons": false,
+            "show_price_in_button": false,
+            "show_quantity_Selector": true
+          }
+        },
+        "bd3274c6-41b9-4021-a413-5c75bc3846fa": {
+          "type": "unisex_link",
+          "settings": {
+          }
+        },
+        "aab585e2-1c17-449f-8788-bbe37a977394": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "DESCRIPTION",
+            "content": "",
+            "product_description": true,
+            "size_guide": false,
+            "page_content": "",
+            "open_by_default": true
+          }
+        },
+        "e64e89d1-ba73-47e4-a915-29089d77fd31": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Delivery information",
+            "content": "<p>To see the delivery options we have for you or for general shipping info click <a href=\"https:\/\/seventhstores.com\/pages\/shipping\"><span style=\"text-decoration:underline\">here<\/span><\/a>.<\/p><p>We aim to pack and dispatch your order within 1-2 working days. Shipping costs are calculated at checkout. <\/p><p>We ship worldwide - once dispatched, we offer Standard, Priority and Urgent shipping options for multiple locations. Free shipping for orders over £200 (UK only).<\/p>",
+            "product_description": false,
+            "size_guide": false,
+            "page_content": "",
+            "open_by_default": false
+          }
+        },
+        "893dce1e-df11-4c9e-9652-e769846efe70": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Garment Measurements",
+            "content": "<p><strong>One Size<\/strong><\/p><p>Body Height: 28cm<\/p><p>Width: 46cm<\/p><p>Depth: 22cm<\/p><p>Opening Height: 38cm<\/p><p>Strap Length: 55 - 93cm<\/p>",
+            "product_description": false,
+            "size_guide": false,
+            "page_content": "",
+            "open_by_default": false
+          }
+        },
+        "5c049b49-c6da-4174-9a28-8f7f58984f5e": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Size guide",
+            "content": "<p>For more information on sizing and how our products may fit you <a href=\"https:\/\/seventhstores.com\/blogs\/news\/how-to-find-your-seventh-fit\"><span style=\"text-decoration:underline\">please refer to our sizing page<\/span><\/a><span style=\"text-decoration:underline\">.<\/span><\/p>",
+            "product_description": false,
+            "size_guide": false,
+            "page_content": "",
+            "open_by_default": false
+          }
+        },
+        "a9a615a2-3bed-43f6-80d3-4e4cdb1bf88e": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping",
+            "content": "<p>To see the delivery options we have for you or for general shipping info click <a href=\"https:\/\/seventhstores.com\/pages\/shipping\"><span style=\"text-decoration:underline\">here<\/span><\/a>.<\/p><p>We aim to pack and dispatch your order within 1-2 working days. Shipping costs are calculated at checkout. <\/p><p>We ship worldwide - once dispatched, we offer Standard, Priority and Urgent shipping options for multiple locations. Free shipping for orders over £200 (UK only).<\/p>",
+            "product_description": false,
+            "size_guide": false,
+            "page_content": "",
+            "open_by_default": true
+          }
+        },
+        "3c04ec5e-1d45-4f97-915f-e597ffceb9aa": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Need Help?",
+            "content": "<p>Text us <a href=\"https:\/\/wa.me\/+447927651265\"><span style=\"text-decoration:underline\">on Whatsapp<\/span><\/a> or drop us an email - info@seventhstores.com<\/p><p>Check us out on Tik Tok (<a href=\"https:\/\/www.tiktok.com\/@seventhstores?lang=en\" target=\"_blank\"><span style=\"text-decoration:underline\">@Seventhstores<\/span><\/a>) where you can see our pieces on different heights and body types.<\/p>",
+            "product_description": false,
+            "size_guide": false,
+            "page_content": "",
+            "open_by_default": true
+          }
+        },
+        "5d32dcbc-3d40-4e23-94cd-03f48bfe78ae": {
+          "type": "styled_with",
+          "settings": {
+          }
+        },
+        "80b98137-6193-4edc-945a-94bd2c6aad2c": {
+          "type": "data_related_products",
+          "settings": {
+            "limit": 2
+          }
+        }
+      },
+      "block_order": [
+        "1e03dee9-d860-461c-b0be-5568010aca1a",
+        "79fd555e-8126-441c-bbb6-1af194709a47",
+        "433e87a7-71b4-4549-bc9c-43c0c37044c6",
+        "a3796758-d1d2-41e8-bb2b-ddbd229e9efe",
+        "7874ff1b-52c4-414f-9d4b-041a62dbafac",
+        "20c06d95-7112-4b19-ba71-37a0d8cddcd2",
+        "36bcb969-de7f-4622-8eee-50454b12a522",
+        "bd3274c6-41b9-4021-a413-5c75bc3846fa",
+        "aab585e2-1c17-449f-8788-bbe37a977394",
+        "e64e89d1-ba73-47e4-a915-29089d77fd31",
+        "893dce1e-df11-4c9e-9652-e769846efe70",
+        "5c049b49-c6da-4174-9a28-8f7f58984f5e",
+        "a9a615a2-3bed-43f6-80d3-4e4cdb1bf88e",
+        "3c04ec5e-1d45-4f97-915f-e597ffceb9aa",
+        "5d32dcbc-3d40-4e23-94cd-03f48bfe78ae",
+        "80b98137-6193-4edc-945a-94bd2c6aad2c"
+      ],
+      "settings": {
+        "content_bg": "#fffaf4",
+        "input_border_color": "#f3eee8",
+        "contain": false,
+        "show_share_buttons": true,
+        "use_image_gallery": false
+      }
+    },
+    "accordions": {
+      "type": "product-accordions",
+      "blocks": {
+        "c5876cd5-a7f4-466d-a4c8-7f799a39c481": {
+          "type": "description",
+          "settings": {
+            "open": true,
+            "accordion_heading": "Product Description"
+          }
+        },
+        "e9e2b6a8-5d8b-4cde-a06a-95cf63f71813": {
+          "type": "custom_content",
+          "settings": {
+            "open": false,
+            "accordion_heading": "DELIVERY AND RETURNS",
+            "accordion_content": "<p>Default <em>richtext<\/em> <a href=\"https:\/\/example.com\/\">content<\/a><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "c5876cd5-a7f4-466d-a4c8-7f799a39c481",
+        "e9e2b6a8-5d8b-4cde-a06a-95cf63f71813"
+      ],
+      "disabled": true,
+      "settings": {
+        "section_spacing_top": "mt-4",
+        "section_spacing_bottom": "mb-4",
+        "background_color": "#fefefe"
+      }
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "settings": {
+        "contain": false,
+        "total_products": 8,
+        "products_xl": "xl:w-1\/5",
+        "products_desktop": "lg:w-1\/5",
+        "products_tablet": "md:w-1\/3",
+        "products_mobile": "w-1\/2"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "accordions",
+    "recommendations"
+  ]
+}

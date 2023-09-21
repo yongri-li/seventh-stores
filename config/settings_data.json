@@ -108,8 +108,8 @@
           "0adfb7d8-91e7-4c12-b6b4-9a530d95a3f2": {
             "type": "benefit",
             "settings": {
-              "benefit": "The Cactus Drop: Coming Soon",
-              "link": "shopify:\/\/collections\/a-w-drop-1",
+              "benefit": "The Cactus Drop: Coming Soon. Subscribe here for early access",
+              "link": "https:\/\/seventhstores.com\/account\/register",
               "trigger_newsletter": false,
               "background_color": "#fffaf3",
               "font_color": "#8a8985"

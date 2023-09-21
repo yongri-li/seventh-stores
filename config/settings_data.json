@@ -109,7 +109,7 @@
             "type": "benefit",
             "settings": {
               "benefit": "The Cactus Drop: Coming Soon",
-              "link": "https:\/\/admin.shopify.com\/store\/90z-back\/collections\/465420714301",
+              "link": "shopify:\/\/collections\/a-w-drop-1",
               "trigger_newsletter": false,
               "background_color": "#fffaf3",
               "font_color": "#8a8985"

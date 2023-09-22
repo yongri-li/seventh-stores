@@ -128,13 +128,59 @@
         {%- assign background_color = block.settings.background_color -%}
         {%- assign font_color = block.settings.font_color -%}
         <div class="benefit-bar__benefit" style="background-color: {{ background_color }};">
-          {%- unless block.settings.link == blank -%}
-            <a href="{{ block.settings.link }}" style="color: {{ font_color }};">
-          {%- endunless -%}
-          <p style="color: {{ font_color }};">{{ block.settings.benefit | escape }}</p>
-          {%- unless block.settings.link == blank -%}
-            </a>
-          {%- endunless -%}
+          {%- if block.type == 'countdown' -%}
+            {%- liquid
+              assign day = block.settings.day
+              assign month = block.settings.month
+              assign year = block.settings.year
+              assign hour = block.settings.hour
+              assign minute = block.settings.minute
+              assign second = block.settings.second
+              assign show_days = block.settings.show_days
+              assign show_time = block.settings.show_time
+              assign show_when_expired = block.settings.show_when_expired
+              assign expired_message = block.settings.expired_message
+              assign count_to = block.settings.count_to
+              assign heading = block.settings.heading
+              assign content = block.settings.content
+              assign monday = block.settings.monday
+              assign tuesday = block.settings.tuesday
+              assign wednesday = block.settings.wednesday
+              assign thursday = block.settings.thursday
+              assign friday = block.settings.friday
+              assign saturday = block.settings.saturday
+              assign sunday = block.settings.sunday
+            -%}
+            {%- capture days -%}
+          {%- if monday -%}1,{%- endif -%}{%- if tuesday -%}2,{%- endif -%}{%- if wednesday -%}3,{%- endif -%}{%- if thursday -%}4,{%- endif -%}{%- if friday -%}5,{%- endif -%}{%- if saturday -%}6,{%- endif -%}{%- if sunday -%}0{%- endif -%}
+          {%- endcapture -%}
+            <countdown-component
+              data-days-to-show="{{ days }}"
+              data-day="{{ day }}"
+              data-month="{{ month }}"
+              data-year="{{ year }}"
+              data-show-days="{{ show_days }}"
+              data-hour="{{ hour }}"
+              data-minute="{{ minute }}"
+              data-second="{{ second }}"
+              data-show-time="{{ show_time }}"
+              data-show-when-expired="{{ show_when_expired }}"
+              data-count-to="{{ count_to }}"
+              {% unless expired_message == blank %}
+                data-expired-message="{{ expired_message }}"
+              {% endunless %}
+            >
+              <p style="color: {{ font_color }};" data-countdown-content>{{ content }}</p>
+            </countdown-component>
+          {%- else -%}
+            {%- unless block.settings.link == blank -%}
+              <a href="{{ block.settings.link }}" style="color: {{ font_color }};">
+            {%- endunless -%}
+            <p style="color: {{ font_color }};">{{ block.settings.benefit | escape }}</p>
+            {%- unless block.settings.link == blank -%}
+              </a>
+            {%- endunless -%}
+          {%- endif -%}
         </div>
       {%- endfor -%}
     </div>
@@ -144,6 +190,8 @@
     {%- endif -%}
   {%- endunless -%}
 {%- endif -%}
+
+<script defer src="{{ 'component-countdown.js' | asset_url }}"></script>
 
 {% schema %}
 {
@@ -269,6 +317,226 @@
           "id": "font_color",
           "label": "Font Color",
           "default": "#FFFFFF"
+        }
+      ]
+    },
+    {
+      "type": "countdown",
+      "name": "Countdown",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_when_expired",
+          "label": "Show when expired?",
+          "default": true
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#EEEEEE"
+        },
+        {
+          "type": "text",
+          "id": "expired_message",
+          "label": "Expired Message",
+          "default": "This countdown has expired"
+        },
+        {
+          "type": "select",
+          "id": "count_to",
+          "label": "Count to..?",
+          "options": [
+            {
+              "value": "date",
+              "label": "Date"
+            },
+            {
+              "value": "time",
+              "label": "Time"
+            },
+            {
+              "value": "both",
+              "label": "Both"
+            }
+          ],
+          "default": "both"
+        },
+        {
+          "type": "header",
+          "content": "Days to show Countdown"
+        },
+        {
+          "type": "checkbox",
+          "id": "monday",
+          "label": "Monday",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "tuesday",
+          "label": "Tuesday",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "wednesday",
+          "label": "Wednesday",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "thursday",
+          "label": "Thursday",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "friday",
+          "label": "Friday",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "saturday",
+          "label": "Saturday",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "sunday",
+          "label": "Sunday",
+          "default": true
+        },
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "text",
+          "id": "content",
+          "label": "Content",
+          "info": "Add '{countdown}' in to the text if you wish to show a countdown.",
+          "default": "Order within {countdown} for same day dispatch."
+        },
+        {
+          "type": "header",
+          "content": "Date"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_days",
+          "label": "Show Days?",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "month",
+          "label": "Month",
+          "options": [
+            {
+              "value": "Jan",
+              "label": "January"
+            },
+            {
+              "value": "Feb",
+              "label": "February"
+            },
+            {
+              "value": "Mar",
+              "label": "March"
+            },
+            {
+              "value": "Apr",
+              "label": "Apri"
+            },
+            {
+              "value": "May",
+              "label": "May"
+            },
+            {
+              "value": "Jun",
+              "label": "June"
+            },
+            {
+              "value": "Jul",
+              "label": "July"
+            },
+            {
+              "value": "Aug",
+              "label": "August"
+            },
+            {
+              "value": "Sep",
+              "label": "September"
+            },
+            {
+              "value": "Oct",
+              "label": "October"
+            },
+            {
+              "value": "Nov",
+              "label": "November"
+            },
+            {
+              "value": "Dec",
+              "label": "December"
+            }
+          ],
+          "default": "Jan"
+        },
+        {
+          "type": "range",
+          "id": "day",
+          "label": "Day",
+          "min": 1,
+          "max": 31,
+          "step": 1,
+          "default": 1
+        },
+        {
+          "type": "text",
+          "id": "year",
+          "label": "Year",
+          "info": "Enter in for digit format. For example, 2021."
+        },
+        {
+          "type": "header",
+          "content": "Time"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_time",
+          "label": "Show Time?",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "second",
+          "label": "Second",
+          "min": 0,
+          "max": 60,
+          "step": 1,
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "minute",
+          "label": "Minute",
+          "min": 0,
+          "max": 60,
+          "step": 1,
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "hour",
+          "label": "Hour",
+          "min": 0,
+          "max": 24,
+          "step": 1,
+          "default": 14
         }
       ]
     }

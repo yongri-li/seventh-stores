@@ -17,13 +17,15 @@ class ProductForm extends HTMLElement {
         this.purchaseOptionSelector = '[data-purchase-option-selector]';
         this.singlePlanSelector = '[data-single-plan-selector]';
 
-        this.form = this.querySelector(this.formSelector);
+        this.form = this.querySelector(this.formSelector) || false;
         this.VariantSelectors = this.querySelector('variant-selectors') || false;
         this.SellingPlans = this.querySelector('selling-plan') || false;
 
-        const productHandle = this.form.dataset.productHandle;
-
         this.currentVariant;
+
+        if (!this.form) return;
+
+        const productHandle = this.form.dataset.productHandle;
 
         // Fetch the product data from the .js endpoint because it includes
         // more data than the .json endpoint. Alternatively, you could inline the output

@@ -1,41 +1,55 @@
 {%- liquid
-assign day = block.settings.day
-assign month = block.settings.month
-assign year = block.settings.year
-assign hour = block.settings.hour
-assign minute = block.settings.minute
-assign second = block.settings.second
-assign show_days = block.settings.show_days
-assign show_time = block.settings.show_time
-assign show_when_expired = block.settings.show_when_expired
-assign expired_message = block.settings.expired_message
-assign count_to = block.settings.count_to
-assign heading = block.settings.heading
-assign content = block.settings.content
-assign monday = block.settings.monday
-assign tuesday = block.settings.tuesday
-assign wednesday = block.settings.wednesday
-assign thursday = block.settings.thursday
-assign friday = block.settings.friday
-assign saturday = block.settings.saturday
-assign sunday = block.settings.sunday -%}
+  assign day = block.settings.day
+  assign month = block.settings.month
+  assign year = block.settings.year
+  assign hour = block.settings.hour
+  assign minute = block.settings.minute
+  assign second = block.settings.second
+  assign show_days = block.settings.show_days
+  assign show_time = block.settings.show_time
+  assign show_when_expired = block.settings.show_when_expired
+  assign expired_message = block.settings.expired_message
+  assign count_to = block.settings.count_to
+  assign heading = block.settings.heading
+  assign content = block.settings.content
+  assign monday = block.settings.monday
+  assign tuesday = block.settings.tuesday
+  assign wednesday = block.settings.wednesday
+  assign thursday = block.settings.thursday
+  assign friday = block.settings.friday
+  assign saturday = block.settings.saturday
+  assign sunday = block.settings.sunday
+-%}
 {%- capture days -%}
 {%- if monday -%}1,{%- endif -%}{%- if tuesday -%}2,{%- endif -%}{%- if wednesday -%}3,{%- endif -%}{%- if thursday -%}4,{%- endif -%}{%- if friday -%}5,{%- endif -%}{%- if saturday -%}6,{%- endif -%}{%- if sunday -%}0{%- endif -%}
 {%- endcapture -%}
-<div style="background-color: {{ block.settings.background_color }}; border-color: {{ block.settings.background_color | color_darken: 75 }}" class="mt-3 px-4 py-2 shadow-md border-solid border-l-4" data-countdown data-days-to-show="{{ days }}"
-    data-day="{{ day }}" data-month="{{ month }}" data-year="{{ year }}" data-show-days="{{ show_days }}"
-    data-hour="{{ hour }}" data-minute="{{ minute }}" data-second="{{ second }}" data-show-time="{{ show_time }}"
-    data-show-when-expired="{{ show_when_expired }}" data-count-to="{{ count_to }}"
-    {% unless expired_message == blank %}data-expired-message="{{ expired_message }}"{% endunless%%}>
-    {%- if heading != blank -%}
+<countdown-component
+  style="background-color: {{ block.settings.background_color }}; border-color: {{ block.settings.background_color | color_darken: 75 }}"
+  class="mt-3 px-4 py-2 shadow-md border-solid border-l-4"
+  data-days-to-show="{{ days }}"
+  data-day="{{ day }}"
+  data-month="{{ month }}"
+  data-year="{{ year }}"
+  data-show-days="{{ show_days }}"
+  data-hour="{{ hour }}"
+  data-minute="{{ minute }}"
+  data-second="{{ second }}"
+  data-show-time="{{ show_time }}"
+  data-show-when-expired="{{ show_when_expired }}"
+  data-count-to="{{ count_to }}"
+  {% unless expired_message == blank %}
+    data-expired-message="{{ expired_message }}"
+  {% endunless %}
+>
+  {%- if heading != blank -%}
     <p class="pb-2 text-sm">
-        <svg class="h-6 w-6 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-        <strong>{{ heading }}</strong>
+      <svg class="h-6 w-6 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <strong>{{ heading }}</strong>
     </p>
-    {%- endif -%}
-    <p class="text-xs" data-countdown-content>{{ content }}</p>
-</div>
+  {%- endif -%}
+  <p class="text-xs" data-countdown-content>{{ content }}</p>
+</countdown-component>
 
 <script defer src="{{ 'component-countdown.js' | asset_url }}"></script>

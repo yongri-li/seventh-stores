@@ -1,165 +1,162 @@
-class CountdownPromo {
+// class CountdownPromo {
 
-    constructor(){
+class CountdownComponent extends HTMLElement {
 
-        self = this;
+    constructor() {
 
-        // Selectors object
-        this.cache = {
-            countdown: document.querySelector('[data-countdown]'),
-            countdownContent: document.querySelector('[data-countdown-content]')
-            // time: document.querySelector('[data-countdown-time]')
-        };
+        super();
 
-        this.data = {
-            day: this.cache.countdown.dataset.day,
-            month: this.cache.countdown.dataset.month,
-            year: this.cache.countdown.dataset.year,
-            hour: this.cache.countdown.dataset.hour,
-            minute: this.cache.countdown.dataset.minute,
-            second: this.cache.countdown.dataset.second,
-            daysToShow: this.cache.countdown.dataset.daysToShow,
-            showCountdown: this.cache.countdown.dataset.showCountdown,
-            showDays: this.cache.countdown.dataset.showCays,
-            showTime: this.cache.countdown.dataset.showTime,
-            showWhenExpired: this.cache.countdown.dataset.showWhenExpired,
-            expiredMessage: this.cache.countdown.dataset.expiredMessage,
-            countTo: this.cache.countdown.dataset.countTo,
-        };
+        this.countdownContent = this.querySelector('[data-countdown-content]');
+
+        this.day = this.dataset.day;
+        this.month = this.dataset.month;
+        this.year = this.dataset.year;
+        this.hour = this.dataset.hour;
+        this.minute = this.dataset.minute;
+        this.second = this.dataset.second;
+        this.daysToShow = this.dataset.daysToShow;
+        this.showCountdown = this.dataset.showCountdown;
+        this.showDays = this.dataset.showDays;
+        this.showTime = this.dataset.showTime;
+        this.showWhenExpired = this.dataset.showWhenExpired;
+        this.expiredMessage = this.dataset.expiredMessage;
+        this.countTo = this.dataset.countTo;
+
+        this.listeners();
     }
 
-    getDate (){
+    getDate() {
 
-        return `${this.data.month} ${this.data.day}, ${this.data.year}`;
+        return `${this.month} ${this.day}, ${this.year}`;
     };
 
-    getTime (){
+    getTime() {
 
-        return `${this.data.hour}:${this.data.minute}:${this.data.second}`;
+        return `${this.hour}:${this.minute}:${this.second}`;
     };
 
-    getFullDate (){
+    getFullDate() {
 
-        if( this.data.countTo == 'date' ){
+        if (this.countTo == 'date') {
 
-            return new Date( this.getDate() ).getTime();
+            return new Date(this.getDate()).getTime();
 
-        }else if( this.data.countTo == 'time' ){
+        } else if (this.countTo == 'time') {
 
             const date = new Date();
-                date.setHours(this.data.hour);
-                date.setMinutes(this.data.minute);
-                date.setSeconds(this.data.second);
+            date.setHours(this.hour);
+            date.setMinutes(this.minute);
+            date.setSeconds(this.second);
 
             return date.getTime();
 
-        }else{
+        } else {
 
-            return new Date( this.getDate() + ' ' + this.getTime()).getTime();
+            return new Date(this.getDate() + ' ' + this.getTime()).getTime();
         }
     };
 
-    checkDay (){
+    checkDay() {
 
-        const days      = this.data.daysToShow.split(","),
-            today       = new Date().getDay(),
-            show        = false;
+        const days = this.daysToShow.split(","),
+            today = new Date().getDay(),
+            show = false;
 
-        for( const day in days ){
-            if( day == today ){
-                this.cache.countdown.classList.add('is--block');
+        for (const day in days) {
+            if (day == today) {
+                this.classList.add('block');
                 return;
             }
         }
     };
 
-    replaceString (){
+    replaceString() {
 
-        const string = this.cache.countdownContent.innerText;
+        const string = this.countdownContent.innerText;
 
-        if( string.includes('{countdown}') ){
-            
+        if (string.includes('{countdown}')) {
+
             const replacement = string.replace('{countdown}', '<span data-countdown-time></span>');
-            this.cache.countdownContent.innerHTML = replacement;
+            this.countdownContent.innerHTML = replacement;
         }
     };
 
-    buildCountdown (days, hours, minutes, seconds){
+    buildCountdown(days, hours, minutes, seconds) {
 
-        if( document.querySelector('[data-countdown-time]').length < 1 ){
+        if (document.querySelector('[data-countdown-time]').length < 1) {
             return;
         }
 
         let string = "";
 
-        if( this.data.showDays ){
+        if (this.showDays) {
             string += `${days}D `;
         }
 
-        if( this.data.showTime ){
+        console.log(`String 1: ${string}`);
+
+        if (this.showTime) {
             string += `${hours}H ${minutes}M ${seconds}S`;
         }
+
+        console.log(`String 2:  ${string}`);
 
         document.querySelector('[data-countdown-time]').innerText = string;
     };
 
-    timeInterval (){
-        
+    timeInterval() {
+
+        const _this = this;
+
         const countDownDate = this.getFullDate();
 
-        const interval = setInterval(function() {
+        const interval = setInterval(function () {
 
             // Get today's date and time
             const now = new Date().getTime();
-          
+
             // Find the distance between now and the count down date
             const distance = countDownDate - now;
-          
+
             // Time calculations for days, hours, minutes and seconds
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-          
-            self.buildCountdown(days, hours, minutes, seconds);
-          
+
+            console.log(`${days}, ${hours}, ${minutes}, ${seconds}`);
+
+            _this.buildCountdown(days, hours, minutes, seconds);
+
             // If the count down is finished, write some text
             if (distance < 0) {
 
                 clearInterval(interval);
 
-                if( self.data.showWhenExpired ){
+                if (_this.showWhenExpired) {
 
-                    self.cache.countdownContent.innerText = self.data.expiredMessage;
-                }else{
-                    self.cache.countdown.classList.remove('is--block');
+                    _this.countdownContent.innerText = _this.expiredMessage;
+                } else {
+                    _this.countdown.classList.remove('is--block');
                 }
             }
-          
+
         }, 1000);
     };
 
     // Run listeners
-    listeners (){
+    listeners() {
 
-        if( this.cache.countdown.length < 1 ){
-            return;
-        }
-        
+        console.log("listeners");
+
         this.checkDay();
         this.replaceString();
         this.timeInterval();
     };
-
-    /**
-     * Initialise function starting the Listeners
-     */
-    init (){
-
-        this.listeners();
-    };
 };
 
-const countdown = new CountdownPromo();
+customElements.define('countdown-component', CountdownComponent);
 
-countdown.init();
+// const countdown = new CountdownPromo();
+
+// countdown.init();

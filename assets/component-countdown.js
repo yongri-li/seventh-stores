@@ -93,15 +93,15 @@ class CountdownComponent extends HTMLElement {
             string += `${days}D `;
         }
 
-        console.log(`String 1: ${string}`);
-
         if (this.showTime) {
             string += `${hours}H ${minutes}M ${seconds}S`;
         }
 
-        console.log(`String 2:  ${string}`);
-
         document.querySelector('[data-countdown-time]').innerText = string;
+
+        if (this.getAttribute('aria-hidden') == "true") {
+            this.setAttribute('aria-hidden', 'false');
+        }
     };
 
     timeInterval() {
@@ -124,8 +124,6 @@ class CountdownComponent extends HTMLElement {
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            console.log(`${days}, ${hours}, ${minutes}, ${seconds}`);
-
             _this.buildCountdown(days, hours, minutes, seconds);
 
             // If the count down is finished, write some text
@@ -134,10 +132,9 @@ class CountdownComponent extends HTMLElement {
                 clearInterval(interval);
 
                 if (_this.showWhenExpired) {
-
                     _this.countdownContent.innerText = _this.expiredMessage;
                 } else {
-                    _this.countdown.classList.remove('is--block');
+                    _this.setAttribute('aria-hidden', 'true');
                 }
             }
 
@@ -146,8 +143,6 @@ class CountdownComponent extends HTMLElement {
 
     // Run listeners
     listeners() {
-
-        console.log("listeners");
 
         this.checkDay();
         this.replaceString();

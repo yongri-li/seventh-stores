@@ -20,7 +20,7 @@
         {%- else -%}
           <ul class="">
             {%- for item in cart.items -%}
-              <li class="flex">
+              <li class="flex {% unless forloop.last %}mb-4{% endunless %}">
                 <div class="flex-shrink-0 w-24 lg:w-32 overflow-hidden">
                   <a href="{{ item.url }}">
                     <img

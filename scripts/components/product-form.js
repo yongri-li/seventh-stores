@@ -139,6 +139,16 @@ class ProductForm extends HTMLElement {
             })
             .catch((error) => {
                 console.error('Error:', error);
+            })
+            .finally(() => {
+
+                const miniCart = document.querySelector('[data-mini-cart]') || false;
+
+                if (!miniCart) return;
+
+                miniCart.setAttribute("aria-hidden", "false");
+                document.querySelector('body').classList.add('overflow-hidden');
+                miniCart.querySelector('drawer-trigger').triggerStatus();
             });
     }
 
@@ -228,6 +238,8 @@ class ProductForm extends HTMLElement {
         const gallery = document.querySelector(`[data-product-gallery="${this.dataset.productId}"]`) || false;
 
         if (!gallery) return;
+
+        if (this.currentVariant.featured_media === undefined || this.currentVariant.featured_media === null) return;
 
         const featuredMedia = document.querySelector(`[data-media-id="${this.dataset.section}-${this.currentVariant.featured_media.id}"]`);
 

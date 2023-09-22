@@ -128,7 +128,10 @@
       {%- for block in section.blocks -%}
         {%- assign background_color = block.settings.background_color -%}
         {%- assign font_color = block.settings.font_color -%}
-        <div class="benefit-bar__benefit" style="background-color: {{ background_color }};">
+        <div
+          class="benefit-bar__benefit flex items-center justify-center"
+          style="background-color: {{ background_color }};"
+        >
           {%- if block.type == 'countdown' -%}
             {%- liquid
               assign day = block.settings.day

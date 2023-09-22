@@ -1,4 +1,12 @@
-{% assign assign current_variant = product.selected_or_first_available_variant %}
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign current_selling_plan_allocation = product.selected_selling_plan_allocation
+  if current_selling_plan_allocation == null and current_variant.selling_plan_allocations.size > 0
+    assign current_selling_plan_allocation = current_variant.selling_plan_allocations | first
+  endif
+  assign offer = current_selling_plan_allocation | default: current_variant
+-%}
+
 {% form 'product', product, data-product-form: '', data-product-handle: product.handle %}
   <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
   {%- if product.selling_plan_groups.size > 0 -%}

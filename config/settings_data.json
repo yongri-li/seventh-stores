@@ -105,19 +105,35 @@
       "animated-benefit-bar": {
         "type": "animated-benefit-bar",
         "blocks": {
-          "0adfb7d8-91e7-4c12-b6b4-9a530d95a3f2": {
-            "type": "benefit",
+          "85f9a91d-78cf-4662-8255-e97f1b8d19c1": {
+            "type": "countdown",
             "settings": {
-              "benefit": "The Cactus Drop: Coming Soon. Subscribe here for early access",
-              "link": "https:\/\/seventhstores.com\/account\/register",
-              "trigger_newsletter": false,
+              "link": "shopify:\/\/collections\/a-w-drop-1",
+              "show_when_expired": true,
               "background_color": "#fffaf3",
-              "font_color": "#8a8985"
+              "expired_message": "This countdown has expired",
+              "count_to": "both",
+              "monday": true,
+              "tuesday": true,
+              "wednesday": true,
+              "thursday": true,
+              "friday": true,
+              "saturday": true,
+              "sunday": true,
+              "content": "The Cactus Drop: Coming Soon. Subscribe here for early access {countdown}.",
+              "show_days": true,
+              "month": "Sep",
+              "day": 29,
+              "year": "2023",
+              "show_time": true,
+              "second": 0,
+              "minute": 0,
+              "hour": 14
             }
           }
         },
         "block_order": [
-          "0adfb7d8-91e7-4c12-b6b4-9a530d95a3f2"
+          "85f9a91d-78cf-4662-8255-e97f1b8d19c1"
         ],
         "settings": {
           "show_benefit": true,

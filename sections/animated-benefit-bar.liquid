@@ -30,7 +30,7 @@
 
     .benefit-bar{
         position: relative;
-        height: {{ bar_height_mobile }}px;
+        min-height: {{ bar_height_mobile }}px;
         overflow: hidden;
         background-color: var(--abb-background-color);
         border-bottom-color: var(--abb-border-bottom);
@@ -46,7 +46,7 @@
         margin: 0;
         padding: 0;
         text-align: center;
-        line-height: {{ bar_height_mobile }}px;
+        line-height: 1em;
         color: {{ font_color }};
         font-size: {{ font_size_mobile }}px;
         font-family: var(--header-font-family);
@@ -58,7 +58,8 @@
 
     .benefit-bar > div {
         width: 100%;
-        height: {{ bar_height_mobile }}px;
+        min-height: {{ bar_height_mobile }}px;
+        padding: 0.25em 0;
         opacity: 1;
         {%- if section.blocks.size > 1 -%}
         position: absolute;

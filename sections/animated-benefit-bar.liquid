@@ -171,7 +171,13 @@
                 data-expired-message="{{ expired_message }}"
               {% endunless %}
             >
-              <p style="color: {{ font_color }};" data-countdown-content>{{ content }}</p>
+              {%- if block.settings.link -%}
+                <a href="{{ block.settings.link }}">
+                  <p style="color: {{ font_color }};" data-countdown-content>{{ content }}</p>
+                </a>
+              {%- else -%}
+                <p style="color: {{ font_color }};" data-countdown-content>{{ content }}</p>
+              {%- endif -%}
             </countdown-component>
           {%- else -%}
             {%- unless block.settings.link == blank -%}
@@ -326,6 +332,11 @@
       "name": "Countdown",
       "limit": 1,
       "settings": [
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
         {
           "type": "checkbox",
           "id": "show_when_expired",

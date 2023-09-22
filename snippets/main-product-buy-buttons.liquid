@@ -83,12 +83,12 @@
             {% render 'icon-bag', classes: 'align-middle inline-block mr-1' %}
             {{ 'products.product.add_to_cart' | t }}
           </span>
-          <span class="[ hidden group-disabled:inline-block transition-transform group-hover:translate-x-64 leading-tight ]">
+          <span class="[ hidden group-disabled:inline-block transition-transform group-hover:translate-x-96 leading-tight ]">
             {{ 'products.product.sold_out' | t }}
           </span>
           <span
             id="productPrice{{ product.id }}"
-            class="product-price [ transition-transform group-hover:translate-x-64 inline-block ml-5 leading-tight ]"
+            class="product-price [ transition-transform group-hover:translate-x-96 inline-block ml-5 leading-tight ]"
           >
             <span data-price-wrapper>
               <span data-product-price> {{ offer.price | money }}</span>

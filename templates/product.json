@@ -14,6 +14,11 @@
           "settings": {
           }
         },
+        "8ba1e5da-38fe-43d2-89fd-f5a1edb121cd": {
+          "type": "product_price",
+          "settings": {
+          }
+        },
         "a3796758-d1d2-41e8-bb2b-ddbd229e9efe": {
           "type": "color_variants",
           "settings": {
@@ -22,12 +27,15 @@
         "e59bab77-ce4b-4655-9888-650e52af7583": {
           "type": "custom_text",
           "settings": {
+            "logged_in_only": false,
+            "logged_out_only": false,
             "custom_text": "<p><a href=\"\/pages\/size-guide\" title=\"Size Guide\"><span style=\"text-decoration:underline\">Size Guide<\/span><\/a><\/p>"
           }
         },
         "20c06d95-7112-4b19-ba71-37a0d8cddcd2": {
           "type": "variant_selectors",
           "settings": {
+            "logged_in_only": false,
             "show_labels": false,
             "use_swatches": false
           }
@@ -35,7 +43,9 @@
         "36bcb969-de7f-4622-8eee-50454b12a522": {
           "type": "buy_now_buttons",
           "settings": {
+            "logged_in_only": false,
             "show_qty_label": false,
+            "show_additional_checkout_buttons": false,
             "show_price_in_button": true,
             "show_quantity_Selector": true
           }
@@ -133,6 +143,7 @@
       "block_order": [
         "1e03dee9-d860-461c-b0be-5568010aca1a",
         "79fd555e-8126-441c-bbb6-1af194709a47",
+        "8ba1e5da-38fe-43d2-89fd-f5a1edb121cd",
         "a3796758-d1d2-41e8-bb2b-ddbd229e9efe",
         "e59bab77-ce4b-4655-9888-650e52af7583",
         "20c06d95-7112-4b19-ba71-37a0d8cddcd2",

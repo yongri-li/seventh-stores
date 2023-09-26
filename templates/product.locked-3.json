@@ -81,9 +81,9 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Garment Measurements",
-            "content": "<p><strong>One Size<\/strong><\/p><p>Body Height: 28cm<\/p><p>Width: 46cm<\/p><p>Depth: 22cm<\/p><p>Opening Height: 38cm<\/p><p>Strap Length: 55 - 93cm<\/p>",
+            "content": "",
             "product_description": false,
-            "size_guide": false,
+            "size_guide": true,
             "page_content": "",
             "open_by_default": false
           }
@@ -94,7 +94,7 @@
             "heading": "Size guide",
             "content": "<p>For more information on sizing and how our products may fit you <a href=\"https:\/\/seventhstores.com\/blogs\/news\/how-to-find-your-seventh-fit\"><span style=\"text-decoration:underline\">please refer to our sizing page<\/span><\/a><span style=\"text-decoration:underline\">.<\/span><\/p>",
             "product_description": false,
-            "size_guide": false,
+            "size_guide": true,
             "page_content": "",
             "open_by_default": false
           }

@@ -42,7 +42,7 @@
     "title_default_bg_opacity": 1,
     "show_vendor": false,
     "favicon": "shopify:\/\/shop_images\/favicon.png",
-    "development_mode": false,
+    "development_mode": true,
     "checkout_logo_image": "shopify:\/\/shop_images\/logo.png",
     "checkout_body_background_color": "#f3eee8",
     "checkout_sidebar_background_color": "#fffaf4",

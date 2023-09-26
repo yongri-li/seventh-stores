@@ -6,15 +6,15 @@
         "contain_hero": false,
         "dynamic_loading": true,
         "section_gutter": false,
-        "hero_link": "https:\/\/seventhstores.com\/collections\/v2",
+        "hero_link": "shopify:\/\/collections\/a-w-drop-1",
         "max_height_mobile": 60,
         "use_img_height_mobile": true,
-        "mobile_image": "shopify:\/\/shop_images\/Copy_of_Homepage_Mobile_1_8056779b-3b5b-4dc7-a974-231f46a59d53.png",
+        "mobile_image": "shopify:\/\/shop_images\/Mobile_Coming_soon.png",
         "mobile_image_focus": "object-top",
         "mobile_content_focus": "justify-start items-center",
         "max_height_desktop": 80,
         "use_img_height_desktop": true,
-        "desktop_image": "shopify:\/\/shop_images\/Desktop_Hompage_4470_x_3171px.png",
+        "desktop_image": "shopify:\/\/shop_images\/Desktop.png",
         "desktop_image_focus": "lg:object-top",
         "desktop_content_focus": "lg:justify-center lg:items-start"
       }

@@ -111,7 +111,7 @@
               "link": "shopify:\/\/collections\/a-w-drop-1",
               "show_when_expired": true,
               "background_color": "#fffaf3",
-              "expired_message": "This countdown has expired",
+              "expired_message": "",
               "count_to": "both",
               "monday": true,
               "tuesday": true,

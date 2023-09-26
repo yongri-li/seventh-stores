@@ -22,12 +22,15 @@
         "e59bab77-ce4b-4655-9888-650e52af7583": {
           "type": "custom_text",
           "settings": {
+            "logged_in_only": false,
+            "logged_out_only": false,
             "custom_text": "<p><a href=\"\/pages\/size-guide\" title=\"Size Guide\"><span style=\"text-decoration:underline\">Size Guide<\/span><\/a><\/p>"
           }
         },
         "20c06d95-7112-4b19-ba71-37a0d8cddcd2": {
           "type": "variant_selectors",
           "settings": {
+            "logged_in_only": false,
             "show_labels": false,
             "use_swatches": false
           }
@@ -35,7 +38,9 @@
         "36bcb969-de7f-4622-8eee-50454b12a522": {
           "type": "buy_now_buttons",
           "settings": {
+            "logged_in_only": false,
             "show_qty_label": false,
+            "show_additional_checkout_buttons": false,
             "show_price_in_button": true,
             "show_quantity_Selector": true
           }
@@ -153,7 +158,8 @@
         "input_border_color": "#f3eee8",
         "contain": false,
         "show_share_buttons": true,
-        "use_image_gallery": false
+        "use_image_gallery": false,
+        "enable_image_zoom": true
       }
     },
     "accordions": {

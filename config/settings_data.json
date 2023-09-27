@@ -42,7 +42,7 @@
     "title_default_bg_opacity": 1,
     "show_vendor": false,
     "favicon": "shopify:\/\/shop_images\/favicon.png",
-    "development_mode": true,
+    "development_mode": false,
     "checkout_logo_image": "shopify:\/\/shop_images\/logo.png",
     "checkout_body_background_color": "#f3eee8",
     "checkout_sidebar_background_color": "#fffaf4",
@@ -105,13 +105,24 @@
       "animated-benefit-bar": {
         "type": "animated-benefit-bar",
         "blocks": {
-          "85f9a91d-78cf-4662-8255-e97f1b8d19c1": {
+          "0adfb7d8-91e7-4c12-b6b4-9a530d95a3f2": {
+            "type": "benefit",
+            "disabled": true,
+            "settings": {
+              "benefit": "Cactus Collection Dropping Soon",
+              "link": "shopify:\/\/collections\/a-w-drop-1",
+              "trigger_newsletter": false,
+              "background_color": "#fffaf3",
+              "font_color": "#8a8985"
+            }
+          },
+          "95369542-c26c-46d7-9e7b-8d3c224c8297": {
             "type": "countdown",
             "settings": {
-              "link": "shopify:\/\/collections\/a-w-drop-1",
+              "link": "",
               "show_when_expired": true,
               "background_color": "#fffaf3",
-              "expired_message": "",
+              "expired_message": "This countdown has expired",
               "count_to": "both",
               "monday": true,
               "tuesday": true,
@@ -120,7 +131,7 @@
               "friday": true,
               "saturday": true,
               "sunday": true,
-              "content": "The Cactus Drop: Coming Soon. Subscribe here for early access {countdown}.",
+              "content": "Cactus Collection Dropping In {countdown}",
               "show_days": true,
               "month": "Sep",
               "day": 28,
@@ -133,7 +144,8 @@
           }
         },
         "block_order": [
-          "85f9a91d-78cf-4662-8255-e97f1b8d19c1"
+          "0adfb7d8-91e7-4c12-b6b4-9a530d95a3f2",
+          "95369542-c26c-46d7-9e7b-8d3c224c8297"
         ],
         "settings": {
           "show_benefit": true,

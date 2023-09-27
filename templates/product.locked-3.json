@@ -29,7 +29,7 @@
           "settings": {
             "logged_in_only": false,
             "logged_out_only": false,
-            "custom_text": "<p>Subscribe for early access <a href=\"https:\/\/seventhstores.com\/account\/register\" title=\"https:\/\/seventhstores.com\/account\/register\"><strong>here.<\/strong><\/a><\/p><p><strong>Members Drop Date & Time: 28.09.23 \/ 7PM BST<\/strong><br\/>General Drop Date & Time: 29.09.23 \/ 7PM BST<\/p>"
+            "custom_text": "<p><strong>Shipping From 17.10.23<\/strong><\/p><p>Subscribe for early access <a href=\"https:\/\/seventhstores.com\/account\/register\" title=\"https:\/\/seventhstores.com\/account\/register\"><strong>here.<\/strong><\/a><\/p><p><strong>Members Drop Date & Time: 28.09.23 \/ 7PM BST<\/strong><br\/>General Drop Date & Time: 29.09.23 \/ 7PM BST<\/p>"
           }
         },
         "20c06d95-7112-4b19-ba71-37a0d8cddcd2": {
@@ -81,7 +81,7 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Garment Measurements",
-            "content": "<p><strong>One Size<\/strong><\/p><p>Body Height: 28cm<\/p><p>Width: 46cm<\/p><p>Depth: 22cm<\/p><p>Opening Height: 38cm<\/p><p>Strap Length: 55 - 93cm<\/p>",
+            "content": "",
             "product_description": false,
             "size_guide": true,
             "page_content": "",
@@ -94,7 +94,7 @@
             "heading": "Size guide",
             "content": "<p>For more information on sizing and how our products may fit you <a href=\"https:\/\/seventhstores.com\/blogs\/news\/how-to-find-your-seventh-fit\"><span style=\"text-decoration:underline\">please refer to our sizing page<\/span><\/a><span style=\"text-decoration:underline\">.<\/span><\/p>",
             "product_description": false,
-            "size_guide": false,
+            "size_guide": true,
             "page_content": "",
             "open_by_default": false
           }

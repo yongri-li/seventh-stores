@@ -829,6 +829,12 @@
         "id": "development_mode",
         "label": "Enable development mode",
         "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "hide_preview_bar",
+        "label": "Hide Preview Bar?",
+        "default": true
       }
     ]
   }

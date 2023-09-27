@@ -62,20 +62,20 @@
       <link rel="preload" as="font" href="{{ settings.heading_font | font_url }}" type="font/woff2" crossorigin>
     {%- endunless -%}
 
-    {%- unless settings.development_mode -%}
+    {%- if settings.hide_preview_bar -%}
       <style>
         #preview-bar-iframe {
           display: none !important;
         }
       </style>
-    {%- endunless -%}
+    {%- endif -%}
 
     <script>
       document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
     </script>
-  
-  {% include "globale-js.liquid" %}
-</head>
+
+    {% include 'globale-js.liquid' %}
+  </head>
 
   <body
     id="{{ page_title | handle }}"
@@ -180,7 +180,6 @@
         border: 1px solid var(--border-color) !important;
       }
     {%- endstyle -%}
-   {% include 'smile-initializer' %}
-
-</body>
+    {% include 'smile-initializer' %}
+  </body>
 </html>

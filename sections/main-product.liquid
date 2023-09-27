@@ -13,6 +13,10 @@
     --product-input-border-color: {{ section.settings.input_border_color }};
   }
 
+  [data-large-image]{
+    background-color: var(--body-bg);
+  }
+
   .main-product-image-gallery img {
     grid-column: span 2;
   }
@@ -72,24 +76,51 @@
             <ul class="flex flex-nowrap snap-x snap-mandatory scroll-smooth w-full overflow-x-auto">
               {%- for image in product.images -%}
                 <li class="flex-shrink-0 snap-start w-full">
-                  <img
-                    loading="lazy"
-                    width="{{ image.width }}"
-                    height="{{ image.height }}"
-                    class="cursor-zoom-in w-full h-auto"
-                    data-variant-image="{{ image | image_url: width: 100, height: 100 | replace: '_small', '' }}"
-                    src="{{ image | image_url: width: 640 }}"
-                    srcset="
-                      {{ image | image_url: width: 1280 }} 1280w,
-                      {{ image | image_url: width: 1024 }} 1024w,
-                      {{ image | image_url: width: 960 }} 960w,
-                      {{ image | image_url: width: 720 }} 720w,
-                      {{ image | image_url: width: 640 }} 640w,
-                      {{ image | image_url: width: 480 }} 480w
-                    "
-                    data-gallery-image
-                    alt="{{ image.alt | escape }}"
-                  >
+                  {%- if section.settings.enable_image_zoom -%}
+                    <div data-zoom-image="{{ forloop.index }}" class="relative w-full h-auto">
+                      <img
+                        loading="lazy"
+                        width="{{ image.width }}"
+                        height="{{ image.height }}"
+                        class="cursor-zoom-in w-full h-auto peer z-[5]"
+                        data-variant-image="{{ image | image_url: width: 100, height: 100 | replace: '_small', '' }}"
+                        src="{{ image | image_url: width: 640 }}"
+                        srcset="
+                          {{ image | image_url: width: 1280 }} 1280w,
+                          {{ image | image_url: width: 1024 }} 1024w,
+                          {{ image | image_url: width: 960 }} 960w,
+                          {{ image | image_url: width: 720 }} 720w,
+                          {{ image | image_url: width: 640 }} 640w,
+                          {{ image | image_url: width: 480 }} 480w
+                        "
+                        data-gallery-image
+                        alt="{{ image.alt | escape }}"
+                      >
+                      <div
+                        class="hidden z-10 lg:block bg-no-repeat absolute shadow-sm pointer-events-none w-96 h-96 opacity-0 peer-hover:opacity-100"
+                        data-large-image="{{ forloop.index }}"
+                      ></div>
+                    </div>
+                  {%- else -%}
+                    <img
+                      loading="lazy"
+                      width="{{ image.width }}"
+                      height="{{ image.height }}"
+                      class="cursor-zoom-in w-full h-auto"
+                      data-variant-image="{{ image | image_url: width: 100, height: 100 | replace: '_small', '' }}"
+                      src="{{ image | image_url: width: 640 }}"
+                      srcset="
+                        {{ image | image_url: width: 1280 }} 1280w,
+                        {{ image | image_url: width: 1024 }} 1024w,
+                        {{ image | image_url: width: 960 }} 960w,
+                        {{ image | image_url: width: 720 }} 720w,
+                        {{ image | image_url: width: 640 }} 640w,
+                        {{ image | image_url: width: 480 }} 480w
+                      "
+                      data-gallery-image
+                      alt="{{ image.alt | escape }}"
+                    >
+                  {%- endif -%}
                 </li>
               {%- endfor -%}
             </ul>
@@ -123,18 +154,43 @@
                 {%- for media in product.media -%}
                   {%- if media.media_type == 'image' -%}
                     {%- assign image = media.image -%}
-                    <img
-                      loading="lazy"
-                      width="{{ image.width }}"
-                      height="{{ image.height }}"
-                      src="{{ image | image_url: width: 640 }}"
-                      srcset="{{ image | image_url: width: 1920 }} 2x, {{ image | image_url: width: 960 }} 960w"
-                      class="cursor-zoom-in w-full h-auto flex-shrink-0 snap-start lg:col-span-2"
-                      data-variant-image="{{ image | image_url: width: 100, height: 100 | replace: '_small', '' }}"
-                      data-gallery-image
-                      alt="{{ image.alt | escape }}"
-                      data-media-id="{{ section.id }}-{{ image.id }}"
-                    >
+                    {%- if section.settings.enable_image_zoom -%}
+                      <div
+                        data-zoom-image="{{ forloop.index }}"
+                        class="relative flex-shrink-0 snap-start w-full h-auto lg:col-span-2"
+                      >
+                        <img
+                          loading="lazy"
+                          width="{{ image.width }}"
+                          height="{{ image.height }}"
+                          src="{{ image | image_url: width: 640 }}"
+                          srcset="{{ image | image_url: width: 1920 }} 2x, {{ image | image_url: width: 960 }} 960w"
+                          class="cursor-zoom-in w-full h-auto peer z-[5]"
+                          data-variant-image="{{ image | image_url: width: 100, height: 100 | replace: '_small', '' }}"
+                          data-gallery-image
+                          alt="{{ image.alt | escape }}"
+                          data-media-id="{{ section.id }}-{{ image.id }}"
+                        >
+                        <div
+                          style="background-image: url('{{ image | image_url: width: 1920 }}');"
+                          class="hidden lg:block z-10 bg-no-repeat absolute shadow-sm pointer-events-none w-96 h-96 opacity-0 peer-hover:opacity-100"
+                          data-large-image="{{ forloop.index }}"
+                        ></div>
+                      </div>
+                    {%- else -%}
+                      <img
+                        loading="lazy"
+                        width="{{ image.width }}"
+                        height="{{ image.height }}"
+                        src="{{ image | image_url: width: 640 }}"
+                        srcset="{{ image | image_url: width: 1920 }} 2x, {{ image | image_url: width: 960 }} 960w"
+                        class="cursor-zoom-in w-full h-auto flex-shrink-0 snap-start lg:col-span-2"
+                        data-variant-image="{{ image | image_url: width: 100, height: 100 | replace: '_small', '' }}"
+                        data-gallery-image
+                        alt="{{ image.alt | escape }}"
+                        data-media-id="{{ section.id }}-{{ image.id }}"
+                      >
+                    {%- endif -%}
                   {%- endif -%}
                 {%- endfor -%}
               </div>
@@ -535,6 +591,51 @@
   });
 </script>
 
+<script>
+  {%- if section.settings.enable_image_zoom -%}
+  const zoomImages = document.querySelectorAll('[data-zoom-image]');
+
+  if( zoomImages.length > 0 ){
+
+    zoomImages.forEach((zoomImage) => {
+      zoomImage.addEventListener('mousemove', (e) => {
+        const original = zoomImage.querySelector('img');
+        const magnified = zoomImage.querySelector('[data-large-image]');
+
+        let style = magnified.style,
+          rect = e.target.getBoundingClientRect(),
+          x = e.clientX - rect.left,
+          y = e.clientY - rect.top,
+          imgWidth = original.width,
+          imgHeight = original.height,
+          xperc = (x / imgWidth) * 100,
+          yperc = (y / imgHeight) * 100;
+
+        // Add some margin for right edge
+        if (x > 0.01 * imgWidth) {
+          xperc += 0.15 * xperc;
+        }
+
+        // Add some margin for bottom edge
+        if (y >= 0.01 * imgHeight) {
+          yperc += 0.15 * yperc;
+        }
+
+        // Set the background of the magnified image horizontal
+        style.backgroundPositionX = xperc - 9 + '%';
+        // Set the background of the magnified image vertical
+        style.backgroundPositionY = yperc - 9 + '%';
+
+        // Move the magnifying glass with the mouse movement.
+        style.left = x - 50 + 'px';
+        style.top = y - 50 + 'px';
+      });
+    });
+
+  };
+  {%- endif -%}
+</script>
+
 <script type="application/ld+json" data-creator-name="FeedArmy">
   {
     "@context": "http://schema.org/",
@@ -648,6 +749,12 @@
       "type": "checkbox",
       "id": "use_image_gallery",
       "label": "Use Image Gallery instead of scrolling images?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_image_zoom",
+      "label": "Enable Image Zoom on Gallery Images?",
       "default": true
     }
   ],

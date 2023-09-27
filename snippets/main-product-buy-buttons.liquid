@@ -1,4 +1,12 @@
-{% assign assign current_variant = product.selected_or_first_available_variant %}
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign current_selling_plan_allocation = product.selected_selling_plan_allocation
+  if current_selling_plan_allocation == null and current_variant.selling_plan_allocations.size > 0
+    assign current_selling_plan_allocation = current_variant.selling_plan_allocations | first
+  endif
+  assign offer = current_selling_plan_allocation | default: current_variant
+-%}
+
 {% form 'product', product, data-product-form: '', data-product-handle: product.handle %}
   <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
   {%- if product.selling_plan_groups.size > 0 -%}
@@ -71,35 +79,37 @@
               <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
             </svg>
           </span>
-          <span class="[ group-disabled:hidden inline-block transition-transform group-hover:translate-x-9 leading-tight ]">
+          <span class="[ group-disabled:hidden inline-block transition-transform {% if block.settings.show_price_in_button %}group-hover:translate-x-9{% endif %} leading-tight ]">
             {% render 'icon-bag', classes: 'align-middle inline-block mr-1' %}
             {{ 'products.product.add_to_cart' | t }}
           </span>
-          <span class="[ hidden group-disabled:inline-block transition-transform group-hover:translate-x-52 leading-tight ]">
+          <span class="[ hidden group-disabled:inline-block transition-transform {% if block.settings.show_price_in_button %}group-hover:translate-x-96{% endif %} leading-tight ]">
             {{ 'products.product.sold_out' | t }}
           </span>
-          <span
-            id="productPrice{{ product.id }}"
-            class="product-price [ transition-transform group-hover:translate-x-52 inline-block ml-5 leading-tight ]"
-          >
-            <span data-price-wrapper>
-              <span data-product-price> {{ offer.price | money }}</span>
-              <span
-                {% unless offer.compare_at_price_max > offer.price %}
-                  style="display: none;"
-                {% endunless %}
-                class="visually-hidden"
-                data-compare-text
-              >
-                {{- 'products.product.regular_price' | t -}}
+          {%- if block.settings.show_price_in_button -%}
+            <span
+              id="productPrice{{ product.id }}"
+              class="product-price [ transition-transform group-hover:translate-x-96 inline-block ml-5 leading-tight ]"
+            >
+              <span data-price-wrapper>
+                <span data-product-price> {{ offer.price | money }}</span>
+                <span
+                  {% unless offer.compare_at_price_max > offer.price %}
+                    style="display: none;"
+                  {% endunless %}
+                  class="visually-hidden"
+                  data-compare-text
+                >
+                  {{- 'products.product.regular_price' | t -}}
+                </span>
+                <s class="[ text-red-600 ]" data-product-compare-price>
+                  {% if offer.compare_at_price > offer.price %}
+                    {{ offer.compare_at_price | money }}
+                  {% endif %}
+                </s>
               </span>
-              <s class="[ text-red-600 ]" data-product-compare-price>
-                {% if offer.compare_at_price > offer.price %}
-                  {{ offer.compare_at_price | money }}
-                {% endif %}
-              </s>
             </span>
-          </span>
+          {%- endif -%}
         </button>
       </div>
     </div>

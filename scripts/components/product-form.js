@@ -17,13 +17,15 @@ class ProductForm extends HTMLElement {
         this.purchaseOptionSelector = '[data-purchase-option-selector]';
         this.singlePlanSelector = '[data-single-plan-selector]';
 
-        this.form = this.querySelector(this.formSelector);
+        this.form = this.querySelector(this.formSelector) || false;
         this.VariantSelectors = this.querySelector('variant-selectors') || false;
         this.SellingPlans = this.querySelector('selling-plan') || false;
 
-        const productHandle = this.form.dataset.productHandle;
-
         this.currentVariant;
+
+        if (!this.form) return;
+
+        const productHandle = this.form.dataset.productHandle;
 
         // Fetch the product data from the .js endpoint because it includes
         // more data than the .json endpoint. Alternatively, you could inline the output
@@ -137,6 +139,16 @@ class ProductForm extends HTMLElement {
             })
             .catch((error) => {
                 console.error('Error:', error);
+            })
+            .finally(() => {
+
+                const miniCart = document.querySelector('[data-mini-cart]') || false;
+
+                if (!miniCart) return;
+
+                miniCart.setAttribute("aria-hidden", "false");
+                document.querySelector('body').classList.add('overflow-hidden');
+                miniCart.querySelector('drawer-trigger').triggerStatus();
             });
     }
 
@@ -226,6 +238,8 @@ class ProductForm extends HTMLElement {
         const gallery = document.querySelector(`[data-product-gallery="${this.dataset.productId}"]`) || false;
 
         if (!gallery) return;
+
+        if (this.currentVariant.featured_media === undefined || this.currentVariant.featured_media === null) return;
 
         const featuredMedia = document.querySelector(`[data-media-id="${this.dataset.section}-${this.currentVariant.featured_media.id}"]`);
 

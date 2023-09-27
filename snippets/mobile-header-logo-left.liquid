@@ -18,14 +18,18 @@
                 class="[ block ]"
                 style="max-width: {{ section.settings.logo_max_width_desktop }}px;"
               >
-                {% capture image_size %}{{ section.settings.logo_max_width_desktop }}{% endcapture %}
                 <img
                   class="header-logo"
                   loading="lazy"
-                  src="{{ section.settings.logo | image_url: width: image_size }}"
+                  src="{{ section.settings.logo | image_url: width: 460 }}"
                   width="{{ section.settings.logo.width }}"
                   height="{{ section.settings.logo.height }}"
-                  srcset="{{ section.settings.logo | image_url: width: image_size }} 1x, {{ section.settings.logo | image_url: width: image_size, scale: 2 }} 2x"
+                  srcset="
+                    {%- if section.settings.logo.width >= 165 -%}{{ section.settings.logo | image_url: width: 165 }} 165w,{%- endif -%}
+                    {%- if section.settings.logo.width >= 360 -%}{{ section.settings.logo | image_url: width: 360 }} 360w,{%- endif -%}
+                    {%- if section.settings.logo.width >= 535 -%}{{ section.settings.logo | image_url: width: 535 }} 535w,{%- endif -%}
+                    {%- if section.settings.logo.width >= 720 -%}{{ section.settings.logo | image_url: width: 720 }} 720w{%- endif -%}
+                  "
                   alt="{{ section.settings.logo.alt | default: shop.name }}"
                   itemprop="logo"
                 >

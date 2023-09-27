@@ -164,7 +164,8 @@
         "input_border_color": "#f3eee8",
         "contain": false,
         "show_share_buttons": true,
-        "use_image_gallery": false
+        "use_image_gallery": false,
+        "enable_image_zoom": true
       }
     },
     "accordions": {

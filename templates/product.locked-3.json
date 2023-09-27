@@ -94,7 +94,7 @@
             "heading": "Size guide",
             "content": "<p>For more information on sizing and how our products may fit you <a href=\"https:\/\/seventhstores.com\/blogs\/news\/how-to-find-your-seventh-fit\"><span style=\"text-decoration:underline\">please refer to our sizing page<\/span><\/a><span style=\"text-decoration:underline\">.<\/span><\/p>",
             "product_description": false,
-            "size_guide": true,
+            "size_guide": false,
             "page_content": "",
             "open_by_default": false
           }
@@ -129,6 +129,7 @@
         "80b98137-6193-4edc-945a-94bd2c6aad2c": {
           "type": "data_related_products",
           "settings": {
+            "intent": "related",
             "limit": 2
           }
         }
@@ -156,7 +157,8 @@
         "input_border_color": "#f3eee8",
         "contain": false,
         "show_share_buttons": true,
-        "use_image_gallery": false
+        "use_image_gallery": false,
+        "enable_image_zoom": true
       }
     },
     "accordions": {

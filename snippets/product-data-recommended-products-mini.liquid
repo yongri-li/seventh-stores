@@ -1,7 +1,11 @@
+{%- assign default_intent = 'related' -%}
+{%- unless intent == blank -%}
+  {%- assign default_intent = intent -%}
+{%- endunless -%}
 <!-- Recommended products -->
 <div
   class="product-recommendations-mini"
-  data-url="/recommendations/products?section_id={{ section_id }}&intent={{ block.settings.intent }}&limit={{ the_limit }}&product_id={{ product.id }}"
+  data-url="/recommendations/products?section_id={{ section_id }}&intent={{ default_intent }}&limit={{ the_limit }}&product_id={{ product.id }}"
 >
   {%- if recommendations.products_count > 0 -%}
     <h2 class="my-4 text-base">{{ 'products.product.product_recommendations' | t }}</h2>

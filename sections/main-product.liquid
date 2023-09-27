@@ -391,7 +391,8 @@
               {%- when 'data_related_products' -%}
                 {% render 'product-data-recommended-products-mini',
                   section_id: section.id,
-                  the_limit: block.settings.limit
+                  the_limit: block.settings.limit,
+                  intent: block.settings.intent
                 %}
               {%- when 'color_variants' -%}
                 {%- if product.metafields.filters.colour or product.metafields.color.variants.value -%}

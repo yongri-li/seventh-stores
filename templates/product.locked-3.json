@@ -43,7 +43,6 @@
         },
         "36bcb969-de7f-4622-8eee-50454b12a522": {
           "type": "buy_now_buttons",
-          "disabled": true,
           "settings": {
             "logged_in_only": true,
             "show_qty_label": false,

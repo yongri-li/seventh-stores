@@ -34,6 +34,7 @@
         },
         "20c06d95-7112-4b19-ba71-37a0d8cddcd2": {
           "type": "variant_selectors",
+          "disabled": true,
           "settings": {
             "logged_in_only": true,
             "show_labels": false,
@@ -42,6 +43,7 @@
         },
         "36bcb969-de7f-4622-8eee-50454b12a522": {
           "type": "buy_now_buttons",
+          "disabled": true,
           "settings": {
             "logged_in_only": true,
             "show_qty_label": false,

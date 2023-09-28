@@ -108,6 +108,7 @@
         "blocks": {
           "95369542-c26c-46d7-9e7b-8d3c224c8297": {
             "type": "countdown",
+            "disabled": true,
             "settings": {
               "link": "",
               "show_when_expired": true,
@@ -131,10 +132,21 @@
               "minute": 0,
               "hour": 19
             }
+          },
+          "ddb68ea6-dddb-461c-b839-49cbb01b868a": {
+            "type": "benefit",
+            "settings": {
+              "benefit": "A\/W Drop One Live Now",
+              "link": "shopify:\/\/collections\/a-w-drop-1",
+              "trigger_newsletter": false,
+              "background_color": "#fffaf3",
+              "font_color": "#4b4c4a"
+            }
           }
         },
         "block_order": [
-          "95369542-c26c-46d7-9e7b-8d3c224c8297"
+          "95369542-c26c-46d7-9e7b-8d3c224c8297",
+          "ddb68ea6-dddb-461c-b839-49cbb01b868a"
         ],
         "settings": {
           "show_benefit": true,

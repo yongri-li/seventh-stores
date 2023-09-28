@@ -9,12 +9,12 @@
         "hero_link": "shopify:\/\/collections\/a-w-drop-1",
         "max_height_mobile": 60,
         "use_img_height_mobile": true,
-        "mobile_image": "shopify:\/\/shop_images\/Mobile_Coming_soon.png",
+        "mobile_image": "shopify:\/\/shop_images\/Mobile_Live_Now.png",
         "mobile_image_focus": "object-top",
         "mobile_content_focus": "justify-start items-center",
         "max_height_desktop": 80,
         "use_img_height_desktop": true,
-        "desktop_image": "shopify:\/\/shop_images\/Desktop.png",
+        "desktop_image": "shopify:\/\/shop_images\/Desk_Live_Now.png",
         "desktop_image_focus": "lg:object-top",
         "desktop_content_focus": "lg:justify-center lg:items-start"
       }

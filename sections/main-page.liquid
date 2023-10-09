@@ -18,7 +18,7 @@
       {%- case block.type -%}
         {%- when '@app' -%}
           {% render block %}
-        {%- when 'breadcrumbs' -%}
+        {%- when 'breadcrumbs', list_classes: block.settings.breadcrumb_alignment -%}
           {% render 'breadcrumb' %}
         {%- when 'header' -%}
           {% render 'page-header', alignment: block.settings.content_alignment %}

@@ -21,8 +21,8 @@
       <div
         class="
           [ grid {{ section.settings.grid_cols }} {{ section.settings.grid_cols_desktop }}
-          {% if section.settings.horizontal_spacing %}gap-x-4{% else %}gap-x-0{% endif %}
-          {% if section.settings.vertical_spacing %}gap-y-4{% else %}gap-y-0{% endif %}
+          {% if section.settings.horizontal_spacing %}max-lg:gap-x-4{% endif %}
+          {% if section.settings.vertical_spacing %}max-lg:gap-y-4{% endif %}
           {% if section.settings.horizontal_spacing_desktop %}lg:gap-x-4{% endif %}
           {% if section.settings.vertical_spacing_desktop %}lg:gap-y-4{% endif %}
           ]

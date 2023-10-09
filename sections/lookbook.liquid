@@ -13,14 +13,14 @@
   id="imageGrid-{{ section.id }}"
   class="{{ section.settings.spacing_top }} {{ section.settings.spacing_bottom }} {{ section.settings.spacing_top_desktop }} {{ section.settings.spacing_bottom_desktop }}"
 >
-  <div class="[ {% if section.settings.contain %}container{% endif %} mx-auto {% if section.settings.remove_gutters %}px-4 sm:px-6{% endif %} {% if section.settings.remove_gutters_desktop %}lg:px-8 ]{% endif %}">
+  <div class="[ {% if section.settings.contain %}container{% endif %} mx-auto {% unless section.settings.remove_gutters %}px-4 sm:px-6{% endunless %} {% unless section.settings.remove_gutters_desktop %}lg:px-8 ]{% endunless %}">
     {%- if section.settings.title != blank -%}
       <h2 class="mb-8 text-center text-3xl">{{ section.settings.title | escape }}</h2>
     {%- endif -%}
     <div class="{% if section.settings.contain_section %}container mx-auto{% endif %} w-full px-2">
       <div
         class="
-          [ grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4
+          [ grid {{ section.settings.grid_cols }} {{ section.settings.grid_cols_desktop }}
           {% if section.settings.horizontal_spacing %}gap-x-4{% endif %}
           {% if section.settings.vertical_spacing %}gap-y-4{% endif %}
           {% if section.settings.horizontal_spacing_desktop %}lg:gap-x-4{% endif %}
@@ -75,6 +75,26 @@
     {
       "type": "header",
       "content": "Mobile Styling"
+    },
+    {
+      "type": "select",
+      "id": "grid_cols",
+      "label": "Grid Columns",
+      "options": [
+        {
+          "value": "grid-cols-1",
+          "label": "1"
+        },
+        {
+          "value": "grid-cols-2",
+          "label": "2"
+        },
+        {
+          "value": "grid-cols-3",
+          "label": "3"
+        }
+      ],
+      "default": "grid-cols-3"
     },
     {
       "type": "color",
@@ -160,6 +180,26 @@
     {
       "type": "header",
       "content": "Desktop Styling"
+    },
+    {
+      "type": "select",
+      "id": "grid_cols_desktop",
+      "label": "Grid Columns",
+      "options": [
+        {
+          "value": "lg:grid-cols-2",
+          "label": "2"
+        },
+        {
+          "value": "lg:grid-cols-3",
+          "label": "3"
+        },
+        {
+          "value": "lg:grid-cols-4",
+          "label": "4"
+        }
+      ],
+      "default": "lg:grid-cols-1"
     },
     {
       "type": "color",

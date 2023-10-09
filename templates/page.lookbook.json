@@ -38,10 +38,10 @@
         "spacing_bottom_desktop": "lg:pb-0"
       }
     },
-    "db37447d-d348-4c20-848e-cf4a4efd5840": {
+    "d7a9aa2b-9caf-441f-8f65-7561c9999a58": {
       "type": "lookbook",
       "blocks": {
-        "template--21374904566077__db37447d-d348-4c20-848e-cf4a4efd5840-image-1": {
+        "template--21374904566077__d7a9aa2b-9caf-441f-8f65-7561c9999a58-image-1": {
           "type": "image",
           "settings": {
             "block_url": "",
@@ -50,7 +50,7 @@
             "column_span_desktop": "lg:col-span-1"
           }
         },
-        "ee7814d5-de9c-4ffd-be19-9c4f066cc699": {
+        "45e8e4f1-d0bc-4796-b0e3-6f8ad175c3a2": {
           "type": "image",
           "settings": {
             "block_url": "",
@@ -59,7 +59,7 @@
             "column_span_desktop": "lg:col-span-1"
           }
         },
-        "a57c8c49-816d-475c-90d9-70b3ccfe140b": {
+        "58b6e7ec-6a8c-41d8-8a0e-4fa73fddbd8d": {
           "type": "image",
           "settings": {
             "block_url": "",
@@ -67,12 +67,42 @@
             "column_span": "col-span-1",
             "column_span_desktop": "lg:col-span-1"
           }
+        },
+        "60018cb5-59af-4e75-b4da-3e1244119b14": {
+          "type": "image",
+          "settings": {
+            "block_url": "",
+            "block_image": "shopify:\/\/shop_images\/Seventh_08_09_20234192_1.png",
+            "column_span": "col-span-1",
+            "column_span_desktop": "lg:col-span-1"
+          }
+        },
+        "982021bc-3103-4224-9311-e6a858ce4534": {
+          "type": "image",
+          "settings": {
+            "block_url": "",
+            "block_image": "shopify:\/\/shop_images\/Seventh_08_09_20234192_f2873819-8765-4456-96da-c69ed76532d6.png",
+            "column_span": "col-span-1",
+            "column_span_desktop": "lg:col-span-1"
+          }
+        },
+        "2ed9d42e-855c-4e27-b04f-eb116ff2ec06": {
+          "type": "image",
+          "settings": {
+            "block_url": "",
+            "block_image": "shopify:\/\/shop_images\/Seventh_08_09_20234201_1.png",
+            "column_span": "col-span-1",
+            "column_span_desktop": "lg:col-span-1"
+          }
         }
       },
       "block_order": [
-        "template--21374904566077__db37447d-d348-4c20-848e-cf4a4efd5840-image-1",
-        "ee7814d5-de9c-4ffd-be19-9c4f066cc699",
-        "a57c8c49-816d-475c-90d9-70b3ccfe140b"
+        "template--21374904566077__d7a9aa2b-9caf-441f-8f65-7561c9999a58-image-1",
+        "45e8e4f1-d0bc-4796-b0e3-6f8ad175c3a2",
+        "58b6e7ec-6a8c-41d8-8a0e-4fa73fddbd8d",
+        "60018cb5-59af-4e75-b4da-3e1244119b14",
+        "982021bc-3103-4224-9311-e6a858ce4534",
+        "2ed9d42e-855c-4e27-b04f-eb116ff2ec06"
       ],
       "settings": {
         "contain_section": false,
@@ -86,16 +116,31 @@
         "spacing_bottom": "pb-8",
         "grid_cols_desktop": "lg:grid-cols-3",
         "section_background_desktop": "#f3eee8",
-        "remove_gutters_desktop": true,
+        "remove_gutters_desktop": false,
         "horizontal_spacing_desktop": true,
         "vertical_spacing_desktop": true,
         "spacing_top_desktop": "lg:pt-8",
         "spacing_bottom_desktop": "lg:pb-8"
       }
+    },
+    "c4ec2b05-cc72-4fd9-beb6-c03d53fa13b4": {
+      "type": "featured-collection",
+      "settings": {
+        "contain": false,
+        "section_background": "#f3eee8",
+        "section_spacing": "py-8",
+        "title": "Shop Lookbook",
+        "collection": "a-w-drop-1",
+        "total_products": 8,
+        "show_cta": false,
+        "cta_copy": "",
+        "cta_style": "primary-button"
+      }
     }
   },
   "order": [
     "main",
-    "db37447d-d348-4c20-848e-cf4a4efd5840"
+    "d7a9aa2b-9caf-441f-8f65-7561c9999a58",
+    "c4ec2b05-cc72-4fd9-beb6-c03d53fa13b4"
   ]
 }

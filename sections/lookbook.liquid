@@ -13,7 +13,7 @@
   id="imageGrid-{{ section.id }}"
   class="{{ section.settings.spacing_top }} {{ section.settings.spacing_bottom }} {{ section.settings.spacing_top_desktop }} {{ section.settings.spacing_bottom_desktop }}"
 >
-  <div class="[ {% if section.settings.contain %}container{% endif %} mx-auto px-4 sm:px-6 lg:px-8 ]">
+  <div class="[ {% if section.settings.contain %}container{% endif %} mx-auto {% if section.settings.remove_gutters %}px-4 sm:px-6{% endif %} {% if section.settings.remove_gutters_desktop %}lg:px-8 ]{% endif %}">
     {%- if section.settings.title != blank -%}
       <h2 class="mb-8 text-center text-3xl">{{ section.settings.title | escape }}</h2>
     {%- endif -%}
@@ -73,12 +73,6 @@
       "default": "Image Grid"
     },
     {
-      "type": "checkbox",
-      "id": "column_spacing",
-      "label": "Space columns?",
-      "default": true
-    },
-    {
       "type": "header",
       "content": "Mobile Styling"
     },
@@ -87,6 +81,13 @@
       "id": "section_background",
       "label": "Background Color",
       "default": "#FFFFFF"
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_gutters",
+      "label": "Remove Gutters?",
+      "default": true,
+      "info": "This removes spacing on the left and right side of the section."
     },
     {
       "type": "checkbox",
@@ -165,6 +166,13 @@
       "id": "section_background_desktop",
       "label": "Background Color",
       "default": "#FFFFFF"
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_gutters_desktop",
+      "label": "Remove Gutters?",
+      "default": true,
+      "info": "This removes spacing on the left and right side of the section."
     },
     {
       "type": "checkbox",

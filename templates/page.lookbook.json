@@ -6,7 +6,9 @@
       "disabled": true,
       "settings": {
         "contain_hero": false,
+        "dynamic_loading": true,
         "section_gutter": false,
+        "hero_link": "",
         "max_height_mobile": 50,
         "use_img_height_mobile": false,
         "mobile_image_focus": "top left",
@@ -45,10 +47,10 @@
       ],
       "settings": {
         "contain": true,
-        "section_background": "#FFFFFF",
+        "section_background": "#f3eee8",
         "spacing_top": "pt-8",
         "spacing_bottom": "pb-8",
-        "section_background_desktop": "#FFFFFF",
+        "section_background_desktop": "#ffffff",
         "spacing_top_desktop": "lg:pt-8",
         "spacing_bottom_desktop": "lg:pb-8"
       }

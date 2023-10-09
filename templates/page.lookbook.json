@@ -38,31 +38,55 @@
         "spacing_bottom_desktop": "lg:pb-0"
       }
     },
-    "2ef8e309-5156-49da-aab5-8177a07e9305": {
+    "db37447d-d348-4c20-848e-cf4a4efd5840": {
       "type": "lookbook",
       "blocks": {
-        "template--21374904566077__2ef8e309-5156-49da-aab5-8177a07e9305-image-1": {
+        "template--21374904566077__db37447d-d348-4c20-848e-cf4a4efd5840-image-1": {
           "type": "image",
           "settings": {
             "block_url": "",
+            "block_image": "shopify:\/\/shop_images\/Seventh_08_09_20233957.png",
+            "column_span": "col-span-1",
+            "column_span_desktop": "lg:col-span-1"
+          }
+        },
+        "ee7814d5-de9c-4ffd-be19-9c4f066cc699": {
+          "type": "image",
+          "settings": {
+            "block_url": "",
+            "block_image": "shopify:\/\/shop_images\/Seventh_08_09_20234000.png",
+            "column_span": "col-span-1",
+            "column_span_desktop": "lg:col-span-1"
+          }
+        },
+        "a57c8c49-816d-475c-90d9-70b3ccfe140b": {
+          "type": "image",
+          "settings": {
+            "block_url": "",
+            "block_image": "shopify:\/\/shop_images\/Seventh_08_09_20234170_db8c291c-057e-4fbc-a135-154a57bf3baf.png",
             "column_span": "col-span-1",
             "column_span_desktop": "lg:col-span-1"
           }
         }
       },
       "block_order": [
-        "template--21374904566077__2ef8e309-5156-49da-aab5-8177a07e9305-image-1"
+        "template--21374904566077__db37447d-d348-4c20-848e-cf4a4efd5840-image-1",
+        "ee7814d5-de9c-4ffd-be19-9c4f066cc699",
+        "a57c8c49-816d-475c-90d9-70b3ccfe140b"
       ],
       "settings": {
-        "contain_section": true,
+        "contain_section": false,
         "title": "",
-        "column_spacing": true,
-        "section_background": "#FFFFFF",
+        "grid_cols": "grid-cols-3",
+        "section_background": "#f3eee8",
+        "remove_gutters": true,
         "horizontal_spacing": true,
         "vertical_spacing": true,
         "spacing_top": "pt-8",
         "spacing_bottom": "pb-8",
-        "section_background_desktop": "#FFFFFF",
+        "grid_cols_desktop": "lg:grid-cols-3",
+        "section_background_desktop": "#f3eee8",
+        "remove_gutters_desktop": true,
         "horizontal_spacing_desktop": true,
         "vertical_spacing_desktop": true,
         "spacing_top_desktop": "lg:pt-8",
@@ -72,6 +96,6 @@
   },
   "order": [
     "main",
-    "2ef8e309-5156-49da-aab5-8177a07e9305"
+    "db37447d-d348-4c20-848e-cf4a4efd5840"
   ]
 }

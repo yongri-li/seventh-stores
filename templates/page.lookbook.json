@@ -1,22 +1,6 @@
 {
   "wrapper": "div#div_id.div_class[attribute-one=value]",
   "sections": {
-    "hero": {
-      "type": "featured-hero",
-      "disabled": true,
-      "settings": {
-        "contain_hero": false,
-        "section_gutter": false,
-        "max_height_mobile": 50,
-        "use_img_height_mobile": false,
-        "mobile_image_focus": "top left",
-        "mobile_content_focus": "justify-start items-start",
-        "max_height_desktop": 65,
-        "use_img_height_desktop": false,
-        "desktop_image_focus": "top left",
-        "desktop_content_focus": "lg:justify-start lg:items-start"
-      }
-    },
     "main": {
       "type": "main-page",
       "blocks": {
@@ -34,6 +18,7 @@
         },
         "57d04156-22d9-49f6-9acd-e0119f2a8656": {
           "type": "content",
+          "disabled": true,
           "settings": {
           }
         }
@@ -45,17 +30,48 @@
       ],
       "settings": {
         "contain": true,
+        "section_background": "#f3eee8",
+        "spacing_top": "pt-8",
+        "spacing_bottom": "pb-0",
+        "section_background_desktop": "#f3eee8",
+        "spacing_top_desktop": "lg:pt-8",
+        "spacing_bottom_desktop": "lg:pb-0"
+      }
+    },
+    "2ef8e309-5156-49da-aab5-8177a07e9305": {
+      "type": "lookbook",
+      "blocks": {
+        "template--21374904566077__2ef8e309-5156-49da-aab5-8177a07e9305-image-1": {
+          "type": "image",
+          "settings": {
+            "block_url": "",
+            "column_span": "col-span-1",
+            "column_span_desktop": "lg:col-span-1"
+          }
+        }
+      },
+      "block_order": [
+        "template--21374904566077__2ef8e309-5156-49da-aab5-8177a07e9305-image-1"
+      ],
+      "settings": {
+        "contain_section": true,
+        "title": "",
+        "column_spacing": true,
         "section_background": "#FFFFFF",
+        "horizontal_spacing": true,
+        "vertical_spacing": true,
         "spacing_top": "pt-8",
         "spacing_bottom": "pb-8",
         "section_background_desktop": "#FFFFFF",
+        "horizontal_spacing_desktop": true,
+        "vertical_spacing_desktop": true,
         "spacing_top_desktop": "lg:pt-8",
         "spacing_bottom_desktop": "lg:pb-8"
       }
     }
   },
   "order": [
-    "hero",
-    "main"
+    "main",
+    "2ef8e309-5156-49da-aab5-8177a07e9305"
   ]
 }

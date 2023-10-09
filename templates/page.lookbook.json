@@ -1,24 +1,6 @@
 {
   "wrapper": "div#div_id.div_class[attribute-one=value]",
   "sections": {
-    "hero": {
-      "type": "featured-hero",
-      "disabled": true,
-      "settings": {
-        "contain_hero": false,
-        "dynamic_loading": true,
-        "section_gutter": false,
-        "hero_link": "",
-        "max_height_mobile": 50,
-        "use_img_height_mobile": false,
-        "mobile_image_focus": "top left",
-        "mobile_content_focus": "justify-start items-start",
-        "max_height_desktop": 65,
-        "use_img_height_desktop": false,
-        "desktop_image_focus": "top left",
-        "desktop_content_focus": "lg:justify-start lg:items-start"
-      }
-    },
     "main": {
       "type": "main-page",
       "blocks": {
@@ -36,6 +18,7 @@
         },
         "57d04156-22d9-49f6-9acd-e0119f2a8656": {
           "type": "content",
+          "disabled": true,
           "settings": {
           }
         }
@@ -57,7 +40,6 @@
     }
   },
   "order": [
-    "hero",
     "main"
   ]
 }

@@ -32,14 +32,46 @@
         "contain": true,
         "section_background": "#f3eee8",
         "spacing_top": "pt-8",
+        "spacing_bottom": "pb-0",
+        "section_background_desktop": "#f3eee8",
+        "spacing_top_desktop": "lg:pt-8",
+        "spacing_bottom_desktop": "lg:pb-0"
+      }
+    },
+    "2ef8e309-5156-49da-aab5-8177a07e9305": {
+      "type": "lookbook",
+      "blocks": {
+        "template--21374904566077__2ef8e309-5156-49da-aab5-8177a07e9305-image-1": {
+          "type": "image",
+          "settings": {
+            "block_url": "",
+            "column_span": "col-span-1",
+            "column_span_desktop": "lg:col-span-1"
+          }
+        }
+      },
+      "block_order": [
+        "template--21374904566077__2ef8e309-5156-49da-aab5-8177a07e9305-image-1"
+      ],
+      "settings": {
+        "contain_section": true,
+        "title": "",
+        "column_spacing": true,
+        "section_background": "#FFFFFF",
+        "horizontal_spacing": true,
+        "vertical_spacing": true,
+        "spacing_top": "pt-8",
         "spacing_bottom": "pb-8",
-        "section_background_desktop": "#ffffff",
+        "section_background_desktop": "#FFFFFF",
+        "horizontal_spacing_desktop": true,
+        "vertical_spacing_desktop": true,
         "spacing_top_desktop": "lg:pt-8",
         "spacing_bottom_desktop": "lg:pb-8"
       }
     }
   },
   "order": [
-    "main"
+    "main",
+    "2ef8e309-5156-49da-aab5-8177a07e9305"
   ]
 }

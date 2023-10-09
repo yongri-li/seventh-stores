@@ -7,13 +7,13 @@
         "711ee7d1-225a-4582-b7e0-269360dd87de": {
           "type": "header",
           "settings": {
-            "content_alignment": "text-left"
+            "content_alignment": "text-center"
           }
         },
         "4c9e6e40-0a78-48d4-8c78-06f627872584": {
           "type": "breadcrumbs",
           "settings": {
-            "breadcrumb_alignment": "justify-start"
+            "breadcrumb_alignment": "justify-center"
           }
         },
         "57d04156-22d9-49f6-9acd-e0119f2a8656": {
@@ -112,8 +112,8 @@
         "remove_gutters": true,
         "horizontal_spacing": true,
         "vertical_spacing": true,
-        "spacing_top": "pt-8",
-        "spacing_bottom": "pb-8",
+        "spacing_top": "pt-0",
+        "spacing_bottom": "pb-0",
         "grid_cols_desktop": "lg:grid-cols-3",
         "section_background_desktop": "#f3eee8",
         "remove_gutters_desktop": false,

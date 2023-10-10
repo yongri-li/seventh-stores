@@ -71,8 +71,8 @@
         "60018cb5-59af-4e75-b4da-3e1244119b14": {
           "type": "image",
           "settings": {
-            "block_url": "",
-            "block_image": "shopify:\/\/shop_images\/Seventh_08_09_20234192_1.png",
+            "block_url": "shopify:\/\/collections\/a-w-drop-1",
+            "block_image": "shopify:\/\/shop_images\/230919000000020008.png",
             "column_span": "col-span-1",
             "column_span_desktop": "lg:col-span-1"
           }
@@ -80,8 +80,8 @@
         "982021bc-3103-4224-9311-e6a858ce4534": {
           "type": "image",
           "settings": {
-            "block_url": "",
-            "block_image": "shopify:\/\/shop_images\/Seventh_08_09_20234192_f2873819-8765-4456-96da-c69ed76532d6.png",
+            "block_url": "shopify:\/\/collections\/a-w-drop-1",
+            "block_image": "shopify:\/\/shop_images\/230919000000030003.png",
             "column_span": "col-span-1",
             "column_span_desktop": "lg:col-span-1"
           }
@@ -89,8 +89,40 @@
         "2ed9d42e-855c-4e27-b04f-eb116ff2ec06": {
           "type": "image",
           "settings": {
+            "block_url": "shopify:\/\/collections\/a-w-drop-1",
+            "block_image": "shopify:\/\/shop_images\/230919000000030006.png",
+            "column_span": "col-span-1",
+            "column_span_desktop": "lg:col-span-1"
+          }
+        },
+        "93edc00a-12f7-4f41-9ae7-d7a4e627105b": {
+          "type": "image",
+          "settings": {
             "block_url": "",
-            "block_image": "shopify:\/\/shop_images\/Seventh_08_09_20234201_1.png",
+            "column_span": "col-span-1",
+            "column_span_desktop": "lg:col-span-1"
+          }
+        },
+        "353576dc-a914-4fb0-ae1a-9ea316520521": {
+          "type": "image",
+          "settings": {
+            "block_url": "",
+            "column_span": "col-span-1",
+            "column_span_desktop": "lg:col-span-1"
+          }
+        },
+        "7b543820-9dbd-455d-a068-8bec1753c583": {
+          "type": "image",
+          "settings": {
+            "block_url": "",
+            "column_span": "col-span-1",
+            "column_span_desktop": "lg:col-span-1"
+          }
+        },
+        "44b3bb9b-0714-4657-9563-20efe999b60f": {
+          "type": "image",
+          "settings": {
+            "block_url": "",
             "column_span": "col-span-1",
             "column_span_desktop": "lg:col-span-1"
           }
@@ -102,7 +134,11 @@
         "58b6e7ec-6a8c-41d8-8a0e-4fa73fddbd8d",
         "60018cb5-59af-4e75-b4da-3e1244119b14",
         "982021bc-3103-4224-9311-e6a858ce4534",
-        "2ed9d42e-855c-4e27-b04f-eb116ff2ec06"
+        "2ed9d42e-855c-4e27-b04f-eb116ff2ec06",
+        "93edc00a-12f7-4f41-9ae7-d7a4e627105b",
+        "353576dc-a914-4fb0-ae1a-9ea316520521",
+        "7b543820-9dbd-455d-a068-8bec1753c583",
+        "44b3bb9b-0714-4657-9563-20efe999b60f"
       ],
       "settings": {
         "contain_section": false,

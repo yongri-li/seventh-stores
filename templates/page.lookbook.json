@@ -12,6 +12,7 @@
         },
         "4c9e6e40-0a78-48d4-8c78-06f627872584": {
           "type": "breadcrumbs",
+          "disabled": true,
           "settings": {
             "breadcrumb_alignment": "justify-center"
           }

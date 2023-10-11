@@ -1,190 +1,194 @@
-{%- for block in section.blocks -%}
-  {%- case block.type -%}
-    {%- when '@app' -%}
-      {% render block %}
-    {%- when 'breadcrumbs' -%}
-      {%- render 'breadcrumb' -%}
-    {%- when 'header' -%}
-      {%- render 'page-header' -%}
-    {%- when 'cart' -%}
-      <cart-items aria-busy="false" class="block relative" id="cart-items" data-view="cart">
-        <!-- Spinner -->
-        <div class="spinner-overlay loading [ absolute items-center justify-center bg-opacity-80 bg-white z-10 top-0 left-0 right-0 bottom-0 ]">
-          <svg
-            aria-hidden="true"
-            focusable="false"
-            role="presentation"
-            class="spinner w-10 h-10"
-            viewBox="0 0 66 66"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-          </svg>
-        </div>
+<section class="container mx-auto px-4 sm:px-6 lg:px-8">
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {%- when '@app' -%}
+        {% render block %}
+      {%- when 'breadcrumbs' -%}
+        {%- render 'breadcrumb' -%}
+      {%- when 'header' -%}
+        {%- render 'page-header' -%}
+      {%- when 'cart' -%}
+        <cart-items aria-busy="false" class="block relative" id="cart-items" data-view="cart">
+          <!-- Spinner -->
+          <div class="spinner-overlay loading [ absolute items-center justify-center bg-opacity-80 bg-white z-10 top-0 left-0 right-0 bottom-0 ]">
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              role="presentation"
+              class="spinner w-10 h-10"
+              viewBox="0 0 66 66"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+            </svg>
+          </div>
 
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8" id="cart-items-container">
-          <div class="mt-12 lg:grid lg:grid-cols-12 lg:gap-x-12 lg:items-start xl:gap-x-16">
-            {%- if cart.items.size == 0 -%}
-              <p class="lg:col-span-12">{{ 'cart.general.empty' | t }}</p>
-            {%- else -%}
-              <form action="{{ routes.cart_url }}" method="post" novalidate class="lg:col-span-7 mt-5">
-                <section aria-labelledby="cart-heading">
-                  <h2 id="cart-heading" class="sr-only">Items in your shopping cart</h2>
-                  <ul class="mt-1">
-                    {%- for item in cart.items -%}
-                      <li class="flex mb-4 pb-4 border-b border-solid border-color">
-                        <div class="flex-shrink-0 w-24 lg:w-64 rounded-md overflow-hidden">
-                          <img
-                            src="{{ item.image | image_url: width: 250 }}"
-                            width="{{ item.image.width }}"
-                            height="{{ item.image.height }}"
-                            loading="lazy"
-                            class="w-24	lg:w-64 h-auto rounded-md object-center object-cover"
-                          >
-                        </div>
+          <div class="" id="cart-items-container">
+            <div class="mt-12 lg:grid lg:grid-cols-12 lg:gap-x-12 lg:items-start xl:gap-x-16">
+              {%- if cart.items.size == 0 -%}
+                <p class="lg:col-span-12">{{ 'cart.general.empty' | t }}</p>
+              {%- else -%}
+                <form action="{{ routes.cart_url }}" method="post" novalidate class="lg:col-span-7 mt-5">
+                  <section aria-labelledby="cart-heading">
+                    <h2 id="cart-heading" class="sr-only">Items in your shopping cart</h2>
+                    <ul class="mt-1">
+                      {%- for item in cart.items -%}
+                        <li class="flex mb-4 pb-4 border-b border-solid border-color">
+                          <div class="flex-shrink-0 w-24 lg:w-64 rounded-md overflow-hidden">
+                            <img
+                              src="{{ item.image | image_url: width: 250 }}"
+                              width="{{ item.image.width }}"
+                              height="{{ item.image.height }}"
+                              loading="lazy"
+                              class="w-24	lg:w-64 h-auto rounded-md object-center object-cover"
+                            >
+                          </div>
 
-                        <div class="ml-4 flex-1 flex flex-col">
-                          <div>
-                            <p class="mb-2 lg:mb-4 text-sm flex-shrink-0">{{ item.price | money_with_currency }}</p>
-                            <p class="mb-2 lg:mb-4">
-                              <a href="{{ item.url }}" class="heading text-xs lg:text-lg">{{ item.title | escape }}</a>
-                            </p>
+                          <div class="ml-4 flex-1 flex flex-col">
+                            <div>
+                              <p class="mb-2 lg:mb-4 text-sm flex-shrink-0">{{ item.price | money_with_currency }}</p>
+                              <p class="mb-2 lg:mb-4">
+                                <a href="{{ item.url }}" class="heading text-xs lg:text-lg">
+                                  {{- item.title | escape -}}
+                                </a>
+                              </p>
 
-                            {%- unless item.properties.size == blank -%}
-                              <div class="mb-2 lg:mb-4 flex">
-                                {% for property in item.properties %}
-                                  <p class="text-xs">{{ property.first }}: {{ property.last }}</p>
-                                {% endfor %}
+                              {%- unless item.properties.size == blank -%}
+                                <div class="mb-2 lg:mb-4 flex">
+                                  {% for property in item.properties %}
+                                    <p class="text-xs">{{ property.first }}: {{ property.last }}</p>
+                                  {% endfor %}
+                                </div>
+                              {%- endunless -%}
+
+                              <label for="quantity-2" class="sr-only">Quantity</label>
+                              <div class="inline-block relative mb-2 lg:mb-4">
+                                <quantity-selector
+                                  class="flex border border-solid border-color"
+                                  data-key="{{ item.key }}"
+                                >
+                                  <button data-button-minus type="button" class="[ w-5 py-1 leading-tight ]">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      class="mx-auto h-4 w-4"
+                                      viewBox="0 0 20 20"
+                                      fill="currentColor"
+                                    >
+                                      <path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd" />
+                                    </svg>
+                                  </button>
+                                  <input
+                                    data-value
+                                    value="{{ item.quantity }}"
+                                    type="text"
+                                    id="Quantity"
+                                    name="quantity"
+                                    class="ajax-qty__input [ text-center w-10 py-1 leading-tight ]"
+                                  >
+                                  <button
+                                    data-button-plus
+                                    type="button"
+                                    class="btn btn--minus [ w-5 py-1 leading-tight ]"
+                                  >
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      class="mx-auto h-4 w-4"
+                                      viewBox="0 0 20 20"
+                                      fill="currentColor"
+                                    >
+                                      <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                                    </svg>
+                                  </button>
+                                </quantity-selector>
                               </div>
-                            {%- endunless -%}
-
-                            <label for="quantity-2" class="sr-only">Quantity</label>
-                            <div class="inline-block relative mb-2 lg:mb-4">
-                              <quantity-selector
-                                class="flex border border-solid border-color"
-                                data-key="{{ item.key }}"
-                              >
-                                <button data-button-minus type="button" class="[ w-5 py-1 leading-tight ]">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="mx-auto h-4 w-4"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor"
-                                  >
-                                    <path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd" />
-                                  </svg>
-                                </button>
-                                <input
-                                  data-value
-                                  value="{{ item.quantity }}"
-                                  type="text"
-                                  id="Quantity"
-                                  name="quantity"
-                                  class="ajax-qty__input [ text-center w-10 py-1 leading-tight ]"
-                                >
-                                <button
-                                  data-button-plus
+                              <div class="flex">
+                                <cart-remove-button
+                                  data-item-key="{{ item.key }}"
                                   type="button"
-                                  class="btn btn--minus [ w-5 py-1 leading-tight ]"
+                                  class="appearance-none cursor-pointer -m-2 p-2 inline-flex"
                                 >
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="mx-auto h-4 w-4"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor"
-                                  >
-                                    <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
-                                  </svg>
-                                </button>
-                              </quantity-selector>
-                            </div>
-                            <div class="flex">
-                              <cart-remove-button
-                                data-item-key="{{ item.key }}"
-                                type="button"
-                                class="appearance-none cursor-pointer -m-2 p-2 inline-flex"
-                              >
-                                <span class="text-sm underline">Remove</span>
-                              </cart-remove-button>
+                                  <span class="text-sm underline">Remove</span>
+                                </cart-remove-button>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </li>
-                    {%- endfor -%}
-                  </ul>
-                </section>
-              </form>
-            {%- endif -%}
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  </section>
+                </form>
+              {%- endif -%}
 
-            <!-- Order summary -->
-            {%- if cart.items.size > 0 -%}
-              <section
-                aria-labelledby="summary-heading"
-                class="mt-4 bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:p-8 lg:mt-0 lg:col-span-5"
-              >
-                <h2 id="summary-heading" class="text-lg">Order summary</h2>
+              <!-- Order summary -->
+              {%- if cart.items.size > 0 -%}
+                <section
+                  aria-labelledby="summary-heading"
+                  class="mt-4 bg-gray-50 rounded-lg px-4 py-6 sm:p-6 lg:p-8 lg:mt-0 lg:col-span-5"
+                >
+                  <h2 id="summary-heading" class="text-lg">Order summary</h2>
 
-                <div class="mt-6 space-y-4">
-                  <div class="border-t border-gray-200 pt-4 flex items-center justify-between">
-                    <p class="heading text-base">
-                      {{ 'cart.general.subtotal' | t }}
-                    </p>
-                    <p id="cart-prices" class="text-base">
-                      {%- if cart.original_total_price > cart.total_price -%}
-                        <small>{{ cart.original_total_price | money_with_currency }}</small>
-                      {%- endif -%}
-                      {{ cart.total_price | money_with_currency }}
-                    </p>
-                  </div>
-                </div>
-
-                {%- if section.settings.show_order_notes -%}
-                  <div class="mt-6" x-data="{ notesOpen: false }" rv-show="cart.item_count | gt 0">
-                    <p class="cursor-pointer">
-                      <span @click="notesOpen = true" x-show="!notesOpen"
-                        >+ {{ 'cart.general.add_delivery_note' | t -}}
-                      </span>
-                      <span x-show="notesOpen" @click="notesOpen = false">
-                        <!-- Heroicon name: solid/x -->
-                        <svg
-                          class="inline h-5 w-5"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-                        </svg>
-                        {{ 'cart.general.close_delivery_note' | t }}
-                      </span>
-                    </p>
-                    <div class="mt-4" x-show="notesOpen">
-                      <label class="block pb-2" for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
-                      <textarea
-                        class="[ w-full mb-4 appearance-none rounded-none relative py-3 px-4 border leading-tight border-gray-400 placeholder-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 ]"
-                        rows="3"
-                        name="note"
-                        id="CartSpecialInstructions"
-                      >{{ cart.note }}</textarea>
+                  <div class="mt-6 space-y-4">
+                    <div class="border-t border-gray-200 pt-4 flex items-center justify-between">
+                      <p class="heading text-base">
+                        {{ 'cart.general.subtotal' | t }}
+                      </p>
+                      <p id="cart-prices" class="text-base">
+                        {%- if cart.original_total_price > cart.total_price -%}
+                          <small>{{ cart.original_total_price | money_with_currency }}</small>
+                        {%- endif -%}
+                        {{ cart.total_price | money_with_currency }}
+                      </p>
                     </div>
                   </div>
-                {%- endif -%}
 
-                <div class="mt-6">
-                  <button
-                    type="submit"
-                    class="w-full py-3 px-4 text-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 btn primary-button"
-                  >
-                    {{ 'cart.general.checkout' | t }}
-                  </button>
-                </div>
-              </section>
-            {%- endif -%}
+                  {%- if section.settings.show_order_notes -%}
+                    <div class="mt-6" x-data="{ notesOpen: false }" rv-show="cart.item_count | gt 0">
+                      <p class="cursor-pointer">
+                        <span @click="notesOpen = true" x-show="!notesOpen"
+                          >+ {{ 'cart.general.add_delivery_note' | t -}}
+                        </span>
+                        <span x-show="notesOpen" @click="notesOpen = false">
+                          <!-- Heroicon name: solid/x -->
+                          <svg
+                            class="inline h-5 w-5"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                          </svg>
+                          {{ 'cart.general.close_delivery_note' | t }}
+                        </span>
+                      </p>
+                      <div class="mt-4" x-show="notesOpen">
+                        <label class="block pb-2" for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
+                        <textarea
+                          class="[ w-full mb-4 appearance-none rounded-none relative py-3 px-4 border leading-tight border-gray-400 placeholder-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 ]"
+                          rows="3"
+                          name="note"
+                          id="CartSpecialInstructions"
+                        >{{ cart.note }}</textarea>
+                      </div>
+                    </div>
+                  {%- endif -%}
+
+                  <div class="mt-6">
+                    <button
+                      type="submit"
+                      class="w-full py-3 px-4 text-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 btn primary-button"
+                    >
+                      {{ 'cart.general.checkout' | t }}
+                    </button>
+                  </div>
+                </section>
+              {%- endif -%}
+            </div>
           </div>
-        </div>
-      </cart-items>
-  {%- endcase -%}
-{%- endfor -%}
+        </cart-items>
+    {%- endcase -%}
+  {%- endfor -%}
+</section>
 
 {%- if settings.development_mode -%}
   <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
@@ -205,8 +209,7 @@
   ],
   "blocks": [
     {
-      "type": "@app",
-      "name": "App"
+      "type": "@app"
     },
     {
       "type": "breadcrumbs",

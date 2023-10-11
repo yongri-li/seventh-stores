@@ -269,7 +269,15 @@ slider-component {
   color: var(--pgi-sale-badge-font);
 }
 
-.rte *:empty:not(br):not(img) {
+.rte p:empty,
+.rte a:empty,
+.rte h6:empty,
+.rte h5:empty,
+.rte h4:empty,
+.rte h3:empty,
+.rte h2:empty,
+.rte h1:empty,
+.rte span:empty {
   display: none;
 }
 

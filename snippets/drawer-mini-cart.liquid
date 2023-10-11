@@ -60,23 +60,27 @@
           {%- render 'mini-cart-items' -%}
         </div>
 
-        <div class="py-6 px-4 sm:px-6">
-          {% comment %} <p class="mt-1 text-xs">{{ 'cart.general.shipping_at_checkout' | t }}</p> {% endcomment %}
-          <div class="mt-6">
-            <a href="/checkout" class="btn checkout-button flex justify-center items-center px-6 py-3">
-              {{- 'cart.general.checkout' | t -}}
-            </a>
-            {%- comment -%}
-              {%- if additional_checkout_buttons -%}
-                <div class="additional-checkout-buttons">
-                  {{ content_for_additional_checkout_buttons }}
-                </div>
-              {%- endif -%}
-            {%- endcomment -%}
-          </div>
-          <!--
-            <div class="mt-6 flex justify-center text-sm text-center">{{ 'cart.general.continue_browsing_html' | t }}<span aria-hidden="true"> &rarr;</span></div>
-          -->
+        <div id="cart-checkout">
+          {%- if cart.items.size > 0 -%}
+            <div class="py-6 px-4 sm:px-6">
+              {% comment %} <p class="mt-1 text-xs">{{ 'cart.general.shipping_at_checkout' | t }}</p> {% endcomment %}
+              <div class="mt-6">
+                <a href="/checkout" class="btn checkout-button flex justify-center items-center px-6 py-3">
+                  {{- 'cart.general.checkout' | t -}}
+                </a>
+                {%- comment -%}
+                  {%- if additional_checkout_buttons -%}
+                    <div class="additional-checkout-buttons">
+                      {{ content_for_additional_checkout_buttons }}
+                    </div>
+                  {%- endif -%}
+                {%- endcomment -%}
+              </div>
+              <!--
+                <div class="mt-6 flex justify-center text-sm text-center">{{ 'cart.general.continue_browsing_html' | t }}<span aria-hidden="true"> &rarr;</span></div>
+              -->
+            </div>
+          {%- endif -%}
         </div>
 
         <!-- mini cart data recommendations -->

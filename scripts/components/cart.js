@@ -117,6 +117,9 @@ class CartItems extends HTMLElement {
             },
             {
                 id: 'cart-countdown'
+            },
+            {
+                id: 'cart-checkout'
             }
         ];
     };

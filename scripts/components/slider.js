@@ -2,7 +2,7 @@ class SliderComponent extends HTMLElement {
   constructor() {
     super();
     this.slider = this.querySelector('ul');
-    this.sliderItems = this.querySelectorAll('li');
+    this.sliderItems = Array.from(this.slider.querySelectorAll('li')).filter(function (a) { return a.parentNode === this.slider; }, this);
     this.pageCount = this.querySelector('.slider-counter--current') || document.querySelector(`${this.dataset.pageCount}`);
     this.pageTotal = this.querySelector('.slider-counter--total') || document.querySelector(`${this.dataset.pageTotal}`);
     this.prevButton = this.querySelector('button[name="previous"]') || document.querySelector(`${this.dataset.previousButton}`);
@@ -15,13 +15,13 @@ class SliderComponent extends HTMLElement {
 
     this.slider.addEventListener('scroll', this.update.bind(this));
 
-    if (this.prevButton !== null) {
+    if (this.prevButton) {
       this.prevButton.addEventListener('click', (e) => {
         this.onButtonClick(e);
       });
     };
 
-    if (this.nextButton !== null) {
+    if (this.nextButton) {
       this.nextButton.addEventListener('click', (e) => {
         this.onButtonClick(e);
       });
@@ -89,7 +89,9 @@ class SliderComponent extends HTMLElement {
 
   onButtonClick(event) {
     event.preventDefault();
+
     const slideScrollPosition = event.currentTarget.name === 'next' ? this.slider.scrollLeft + this.sliderLastItem.clientWidth : this.slider.scrollLeft - this.sliderLastItem.clientWidth;
+
     this.slider.scrollTo({
       left: slideScrollPosition
     });

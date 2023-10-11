@@ -1,0 +1,50 @@
+{
+  "wrapper": "div#div_id.div_class[attribute-one=value]",
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "f81ba7bf-3aa7-4c76-af16-5e92113e1bb4": {
+          "type": "page_title",
+          "settings": {
+            "show_border": true,
+            "title_alignment": "text-left"
+          }
+        },
+        "4c9e6e40-0a78-48d4-8c78-06f627872584": {
+          "type": "breadcrumbs",
+          "disabled": true,
+          "settings": {
+            "breadcrumb_alignment": "justify-start"
+          }
+        },
+        "57d04156-22d9-49f6-9acd-e0119f2a8656": {
+          "type": "content",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "f81ba7bf-3aa7-4c76-af16-5e92113e1bb4",
+        "4c9e6e40-0a78-48d4-8c78-06f627872584",
+        "57d04156-22d9-49f6-9acd-e0119f2a8656"
+      ],
+      "settings": {
+        "contain": true,
+        "skinny_page": true,
+        "section_background": "#f3eee8",
+        "spacing_top": "pt-8",
+        "spacing_bottom": "pb-8",
+        "section_background_desktop": "#f3eee8",
+        "spacing_top_desktop": "lg:pt-8",
+        "spacing_bottom_desktop": "lg:pb-8",
+        "enable_sidebar": false,
+        "sidebar_title": "",
+        "sidebar": ""
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

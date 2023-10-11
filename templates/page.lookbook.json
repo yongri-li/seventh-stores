@@ -139,7 +139,7 @@
         "7b543820-9dbd-455d-a068-8bec1753c583": {
           "type": "image",
           "settings": {
-            "block_url": "",
+            "block_url": "shopify:\/\/collections\/a-w-drop-1",
             "block_image": "shopify:\/\/shop_images\/230919000000050002.png",
             "column_span": "col-span-1",
             "column_span_desktop": "lg:col-span-1"
@@ -148,7 +148,7 @@
         "44b3bb9b-0714-4657-9563-20efe999b60f": {
           "type": "image",
           "settings": {
-            "block_url": "",
+            "block_url": "shopify:\/\/collections\/a-w-drop-1",
             "block_image": "shopify:\/\/shop_images\/230919000000050010_1.png",
             "column_span": "col-span-1",
             "column_span_desktop": "lg:col-span-1"

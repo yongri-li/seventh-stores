@@ -4,6 +4,13 @@
     "main": {
       "type": "main-page",
       "blocks": {
+        "5f3d30da-2ca0-4bbb-843b-8eef336c29ab": {
+          "type": "page_title",
+          "settings": {
+            "show_border": true,
+            "title_alignment": "text-left"
+          }
+        },
         "4c9e6e40-0a78-48d4-8c78-06f627872584": {
           "type": "breadcrumbs",
           "disabled": true,
@@ -19,17 +26,22 @@
         }
       },
       "block_order": [
+        "5f3d30da-2ca0-4bbb-843b-8eef336c29ab",
         "4c9e6e40-0a78-48d4-8c78-06f627872584",
         "57d04156-22d9-49f6-9acd-e0119f2a8656"
       ],
       "settings": {
-        "contain": true,
+        "contain": false,
+        "skinny_page": false,
         "section_background": "#f3eee8",
         "spacing_top": "pt-8",
         "spacing_bottom": "pb-0",
         "section_background_desktop": "#f3eee8",
         "spacing_top_desktop": "lg:pt-8",
-        "spacing_bottom_desktop": "lg:pb-0"
+        "spacing_bottom_desktop": "lg:pb-0",
+        "enable_sidebar": false,
+        "sidebar_title": "",
+        "sidebar": ""
       }
     },
     "d7a9aa2b-9caf-441f-8f65-7561c9999a58": {

@@ -4,12 +4,6 @@
     "main": {
       "type": "main-page",
       "blocks": {
-        "711ee7d1-225a-4582-b7e0-269360dd87de": {
-          "type": "header",
-          "settings": {
-            "content_alignment": "text-center"
-          }
-        },
         "4c9e6e40-0a78-48d4-8c78-06f627872584": {
           "type": "breadcrumbs",
           "disabled": true,
@@ -25,7 +19,6 @@
         }
       },
       "block_order": [
-        "711ee7d1-225a-4582-b7e0-269360dd87de",
         "4c9e6e40-0a78-48d4-8c78-06f627872584",
         "57d04156-22d9-49f6-9acd-e0119f2a8656"
       ],

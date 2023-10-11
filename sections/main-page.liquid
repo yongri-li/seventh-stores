@@ -14,22 +14,68 @@
   class="{{ section.settings.spacing_top }} {{ section.settings.spacing_bottom }} {{ section.settings.spacing_top_desktop }} {{ section.settings.spacing_bottom_desktop }}"
 >
   <div class="[ {% if section.settings.contain %}container{% endif %} mt-8 mb-12 mx-auto px-4 sm:px-6 lg:px-8 ]">
-    {%- for block in section.blocks -%}
-      {%- case block.type -%}
-        {%- when '@app' -%}
-          {% render block %}
-        {%- when 'breadcrumbs' -%}
-          {% render 'breadcrumb', list_classes: block.settings.breadcrumb_alignment %}
-        {%- when 'header' -%}
-          {% render 'page-header', alignment: block.settings.content_alignment %}
-        {%- when 'content' -%}
-          <div class="overflow-hidden mt-8">
-            <div class="rte">
-              {{ page.content }}
-            </div>
-          </div>
-      {%- endcase -%}
-    {%- endfor -%}
+    {%- if section.settings.enable_sidebar -%}
+      <div class="lg:flex lg:flex-row">
+        <div class="lg:max-w-xs lg:self-start lg:sticky lg:top-[188px] lg:mr-8 w-full">
+          {%- unless section.settings.sidebar_title == blank -%}
+            <h4 class="text-lg pb-4 lg:pb-11 lg:mb-10 border-b border-solid border-[#0003]">
+              {{ section.settings.sidebar_title }}
+            </h4>
+          {%- endunless -%}
+          {%- unless section.settings.sidebar_title == blank -%}
+            <ul class="flex flex-row flex-nowrap overflow-x-auto lg:block mb-4">
+              {%- for link in section.settings.sidebar.links -%}
+                <li class="flex-shrink-0 py-4 {% unless forloop.last %}pr-4{% endunless %}">
+                  <a href="{{ link.url }}" class="block text-[#21232266]">{{ link.title }}</a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endunless -%}
+        </div>
+
+        <div class="{% if section.settings.skinny_page %}max-w-xl mr-auto{% endif %} w-full">
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when '@app' -%}
+                {% render block %}
+              {%- when 'breadcrumbs' -%}
+                {% render 'breadcrumb' %}
+              {%- when 'page_title' -%}
+                <h1 class="mt-0 text-lg pb-4 lg:pb-11 {{ block.settings.title_alignment }} {% if block.settings.show_border %}lg:mb-10 border-b border-solid border-[#0003]{% endif %}">
+                  {{ page.title }}
+                </h1>
+              {%- when 'content' -%}
+                <div class="overflow-hidden mt-8">
+                  <div class="rte">
+                    {{ page.content }}
+                  </div>
+                </div>
+            {%- endcase -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- else -%}
+      <div class="{% if section.settings.skinny_page %}max-w-xl mr-auto{% endif %}">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when '@app' -%}
+              {% render block %}
+            {%- when 'breadcrumbs' -%}
+              {% render 'breadcrumb' %}
+            {%- when 'page_title' -%}
+              <h1 class="mt-0 text-lg pb-4 lg:pb-11 {{ block.settings.title_alignment }} {% if block.settings.show_border %}lg:mb-10 border-b border-solid border-[#0003]{% endif %}">
+                {{ page.title }}
+              </h1>
+            {%- when 'content' -%}
+              <div class="overflow-hidden mt-8">
+                <div class="rte">
+                  {{ page.content }}
+                </div>
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
   </div>
 </section>
 
@@ -46,6 +92,13 @@
       "id": "contain",
       "label": "Contain the Section within a wrapper?",
       "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "skinny_page",
+      "label": "Skinny page?",
+      "default": false,
+      "info": "This will make the content width even smaller."
     },
     {
       "type": "header",
@@ -178,6 +231,26 @@
         }
       ],
       "default": "lg:pb-8"
+    },
+    {
+      "type": "header",
+      "content": "Sidebar Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sidebar",
+      "label": "Enable Sidebar?",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "sidebar_title",
+      "label": "Sidebar Title"
+    },
+    {
+      "type": "link_list",
+      "id": "sidebar",
+      "label": "Sidebar Navigation"
     }
   ],
   "blocks": [
@@ -212,14 +285,19 @@
       ]
     },
     {
-      "type": "header",
-      "name": "Header",
+      "type": "page_title",
+      "name": "Page Title",
       "limit": 1,
       "settings": [
         {
+          "type": "checkbox",
+          "id": "show_border",
+          "label": "Show Bottom Border?"
+        },
+        {
           "type": "select",
-          "id": "content_alignment",
-          "label": "Content Alignment",
+          "id": "title_alignment",
+          "label": "Title Alignment",
           "options": [
             {
               "label": "Left",

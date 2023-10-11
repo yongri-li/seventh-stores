@@ -4,18 +4,11 @@
     "main": {
       "type": "main-page",
       "blocks": {
-        "f81ba7bf-3aa7-4c76-af16-5e92113e1bb4": {
+        "4442af40-b3a6-4eb0-9f68-6235cf2f3d1e": {
           "type": "page_title",
           "settings": {
             "show_border": true,
             "title_alignment": "text-left"
-          }
-        },
-        "4c9e6e40-0a78-48d4-8c78-06f627872584": {
-          "type": "breadcrumbs",
-          "disabled": true,
-          "settings": {
-            "breadcrumb_alignment": "justify-start"
           }
         },
         "57d04156-22d9-49f6-9acd-e0119f2a8656": {
@@ -25,9 +18,12 @@
         }
       },
       "block_order": [
-        "f81ba7bf-3aa7-4c76-af16-5e92113e1bb4",
-        "4c9e6e40-0a78-48d4-8c78-06f627872584",
+        "4442af40-b3a6-4eb0-9f68-6235cf2f3d1e",
         "57d04156-22d9-49f6-9acd-e0119f2a8656"
+      ],
+      "custom_css": [
+        ".needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xuajs1 {padding-left: 0 !important; padding-right: 0 !important;}",
+        ".needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xuajs1 .needsclick:not(input):not(button) {padding-left: 0 !important; padding-right: 0 !important;}"
       ],
       "settings": {
         "contain": true,

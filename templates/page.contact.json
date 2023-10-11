@@ -1,17 +1,37 @@
 {
   "wrapper": "div#div_id.div_class[attribute-one=value]",
   "sections": {
+    "hero": {
+      "type": "featured-hero",
+      "disabled": true,
+      "settings": {
+        "contain_hero": false,
+        "dynamic_loading": true,
+        "section_gutter": false,
+        "hero_link": "",
+        "max_height_mobile": 50,
+        "use_img_height_mobile": false,
+        "mobile_image_focus": "top left",
+        "mobile_content_focus": "justify-start items-start",
+        "max_height_desktop": 65,
+        "use_img_height_desktop": false,
+        "desktop_image_focus": "top left",
+        "desktop_content_focus": "lg:justify-start lg:items-start"
+      }
+    },
     "main": {
       "type": "main-page",
       "blocks": {
-        "711ee7d1-225a-4582-b7e0-269360dd87de": {
-          "type": "header",
+        "3223c03f-c78c-49ab-b6af-fb37cb20afb3": {
+          "type": "page_title",
           "settings": {
-            "content_alignment": "text-left"
+            "show_border": true,
+            "title_alignment": "text-left"
           }
         },
         "4c9e6e40-0a78-48d4-8c78-06f627872584": {
           "type": "breadcrumbs",
+          "disabled": true,
           "settings": {
             "breadcrumb_alignment": "justify-start"
           }
@@ -23,18 +43,22 @@
         }
       },
       "block_order": [
-        "711ee7d1-225a-4582-b7e0-269360dd87de",
+        "3223c03f-c78c-49ab-b6af-fb37cb20afb3",
         "4c9e6e40-0a78-48d4-8c78-06f627872584",
         "57d04156-22d9-49f6-9acd-e0119f2a8656"
       ],
       "settings": {
         "contain": true,
+        "skinny_page": true,
         "section_background": "#f3eee8",
         "spacing_top": "pt-8",
         "spacing_bottom": "pb-8",
         "section_background_desktop": "#f3eee8",
         "spacing_top_desktop": "lg:pt-8",
-        "spacing_bottom_desktop": "lg:pb-0"
+        "spacing_bottom_desktop": "lg:pb-8",
+        "enable_sidebar": false,
+        "sidebar_title": "",
+        "sidebar": ""
       }
     },
     "b1842890-69ed-4ead-962e-4c382c1fe897": {

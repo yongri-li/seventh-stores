@@ -38,9 +38,9 @@
         "section_background_desktop": "#f3eee8",
         "spacing_top_desktop": "lg:pt-8",
         "spacing_bottom_desktop": "lg:pb-8",
-        "enable_sidebar": false,
-        "sidebar_title": "",
-        "sidebar": ""
+        "enable_sidebar": true,
+        "sidebar_title": "Support",
+        "sidebar": "support"
       }
     }
   },

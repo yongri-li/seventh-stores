@@ -113,10 +113,12 @@
           {%- if section.settings.desktop_image.width >= 4280 -%}{{ section.settings.desktop_image | image_url: width: 4280 }} 4280w{%- endif -%}
         "
         src="{{ section.settings.desktop_image | image_url: width: 533 }}"
-        sizes="(max-width: 1080px) 1960px,
-                (max-width: 1280px) 2560px,
-                (max-width: 1960px) 3840px,
-                4280px"
+        sizes="
+          (max-width: 1080px) 1960px,
+          (max-width: 1280px) 2560px,
+          (max-width: 1960px) 3840px,
+          4280px
+        "
         alt="{{ section.settings.image.alt | escape }}"
         width="{{ section.settings.desktop_image.width }}"
         height="{{ section.settings.desktop_image.height }}"
@@ -349,6 +351,25 @@
       ]
     },
     {
+      "type": "select",
+      "id": "mobile_content_alignment",
+      "label": "Content Alignment",
+      "options": [
+        {
+          "label": "Left",
+          "value": "text-left"
+        },
+        {
+          "label": "Center",
+          "value": "text-center"
+        },
+        {
+          "label": "Right",
+          "value": "text-right"
+        }
+      ]
+    },
+    {
       "type": "header",
       "content": "Desktop Styling"
     },
@@ -457,6 +478,25 @@
         {
           "label": "Bottom Right",
           "value": "lg:justify-end lg:items-end"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "desktop_content_alignment",
+      "label": "Content Alignment",
+      "options": [
+        {
+          "label": "Left",
+          "value": "lg:text-left"
+        },
+        {
+          "label": "Center",
+          "value": "lg:text-center"
+        },
+        {
+          "label": "Right",
+          "value": "lg:text-right"
         }
       ]
     }

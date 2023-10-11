@@ -49,7 +49,7 @@
       ],
       "settings": {
         "contain": true,
-        "skinny_page": false,
+        "skinny_page": true,
         "section_background": "#f3eee8",
         "spacing_top": "pt-8",
         "spacing_bottom": "pb-8",

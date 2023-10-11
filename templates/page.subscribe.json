@@ -23,7 +23,7 @@
       ],
       "custom_css": [
         ".needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xuajs1 {padding-left: 0 !important; padding-right: 0 !important;}",
-        ".needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xuajs1 .needsclick {padding-left: 0 !important; padding-right: 0 !important;}"
+        ".needsclick.klaviyo-form.klaviyo-form-version-cid_1.kl-private-reset-css-Xuajs1 .needsclick:not(input):not(button) {padding-left: 0 !important; padding-right: 0 !important;}"
       ],
       "settings": {
         "contain": true,

@@ -1,0 +1,372 @@
+{% style %}
+  #imageGrid-{{ section.id }}{
+    background-color: {{ section.settings.section_background }};
+  }
+
+  @media only screen and (min-width: 1023px){
+    #imageGrid-{{ section.id }}{
+      background-color: {{ section.settings.section_background_desktop }};
+    }
+  }
+{% endstyle %}
+<section
+  id="imageGrid-{{ section.id }}"
+  class="{{ section.settings.spacing_top }} {{ section.settings.spacing_bottom }} {{ section.settings.spacing_top_desktop }} {{ section.settings.spacing_bottom_desktop }}"
+>
+  <div class="[ {% if section.settings.contain %}container{% endif %} mx-auto {% unless section.settings.remove_gutters %}px-4 sm:px-6{% endunless %} {% unless section.settings.remove_gutters_desktop %}lg:px-8 ]{% endunless %}">
+    {%- if section.settings.title != blank -%}
+      <h2 class="mb-8 text-center text-3xl">{{ section.settings.title | escape }}</h2>
+    {%- endif -%}
+    <div class="{% if section.settings.contain_section %}container mx-auto{% endif %} w-full px-2">
+      <div
+        class="
+          [ grid {{ section.settings.grid_cols }} {{ section.settings.grid_cols_desktop }}
+          {% if section.settings.horizontal_spacing %}max-lg:gap-x-4{% endif %}
+          {% if section.settings.vertical_spacing %}max-lg:gap-y-4{% endif %}
+          {% if section.settings.horizontal_spacing_desktop %}lg:gap-x-4{% endif %}
+          {% if section.settings.vertical_spacing_desktop %}lg:gap-y-4{% endif %}
+          ]
+        "
+      >
+        {%- for block in section.blocks limit: section.blocks.size -%}
+          <div
+            {{ block.shopify_attributes }}
+            class="[ {{ block.settings.column_span }} {{ block.settings.column_span_desktop }} ]"
+          >
+            {%- if block.settings.block_url == blank -%}
+              {%- render 'responsive-image', image: block.settings.block_image, image_class: 'w-full h-auto' -%}
+            {%- else -%}
+              <a href="{{ block.settings.block_url }}" class="block">
+                {%- render 'responsive-image', image: block.settings.block_image, image_class: 'w-full h-auto' -%}
+              </a>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if section.blocks.size == 0 %}
+  {% render 'no-blocks' %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Lookbook",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "contain_section",
+      "label": "Contain Section?",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Image Grid"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Styling"
+    },
+    {
+      "type": "select",
+      "id": "grid_cols",
+      "label": "Grid Columns",
+      "options": [
+        {
+          "value": "grid-cols-1",
+          "label": "1"
+        },
+        {
+          "value": "grid-cols-2",
+          "label": "2"
+        },
+        {
+          "value": "grid-cols-3",
+          "label": "3"
+        }
+      ],
+      "default": "grid-cols-3"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_gutters",
+      "label": "Remove Gutters?",
+      "default": true,
+      "info": "This removes spacing on the left and right side of the section."
+    },
+    {
+      "type": "checkbox",
+      "id": "horizontal_spacing",
+      "label": "Add space between grid horizontally?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "vertical_spacing",
+      "label": "Add space between grid vertically?",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "spacing_top",
+      "label": "Spacing Top",
+      "options": [
+        {
+          "value": "pt-0",
+          "label": "None"
+        },
+        {
+          "value": "pt-8",
+          "label": "Small"
+        },
+        {
+          "value": "pt-26",
+          "label": "Medium"
+        },
+        {
+          "value": "pt-32",
+          "label": "Large"
+        },
+        {
+          "value": "pt-64",
+          "label": "x-Large"
+        }
+      ],
+      "default": "pt-8"
+    },
+    {
+      "type": "select",
+      "id": "spacing_bottom",
+      "label": "Spacing Bottom",
+      "options": [
+        {
+          "value": "pb-0",
+          "label": "None"
+        },
+        {
+          "value": "pb-8",
+          "label": "Small"
+        },
+        {
+          "value": "pb-26",
+          "label": "Medium"
+        },
+        {
+          "value": "pb-32",
+          "label": "Large"
+        },
+        {
+          "value": "pb-64",
+          "label": "x-Large"
+        }
+      ],
+      "default": "pb-8"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Styling"
+    },
+    {
+      "type": "select",
+      "id": "grid_cols_desktop",
+      "label": "Grid Columns",
+      "options": [
+        {
+          "value": "lg:grid-cols-2",
+          "label": "2"
+        },
+        {
+          "value": "lg:grid-cols-3",
+          "label": "3"
+        },
+        {
+          "value": "lg:grid-cols-4",
+          "label": "4"
+        }
+      ],
+      "default": "lg:grid-cols-3"
+    },
+    {
+      "type": "color",
+      "id": "section_background_desktop",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "checkbox",
+      "id": "remove_gutters_desktop",
+      "label": "Remove Gutters?",
+      "default": true,
+      "info": "This removes spacing on the left and right side of the section."
+    },
+    {
+      "type": "checkbox",
+      "id": "horizontal_spacing_desktop",
+      "label": "Add space between grid horizontally?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "vertical_spacing_desktop",
+      "label": "Add space between grid vertically?",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "spacing_top_desktop",
+      "label": "Spacing Top",
+      "options": [
+        {
+          "value": "lg:pt-0",
+          "label": "None"
+        },
+        {
+          "value": "lg:pt-8",
+          "label": "Small"
+        },
+        {
+          "value": "lg:pt-26",
+          "label": "Medium"
+        },
+        {
+          "value": "lg:pt-32",
+          "label": "Large"
+        },
+        {
+          "value": "lg:pt-64",
+          "label": "x-Large"
+        }
+      ],
+      "default": "lg:pt-8"
+    },
+    {
+      "type": "select",
+      "id": "spacing_bottom_desktop",
+      "label": "Spacing Bottom",
+      "options": [
+        {
+          "value": "lg:pb-0",
+          "label": "None"
+        },
+        {
+          "value": "lg:pb-8",
+          "label": "Small"
+        },
+        {
+          "value": "lg:pb-26",
+          "label": "Medium"
+        },
+        {
+          "value": "lg:pb-32",
+          "label": "Large"
+        },
+        {
+          "value": "lg:pb-64",
+          "label": "x-Large"
+        }
+      ],
+      "default": "lg:pb-8"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image block",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Block Settings"
+        },
+        {
+          "label": "Link",
+          "id": "block_url",
+          "type": "url"
+        },
+        {
+          "type": "image_picker",
+          "id": "block_image",
+          "label": "Image"
+        },
+        {
+          "type": "header",
+          "content": "Mobile Settings"
+        },
+        {
+          "type": "select",
+          "id": "column_span",
+          "label": "Column Span",
+          "options": [
+            {
+              "value": "col-span-1",
+              "label": "1"
+            },
+            {
+              "value": "col-span-2",
+              "label": "2"
+            },
+            {
+              "value": "col-span-3",
+              "label": "3"
+            }
+          ],
+          "default": "col-span-1"
+        },
+        {
+          "type": "header",
+          "content": "Desktop Settings"
+        },
+        {
+          "type": "select",
+          "id": "column_span_desktop",
+          "label": "Column Span",
+          "options": [
+            {
+              "value": "lg:col-span-1",
+              "label": "1"
+            },
+            {
+              "value": "lg:col-span-2",
+              "label": "2"
+            },
+            {
+              "value": "lg:col-span-3",
+              "label": "3"
+            },
+            {
+              "value": "lg:col-span-4",
+              "label": "4"
+            }
+          ],
+          "default": "lg:col-span-1"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lookbook",
+      "category": "Content",
+      "blocks": [
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

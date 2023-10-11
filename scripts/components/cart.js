@@ -92,10 +92,15 @@ class CartItems extends HTMLElement {
                 this.getSectionsToRender().forEach((section) => {
 
                     console.log('section: ', section);
+                    const newSection = cart.getElementById(section.id) || false;
 
-                    if (cart.getElementById(section.id) !== undefined && cart.getElementById(section.id) != null) {
-                        const html = cart.getElementById(section.id).innerHTML;
-                        document.getElementById(section.id).innerHTML = html;
+                    console.log("newSection: ", newSection);
+
+                    if (newSection) {
+                        const html = newSection.innerHTML;
+                        const sectionToUpdate = document.getElementById(section.id) || false;
+
+                        if (sectionToUpdate) sectionToUpdate.innerHTML = html;
                     }
                 });
             })
@@ -120,6 +125,9 @@ class CartItems extends HTMLElement {
             },
             {
                 id: 'cart-checkout'
+            },
+            {
+                id: 'cart-summary'
             }
         ];
     };

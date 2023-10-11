@@ -68,17 +68,7 @@
                 <a href="/checkout" class="btn checkout-button flex justify-center items-center px-6 py-3">
                   {{- 'cart.general.checkout' | t -}}
                 </a>
-                {%- comment -%}
-                  {%- if additional_checkout_buttons -%}
-                    <div class="additional-checkout-buttons">
-                      {{ content_for_additional_checkout_buttons }}
-                    </div>
-                  {%- endif -%}
-                {%- endcomment -%}
               </div>
-              <!--
-                <div class="mt-6 flex justify-center text-sm text-center">{{ 'cart.general.continue_browsing_html' | t }}<span aria-hidden="true"> &rarr;</span></div>
-              -->
             </div>
           {%- endif -%}
         </div>

@@ -75,11 +75,9 @@
     </script>
 
     {% include 'globale-js.liquid' %}
-  
-  
 
-  {% include "globale-js" %}
-</head>
+    {% include 'globale-js' %}
+  </head>
 
   <body
     id="{{ page_title | handle }}"
@@ -91,7 +89,9 @@
     {% section 'header' %}
     <div class="[ header-wrap__bg ] sticky top-0 left-0 right-0 z-[49]"></div>
 
-    {% section 'drawer-mini-cart' %}
+    {%- unless template.name == 'cart' -%}
+      {% section 'drawer-mini-cart' %}
+    {%- endunless -%}
     {% section 'drawer-mobile-menu' %}
     {% section 'animated-benefit-bar' %}
     {% section 'benefits-bar' %}

@@ -40,7 +40,7 @@
         "spacing_bottom_desktop": "lg:pb-8",
         "enable_sidebar": true,
         "sidebar_title": "Support",
-        "sidebar": "support"
+        "sidebar": "legal"
       }
     }
   },

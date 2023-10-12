@@ -58,6 +58,8 @@
     color: #ffffff;
     text-transform: capitalize;
   }
+
+  .yotpo .write-review .yotpo-header .yotpo-icon,
   .yotpo.yotpo-main-widget .yotpo-icon-btn .yotpo-icon,
   .yotpo .yotpo-modal-dialog .yotpo-icon-btn .yotpo-icon {
     font-size: 14px;
@@ -346,19 +348,21 @@
                     </div>
                   {%- endif -%}
                 {%- else -%}
-                  <div class="flex -mx-3 pt-3">
-                    <div class="flex-grow">
-                      {%- render 'main-product-buy-buttons', product: product -%}
-                    </div>
-                    {%- if block.settings.show_wishlist -%}
-                      <div class="px-2 flex flex-col justify-center">
-                        <div
-                          id="smartwishlist"
-                          data-product="{{ product.id }}"
-                          data-variant="{{ product.variants.first.id }}"
-                        ></div>
+                  <div class="max-w-md">
+                    <div class="flex -mx-3 pt-3">
+                      <div class="flex-grow">
+                        {%- render 'main-product-buy-buttons', product: product -%}
                       </div>
-                    {%- endif -%}
+                      {%- if block.settings.show_wishlist -%}
+                        <div class="px-2 flex flex-col justify-center">
+                          <div
+                            id="smartwishlist"
+                            data-product="{{ product.id }}"
+                            data-variant="{{ product.variants.first.id }}"
+                          ></div>
+                        </div>
+                      {%- endif -%}
+                    </div>
                   </div>
                 {%- endif -%}
               {%- when 'collapsible_tab' -%}

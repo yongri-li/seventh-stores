@@ -54,6 +54,7 @@
     {%- render 'critical-css-variables' -%}
     {{ 'tailwind.min.css' | asset_url | stylesheet_tag }}
     {{ 'theme.min.css' | asset_url | stylesheet_tag }}
+    {{ 'template-wishlist.css' | asset_url | stylesheet_tag }}
 
     {%- unless settings.body_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.body_font | font_url }}" type="font/woff2" crossorigin>
@@ -75,11 +76,9 @@
     </script>
 
     {% include 'globale-js.liquid' %}
-
     {% include 'globale-js' %}
-  
-  {% include "globale-js" %}
-</head>
+    {% comment %} {% include "globale-js" %} {% endcomment %}
+  </head>
 
   <body
     id="{{ page_title | handle }}"

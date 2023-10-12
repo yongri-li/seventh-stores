@@ -162,7 +162,8 @@
         "c31b2af6-5bec-4695-9757-c769afbef57f"
       ],
       "custom_css": [
-
+        ".yotpo.yotpo-main-widget .yotpo-bottomline .yotpo-icon-empty-star,.yotpo .yotpo-first-review .yotpo-first-review-stars .yotpo-icon-star {font-size: 16px !important; color: #000 !important;}",
+        ".yotpo .yotpo-default-button,.yotpo input[type=\"button\"].yotpo-default-button {background-color: #212322; color: #ffffff; text-transform: capitalize;}"
       ],
       "settings": {
         "content_bg": "#fffaf4",

@@ -193,6 +193,12 @@
               </div>
             {%- endif -%}
 
+            <div class="self-stretch flex items-center justify-center ml-9">
+              <a href="/a/wishlist" class="text-xs header-font-color heading">
+                {% render 'icon-heart', height: 20, width: 20 %}
+              </a>
+            </div>
+
             <!-- customer links -->
             <div class="hidden self-stretch lg:flex items-center justify-center ml-9">
               {%- if section.settings.account_type == 'links' -%}

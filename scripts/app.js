@@ -226,7 +226,7 @@ class DrawerTrigger extends HTMLElement {
 
     event.preventDefault();
 
-    document.querySelector('body').classList.add('overflow-hidden');
+    document.querySelector('body').classList.add('overflow-hidden', 'drawer-open');
 
     this.target.setAttribute("aria-hidden", "false");
   }
@@ -235,7 +235,7 @@ class DrawerTrigger extends HTMLElement {
 
     event.preventDefault();
 
-    document.querySelector('body').classList.remove('overflow-hidden');
+    document.querySelector('body').classList.remove('overflow-hidden', 'drawer-open');
 
     this.target.setAttribute("aria-hidden", "true");
   }

@@ -10,14 +10,24 @@
 {% style %}
   :root{
     --header-height: 0px;
-    --header-background-color: {{ section.settings.background_color }};
     --header-border-bottom: {{ section.settings.border_color_bottom }};
-    --header-menu-link-color: {{ section.settings.menu_link_color }};
-    --header-menu-link-color-hover: {{ section.settings.menu_link_color_hover }};
+    {%- if settings.enable_overlay and template.name == "index" -%}
+      --header-menu-link-color: {{ settings.overlay_link_color }};
+      --header-menu-link-color-hover: {{ settings.overlay_link_color_hover }};
+      --header-background-color: transparent;
+    {%- else -%}
+      --header-menu-link-color: {{ section.settings.menu_link_color }};
+      --header-menu-link-color-hover: {{ section.settings.menu_link_color_hover }};
+      --header-background-color: {{ section.settings.background_color }};
+    {%- endif -%}
   }
 
   #shopify-section-header{
+    {%- if settings.enable_overlay and template.name == "index" -%}
+      position: fixed;
+    {%- else -%}
     position: sticky;
+    {%- endif -%}
     top: 0;
     right: 0;
     left: 0;

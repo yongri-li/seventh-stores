@@ -31,6 +31,42 @@
     ]
   },
   {
+    "name": "Header Settings",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_overlay",
+        "label": "Enable Overlay?",
+        "info": "This will fix the header to the top of the page on the Index Template"
+      },
+      {
+        "type": "header",
+        "content": "Styles"
+      },
+      {
+        "type": "color",
+        "id": "overlay_link_color",
+        "label": "Menu Link Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "overlay_link_color_hover",
+        "label": "Menu Link Color - Hover",
+        "default": "#999999"
+      },
+      {
+        "type": "header",
+        "content": "Logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "overlay_logo",
+        "label": "Logo image"
+      }
+    ]
+  },
+  {
     "name": "Typography",
     "settings": [
       {

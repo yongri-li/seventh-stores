@@ -8,27 +8,31 @@
       <div class="flex items-center">
         <!-- Logo -->
         <div class="flex justify-center lg:justify-start mr-14">
-          {%- if section.settings.logo != blank -%}
+          {%- assign logo = section.settings.logo -%}
+          {%- if settings.enable_overlay and template.name == 'index' -%}
+            {%- assign logo = settings.overlay_logo -%}
+          {%- endif -%}
+          {%- if logo != blank -%}
             <a
               href="/"
               itemprop="url"
               class="[ block ]"
-              style="max-width: {{ section.settings.logo_max_width_desktop }}px;"
+              style="max-width: {{ logo_max_width_desktop }}px;"
             >
-              {% capture image_size %}{{ section.settings.logo_max_width_desktop }}{% endcapture %}
+              {% capture image_size %}{{ logo_max_width_desktop }}{% endcapture %}
               <img
                 class="header-logo"
                 loading="lazy"
-                src="{{ section.settings.logo | image_url: width: 460 }}"
-                width="{{ section.settings.logo.width }}"
-                height="{{ section.settings.logo.height }}"
+                src="{{ logo | image_url: width: 460 }}"
+                width="{{ logo.width }}"
+                height="{{ logo.height }}"
                 srcset="
-                  {%- if section.settings.logo.width >= 165 -%}{{ section.settings.logo | image_url: width: 165 }} 165w,{%- endif -%}
-                  {%- if section.settings.logo.width >= 360 -%}{{ section.settings.logo | image_url: width: 360 }} 360w,{%- endif -%}
-                  {%- if section.settings.logo.width >= 535 -%}{{ section.settings.logo | image_url: width: 535 }} 535w,{%- endif -%}
-                  {%- if section.settings.logo.width >= 720 -%}{{ section.settings.logo | image_url: width: 720 }} 720w{%- endif -%}
+                  {%- if logo.width >= 165 -%}{{ logo | image_url: width: 165 }} 165w,{%- endif -%}
+                  {%- if logo.width >= 360 -%}{{ logo | image_url: width: 360 }} 360w,{%- endif -%}
+                  {%- if logo.width >= 535 -%}{{ logo | image_url: width: 535 }} 535w,{%- endif -%}
+                  {%- if logo.width >= 720 -%}{{ logo | image_url: width: 720 }} 720w{%- endif -%}
                 "
-                alt="{{ section.settings.logo.alt | default: shop.name }}"
+                alt="{{ logo.alt | default: shop.name }}"
                 itemprop="logo"
               >
             </a>

@@ -51,7 +51,6 @@
                     {%- if section.settings.logo.width >= 720 -%}{{ section.settings.logo | image_url: width: 720 }} 720w{%- endif -%}
                   "
                   alt="{{ section.settings.logo.alt | default: shop.name }}"
-                  itemprop="logo"
                 >
               </a>
             {%- else -%}

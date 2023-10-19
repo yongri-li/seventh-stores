@@ -10,14 +10,25 @@
 {% style %}
   :root{
     --header-height: 0px;
-    --header-background-color: {{ section.settings.background_color }};
     --header-border-bottom: {{ section.settings.border_color_bottom }};
-    --header-menu-link-color: {{ section.settings.menu_link_color }};
-    --header-menu-link-color-hover: {{ section.settings.menu_link_color_hover }};
+    {%- if settings.enable_overlay and template.name == "index" -%}
+      --header-menu-link-color: {{ settings.overlay_link_color }};
+      --header-menu-link-color-hover: {{ settings.overlay_link_color_hover }};
+      --drawer-open-header-menu-link-color: {{ section.settings.menu_link_color }};
+      --header-background-color: transparent;
+    {%- else -%}
+      --header-menu-link-color: {{ section.settings.menu_link_color }};
+      --header-menu-link-color-hover: {{ section.settings.menu_link_color_hover }};
+      --header-background-color: {{ section.settings.background_color }};
+    {%- endif -%}
   }
 
   #shopify-section-header{
+    {%- if settings.enable_overlay and template.name == "index" -%}
+      position: fixed;
+    {%- else -%}
     position: sticky;
+    {%- endif -%}
     top: 0;
     right: 0;
     left: 0;
@@ -56,9 +67,7 @@
   }
 
   button:hover .menu__bars{
-    background-color: var(--header-menu-link-color);
-  }
-
+    background-color: var(--header-menu-link-color-hover);
   }
 
   .lightning-menu{
@@ -84,6 +93,24 @@
   .navigation-link{
     font-size: {{ section.settings.font_size }}px;
   }
+
+  {%- if settings.enable_overlay and template.name == "index" -%}
+  .drawer-open .menu-icons .header-font-color{
+    color: var(--drawer-open-header-menu-link-color);
+  }
+
+  .drawer-open .menu-icons .menu__bars{
+    background-color: var(--drawer-open-header-menu-link-color);
+  }
+
+  .drawer-open #headerMobile .header-logo{
+    display: none;
+  }
+
+  .drawer-open #headerMobile .header-logo-original{
+    display: block;
+  }
+  {%- endif -%}
 {% endstyle %}
 
 <div class="relative" data-section-id="{{ section.id }}" data-section-type="header-section">

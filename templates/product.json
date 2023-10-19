@@ -43,6 +43,7 @@
         "36bcb969-de7f-4622-8eee-50454b12a522": {
           "type": "buy_now_buttons",
           "settings": {
+            "show_wishlist": true,
             "logged_in_only": false,
             "show_qty_label": false,
             "show_additional_checkout_buttons": false,
@@ -130,6 +131,7 @@
         "80b98137-6193-4edc-945a-94bd2c6aad2c": {
           "type": "data_related_products",
           "settings": {
+            "intent": "related",
             "limit": 4
           }
         },
@@ -158,6 +160,9 @@
         "5d32dcbc-3d40-4e23-94cd-03f48bfe78ae",
         "80b98137-6193-4edc-945a-94bd2c6aad2c",
         "c31b2af6-5bec-4695-9757-c769afbef57f"
+      ],
+      "custom_css": [
+
       ],
       "settings": {
         "content_bg": "#fffaf4",

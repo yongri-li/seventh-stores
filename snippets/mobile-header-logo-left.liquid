@@ -11,7 +11,11 @@
         <!-- Mobile menu toggle, controls the 'mobileMenuOpen' state. -->
         <div class="flex flex-1 justify-start">
           <div class="ml-1">
-            {%- if section.settings.logo != blank -%}
+            {%- assign logo = section.settings.logo -%}
+            {%- if settings.enable_overlay and template.name == 'index' -%}
+              {%- assign logo = settings.overlay_logo -%}
+            {%- endif -%}
+            {%- if logo != blank -%}
               <a
                 href="/"
                 itemprop="url"
@@ -20,6 +24,22 @@
               >
                 <img
                   class="header-logo"
+                  loading="lazy"
+                  src="{{ logo | image_url: width: 460 }}"
+                  width="{{ logo.width }}"
+                  height="{{ logo.height }}"
+                  srcset="
+                    {%- if logo.width >= 165 -%}{{ logo | image_url: width: 165 }} 165w,{%- endif -%}
+                    {%- if logo.width >= 360 -%}{{ logo | image_url: width: 360 }} 360w,{%- endif -%}
+                    {%- if logo.width >= 535 -%}{{ logo | image_url: width: 535 }} 535w,{%- endif -%}
+                    {%- if logo.width >= 720 -%}{{ logo | image_url: width: 720 }} 720w{%- endif -%}
+                  "
+                  alt="{{ logo.alt | default: shop.name }}"
+                  itemprop="logo"
+                >
+
+                <img
+                  class="hidden header-logo-original"
                   loading="lazy"
                   src="{{ section.settings.logo | image_url: width: 460 }}"
                   width="{{ section.settings.logo.width }}"
@@ -31,7 +51,6 @@
                     {%- if section.settings.logo.width >= 720 -%}{{ section.settings.logo | image_url: width: 720 }} 720w{%- endif -%}
                   "
                   alt="{{ section.settings.logo.alt | default: shop.name }}"
-                  itemprop="logo"
                 >
               </a>
             {%- else -%}
@@ -42,7 +61,7 @@
           </div>
         </div>
 
-        <div class="flex flex-1 flex-shrink justify-end">
+        <div class="flex flex-1 flex-shrink justify-end [ menu-icons ]">
           <!-- lightning menu -->
           {%- if section.settings.show_lightning_nav -%}
             <lightning-toggle class="lightning-toggle px-1 py-2">

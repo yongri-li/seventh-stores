@@ -1,4 +1,4 @@
-{%- if section.settings.show_benefit -%}
+{%- if section.settings.show_benefit and settings.enable_overlay == false -%}
   {%- liquid
     assign animation_delay = section.settings.animation_delay
     assign animation_total = section.blocks.size | times: animation_delay

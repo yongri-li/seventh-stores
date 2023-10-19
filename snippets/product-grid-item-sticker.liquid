@@ -13,6 +13,7 @@
 {%- endfor -%}
 
 {%- unless product.metafields.display.sticker == blank -%}
+  {%- assign has_sticker = true -%}
   {%- assign sticker = product.metafields.display.sticker -%}
 {%- endunless -%}
 

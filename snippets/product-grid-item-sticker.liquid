@@ -12,6 +12,10 @@
   {%- endif -%}
 {%- endfor -%}
 
+{%- unless product.metafields.display.sticker == blank -%}
+  {%- assign sticker = product.metafields.display.sticker -%}
+{%- endunless -%}
+
 {%- if product.compare_at_price > product.price -%}
   <div class="product-grid-item-sticker product-grid-item-sticker--sale absolute px-1 top-0 left-0 z-10">
     <span class="heading text-xs">{{ 'products.product.on_sale' | t }}</span>

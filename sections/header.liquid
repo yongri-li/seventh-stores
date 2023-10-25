@@ -80,12 +80,14 @@
     color: {{ section.settings.lightning_nav_link_color }};
   }
 
-  .header-logo{
+  .header-logo,
+  .header-logo-original{
     max-width: {{ section.settings.logo_max_width_mobile }}px;
   }
 
   @media only screen and (min-width: 1024px){
-    .header-logo{
+    .header-logo,
+    .header-logo-original{
       max-width: {{ section.settings.logo_max_width_desktop }}px;
     }
   }

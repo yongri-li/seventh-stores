@@ -20,9 +20,89 @@
         "desktop_content_focus": "lg:justify-center lg:items-start",
         "desktop_content_alignment": "lg:text-left"
       }
+    },
+    "915c0864-9d97-4d54-8994-a39ea3e4727e": {
+      "type": "image-blocks",
+      "blocks": {
+        "template--19128683135293__915c0864-9d97-4d54-8994-a39ea3e4727e-image-1": {
+          "type": "image",
+          "settings": {
+            "spacing_bottom": true,
+            "transparent_background": true,
+            "background_color": "#FFFFFF",
+            "background_transparency": 0.7,
+            "font_color": "#000000",
+            "style": "one",
+            "promo_url": "",
+            "mobile_width": "w-1\/4",
+            "tablet_width": "md:w-1\/4",
+            "desktop_width": "lg:w-1\/4",
+            "show_description": true,
+            "heading": "",
+            "sub_heading": "",
+            "content": "",
+            "content_focus_y": "justify-start",
+            "content_focus_x": "items-start",
+            "show_cta": true,
+            "cta_style": "primary-button",
+            "cta_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--19128683135293__915c0864-9d97-4d54-8994-a39ea3e4727e-image-1"
+      ],
+      "settings": {
+        "contain_section": true,
+        "column_spacing": true,
+        "section_background": "#FFFFFF",
+        "section_spacing": "py-8",
+        "title": "Promo Blocks"
+      }
+    },
+    "a182416e-bf2f-44f9-9ed3-fb3a448bfa24": {
+      "type": "image-blocks",
+      "blocks": {
+        "template--19128683135293__a182416e-bf2f-44f9-9ed3-fb3a448bfa24-image-1": {
+          "type": "image",
+          "settings": {
+            "spacing_bottom": true,
+            "transparent_background": true,
+            "background_color": "#FFFFFF",
+            "background_transparency": 0.7,
+            "font_color": "#000000",
+            "style": "one",
+            "promo_url": "",
+            "mobile_width": "w-1\/4",
+            "tablet_width": "md:w-1\/4",
+            "desktop_width": "lg:w-1\/4",
+            "show_description": true,
+            "heading": "",
+            "sub_heading": "",
+            "content": "",
+            "content_focus_y": "justify-start",
+            "content_focus_x": "items-start",
+            "show_cta": true,
+            "cta_style": "primary-button",
+            "cta_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--19128683135293__a182416e-bf2f-44f9-9ed3-fb3a448bfa24-image-1"
+      ],
+      "settings": {
+        "contain_section": true,
+        "column_spacing": true,
+        "section_background": "#FFFFFF",
+        "section_spacing": "py-8",
+        "title": "Promo Blocks"
+      }
     }
   },
   "order": [
-    "16317060921dba1150"
+    "16317060921dba1150",
+    "915c0864-9d97-4d54-8994-a39ea3e4727e",
+    "a182416e-bf2f-44f9-9ed3-fb3a448bfa24"
   ]
 }

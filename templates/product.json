@@ -68,17 +68,6 @@
             "open_by_default": true
           }
         },
-        "e64e89d1-ba73-47e4-a915-29089d77fd31": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Delivery information",
-            "content": "<p>To see the delivery options we have for you or for general shipping info click <a href=\"https:\/\/seventhstores.com\/pages\/shipping\"><span style=\"text-decoration:underline\">here<\/span><\/a>.<\/p><p>We aim to pack and dispatch your order within 1-2 working days. Shipping costs are calculated at checkout. <\/p><p>We ship worldwide - once dispatched, we offer Standard, Priority and Urgent shipping options for multiple locations. Free shipping for orders over £200 (UK only).<\/p>",
-            "product_description": false,
-            "size_guide": false,
-            "page_content": "",
-            "open_by_default": false
-          }
-        },
         "5c049b49-c6da-4174-9a28-8f7f58984f5e": {
           "type": "collapsible_tab",
           "settings": {
@@ -105,7 +94,7 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Shipping",
-            "content": "<p>To see the delivery options we have for you or for general shipping info click <a href=\"https:\/\/seventhstores.com\/pages\/shipping\"><span style=\"text-decoration:underline\">here<\/span><\/a>.<\/p><p>We aim to pack and dispatch your order within 1-2 working days. Shipping costs are calculated at checkout. <\/p><p>We ship worldwide - once dispatched, we offer Standard, Priority and Urgent shipping options for multiple locations. Free shipping for orders over £200 (UK only).<\/p>",
+            "content": "<p>We aim to pack and dispatch your order within 1-2 working days. Shipping costs are calculated at checkout. <\/p><p>We ship worldwide - once dispatched, we offer Standard and Next Day delivery for multiple locations. <\/p>",
             "product_description": false,
             "size_guide": false,
             "page_content": "",
@@ -152,7 +141,6 @@
         "36bcb969-de7f-4622-8eee-50454b12a522",
         "bd3274c6-41b9-4021-a413-5c75bc3846fa",
         "aab585e2-1c17-449f-8788-bbe37a977394",
-        "e64e89d1-ba73-47e4-a915-29089d77fd31",
         "5c049b49-c6da-4174-9a28-8f7f58984f5e",
         "0f58b66b-4c99-4bce-aeb3-48e3810c2c83",
         "eb0bbe54-8754-4743-be27-bdea7b0d3171",

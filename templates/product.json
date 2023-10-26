@@ -94,7 +94,7 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Shipping",
-            "content": "<p>We aim to pack and dispatch your order within 1-2 working days. Shipping costs are calculated at checkout. <\/p><p>We ship worldwide - once dispatched, we offer Standard and Next Day delivery for multiple locations. <\/p>",
+            "content": "<p>We aim to pack and dispatch your order within 1-2 working days. Shipping costs are calculated at checkout. <\/p><p>We ship worldwide - once dispatched, we offer Standard and Next Day shipping options for multiple locations.<\/p>",
             "product_description": false,
             "size_guide": false,
             "page_content": "",

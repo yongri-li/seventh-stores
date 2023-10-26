@@ -42,6 +42,7 @@
         },
         "36bcb969-de7f-4622-8eee-50454b12a522": {
           "type": "buy_now_buttons",
+          "disabled": true,
           "settings": {
             "show_wishlist": true,
             "logged_in_only": true,

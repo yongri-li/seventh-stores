@@ -35,7 +35,7 @@
         "20c06d95-7112-4b19-ba71-37a0d8cddcd2": {
           "type": "variant_selectors",
           "settings": {
-            "logged_in_only": true,
+            "logged_in_only": false,
             "show_labels": false,
             "use_swatches": false
           }

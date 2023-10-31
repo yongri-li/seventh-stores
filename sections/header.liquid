@@ -116,6 +116,7 @@
 {% endstyle %}
 
 <div class="relative" data-section-id="{{ section.id }}" data-section-type="header-section">
+  <div id="geFSBContainer"></div>
   {%- liquid
     if section.settings.desktop_header_style == 'logo-left'
       render 'desktop-header-style-one'

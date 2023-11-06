@@ -29,11 +29,12 @@
           "settings": {
             "logged_in_only": false,
             "logged_out_only": false,
-            "custom_text": "<p>Subscribe for early access <a href=\"https:\/\/seventhstores.com\/account\/register\" title=\"https:\/\/seventhstores.com\/account\/register\"><strong>here.<\/strong><\/a><\/p><p><strong>Drop Date: 27.10.23<br\/>Members Drop Time: 4PM BST<\/strong><br\/>General Drop Time: 5PM BST<\/p>"
+            "custom_text": "<p>Subscribe for re-stock announcements <a href=\"https:\/\/seventhstores.com\/account\/register\" title=\"https:\/\/seventhstores.com\/account\/register\"><strong>here.<\/strong><\/a><\/p>"
           }
         },
         "20c06d95-7112-4b19-ba71-37a0d8cddcd2": {
           "type": "variant_selectors",
+          "disabled": true,
           "settings": {
             "logged_in_only": false,
             "show_labels": false,
@@ -42,6 +43,7 @@
         },
         "36bcb969-de7f-4622-8eee-50454b12a522": {
           "type": "buy_now_buttons",
+          "disabled": true,
           "settings": {
             "show_wishlist": true,
             "logged_in_only": false,

@@ -168,7 +168,7 @@
       "benefits-bar": {
         "type": "benefits-bar",
         "settings": {
-          "show_benefits_bar": false,
+          "show_benefits_bar": true,
           "cols_mobile": "1",
           "cols_tablet": "2",
           "cols_desktop": "3",

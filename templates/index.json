@@ -9,13 +9,13 @@
         "hero_link": "https:\/\/seventhstores.com\/collections\/shop-all",
         "max_height_mobile": 100,
         "use_img_height_mobile": false,
-        "mobile_image": "shopify:\/\/shop_images\/2023_10_14_SEVENTH_AW23_SHOT_3_012_R.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/Copy_of_Homepage_Mobile_1_1.png",
         "mobile_image_focus": "object-top",
         "mobile_content_focus": "justify-start items-center",
         "mobile_content_alignment": "text-left",
         "max_height_desktop": 80,
         "use_img_height_desktop": true,
-        "desktop_image": "shopify:\/\/shop_images\/2023_10_14_SEVENTH_AW23_SHOT_3_140_R.jpg",
+        "desktop_image": "shopify:\/\/shop_images\/Desktop_Hompage_4470_x_3171px_2_211ba388-7e98-468f-84ed-4b9cd8b93e08.png",
         "desktop_image_focus": "lg:object-top",
         "desktop_content_focus": "lg:justify-center lg:items-start",
         "desktop_content_alignment": "lg:text-left"
@@ -23,6 +23,7 @@
     },
     "73999025-2f84-4b4b-8a7e-df51fc6c82e6": {
       "type": "featured-hero",
+      "disabled": true,
       "settings": {
         "contain_hero": false,
         "dynamic_loading": true,
@@ -44,6 +45,7 @@
     },
     "bd333261-494b-4e28-8765-d18878b912c5": {
       "type": "featured-hero",
+      "disabled": true,
       "settings": {
         "contain_hero": false,
         "dynamic_loading": true,
@@ -65,6 +67,7 @@
     },
     "aad55d72-8fc0-4f6f-bc9a-4c38f601cb07": {
       "type": "featured-hero",
+      "disabled": true,
       "settings": {
         "contain_hero": false,
         "dynamic_loading": true,
@@ -83,12 +86,27 @@
         "desktop_content_focus": "lg:justify-center lg:items-start",
         "desktop_content_alignment": "lg:text-left"
       }
+    },
+    "57fa73ee-2a68-4f08-b1cf-e84f8cb26f17": {
+      "type": "newsletter",
+      "settings": {
+        "contain_section": false,
+        "section_style": "style-two",
+        "background_color": "#000000",
+        "font_color": "#f3eee8",
+        "form_max_width": 350,
+        "section_heading": "Sign up for early access",
+        "section_content": "",
+        "sub_text": "",
+        "content_alignment": "items-center"
+      }
     }
   },
   "order": [
     "16317060921dba1150",
     "73999025-2f84-4b4b-8a7e-df51fc6c82e6",
     "bd333261-494b-4e28-8765-d18878b912c5",
-    "aad55d72-8fc0-4f6f-bc9a-4c38f601cb07"
+    "aad55d72-8fc0-4f6f-bc9a-4c38f601cb07",
+    "57fa73ee-2a68-4f08-b1cf-e84f8cb26f17"
   ]
 }

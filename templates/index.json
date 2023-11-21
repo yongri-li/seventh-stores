@@ -89,6 +89,7 @@
     },
     "57fa73ee-2a68-4f08-b1cf-e84f8cb26f17": {
       "type": "newsletter",
+      "disabled": true,
       "settings": {
         "contain_section": true,
         "section_style": "style-two",

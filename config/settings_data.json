@@ -2,7 +2,7 @@
   "current": {
     "show_client_services": true,
     "show_subscribe": true,
-    "enable_overlay": true,
+    "enable_overlay": false,
     "overlay_link_color": "#4b4c4a",
     "overlay_logo": "shopify:\/\/shop_images\/Seventh_12.png",
     "use_custom_fonts": true,
@@ -139,20 +139,42 @@
           "ddb68ea6-dddb-461c-b839-49cbb01b868a": {
             "type": "benefit",
             "settings": {
-              "benefit": "A\/W Drop One Live Now",
+              "benefit": "Use code: BLACKFRIDAY20 for 24 hours",
               "link": "shopify:\/\/collections\/a-w-drop-1",
               "trigger_newsletter": false,
               "background_color": "#fffaf3",
               "font_color": "#4b4c4a"
             }
+          },
+          "c7dc9b74-76da-4f8c-83f3-95473d429ada": {
+            "type": "benefit",
+            "settings": {
+              "benefit": "Use code: BLACKFRIDAY20 for 24 hours",
+              "link": "",
+              "trigger_newsletter": false,
+              "background_color": "#000000",
+              "font_color": "#FFFFFF"
+            }
+          },
+          "4e190f79-e685-4bc7-9d29-45b6c5e37002": {
+            "type": "benefit",
+            "settings": {
+              "benefit": "Use code: BLACKFRIDAY20 for 24 hours",
+              "link": "",
+              "trigger_newsletter": false,
+              "background_color": "#000000",
+              "font_color": "#FFFFFF"
+            }
           }
         },
         "block_order": [
           "95369542-c26c-46d7-9e7b-8d3c224c8297",
-          "ddb68ea6-dddb-461c-b839-49cbb01b868a"
+          "ddb68ea6-dddb-461c-b839-49cbb01b868a",
+          "c7dc9b74-76da-4f8c-83f3-95473d429ada",
+          "4e190f79-e685-4bc7-9d29-45b6c5e37002"
         ],
         "settings": {
-          "show_benefit": false,
+          "show_benefit": true,
           "make_sticky": false,
           "pdp_hidden": true,
           "background_color": "#fffaf3",

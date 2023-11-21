@@ -152,7 +152,7 @@
           "ddb68ea6-dddb-461c-b839-49cbb01b868a"
         ],
         "settings": {
-          "show_benefit": true,
+          "show_benefit": false,
           "make_sticky": false,
           "pdp_hidden": true,
           "background_color": "#fffaf3",

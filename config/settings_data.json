@@ -2,7 +2,7 @@
   "current": {
     "show_client_services": true,
     "show_subscribe": true,
-    "enable_overlay": false,
+    "enable_overlay": true,
     "overlay_link_color": "#ffffff",
     "overlay_logo": "shopify:\/\/shop_images\/Seventh_logo_white_10x_4baf0e7d-bb94-4a55-b866-ab91c18377e2.png",
     "use_custom_fonts": true,
@@ -72,9 +72,9 @@
       "header": {
         "type": "header",
         "settings": {
-          "background_color": "#000000",
-          "border_color_bottom": "#000000",
-          "menu_link_color": "#ffffff",
+          "background_color": "#f3eee8",
+          "border_color_bottom": "#f3eee8",
+          "menu_link_color": "#000000",
           "menu_link_color_hover": "#8a8985",
           "font_size": 12,
           "contain": false,

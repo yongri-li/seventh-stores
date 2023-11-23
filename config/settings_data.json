@@ -80,7 +80,7 @@
           "contain": false,
           "desktop_header_style": "logo-left",
           "mobile_header_style": "logo-left",
-          "logo": "shopify:\/\/shop_images\/Seventh_logo_white_10x_4baf0e7d-bb94-4a55-b866-ab91c18377e2.png",
+          "logo": "shopify:\/\/shop_images\/logo.png",
           "logo_max_width_mobile": 110,
           "logo_max_width_desktop": 230,
           "main_linklist": "",

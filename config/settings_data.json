@@ -74,7 +74,7 @@
         "settings": {
           "background_color": "#000000",
           "border_color_bottom": "#000000",
-          "menu_link_color": "#f3eee8",
+          "menu_link_color": "#ffffff",
           "menu_link_color_hover": "#8a8985",
           "font_size": 12,
           "contain": false,

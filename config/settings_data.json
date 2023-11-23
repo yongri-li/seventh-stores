@@ -2,7 +2,7 @@
   "current": {
     "show_client_services": true,
     "show_subscribe": true,
-    "enable_overlay": true,
+    "enable_overlay": false,
     "overlay_link_color": "#ffffff",
     "overlay_logo": "shopify:\/\/shop_images\/Seventh_logo_white_10x_4baf0e7d-bb94-4a55-b866-ab91c18377e2.png",
     "use_custom_fonts": true,
@@ -72,15 +72,15 @@
       "header": {
         "type": "header",
         "settings": {
-          "background_color": "#f3eee8",
-          "border_color_bottom": "#f3eee8",
-          "menu_link_color": "#4b4c4a",
+          "background_color": "#000000",
+          "border_color_bottom": "#000000",
+          "menu_link_color": "#f3eee8",
           "menu_link_color_hover": "#8a8985",
           "font_size": 12,
           "contain": false,
           "desktop_header_style": "logo-left",
           "mobile_header_style": "logo-left",
-          "logo": "shopify:\/\/shop_images\/Seventh_4220_x_780px.png",
+          "logo": "shopify:\/\/shop_images\/Seventh_logo_white_10x_4baf0e7d-bb94-4a55-b866-ab91c18377e2.png",
           "logo_max_width_mobile": 110,
           "logo_max_width_desktop": 230,
           "main_linklist": "",
@@ -136,18 +136,9 @@
               "hour": 19
             }
           },
-          "ddb68ea6-dddb-461c-b839-49cbb01b868a": {
-            "type": "benefit",
-            "settings": {
-              "benefit": "Use code: BLACKFRIDAY20 for 24 hours",
-              "link": "shopify:\/\/collections\/a-w-drop-1",
-              "trigger_newsletter": false,
-              "background_color": "#fffaf3",
-              "font_color": "#4b4c4a"
-            }
-          },
           "c7dc9b74-76da-4f8c-83f3-95473d429ada": {
             "type": "benefit",
+            "disabled": true,
             "settings": {
               "benefit": "Use code: BLACKFRIDAY20 for 24 hours",
               "link": "",
@@ -158,6 +149,7 @@
           },
           "4e190f79-e685-4bc7-9d29-45b6c5e37002": {
             "type": "benefit",
+            "disabled": true,
             "settings": {
               "benefit": "Use code: BLACKFRIDAY20 for 24 hours",
               "link": "",
@@ -169,7 +161,6 @@
         },
         "block_order": [
           "95369542-c26c-46d7-9e7b-8d3c224c8297",
-          "ddb68ea6-dddb-461c-b839-49cbb01b868a",
           "c7dc9b74-76da-4f8c-83f3-95473d429ada",
           "4e190f79-e685-4bc7-9d29-45b6c5e37002"
         ],
@@ -177,8 +168,8 @@
           "show_benefit": true,
           "make_sticky": false,
           "pdp_hidden": true,
-          "background_color": "#fffaf3",
-          "border_color_bottom": "#fffaf3",
+          "background_color": "#000000",
+          "border_color_bottom": "#000000",
           "animation_delay": "4",
           "bar_height_mobile": 34,
           "bar_height_desktop": 34,

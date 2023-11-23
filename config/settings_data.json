@@ -151,8 +151,8 @@
             "type": "benefit",
             "disabled": true,
             "settings": {
-              "benefit": "Use code: BLACKFRIDAY20 for 24 hours",
-              "link": "",
+              "benefit": "Sale Ends Saturday 00:00AM GMT. Click here to Shop Now.",
+              "link": "shopify:\/\/collections\/shop-all",
               "trigger_newsletter": false,
               "background_color": "#000000",
               "font_color": "#ffffff"

@@ -2,6 +2,7 @@
   "sections": {
     "16317060921dba1150": {
       "type": "featured-hero",
+      "disabled": true,
       "settings": {
         "contain_hero": false,
         "dynamic_loading": true,
@@ -23,7 +24,6 @@
     },
     "1f1c0304-e12c-46cb-b644-1689a5c70c93": {
       "type": "featured-hero",
-      "disabled": true,
       "settings": {
         "contain_hero": false,
         "dynamic_loading": true,

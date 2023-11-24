@@ -126,6 +126,27 @@
         "sub_text": "",
         "content_alignment": "items-center"
       }
+    },
+    "36f16044-7ab4-4bbf-b7cf-e09ce08bc696": {
+      "type": "featured-hero",
+      "settings": {
+        "contain_hero": false,
+        "dynamic_loading": true,
+        "section_gutter": false,
+        "hero_link": "",
+        "max_height_mobile": 90,
+        "use_img_height_mobile": false,
+        "mobile_image": "shopify:\/\/shop_images\/2023_10_14_SEVENTH_AW23_SHOT_5_186_R.jpg",
+        "mobile_image_focus": "object-center",
+        "mobile_content_focus": "justify-center items-center",
+        "mobile_content_alignment": "text-center",
+        "max_height_desktop": 90,
+        "use_img_height_desktop": false,
+        "desktop_image": "shopify:\/\/shop_images\/2023_10_14_SEVENTH_AW23_SHOT_5_186_R.jpg",
+        "desktop_image_focus": "lg:object-center",
+        "desktop_content_focus": "lg:justify-center lg:items-center",
+        "desktop_content_alignment": "lg:text-center"
+      }
     }
   },
   "order": [
@@ -134,6 +155,7 @@
     "73999025-2f84-4b4b-8a7e-df51fc6c82e6",
     "bd333261-494b-4e28-8765-d18878b912c5",
     "aad55d72-8fc0-4f6f-bc9a-4c38f601cb07",
-    "57fa73ee-2a68-4f08-b1cf-e84f8cb26f17"
+    "57fa73ee-2a68-4f08-b1cf-e84f8cb26f17",
+    "36f16044-7ab4-4bbf-b7cf-e09ce08bc696"
   ]
 }

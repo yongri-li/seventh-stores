@@ -11,7 +11,7 @@ form#product_form_8657126129981{
     width: 100%;
 }
 .btn.klaviyo-bis-trigger{
-    display: block;
+    /* display: block; */
     background-color: var(--atc-btn-bg);
     color: var(--atc-btn-text);
     opacity: .5;

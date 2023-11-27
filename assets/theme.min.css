@@ -29,6 +29,6 @@ form#product_form_8657126129981{
     background-color: var(--atc-btn-bg-hover);
     color: var(--atc-btn-text-hover);
 }
-.shopify-product-form button:has([disabled]) .btn.klaviyo-bis-trigger{
+.shopify-product-form:has([disabled]) .klaviyo-bis-trigger{
     display: block !important;
 }

@@ -2,20 +2,21 @@
   "sections": {
     "16317060921dba1150": {
       "type": "featured-hero",
+      "disabled": true,
       "settings": {
         "contain_hero": false,
         "dynamic_loading": true,
         "section_gutter": false,
-        "hero_link": "https:\/\/seventhstores.com\/collections\/v2-re-stocks",
+        "hero_link": "https:\/\/seventhstores.com\/pages\/subscribe?fbclid=PAAab5I84GlsSc-rpQ-lL3BVqPVlT2JHFLnLp-EpUKE8rVCYMOZP_fPNVOjiA_aem_AaifsVrMYBhLEypYXDovttHXAc8jpMRtW7QHGmu-qOC2ECdSs06_YqCXJuqtWx2VE2I",
         "max_height_mobile": 100,
         "use_img_height_mobile": false,
-        "mobile_image": "shopify:\/\/shop_images\/231020000000070007_41fa2ec3-f866-4281-a66c-302177f4b9eb.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/Copy_of_Homepage_Mobile_2_4cfc23b0-1f36-48de-8fda-7e967adf7f02.png",
         "mobile_image_focus": "object-top",
         "mobile_content_focus": "justify-start items-center",
-        "mobile_content_alignment": "text-left",
+        "mobile_content_alignment": "text-center",
         "max_height_desktop": 80,
         "use_img_height_desktop": true,
-        "desktop_image": "shopify:\/\/shop_images\/231020000000070007_41fa2ec3-f866-4281-a66c-302177f4b9eb.jpg",
+        "desktop_image": "shopify:\/\/shop_images\/Desktop_Hompage_4470_x_3171px_1_14680fdc-ba35-45c5-b3c9-698a799e3aa2.png",
         "desktop_image_focus": "lg:object-top",
         "desktop_content_focus": "lg:justify-center lg:items-start",
         "desktop_content_alignment": "lg:text-left"
@@ -23,20 +24,21 @@
     },
     "73999025-2f84-4b4b-8a7e-df51fc6c82e6": {
       "type": "featured-hero",
+      "disabled": true,
       "settings": {
         "contain_hero": false,
         "dynamic_loading": true,
         "section_gutter": false,
-        "hero_link": "https:\/\/seventhstores.com\/collections\/v2-re-stocks",
+        "hero_link": "https:\/\/seventhstores.com\/collections\/shop-all",
         "max_height_mobile": 100,
         "use_img_height_mobile": false,
-        "mobile_image": "shopify:\/\/shop_images\/231020000000080008_d8ab4c78-a067-43e6-abc2-0f2e7d35c33f.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/2023_10_14_SEVENTH_AW23_SHOT_3_140_R.jpg",
         "mobile_image_focus": "object-top",
         "mobile_content_focus": "justify-start items-center",
         "mobile_content_alignment": "text-left",
         "max_height_desktop": 80,
         "use_img_height_desktop": true,
-        "desktop_image": "shopify:\/\/shop_images\/231020000000080008_d8ab4c78-a067-43e6-abc2-0f2e7d35c33f.jpg",
+        "desktop_image": "shopify:\/\/shop_images\/2023_10_14_SEVENTH_AW23_SHOT_3_035_R.jpg",
         "desktop_image_focus": "lg:object-top",
         "desktop_content_focus": "lg:justify-center lg:items-start",
         "desktop_content_alignment": "lg:text-left"
@@ -44,20 +46,21 @@
     },
     "bd333261-494b-4e28-8765-d18878b912c5": {
       "type": "featured-hero",
+      "disabled": true,
       "settings": {
         "contain_hero": false,
         "dynamic_loading": true,
         "section_gutter": false,
-        "hero_link": "https:\/\/seventhstores.com\/collections\/v2-re-stocks",
+        "hero_link": "https:\/\/seventhstores.com\/collections\/shop-all",
         "max_height_mobile": 100,
         "use_img_height_mobile": false,
-        "mobile_image": "shopify:\/\/shop_images\/231020000000050002.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/2023_10_14_SEVENTH_AW23_SHOT_3_067_R.jpg",
         "mobile_image_focus": "object-top",
         "mobile_content_focus": "justify-start items-center",
         "mobile_content_alignment": "text-left",
         "max_height_desktop": 80,
         "use_img_height_desktop": true,
-        "desktop_image": "shopify:\/\/shop_images\/231020000000050002.jpg",
+        "desktop_image": "shopify:\/\/shop_images\/2023_10_14_SEVENTH_AW23_SHOT_3_186_R.jpg",
         "desktop_image_focus": "lg:object-top",
         "desktop_content_focus": "lg:justify-center lg:items-start",
         "desktop_content_alignment": "lg:text-left"
@@ -65,23 +68,63 @@
     },
     "aad55d72-8fc0-4f6f-bc9a-4c38f601cb07": {
       "type": "featured-hero",
+      "disabled": true,
       "settings": {
         "contain_hero": false,
         "dynamic_loading": true,
         "section_gutter": false,
-        "hero_link": "https:\/\/seventhstores.com\/collections\/v2-re-stocks",
+        "hero_link": "https:\/\/seventhstores.com\/collections\/shop-all",
         "max_height_mobile": 100,
         "use_img_height_mobile": false,
-        "mobile_image": "shopify:\/\/shop_images\/231020000000050001.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/2023_10_14_SEVENTH_AW23_SHOT_3_129_R.jpg",
         "mobile_image_focus": "object-top",
         "mobile_content_focus": "justify-start items-center",
         "mobile_content_alignment": "text-left",
         "max_height_desktop": 80,
         "use_img_height_desktop": true,
-        "desktop_image": "shopify:\/\/shop_images\/231020000000050001.jpg",
+        "desktop_image": "shopify:\/\/shop_images\/2023_10_14_SEVENTH_AW23_SHOT_3_012_R.jpg",
         "desktop_image_focus": "lg:object-top",
         "desktop_content_focus": "lg:justify-center lg:items-start",
         "desktop_content_alignment": "lg:text-left"
+      }
+    },
+    "57fa73ee-2a68-4f08-b1cf-e84f8cb26f17": {
+      "type": "newsletter",
+      "disabled": true,
+      "custom_css": [
+
+      ],
+      "settings": {
+        "contain_section": false,
+        "section_style": "style-two",
+        "background_color": "#000000",
+        "font_color": "#f3eee8",
+        "form_max_width": 300,
+        "section_heading": "Sign up for early access",
+        "section_content": "",
+        "sub_text": "",
+        "content_alignment": "items-center"
+      }
+    },
+    "36f16044-7ab4-4bbf-b7cf-e09ce08bc696": {
+      "type": "featured-hero",
+      "settings": {
+        "contain_hero": false,
+        "dynamic_loading": true,
+        "section_gutter": false,
+        "hero_link": "shopify:\/\/collections\/shop-all",
+        "max_height_mobile": 90,
+        "use_img_height_mobile": false,
+        "mobile_image": "shopify:\/\/shop_images\/2023_10_14_SEVENTH_AW23_SHOT_6_070_R.jpg",
+        "mobile_image_focus": "object-center",
+        "mobile_content_focus": "justify-center items-center",
+        "mobile_content_alignment": "text-center",
+        "max_height_desktop": 90,
+        "use_img_height_desktop": false,
+        "desktop_image": "shopify:\/\/shop_images\/Desktop_Hompage_4470_x_3171px_2_52552abd-e830-4894-8b5c-37b927261ceb.png",
+        "desktop_image_focus": "lg:object-center",
+        "desktop_content_focus": "lg:justify-center lg:items-center",
+        "desktop_content_alignment": "lg:text-center"
       }
     }
   },
@@ -89,6 +132,8 @@
     "16317060921dba1150",
     "73999025-2f84-4b4b-8a7e-df51fc6c82e6",
     "bd333261-494b-4e28-8765-d18878b912c5",
-    "aad55d72-8fc0-4f6f-bc9a-4c38f601cb07"
+    "aad55d72-8fc0-4f6f-bc9a-4c38f601cb07",
+    "57fa73ee-2a68-4f08-b1cf-e84f8cb26f17",
+    "36f16044-7ab4-4bbf-b7cf-e09ce08bc696"
   ]
 }

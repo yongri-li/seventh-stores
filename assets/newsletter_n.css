@@ -1,0 +1,29 @@
+
+.items-left{
+    align-items: start;
+}
+
+.items-right{
+    align-items: end;
+}
+
+.flex-col{
+    flex-direction: column;
+}
+
+
+.newsletter_n .form__input{
+    border-bottom: 1.5px solid #aba5a5;
+    margin-bottom: 7px;
+    font-size: 16px;
+}
+
+.newsletter_n .form__btn,
+.newsletter_n .form__input span{
+    font-size: 16px !important;
+}
+
+.newsletter_n .section-pre-text{
+    margin-right: auto;
+    margin-bottom: 40px;
+}

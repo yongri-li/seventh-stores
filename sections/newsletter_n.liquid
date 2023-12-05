@@ -1,0 +1,306 @@
+{%- liquid
+    assign background_image = section.settings.background_image
+    assign background_color = section.settings.background_color
+    assign section_style = section.settings.section_style 
+-%}
+
+{{'newsletter_n.css' | asset_url | stylesheet_tag }}
+
+<style>
+    .new-section-{{section.id}}{
+        padding-top: {{- section.settings.section_padding_top -}}px;
+        padding-bottom: {{- section.settings.section_padding_bottom -}}px;
+        margin-top: {{- section.settings.section_margin_top -}}px;
+        margin-bottom: {{- section.settings.section_margin_bottom -}}px;
+    }
+
+    .new-section-{{section.id}}{
+        {%- if background_image != blank -%}
+            background-image: url('{{ background_image | img_url: '1000x' }}');
+            {% comment %} background-size: cover; {% endcomment %}
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        {%- endif -%}
+
+        background-color: {{ background_color }};
+    }
+
+    .new-section-{{section.id}} .form__btn{
+        background-color: {{section.settings.form_btn_bgColor}};
+        color: {{section.settings.form_btn_color}};
+    }
+    
+    .new-section-{{section.id}} .form__input{
+        background-color: {{section.settings.form_input_bgColor}};
+    }
+
+    .new-section-{{section.id}} .form__input::placeholder{
+        color: {{section.settings.form_placeholder_color}};
+    }
+
+</style>
+    
+    <section class="new-section-{{section.id}} newsletter_n [{% if section.settings.contain_section %}container mx-auto{% endif %} bg-cover bg-no-repeat px-4 ]">
+        {%- if section_style == 'style-one' -%}
+            <div class="container mx-auto">
+               
+                {%- liquid 
+                    assign font_color = section.settings.font_color
+                    assign section_heading = section.settings.section_heading
+                    assign section_content = section.settings.section_content
+                    assign sub_text = section.settings.sub_text 
+                -%}
+                
+                <div class="max-w-6xl mx-auto py-12 sm:px-6 lg:py-16 lg:px-8">
+                    <div class="md:py-12 md:px-12 lg:py-16 lg:px-16 xl:flex xl:items-center">
+                        
+                        <div class="xl:w-0 xl:flex-1" >
+                            {%- if section.settings.pre_text != blank -%}
+                                <h2 class="section-pre-text">{{section.settings.pre_text}}</h2>
+                            {%- endif -%}
+
+                            {%- if section_heading != blank -%}
+                                <h2 class="text-2xl sm:text-3xl" style="color: {{ font_color }};">{{ section_heading }}</h2>
+                            {%- endif -%}
+                            {%- if section_content != blank -%}
+                                <p class="mt-3 max-w-3xl text-lg leading-6" style="color: {{ font_color }};">{{ section_content }}</p>
+                            {%- endif -%}
+                        </div>
+                        <div class="mt-8 sm:w-full sm:max-w-sm xl:mt-0 xl:ml-8">
+                            {% render 'form-newsletter_n', section: section %}
+                            {%- if sub_text != blank -%}
+                                <div class="mt-3 text-sm" style="color: {{ font_color }};">
+                                    {{ sub_text }}
+                                </div>
+                            {%- endif -%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        {%- else -%}
+            <div class="container mx-auto">
+                {%- liquid 
+                    assign content_alignment = section.settings.content_alignment
+                    assign max_width = section.settings.form_max_width 
+                    assign font_color = section.settings.font_color
+                    assign section_heading = section.settings.section_heading
+                    assign section_content = section.settings.section_content 
+                -%}
+                    
+                <div class="[ flex flex-wrap overflow-hidden -mx-4 ]">
+                    <div class="[ w-full px-4 overflow-hidden py-8 ]">
+
+                        <div class="flex flex-col {{ content_alignment }}"  style="max-width: {{ max_width }}px; margin: auto;">
+                            {%- if section.settings.pre_text != blank -%}
+                                <h2 class="section-pre-text">{{section.settings.pre_text}}</h2>
+                            {%- endif -%}
+
+                            {%- if section_heading != blank -%}
+                                <h3 class="[ pb-5 ]" style="color: {{ font_color }};">{{ section_heading }}</h3>
+                            {%- endif -%}
+                            {%- if section_content != blank -%}
+                                <p class="[ pb-5 ]" style="color: {{ font_color }};">{{ section_content }}</p>
+                            {%- endif -%}
+                            <div class="[ w-full ]">
+                                {% render 'form-newsletter_n', section: section %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {%- endif -%}
+    </section>
+    
+    {% schema %}
+      {
+        "name": {
+          "en": "Newsletter"
+        },
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "contain_section",
+            "label": "Contain section in a wrapper?",
+            "default": true
+          },
+          {
+            "type": "header",
+            "content": "Styling"
+          },
+          {
+            "type": "select",
+            "id": "section_style",
+            "label": "Section Style",
+            "options": [
+              {
+                "value": "style-one",
+                "label": "Style One"
+              },
+              {
+                "value": "style-two",
+                "label": "Style Two"
+              }
+            ],
+            "default": "style-one"
+          },
+          {
+            "type": "image_picker",
+            "id": "background_image",
+            "label": "Background image"
+          },
+          {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background color",
+            "default": "#EEEEEE"
+          },
+          {
+            "type": "color",
+            "id": "font_color",
+            "label": "Font Color",
+            "default": "#000000"
+          },
+          {
+            "type": "range",
+            "id": "form_max_width",
+            "label": "Form Max Width",
+            "min": 100,
+            "max": 750,
+            "step": 25,
+            "default": 375
+          },
+          {
+            "type": "header",
+            "content": "Content"
+          },
+          {
+            "type": "text",
+            "id": "pre_text",
+            "label": "Pre Text",
+            "default": "Subscribe"
+          },
+          {
+            "type": "text",
+            "id": "section_heading",
+            "label": "Section Heading"
+          },
+          {
+            "type": "textarea",
+            "id": "section_content",
+            "label": "Section Content"
+          },
+          {
+            "type": "richtext",
+            "id": "sub_text",
+            "label": "Sub text",
+            "default": "<p>Default <em>richtext</em> <a href=\"https://example.com/\">content</a></p>"
+          },
+          {
+            "type": "color",
+            "id": "form_input_bgColor",
+            "label": "Input Background Color",
+            "default": "#f3eee8"
+          },
+          {
+            "type": "text",
+            "id": "form_placeholder",
+            "label": "Form Placeholder Text",
+            "default": "Enter your email address"
+          },
+          {
+            "type": "color",
+            "id": "form_placeholder_color",
+            "label": "Input Placeholder Color"
+          },
+          {
+            "type": "text",
+            "id": "form_btn_label",
+            "label": "Button Label",
+            "default": "Subscribe"
+          },
+          {
+            "type": "color",
+            "id": "form_btn_color",
+            "label": "Button Label Color",
+            "default": "#FFF"
+          },
+          {
+            "type": "color",
+            "id": "form_btn_bgColor",
+            "label": "Button Background Color",
+            "default": "#000"
+          },
+          {
+            "type": "select",
+            "id": "content_alignment",
+            "label": "Content Alignment",
+            "options": [
+              {
+                "value": "items-left",
+                "label": "Left"
+              },
+              {
+                "value": "items-center",
+                "label": "Center"
+              },
+              {
+                "value": "items-right",
+                "label": "Right"
+              }
+            ],
+            "default": "items-center"
+          },
+
+
+        {
+          "type": "range",
+          "id": "section_padding_top",
+          "label" : "Padding Top",
+          "step": 5,
+          "min": 0,
+          "max": 200,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "section_padding_bottom",
+          "label" : "Padding Bottom",
+          "step": 5,
+          "min": 0,
+          "max": 200,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "section_margin_top",
+          "label" : "Margin top",
+          "step": 1,
+          "min": 0,
+          "max": 100,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "section_margin_bottom",
+          "label" : "Margin Bottom",
+          "step": 1,
+          "min": 0,
+          "max": 100,
+          "default": 0,
+          "unit": "px"
+        }
+    
+        ],
+        "presets": [
+          {
+            "name": "Newsletter",
+            "category": "Content"
+          }
+        ]
+      }
+    {% endschema %}

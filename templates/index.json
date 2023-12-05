@@ -88,24 +88,6 @@
         "desktop_content_alignment": "lg:text-left"
       }
     },
-    "57fa73ee-2a68-4f08-b1cf-e84f8cb26f17": {
-      "type": "newsletter",
-      "disabled": true,
-      "custom_css": [
-
-      ],
-      "settings": {
-        "contain_section": false,
-        "section_style": "style-two",
-        "background_color": "#000000",
-        "font_color": "#f3eee8",
-        "form_max_width": 300,
-        "section_heading": "Sign up for early access",
-        "section_content": "",
-        "sub_text": "",
-        "content_alignment": "items-center"
-      }
-    },
     "36f16044-7ab4-4bbf-b7cf-e09ce08bc696": {
       "type": "featured-hero",
       "settings": {
@@ -126,6 +108,23 @@
         "desktop_content_focus": "lg:justify-center lg:items-center",
         "desktop_content_alignment": "lg:text-center"
       }
+    },
+    "57fa73ee-2a68-4f08-b1cf-e84f8cb26f17": {
+      "type": "newsletter_n",
+      "custom_css": [
+
+      ],
+      "settings": {
+        "contain_section": false,
+        "section_style": "style-two",
+        "background_color": "#000000",
+        "font_color": "#f3eee8",
+        "form_max_width": 300,
+        "section_heading": "Sign up for early access",
+        "section_content": "",
+        "sub_text": "",
+        "content_alignment": "items-center"
+      }
     }
   },
   "order": [
@@ -133,7 +132,7 @@
     "73999025-2f84-4b4b-8a7e-df51fc6c82e6",
     "bd333261-494b-4e28-8765-d18878b912c5",
     "aad55d72-8fc0-4f6f-bc9a-4c38f601cb07",
-    "57fa73ee-2a68-4f08-b1cf-e84f8cb26f17",
-    "36f16044-7ab4-4bbf-b7cf-e09ce08bc696"
+    "36f16044-7ab4-4bbf-b7cf-e09ce08bc696",
+    "57fa73ee-2a68-4f08-b1cf-e84f8cb26f17"
   ]
 }

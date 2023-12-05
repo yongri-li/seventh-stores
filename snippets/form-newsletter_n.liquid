@@ -1,0 +1,59 @@
+{%- if form.posted_successfully? -%}
+    <h3>{{ 'layout.newsletter.successful_heading' | t }}</h3>
+    <p>{{ 'layout.newsletter.successful_content' | t }}</p>
+    {%- endif -%}
+    {%- if settings.action_url != "" -%}
+    <form action="{{ settings.action_url }}" class="[ flex flex-row border ] form form--newsletter" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" novalidate>
+        {{ form.errors | default_errors }}
+        {% if form.posted_successfully? %}
+        <div class="form__thanks success">{{ 'layout.newsletter.successful_content' | t }}</div>
+        {% else %}
+        {% comment %} <input type="hidden" name="contact[tags]" value="prospect, password page"> {% endcomment %}
+        <input class="[ w-full flex-grow appearance-none bg-white px-4 py-3 pr-8 leading-tight focus:outline-none focus:shadow-outline border-none ] form__input"
+            type="email"
+            name="EMAIL"
+            id="mce-EMAIL"
+            spellcheck="false"
+            autocomplete="off"
+            autocapitalize="off"
+            placeholder="{{ 'layout.newsletter.email_placeholder' | t }}">
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <button type="submit" name="commit" class="[ appearance-none bg-white px-4 py-3 pr-8 leading-tight focus:outline-none focus:shadow-outline border-none ] form__btn">
+            <span class="visually-hidden">{{ 'layout.newsletter.subscribe' | t }}</span>
+            {% comment %} {%- render 'icon-chevron-right' -%} {% endcomment %}
+        </button>
+        {% endif %}
+    </form>
+
+
+    {%- else -%}
+    {% form 'customer', class: "form form--newsletter" %}
+        {%- if form.errors.length > 0 -%}
+        {%- capture error_messages -%}{{ form.errors | default_errors }}{%- endcapture -%}
+        {% render 'alert-error' with error: error_messages %}
+        {%- endif -%}
+        {% if form.posted_successfully? %}
+        {%- capture success_message -%}{{ 'layout.newsletter.successful_post' | t }}{%- endcapture -%}
+        {% render 'alert-success' with message: success_message %}
+        <div class="form__success success"></div>
+        {% else %}
+        <div class="[ flex flex-row ] flex-col">
+            <input type="hidden" name="contact[tags]" value="prospect, password page">
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <input class="[ w-full flex-grow appearance-none bg-white px-4 py-3 pr-8 leading-tight focus:outline-none focus:shadow-outline border-none ] form__input"
+                type="email"
+                name="contact[email]"
+                id="Email"
+                spellcheck="false"
+                autocomplete="off"
+                autocapitalize="off"
+                placeholder="{{section.settings.form_placeholder}}">
+            {% comment %} <input type="hidden" name="contact[tags]" value="newsletter"> {% endcomment %}
+            <button type="submit" name="commit" class="[ appearance-none bg-white px-4 py-3 pr-8 leading-tight focus:outline-none focus:shadow-outline border-none ] form__btn">
+                <span class="" style="font-size: 16px;">{{section.settings.form_btn_label}}</span>
+                {% comment %} {%- render 'icon-chevron-right' -%} {% endcomment %}
+            </button>
+        </div>
+        {% endif %}
+    {% endform %}
+    {%- endif -%}

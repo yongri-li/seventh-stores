@@ -12,6 +12,19 @@
 }
 
 
+.newsletter_n .main-content.items-center{
+    margin: auto;
+}
+
+.newsletter_n .main-content.items-left{
+    margin-right: auto;
+}
+
+.newsletter_n .main-content.items-right{
+    margin-left: auto;
+}
+
+
 .newsletter_n .form__input{
     border-bottom: 1.5px solid #aba5a5;
     margin-bottom: 7px;
@@ -27,3 +40,4 @@
     margin-right: auto;
     margin-bottom: 40px;
 }
+

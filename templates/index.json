@@ -117,13 +117,24 @@
       "settings": {
         "contain_section": false,
         "section_style": "style-two",
-        "background_color": "#000000",
-        "font_color": "#f3eee8",
-        "form_max_width": 300,
-        "section_heading": "Sign up for early access",
+        "background_color": "#f3eee8",
+        "font_color": "#000000",
+        "form_max_width": 450,
+        "pre_text": "Subscribe",
+        "section_heading": "",
         "section_content": "",
         "sub_text": "",
-        "content_alignment": "items-center"
+        "form_input_bgColor": "#f3eee8",
+        "form_placeholder": "Enter your email address",
+        "form_placeholder_color": "",
+        "form_btn_label": "Subscribe",
+        "form_btn_color": "#FFF",
+        "form_btn_bgColor": "#000",
+        "content_alignment": "items-center",
+        "section_padding_top": 50,
+        "section_padding_bottom": 70,
+        "section_margin_top": 0,
+        "section_margin_bottom": 0
       }
     }
   },

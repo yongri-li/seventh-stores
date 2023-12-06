@@ -46,15 +46,6 @@
     "d7a9aa2b-9caf-441f-8f65-7561c9999a58": {
       "type": "lookbook",
       "blocks": {
-        "template--21374904566077__d7a9aa2b-9caf-441f-8f65-7561c9999a58-image-1": {
-          "type": "image",
-          "settings": {
-            "block_url": "shopify:\/\/collections\/night-collection",
-            "block_image": "shopify:\/\/shop_images\/IMG_6502_2.jpg",
-            "column_span": "col-span-3",
-            "column_span_desktop": "lg:col-span-3"
-          }
-        },
         "58b6e7ec-6a8c-41d8-8a0e-4fa73fddbd8d": {
           "type": "image",
           "settings": {
@@ -81,13 +72,22 @@
             "column_span": "col-span-1",
             "column_span_desktop": "lg:col-span-1"
           }
+        },
+        "template--21374904566077__d7a9aa2b-9caf-441f-8f65-7561c9999a58-image-1": {
+          "type": "image",
+          "settings": {
+            "block_url": "shopify:\/\/collections\/night-collection",
+            "block_image": "shopify:\/\/shop_images\/IMG_6502_2.jpg",
+            "column_span": "col-span-3",
+            "column_span_desktop": "lg:col-span-3"
+          }
         }
       },
       "block_order": [
-        "template--21374904566077__d7a9aa2b-9caf-441f-8f65-7561c9999a58-image-1",
         "58b6e7ec-6a8c-41d8-8a0e-4fa73fddbd8d",
         "60018cb5-59af-4e75-b4da-3e1244119b14",
-        "4a8e6881-829f-42b8-9c4c-24a9c7930674"
+        "4a8e6881-829f-42b8-9c4c-24a9c7930674",
+        "template--21374904566077__d7a9aa2b-9caf-441f-8f65-7561c9999a58-image-1"
       ],
       "settings": {
         "contain_section": false,

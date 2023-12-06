@@ -49,17 +49,17 @@
         "template--21374904566077__d7a9aa2b-9caf-441f-8f65-7561c9999a58-image-1": {
           "type": "image",
           "settings": {
-            "block_url": "shopify:\/\/collections\/a-w-drop-1",
-            "block_image": "shopify:\/\/shop_images\/230919000000010004.png",
-            "column_span": "col-span-1",
-            "column_span_desktop": "lg:col-span-1"
+            "block_url": "shopify:\/\/collections\/night-collection",
+            "block_image": "shopify:\/\/shop_images\/IMG_6502_2.jpg",
+            "column_span": "col-span-2",
+            "column_span_desktop": "lg:col-span-2"
           }
         },
         "45e8e4f1-d0bc-4796-b0e3-6f8ad175c3a2": {
           "type": "image",
           "settings": {
-            "block_url": "shopify:\/\/collections\/a-w-drop-1",
-            "block_image": "shopify:\/\/shop_images\/230919000000020001.png",
+            "block_url": "shopify:\/\/collections\/night-collection",
+            "block_image": "shopify:\/\/shop_images\/231116000000030028-2.jpg",
             "column_span": "col-span-1",
             "column_span_desktop": "lg:col-span-1"
           }
@@ -67,8 +67,8 @@
         "58b6e7ec-6a8c-41d8-8a0e-4fa73fddbd8d": {
           "type": "image",
           "settings": {
-            "block_url": "shopify:\/\/collections\/a-w-drop-1",
-            "block_image": "shopify:\/\/shop_images\/230919000000020007_1.png",
+            "block_url": "shopify:\/\/collections\/night-collection",
+            "block_image": "shopify:\/\/shop_images\/231116000000030006-2.jpg",
             "column_span": "col-span-1",
             "column_span_desktop": "lg:col-span-1"
           }
@@ -76,80 +76,17 @@
         "60018cb5-59af-4e75-b4da-3e1244119b14": {
           "type": "image",
           "settings": {
-            "block_url": "shopify:\/\/collections\/a-w-drop-1",
-            "block_image": "shopify:\/\/shop_images\/230919000000020008.png",
+            "block_url": "shopify:\/\/collections\/night-collection",
+            "block_image": "shopify:\/\/shop_images\/231116000000030035-2.jpg",
             "column_span": "col-span-1",
             "column_span_desktop": "lg:col-span-1"
           }
         },
-        "982021bc-3103-4224-9311-e6a858ce4534": {
+        "4a8e6881-829f-42b8-9c4c-24a9c7930674": {
           "type": "image",
           "settings": {
-            "block_url": "shopify:\/\/collections\/a-w-drop-1",
-            "block_image": "shopify:\/\/shop_images\/230919000000030003.png",
-            "column_span": "col-span-1",
-            "column_span_desktop": "lg:col-span-1"
-          }
-        },
-        "2ed9d42e-855c-4e27-b04f-eb116ff2ec06": {
-          "type": "image",
-          "settings": {
-            "block_url": "shopify:\/\/collections\/a-w-drop-1",
-            "block_image": "shopify:\/\/shop_images\/230919000000030006.png",
-            "column_span": "col-span-1",
-            "column_span_desktop": "lg:col-span-1"
-          }
-        },
-        "c0f54c80-847e-4ce0-bcb4-e55f547daa4f": {
-          "type": "image",
-          "settings": {
-            "block_url": "shopify:\/\/collections\/a-w-drop-1",
-            "block_image": "shopify:\/\/shop_images\/230919000000030007.png",
-            "column_span": "col-span-1",
-            "column_span_desktop": "lg:col-span-1"
-          }
-        },
-        "c19bd761-ac08-4208-a33f-2e1f43104284": {
-          "type": "image",
-          "settings": {
-            "block_url": "shopify:\/\/collections\/a-w-drop-1",
-            "block_image": "shopify:\/\/shop_images\/230919000000040002.png",
-            "column_span": "col-span-1",
-            "column_span_desktop": "lg:col-span-1"
-          }
-        },
-        "93edc00a-12f7-4f41-9ae7-d7a4e627105b": {
-          "type": "image",
-          "settings": {
-            "block_url": "shopify:\/\/collections\/a-w-drop-1",
-            "block_image": "shopify:\/\/shop_images\/230919000000040003_2.png",
-            "column_span": "col-span-1",
-            "column_span_desktop": "lg:col-span-1"
-          }
-        },
-        "353576dc-a914-4fb0-ae1a-9ea316520521": {
-          "type": "image",
-          "settings": {
-            "block_url": "shopify:\/\/collections\/a-w-drop-1",
-            "block_image": "shopify:\/\/shop_images\/230919000000080009.png",
-            "column_span": "col-span-1",
-            "column_span_desktop": "lg:col-span-1"
-          }
-        },
-        "7b543820-9dbd-455d-a068-8bec1753c583": {
-          "type": "image",
-          "settings": {
-            "block_url": "shopify:\/\/collections\/a-w-drop-1",
-            "block_image": "shopify:\/\/shop_images\/230919000000050002.png",
-            "column_span": "col-span-1",
-            "column_span_desktop": "lg:col-span-1"
-          }
-        },
-        "44b3bb9b-0714-4657-9563-20efe999b60f": {
-          "type": "image",
-          "settings": {
-            "block_url": "shopify:\/\/collections\/a-w-drop-1",
-            "block_image": "shopify:\/\/shop_images\/230919000000050010_1.png",
+            "block_url": "shopify:\/\/collections\/night-collection",
+            "block_image": "shopify:\/\/shop_images\/231116000000030006-2.jpg",
             "column_span": "col-span-1",
             "column_span_desktop": "lg:col-span-1"
           }
@@ -160,14 +97,7 @@
         "45e8e4f1-d0bc-4796-b0e3-6f8ad175c3a2",
         "58b6e7ec-6a8c-41d8-8a0e-4fa73fddbd8d",
         "60018cb5-59af-4e75-b4da-3e1244119b14",
-        "982021bc-3103-4224-9311-e6a858ce4534",
-        "2ed9d42e-855c-4e27-b04f-eb116ff2ec06",
-        "c0f54c80-847e-4ce0-bcb4-e55f547daa4f",
-        "c19bd761-ac08-4208-a33f-2e1f43104284",
-        "93edc00a-12f7-4f41-9ae7-d7a4e627105b",
-        "353576dc-a914-4fb0-ae1a-9ea316520521",
-        "7b543820-9dbd-455d-a068-8bec1753c583",
-        "44b3bb9b-0714-4657-9563-20efe999b60f"
+        "4a8e6881-829f-42b8-9c4c-24a9c7930674"
       ],
       "settings": {
         "contain_section": false,
@@ -190,6 +120,7 @@
     },
     "c4ec2b05-cc72-4fd9-beb6-c03d53fa13b4": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "contain": false,
         "section_background": "#f3eee8",

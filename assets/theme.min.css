@@ -31,6 +31,10 @@ form#product_form_8657126129981{
     display: block !important;
 }
 
+.product-form-cta .add-to-cart-button[disabled]{
+    display: none;
+}
+
 .control-group .btn-success{
     border-color: var(--atc-btn-bg) !important;
     background-color: var(--atc-btn-bg) !important;

@@ -94,7 +94,7 @@
         "fcba93b1-38ea-4d98-a783-ac0aef7f5107": {
           "type": "image",
           "settings": {
-            "block_url": "",
+            "block_url": "shopify:\/\/collections\/night-collection",
             "block_image": "shopify:\/\/shop_images\/0003954-R1-27-28A.png",
             "column_span": "col-span-1",
             "column_span_desktop": "lg:col-span-1"

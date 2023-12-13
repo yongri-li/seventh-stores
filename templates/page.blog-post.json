@@ -73,15 +73,6 @@
             "column_span_desktop": "lg:col-span-3"
           }
         },
-        "60018cb5-59af-4e75-b4da-3e1244119b14": {
-          "type": "image",
-          "settings": {
-            "block_url": "shopify:\/\/collections\/night-collection",
-            "block_image": "shopify:\/\/shop_images\/IMG_6503.jpg",
-            "column_span": "col-span-3",
-            "column_span_desktop": "lg:col-span-3"
-          }
-        },
         "f0301fd9-4bfd-4916-9469-7e4a3b68b4a8": {
           "type": "image",
           "settings": {
@@ -114,7 +105,6 @@
         "724e1ce9-dea2-4850-b15d-5fde3a61aee3",
         "template--21374904566077__d7a9aa2b-9caf-441f-8f65-7561c9999a58-image-1",
         "58b6e7ec-6a8c-41d8-8a0e-4fa73fddbd8d",
-        "60018cb5-59af-4e75-b4da-3e1244119b14",
         "f0301fd9-4bfd-4916-9469-7e4a3b68b4a8",
         "26c7b568-7447-4fd8-bd14-33d4033f16ac",
         "fcba93b1-38ea-4d98-a783-ac0aef7f5107"

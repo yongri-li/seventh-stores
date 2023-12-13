@@ -43,6 +43,7 @@
     .new-section-{{section.id}} .text-wrapper .section-pre-text{
       color: {{ section.settings.pre_text_color }}; 
       font-size: {{ section.settings.pre_text_size }};
+      margin-bottom: {{section.settings.pre_text_spacing }}
     }
 
 
@@ -208,7 +209,17 @@
             "label" : "Font Size",
             "step": 1,
             "min": 10,
-            "max": 100,
+            "max": 50,
+            "default": 40,
+            "unit": "px"
+          },
+          {
+            "type": "range",
+            "id":"pre_text_spacing",
+            "label" : "Font Size",
+            "step": 1,
+            "min": 10,
+            "max": 50,
             "default": 40,
             "unit": "px"
           },
@@ -229,8 +240,8 @@
             "label" : "Font Size",
             "step": 1,
             "min": 10,
-            "max": 100,
-            "default": 40,
+            "max": 70,
+            "default": 20,
             "unit": "px"
           },
           {
@@ -250,7 +261,7 @@
             "label" : "Font Size",
             "step": 1,
             "min": 10,
-            "max": 100,
+            "max": 30,
             "default": 12,
             "unit": "px"
           },

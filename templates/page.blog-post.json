@@ -76,7 +76,7 @@
         "f0301fd9-4bfd-4916-9469-7e4a3b68b4a8": {
           "type": "image",
           "settings": {
-            "block_url": "",
+            "block_url": "shopify:\/\/collections\/night-collection",
             "block_image": "shopify:\/\/shop_images\/0003956-R1-05-6A.png",
             "column_span": "col-span-1",
             "column_span_desktop": "lg:col-span-1"
@@ -85,7 +85,7 @@
         "26c7b568-7447-4fd8-bd14-33d4033f16ac": {
           "type": "image",
           "settings": {
-            "block_url": "",
+            "block_url": "shopify:\/\/collections\/night-collection",
             "block_image": "shopify:\/\/shop_images\/0003953-R1-23-24A.png",
             "column_span": "col-span-1",
             "column_span_desktop": "lg:col-span-1"

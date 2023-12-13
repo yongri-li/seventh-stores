@@ -130,17 +130,16 @@
     },
     "c4ec2b05-cc72-4fd9-beb6-c03d53fa13b4": {
       "type": "featured-collection",
-      "disabled": true,
       "settings": {
         "contain": false,
         "section_background": "#f3eee8",
         "section_spacing": "py-8",
-        "title": "Shop Lookbook",
-        "collection": "a-w-drop-1",
-        "total_products": 16,
-        "show_cta": false,
+        "title": "",
+        "collection": "night-collection",
+        "total_products": 10,
+        "show_cta": true,
         "cta_copy": "",
-        "cta_style": "primary-button"
+        "cta_style": "secondary-button"
       }
     }
   },

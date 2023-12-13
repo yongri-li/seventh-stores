@@ -18,7 +18,7 @@
         {%- if background_image != blank -%}
             background-image: url('{{ background_image | img_url: '1000x' }}');
             {% comment %} background-size: cover; {% endcomment %}
-            background-size: 100% 100%;
+            background-size: cover;
             background-repeat: no-repeat;
         {%- endif -%}
 
@@ -93,16 +93,18 @@
                     <div class="[ w-full px-4 overflow-hidden py-8 ]">
 
                         <div class="main-content flex flex-col {{ content_alignment }}"  style="max-width: {{ max_width }}px;">
+                           <div class="text-wrapper flex flex-col" style="gap: 7px;">
                             {%- if section.settings.pre_text != blank -%}
                                 <h2 class="section-pre-text">{{section.settings.pre_text}}</h2>
                             {%- endif -%}
 
                             {%- if section_heading != blank -%}
-                                <h3 class="[ pb-5 ]" style="color: {{ font_color }};">{{ section_heading }}</h3>
+                                <h3 class="heading" style="color: {{ font_color }};">{{ section_heading }}</h3>
                             {%- endif -%}
                             {%- if section_content != blank -%}
-                                <p class="[ pb-5 ]" style="color: {{ font_color }};">{{ section_content }}</p>
+                                <p class="content" style="color: {{ font_color }};">{{ section_content }}</p>
                             {%- endif -%}
+                            </div>
                             <div class="[ w-full ]">
                                 {% render 'form-newsletter_n', section: section %}
                             </div>

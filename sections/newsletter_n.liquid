@@ -38,6 +38,14 @@
         color: {{section.settings.form_placeholder_color}};
     }
 
+
+    
+    .new-section-{{section.id}} .text-wrapper .section-pre-text{
+      color: {{ section.settings.pre_text_color }}; 
+      font-size: {{ section.settings.pre_text_size }};
+    }
+
+
     .new-section-{{section.id}} .text-wrapper .heading{
       color: {{ section.settings.font_color }}; 
       font-size: {{ section.settings.heading_font_size }};
@@ -47,6 +55,7 @@
     .new-section-{{section.id}} .text-wrapper .content,
     .new-section-{{section.id}} .text-wrapper .content p{
       font-size: {{ section.settings.content_font_size }};
+      color: {{section.settings.content_font_color}}
     }
 </style>
     
@@ -167,12 +176,7 @@
             "label": "Background color",
             "default": "#F3EEE8"
           },
-          {
-            "type": "color",
-            "id": "font_color",
-            "label": "Font Color",
-            "default": "#000000"
-          },
+         
           {
             "type": "range",
             "id": "form_max_width",
@@ -193,9 +197,31 @@
             "default": "Subscribe"
           },
           {
+            "type": "color",
+            "id": "pre_text_color",
+            "label": "Font Color",
+            "default": "#000000"
+          },
+          {
+            "type": "range",
+            "id": "pre_text_size",
+            "label" : "Font Size",
+            "step": 1,
+            "min": 10,
+            "max": 100,
+            "default": 40,
+            "unit": "px"
+          },
+          {
             "type": "text",
             "id": "section_heading",
             "label": "Section Heading"
+          },
+          {
+            "type": "color",
+            "id": "font_color",
+            "label": "Font Color",
+            "default": "#000000"
           },
           {
             "type": "range",
@@ -213,6 +239,12 @@
             "label": "Sub text"
           },
           {
+            "type": "color",
+            "id": "content_font_color",
+            "label": "Font Color",
+            "default": "#f3eee8"
+          },
+          {
             "type": "range",
             "id": "content_font_size",
             "label" : "Font Size",
@@ -221,6 +253,11 @@
             "max": 100,
             "default": 12,
             "unit": "px"
+          },
+         
+          {
+            "type": "header",
+            "content": "Input & Submit"
           },
           {
             "type": "color",

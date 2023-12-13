@@ -11,19 +11,17 @@ form#product_form_8657126129981{
     width: 100%;
 }
 .btn.klaviyo-bis-trigger{
-    display: block;
+    display: none;
     background-color: var(--atc-btn-bg);
     color: var(--atc-btn-text);
     opacity: .5;
     font-size: .75rem;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    width: 100% !important;
+    padding: 0.75rem 1rem;
     max-width: 415px;
     margin: auto !important;
     margin-top: 10px !important;
+    width: 100% !important;
+    max-width: 94%;
 }
 .btn.klaviyo-bis-trigger:hover{
     background-color: var(--atc-btn-bg-hover);
@@ -31,4 +29,14 @@ form#product_form_8657126129981{
 }
 .shopify-product-form:has([disabled]) .klaviyo-bis-trigger{
     display: block !important;
+}
+
+.product-form-cta .add-to-cart-button[disabled]{
+    display: none;
+}
+
+.control-group .btn-success{
+    border-color: var(--atc-btn-bg) !important;
+    background-color: var(--atc-btn-bg) !important;
+    color: var(--atc-btn-text) !important;
 }

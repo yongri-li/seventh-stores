@@ -40,21 +40,21 @@
 
 
     
-    .new-section-{{section.id}} .text-wrapper .section-pre-text{
+    .new-section-{{section.id}} .main-content .section-pre-text{
       color: {{ section.settings.pre_text_color }}; 
       font-size: {{ section.settings.pre_text_size }};
       margin-bottom: {{section.settings.pre_text_spacing }}
     }
 
 
-    .new-section-{{section.id}} .text-wrapper .heading{
+    .new-section-{{section.id}} .main-content .heading{
       color: {{ section.settings.font_color }}; 
       font-size: {{ section.settings.heading_font_size }};
     }
 
     
-    .new-section-{{section.id}} .text-wrapper .content,
-    .new-section-{{section.id}} .text-wrapper .content p{
+    .new-section-{{section.id}} .main-content .content,
+    .new-section-{{section.id}} .main-content .content p{
       font-size: {{ section.settings.content_font_size }};
       color: {{section.settings.content_font_color}}
     }
@@ -112,18 +112,16 @@
                     <div class="[ w-full px-4 overflow-hidden py-8 ]">
 
                         <div class="main-content flex flex-col {{ content_alignment }}"  style="max-width: {{ max_width }}px;">
-                           <div class="text-wrapper">
-                            {%- if section.settings.pre_text != blank -%}
-                                <h2 class="section-pre-text">{{section.settings.pre_text}}</h2>
-                            {%- endif -%}
+                              {%- if section.settings.pre_text != blank -%}
+                                  <h2 class="section-pre-text">{{section.settings.pre_text}}</h2>
+                              {%- endif -%}
 
-                            {%- if section_heading != blank -%}
-                                <h3 class="heading">{{ section_heading }}</h3>
-                            {%- endif -%}
-                            {%- if section_content != blank -%}
-                                <div class="content my-12">{{ section_content }}</div>
-                            {%- endif -%}
-                            </div>
+                              {%- if section_heading != blank -%}
+                                  <h3 class="heading">{{ section_heading }}</h3>
+                              {%- endif -%}
+                              {%- if section_content != blank -%}
+                                  <div class="content my-12">{{ section_content }}</div>
+                              {%- endif -%}
                             <div class="[ w-full ]">
                                 {% render 'form-newsletter_n', section: section %}
                             </div>

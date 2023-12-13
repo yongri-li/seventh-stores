@@ -117,6 +117,7 @@
       "settings": {
         "contain_section": false,
         "section_style": "style-two",
+        "background_image": "shopify:\/\/shop_images\/Porcelain_dome_lifestyle_banner_1.png",
         "background_color": "#f3eee8",
         "font_color": "#000000",
         "form_max_width": 450,
@@ -128,8 +129,8 @@
         "form_placeholder": "Enter your email address",
         "form_placeholder_color": "",
         "form_btn_label": "Subscribe",
-        "form_btn_color": "#FFF",
-        "form_btn_bgColor": "#000",
+        "form_btn_color": "#ffffff",
+        "form_btn_bgColor": "#000000",
         "content_alignment": "items-center",
         "section_padding_top": 50,
         "section_padding_bottom": 70,

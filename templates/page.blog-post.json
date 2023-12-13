@@ -130,6 +130,9 @@
     },
     "c4ec2b05-cc72-4fd9-beb6-c03d53fa13b4": {
       "type": "featured-collection",
+      "custom_css": [
+
+      ],
       "settings": {
         "contain": false,
         "section_background": "#f3eee8",
@@ -139,7 +142,7 @@
         "total_products": 28,
         "show_cta": true,
         "cta_copy": "",
-        "cta_style": "secondary-button"
+        "cta_style": "tertiary-button"
       }
     }
   },

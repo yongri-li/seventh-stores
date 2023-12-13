@@ -38,6 +38,16 @@
         color: {{section.settings.form_placeholder_color}};
     }
 
+    .new-section-{{section.id}} .text-wrapper .heading{
+      color: {{ section.settings.font_color }}; 
+      font-size: {{ section.settings.heading_font_size }};
+    }
+
+    
+    .new-section-{{section.id}} .text-wrapper .content,
+    .new-section-{{section.id}} .text-wrapper .content p{
+      font-size: {{ section.settings.content_font_size }};
+    }
 </style>
     
     <section class="new-section-{{section.id}} newsletter_n [{% if section.settings.contain_section %}container mx-auto{% endif %} bg-cover bg-no-repeat px-4 ]">
@@ -63,7 +73,7 @@
                                 <h2 class="text-2xl sm:text-3xl" style="color: {{ font_color }};">{{ section_heading }}</h2>
                             {%- endif -%}
                             {%- if section_content != blank -%}
-                                <p class="mt-3 max-w-3xl text-lg leading-6" style="color: {{ font_color }};">{{ section_content }}</p>
+                                <div class="mt-3 max-w-3xl text-lg leading-6" style="color: {{ font_color }};">{{ section_content }}</div>
                             {%- endif -%}
                         </div>
                         <div class="mt-8 sm:w-full sm:max-w-sm xl:mt-0 xl:ml-8">
@@ -77,7 +87,6 @@
                     </div>
                 </div>
             </div>
-
 
         {%- else -%}
             <div class="container mx-auto">
@@ -99,10 +108,10 @@
                             {%- endif -%}
 
                             {%- if section_heading != blank -%}
-                                <h3 class="heading" style="color: {{ font_color }};">{{ section_heading }}</h3>
+                                <h3 class="heading">{{ section_heading }}</h3>
                             {%- endif -%}
                             {%- if section_content != blank -%}
-                                <p class="content" style="color: {{ font_color }};">{{ section_content }}</p>
+                                <div class="content my-12">{{ section_content }}</div>
                             {%- endif -%}
                             </div>
                             <div class="[ w-full ]">
@@ -189,9 +198,29 @@
             "label": "Section Heading"
           },
           {
+            "type": "range",
+            "id": "heading_font_size",
+            "label" : "Font Size",
+            "step": 1,
+            "min": 10,
+            "max": 100,
+            "default": 40,
+            "unit": "px"
+          },
+          {
             "type": "richtext",
             "id": "section_content",
             "label": "Sub text"
+          },
+          {
+            "type": "range",
+            "id": "content_font_size",
+            "label" : "Font Size",
+            "step": 1,
+            "min": 10,
+            "max": 100,
+            "default": 12,
+            "unit": "px"
           },
           {
             "type": "color",

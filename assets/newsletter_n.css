@@ -11,6 +11,11 @@
     flex-direction: column;
 }
 
+.my-12{
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
 
 .newsletter_n .main-content.items-center{
     margin: auto;

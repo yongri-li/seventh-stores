@@ -74,7 +74,7 @@
                 <div class="max-w-6xl mx-auto py-12 sm:px-6 lg:py-16 lg:px-8">
                     <div class="md:py-12 md:px-12 lg:py-16 lg:px-16 xl:flex xl:items-center">
                         
-                        <div class="xl:w-0 xl:flex-1" >
+                        <div class="main-content xl:w-0 xl:flex-1" >
                             {%- if section.settings.pre_text != blank -%}
                                 <h2 class="section-pre-text">{{section.settings.pre_text}}</h2>
                             {%- endif -%}
@@ -110,22 +110,21 @@
                     
                 <div class="[ flex flex-wrap overflow-hidden -mx-4 ]">
                     <div class="[ w-full px-4 overflow-hidden py-8 ]">
+                      <div class="main-content flex flex-col {{ content_alignment }}"  style="max-width: {{ max_width }}px;">
+                        {%- if section.settings.pre_text != blank -%}
+                            <h2 class="section-pre-text">{{section.settings.pre_text}}</h2>
+                        {%- endif -%}
 
-                        <div class="main-content flex flex-col {{ content_alignment }}"  style="max-width: {{ max_width }}px;">
-                              {%- if section.settings.pre_text != blank -%}
-                                  <h2 class="section-pre-text">{{section.settings.pre_text}}</h2>
-                              {%- endif -%}
-
-                              {%- if section_heading != blank -%}
-                                  <h3 class="heading">{{ section_heading }}</h3>
-                              {%- endif -%}
-                              {%- if section_content != blank -%}
-                                  <div class="content my-12">{{ section_content }}</div>
-                              {%- endif -%}
-                            <div class="[ w-full ]">
-                                {% render 'form-newsletter_n', section: section %}
-                            </div>
+                        {%- if section_heading != blank -%}
+                            <h3 class="heading">{{ section_heading }}</h3>
+                        {%- endif -%}
+                        {%- if section_content != blank -%}
+                            <div class="content my-12">{{ section_content }}</div>
+                        {%- endif -%}
+                        <div class="[ w-full ]">
+                            {% render 'form-newsletter_n', section: section %}
                         </div>
+                      </div>
                     </div>
                 </div>
             </div>

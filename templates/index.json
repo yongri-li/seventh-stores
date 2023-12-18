@@ -111,6 +111,7 @@
     },
     "57fa73ee-2a68-4f08-b1cf-e84f8cb26f17": {
       "type": "newsletter_n",
+      "disabled": true,
       "custom_css": [
 
       ],

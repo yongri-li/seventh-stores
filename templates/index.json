@@ -111,19 +111,17 @@
     },
     "57fa73ee-2a68-4f08-b1cf-e84f8cb26f17": {
       "type": "newsletter_n",
-      "disabled": true,
       "custom_css": [
 
       ],
       "settings": {
         "contain_section": false,
         "section_style": "style-two",
-        "background_image": "shopify:\/\/shop_images\/Porcelain_dome_lifestyle_banner_1.png",
-        "background_color": "#ffffff",
-        "form_max_width": 400,
-        "pre_text": "Subscribe",
-        "pre_text_color": "#ffffff",
-        "pre_text_size": 23,
+        "background_color": "#f3eee8",
+        "form_max_width": 425,
+        "pre_text": "Only Seventh members receive 24-hour early access on all upcoming drops and exclusive events. Sign-up to our mailing list below to join.",
+        "pre_text_color": "#8a8985",
+        "pre_text_size": 12,
         "pre_text_spacing": 40,
         "section_heading": "",
         "font_color": "#efc1c1",
@@ -131,7 +129,7 @@
         "section_content": "",
         "content_font_color": "#ffffff",
         "content_font_size": 19,
-        "form_input_bgColor": "#f3eee8",
+        "form_input_bgColor": "#FFFFFF",
         "form_placeholder": "Enter your email address",
         "form_placeholder_color": "",
         "form_btn_label": "Subscribe",

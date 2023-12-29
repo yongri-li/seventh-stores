@@ -72,7 +72,7 @@
         "contain_hero": false,
         "dynamic_loading": true,
         "section_gutter": false,
-        "hero_link": "https:\/\/seventhstores.com\/collections\/shop-all",
+        "hero_link": "shopify:\/\/collections\/archive-sale",
         "max_height_mobile": 100,
         "use_img_height_mobile": false,
         "mobile_image": "shopify:\/\/shop_images\/Homepage_Mobile_522e86e2-15f8-4973-9b99-3a8d51af8a7f.png",

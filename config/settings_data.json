@@ -165,7 +165,7 @@
         ],
         "settings": {
           "show_benefit": true,
-          "make_sticky": false,
+          "make_sticky": true,
           "pdp_hidden": true,
           "background_color": "#f3eee8",
           "border_color_bottom": "#f3eee8",

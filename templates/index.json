@@ -68,7 +68,6 @@
     },
     "aad55d72-8fc0-4f6f-bc9a-4c38f601cb07": {
       "type": "featured-hero",
-      "disabled": true,
       "settings": {
         "contain_hero": false,
         "dynamic_loading": true,
@@ -90,6 +89,7 @@
     },
     "36f16044-7ab4-4bbf-b7cf-e09ce08bc696": {
       "type": "featured-hero",
+      "disabled": true,
       "settings": {
         "contain_hero": false,
         "dynamic_loading": true,

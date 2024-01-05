@@ -2,21 +2,20 @@
   "sections": {
     "16317060921dba1150": {
       "type": "featured-hero",
-      "disabled": true,
       "settings": {
         "contain_hero": false,
         "dynamic_loading": true,
         "section_gutter": false,
-        "hero_link": "https:\/\/seventhstores.com\/pages\/subscribe?fbclid=PAAab5I84GlsSc-rpQ-lL3BVqPVlT2JHFLnLp-EpUKE8rVCYMOZP_fPNVOjiA_aem_AaifsVrMYBhLEypYXDovttHXAc8jpMRtW7QHGmu-qOC2ECdSs06_YqCXJuqtWx2VE2I",
+        "hero_link": "shopify:\/\/collections\/shop-all",
         "max_height_mobile": 100,
         "use_img_height_mobile": false,
-        "mobile_image": "shopify:\/\/shop_images\/Copy_of_Homepage_Mobile_2_4cfc23b0-1f36-48de-8fda-7e967adf7f02.png",
+        "mobile_image": "shopify:\/\/shop_images\/0003956-R1-08-9A.png",
         "mobile_image_focus": "object-top",
         "mobile_content_focus": "justify-start items-center",
         "mobile_content_alignment": "text-center",
         "max_height_desktop": 80,
         "use_img_height_desktop": true,
-        "desktop_image": "shopify:\/\/shop_images\/Desktop_Hompage_4470_x_3171px_1_14680fdc-ba35-45c5-b3c9-698a799e3aa2.png",
+        "desktop_image": "shopify:\/\/shop_images\/0003956-R1-08-9A.png",
         "desktop_image_focus": "lg:object-top",
         "desktop_content_focus": "lg:justify-center lg:items-start",
         "desktop_content_alignment": "lg:text-left"
@@ -68,6 +67,7 @@
     },
     "aad55d72-8fc0-4f6f-bc9a-4c38f601cb07": {
       "type": "featured-hero",
+      "disabled": true,
       "settings": {
         "contain_hero": false,
         "dynamic_loading": true,

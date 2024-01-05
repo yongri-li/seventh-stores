@@ -2,9 +2,10 @@
   "current": {
     "show_client_services": true,
     "show_subscribe": true,
-    "enable_overlay": false,
-    "overlay_link_color": "#4b4c4a",
-    "overlay_logo": "shopify:\/\/shop_images\/Seventh_12.png",
+    "enable_overlay": true,
+    "overlay_link_color": "#FFFFFF",
+    "overlay_link_color_hover": "#FFFFFF",
+    "overlay_logo": "shopify:\/\/shop_images\/Seventh_logo_white_6e244f08-3b62-4061-b679-d5488497c5f5.png",
     "use_custom_fonts": true,
     "navigation_font": "archivo_n4",
     "navigation_transform": "uppercase",

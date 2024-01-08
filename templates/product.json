@@ -135,7 +135,7 @@
             "data_key": "top-strip-promotion-badge",
             "locale_option": "geolocation",
             "locale_fallback": "",
-            "theme": "light",
+            "theme": "dark",
             "topPadding": "0",
             "bottomPadding": "0",
             "messagePrefix": ""

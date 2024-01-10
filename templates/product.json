@@ -25,7 +25,7 @@
             "data_key": "credit-promotion-badge",
             "locale_option": "geolocation",
             "locale_fallback": "",
-            "theme": "dark",
+            "theme": "light",
             "topPadding": "0",
             "bottomPadding": "0",
             "messagePrefix": ""

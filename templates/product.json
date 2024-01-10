@@ -22,7 +22,7 @@
         "1e7599d4-5568-4e53-b39e-7e768b0734c2": {
           "type": "shopify:\/\/apps\/klarna-on-site-messaging\/blocks\/app-block\/b95936a9-74b6-4a95-8103-6a1b6459c25e",
           "settings": {
-            "data_key": "credit-promotion-badge",
+            "data_key": "top-strip-promotion-badge",
             "locale_option": "geolocation",
             "locale_fallback": "",
             "theme": "light",

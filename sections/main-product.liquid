@@ -253,7 +253,7 @@
               {%- when 'product_title' -%}
                 <h1 class="[ mt-3 lg:mt-0 text-sm leading-snug lg:text-lg ]">{{ product.title }}</h1>
               {%- when 'product_price' -%}
-                <div id="productPrice{{ product.id }}" class="product-price">
+                <div id="productPrice{{ product.id }}" class="product-price  flex items-center gap-5">
                   <p class="heading mt-3" data-price-wrapper>
                     <span data-product-price class="text-sm"> {{ offer.price | money }}</span>
                     <span
@@ -270,6 +270,12 @@
                         {{ offer.compare_at_price | money }}
                       {% endif %}
                     </s>
+
+                    <div class="flex gap-1 items-center mt-3 klarna-widget">
+                      <span>Pay later or monthly with </span>
+                      {%- render 'icon-klarna-logo' -%}
+                      <img src="{{ 'clearpay.png' | asset_url }}" alt="">
+                    </div>
                   </p>
                 </div>
               {%- when 'product_vendor' -%}

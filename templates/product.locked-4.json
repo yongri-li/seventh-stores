@@ -27,8 +27,8 @@
         "7874ff1b-52c4-414f-9d4b-041a62dbafac": {
           "type": "custom_text",
           "settings": {
-            "logged_in_only": false,
-            "logged_out_only": false,
+            "logged_in_only": true,
+            "logged_out_only": true,
             "custom_text": "<p>Launching 01.02.24.<\/p><p><strong>Members<\/strong> 18:00 GMT<\/p><p><strong>General<\/strong> 19:00 GMT<\/p><p><\/p><p>Subscribe <a href=\"\/pages\/subscribe\" target=\"_blank\" title=\"Subscribe\">here<\/a> to join the family for early access. <\/p>"
           }
         },

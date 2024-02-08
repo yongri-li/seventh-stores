@@ -136,7 +136,7 @@
       "settings": {
         "contain": false,
         "section_background": "#f3eee8",
-        "section_spacing": "py-64",
+        "section_spacing": "py-8",
         "title": "",
         "collection": "night-collection",
         "total_products": 28,

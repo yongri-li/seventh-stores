@@ -271,11 +271,6 @@
                       {% endif %}
                     </s>
 
-                    <div class="flex gap-1 items-center mt-3 klarna-widget">
-                      <span>Pay later or monthly with </span>
-                      {%- render 'icon-klarna-logo' -%}
-                      <img src="{{ 'clearpay.png' | asset_url }}" alt="">
-                    </div>
                   </p>
                 </div>
               {%- when 'product_vendor' -%}
@@ -371,6 +366,13 @@
                     </div>
                   </div>
                 {%- endif -%}
+
+                <div class="flex gap-1 items-center mt-3 klarna-widget">
+                  <span>Pay later or monthly with </span>
+                  {%- render 'icon-klarna-logo' -%}
+                  <img src="{{ 'clearpay.png' | asset_url }}" alt="">
+                </div>
+              
               {%- when 'collapsible_tab' -%}
                 <details class="border-t border-b border-solid border-color group accordion accordion--product">
                   {%- unless block.settings.heading == blank -%}

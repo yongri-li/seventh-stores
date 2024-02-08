@@ -47,3 +47,7 @@ form#product_form_8657126129981{
   height: 25px;
   border-radius: 5px;
 }
+
+.klarna-widget img{
+  filter: invert(1);
+}

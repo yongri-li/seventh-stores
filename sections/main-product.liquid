@@ -319,11 +319,11 @@
                 {%- assign unisex_link = product.metafields.gender.variant.value -%}
                 <!-- {{ product.metafields.gender.variant | json }} -->
 
-           <div class="flex gap-1 items-center mt-3 klarna-widget">
-                <span>Pay later or monthly with </span>
-                {%- render 'icon-klarna-logo' -%}
-                <img src="{{ 'clearpay.png' | asset_url }}" alt="">
-              </div>
+                 <div class="flex gap-1 items-center mt-3 klarna-widget">
+                  <span>Pay later or monthly with </span>
+                  {%- render 'icon-klarna-logo' -%}
+                  <img src="{{ 'clearpay.png' | asset_url }}" alt="">
+                </div>
           
                 {%- unless unisex_link == blank -%}
                   {%- assign unisex_type = unisex_link.metafields.gender.type.value | first -%}

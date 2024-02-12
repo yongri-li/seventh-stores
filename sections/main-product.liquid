@@ -314,16 +314,17 @@
                   {%- render 'main-product-variant-selectors', product: product -%}
                 {%- endif -%}
 
-               <div class="flex gap-1 items-center mt-3 klarna-widget">
+              {%- when 'unisex_link' -%}
+                <!-- Unisex Link -->
+                {%- assign unisex_link = product.metafields.gender.variant.value -%}
+                <!-- {{ product.metafields.gender.variant | json }} -->
+
+           <div class="flex gap-1 items-center mt-3 klarna-widget">
                 <span>Pay later or monthly with </span>
                 {%- render 'icon-klarna-logo' -%}
                 <img src="{{ 'clearpay.png' | asset_url }}" alt="">
               </div>
           
-              {%- when 'unisex_link' -%}
-                <!-- Unisex Link -->
-                {%- assign unisex_link = product.metafields.gender.variant.value -%}
-                <!-- {{ product.metafields.gender.variant | json }} -->
                 {%- unless unisex_link == blank -%}
                   {%- assign unisex_type = unisex_link.metafields.gender.type.value | first -%}
                   <div class="my-8">

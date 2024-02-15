@@ -253,7 +253,7 @@
               {%- when 'product_title' -%}
                 <h1 class="[ mt-3 lg:mt-0 text-sm leading-snug lg:text-lg ]">{{ product.title }}</h1>
               {%- when 'product_price' -%}
-                <div id="productPrice{{ product.id }}" class="product-price">
+                <div id="productPrice{{ product.id }}" class="product-price  flex items-center gap-5">
                   <p class="heading mt-3" data-price-wrapper>
                     <span data-product-price class="text-sm"> {{ offer.price | money }}</span>
                     <span
@@ -270,6 +270,7 @@
                         {{ offer.compare_at_price | money }}
                       {% endif %}
                     </s>
+
                   </p>
                 </div>
               {%- when 'product_vendor' -%}
@@ -312,18 +313,27 @@
                 {%- else -%}
                   {%- render 'main-product-variant-selectors', product: product -%}
                 {%- endif -%}
+
               {%- when 'unisex_link' -%}
                 <!-- Unisex Link -->
                 {%- assign unisex_link = product.metafields.gender.variant.value -%}
                 <!-- {{ product.metafields.gender.variant | json }} -->
+
+                 <div class="flex gap-1 items-center mt-3 klarna-widget">
+                  <span>Pay later or monthly with </span>
+                  {%- render 'icon-klarna-logo' -%}
+                  <img src="{{ 'clearpay.png' | asset_url }}" alt="">
+                </div>
+          
                 {%- unless unisex_link == blank -%}
                   {%- assign unisex_type = unisex_link.metafields.gender.type.value | first -%}
-                  <div class="my-8">
+                  <div class="my-8 mt-5">
                     <a class="p-2 border border-color text-xs" href="{{ unisex_link.url }}">
                       {{- 'products.product.gender.variant' | t: alternative: unisex_type -}}
                     </a>
                   </div>
                 {%- endunless -%}
+          
               {%- when 'product_description' -%}
                 <div class="rte mt-3">{{ product.description }}</div>
               {%- when 'buy_now_buttons' -%}
@@ -365,6 +375,7 @@
                     </div>
                   </div>
                 {%- endif -%}
+
               {%- when 'collapsible_tab' -%}
                 <details class="border-t border-b border-solid border-color group accordion accordion--product">
                   {%- unless block.settings.heading == blank -%}

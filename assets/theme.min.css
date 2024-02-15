@@ -40,3 +40,14 @@ form#product_form_8657126129981{
     background-color: var(--atc-btn-bg) !important;
     color: var(--atc-btn-text) !important;
 }
+
+.klarna-widget svg,
+.klarna-widget img{
+  width: 50px;
+  height: 25px;
+  border-radius: 5px;
+}
+
+.klarna-widget img{
+  filter: invert(1);
+}

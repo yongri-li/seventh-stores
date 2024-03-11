@@ -46,68 +46,68 @@
     "d7a9aa2b-9caf-441f-8f65-7561c9999a58": {
       "type": "lookbook",
       "blocks": {
-        "724e1ce9-dea2-4850-b15d-5fde3a61aee3": {
+        "image_ciN7p6": {
           "type": "image",
           "settings": {
-            "block_url": "shopify:\/\/collections\/night-collection",
-            "block_image": "shopify:\/\/shop_images\/0003956-R1-08-9A.png",
-            "column_span": "col-span-3",
-            "column_span_desktop": "lg:col-span-3"
-          }
-        },
-        "template--21374904566077__d7a9aa2b-9caf-441f-8f65-7561c9999a58-image-1": {
-          "type": "image",
-          "settings": {
-            "block_url": "shopify:\/\/collections\/night-collection",
-            "block_image": "shopify:\/\/shop_images\/IMG_6502_2.jpg",
-            "column_span": "col-span-3",
-            "column_span_desktop": "lg:col-span-3"
-          }
-        },
-        "58b6e7ec-6a8c-41d8-8a0e-4fa73fddbd8d": {
-          "type": "image",
-          "settings": {
-            "block_url": "shopify:\/\/collections\/night-collection",
-            "block_image": "shopify:\/\/shop_images\/IMG_6497.jpg",
-            "column_span": "col-span-3",
-            "column_span_desktop": "lg:col-span-3"
-          }
-        },
-        "f0301fd9-4bfd-4916-9469-7e4a3b68b4a8": {
-          "type": "image",
-          "settings": {
-            "block_url": "shopify:\/\/collections\/night-collection",
-            "block_image": "shopify:\/\/shop_images\/0003956-R1-05-6A.png",
+            "block_url": "",
+            "block_image": "shopify:\/\/shop_images\/IMG_6795.jpg",
             "column_span": "col-span-1",
             "column_span_desktop": "lg:col-span-1"
           }
         },
-        "26c7b568-7447-4fd8-bd14-33d4033f16ac": {
+        "image_qJhMzq": {
           "type": "image",
           "settings": {
-            "block_url": "shopify:\/\/collections\/night-collection",
-            "block_image": "shopify:\/\/shop_images\/0003953-R1-23-24A.png",
+            "block_url": "",
+            "block_image": "shopify:\/\/shop_images\/IMG_6810.jpg",
             "column_span": "col-span-1",
             "column_span_desktop": "lg:col-span-1"
           }
         },
-        "fcba93b1-38ea-4d98-a783-ac0aef7f5107": {
+        "image_EBQgwY": {
           "type": "image",
           "settings": {
-            "block_url": "shopify:\/\/collections\/night-collection",
-            "block_image": "shopify:\/\/shop_images\/0003954-R1-27-28A.png",
+            "block_url": "",
+            "block_image": "shopify:\/\/shop_images\/IMG_6822.jpg",
+            "column_span": "col-span-1",
+            "column_span_desktop": "lg:col-span-1"
+          }
+        },
+        "image_FKdgaK": {
+          "type": "image",
+          "settings": {
+            "block_url": "",
+            "block_image": "shopify:\/\/shop_images\/IMG_6807.jpg",
+            "column_span": "col-span-1",
+            "column_span_desktop": "lg:col-span-1"
+          }
+        },
+        "image_PhtMCD": {
+          "type": "image",
+          "settings": {
+            "block_url": "",
+            "block_image": "shopify:\/\/shop_images\/IMG_6820.jpg",
+            "column_span": "col-span-1",
+            "column_span_desktop": "lg:col-span-1"
+          }
+        },
+        "image_trD8X9": {
+          "type": "image",
+          "settings": {
+            "block_url": "",
+            "block_image": "shopify:\/\/shop_images\/IMG_6815.jpg",
             "column_span": "col-span-1",
             "column_span_desktop": "lg:col-span-1"
           }
         }
       },
       "block_order": [
-        "724e1ce9-dea2-4850-b15d-5fde3a61aee3",
-        "template--21374904566077__d7a9aa2b-9caf-441f-8f65-7561c9999a58-image-1",
-        "58b6e7ec-6a8c-41d8-8a0e-4fa73fddbd8d",
-        "f0301fd9-4bfd-4916-9469-7e4a3b68b4a8",
-        "26c7b568-7447-4fd8-bd14-33d4033f16ac",
-        "fcba93b1-38ea-4d98-a783-ac0aef7f5107"
+        "image_ciN7p6",
+        "image_qJhMzq",
+        "image_EBQgwY",
+        "image_FKdgaK",
+        "image_PhtMCD",
+        "image_trD8X9"
       ],
       "settings": {
         "contain_section": false,
@@ -138,7 +138,7 @@
         "section_background": "#f3eee8",
         "section_spacing": "py-64",
         "title": "",
-        "collection": "night-collection",
+        "collection": "autumn-winter-fourth-installation-v2-coffee",
         "total_products": 28,
         "show_cta": true,
         "cta_copy": "",

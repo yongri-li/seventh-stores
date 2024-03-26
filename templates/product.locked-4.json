@@ -42,9 +42,10 @@
         },
         "36bcb969-de7f-4622-8eee-50454b12a522": {
           "type": "buy_now_buttons",
+          "disabled": true,
           "settings": {
             "show_wishlist": true,
-            "logged_in_only": true,
+            "logged_in_only": false,
             "show_qty_label": false,
             "show_additional_checkout_buttons": false,
             "show_price_in_button": false,

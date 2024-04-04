@@ -44,7 +44,7 @@
           "type": "buy_now_buttons",
           "settings": {
             "show_wishlist": true,
-            "logged_in_only": true,
+            "logged_in_only": false,
             "show_qty_label": false,
             "show_additional_checkout_buttons": false,
             "show_price_in_button": false,
